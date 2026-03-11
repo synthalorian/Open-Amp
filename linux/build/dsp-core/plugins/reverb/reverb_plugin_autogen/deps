@@ -1,0 +1,6 @@
+reverb_plugin_autogen/timestamp: \
+	/home/synth/projects/openamp/dsp-core/plugins/reverb/CMakeLists.txt \
+	/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp \
+	/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.h \
+	/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb_plugin.cpp \
+	/usr/bin/cmake

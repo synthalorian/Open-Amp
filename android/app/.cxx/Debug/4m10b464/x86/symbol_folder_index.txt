@@ -1,0 +1,1 @@
+/home/synth/projects/openamp/android/app/build/intermediates/cxx/Debug/4m10b464/obj/x86

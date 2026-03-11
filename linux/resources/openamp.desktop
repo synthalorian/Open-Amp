@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Open Amp
+Comment=Guitar Amplifier and Effects Processor
+Exec=open_amp
+Icon=open_amp
+Terminal=false
+Categories=AudioVideo;Audio;Music;
+Keywords=guitar;amp;effects;audio;dsp;

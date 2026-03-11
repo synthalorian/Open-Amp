@@ -1,0 +1,6 @@
+harmonizer_plugin_autogen/timestamp: \
+	/home/synth/projects/openamp/dsp-core/plugins/harmonizer/CMakeLists.txt \
+	/home/synth/projects/openamp/dsp-core/plugins/harmonizer/harmonizer.cpp \
+	/home/synth/projects/openamp/dsp-core/plugins/harmonizer/harmonizer.h \
+	/home/synth/projects/openamp/dsp-core/plugins/harmonizer/harmonizer_plugin.cpp \
+	/usr/bin/cmake

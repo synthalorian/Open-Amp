@@ -1,0 +1,6 @@
+tuner_plugin_autogen/timestamp: \
+	/home/synth/projects/openamp/dsp-core/plugins/tuner/CMakeLists.txt \
+	/home/synth/projects/openamp/dsp-core/plugins/tuner/tuner.cpp \
+	/home/synth/projects/openamp/dsp-core/plugins/tuner/tuner.h \
+	/home/synth/projects/openamp/dsp-core/plugins/tuner/tuner_plugin.cpp \
+	/usr/bin/cmake

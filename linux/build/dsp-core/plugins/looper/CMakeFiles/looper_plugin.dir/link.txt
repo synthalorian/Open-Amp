@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -shared -Wl,--dependency-file=CMakeFiles/looper_plugin.dir/link.d -Wl,-soname,liblooper_plugin.so -o liblooper_plugin.so CMakeFiles/looper_plugin.dir/looper_plugin_autogen/mocs_compilation.cpp.o CMakeFiles/looper_plugin.dir/looper.cpp.o CMakeFiles/looper_plugin.dir/looper_plugin.cpp.o  ../../src/libopenamp-dsp.a

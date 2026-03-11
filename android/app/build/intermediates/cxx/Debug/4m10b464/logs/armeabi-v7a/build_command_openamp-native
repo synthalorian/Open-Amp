@@ -1,0 +1,4 @@
+/home/synth/Android/Sdk/cmake/3.22.1/bin/ninja \
+  -C \
+  /home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/armeabi-v7a \
+  openamp-native

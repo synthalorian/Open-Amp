@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -shared -Wl,--dependency-file=CMakeFiles/cabinet_plugin.dir/link.d -Wl,-soname,libcabinet_plugin.so -o libcabinet_plugin.so CMakeFiles/cabinet_plugin.dir/cabinet_plugin_autogen/mocs_compilation.cpp.o CMakeFiles/cabinet_plugin.dir/cabinet.cpp.o CMakeFiles/cabinet_plugin.dir/cabinet_plugin.cpp.o  ../../src/libopenamp-dsp.a

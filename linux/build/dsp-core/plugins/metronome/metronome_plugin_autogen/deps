@@ -1,0 +1,6 @@
+metronome_plugin_autogen/timestamp: \
+	/home/synth/projects/openamp/dsp-core/plugins/metronome/CMakeLists.txt \
+	/home/synth/projects/openamp/dsp-core/plugins/metronome/metronome.cpp \
+	/home/synth/projects/openamp/dsp-core/plugins/metronome/metronome.h \
+	/home/synth/projects/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp \
+	/usr/bin/cmake

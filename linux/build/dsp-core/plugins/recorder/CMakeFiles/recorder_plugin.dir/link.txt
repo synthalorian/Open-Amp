@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -shared -Wl,--dependency-file=CMakeFiles/recorder_plugin.dir/link.d -Wl,-soname,librecorder_plugin.so -o librecorder_plugin.so CMakeFiles/recorder_plugin.dir/recorder_plugin_autogen/mocs_compilation.cpp.o CMakeFiles/recorder_plugin.dir/recorder.cpp.o CMakeFiles/recorder_plugin.dir/recorder_plugin.cpp.o  ../../src/libopenamp-dsp.a

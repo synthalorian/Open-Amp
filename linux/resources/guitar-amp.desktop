@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Guitar Amp
+Comment=Professional guitar amplifier and effects processor
+Exec=guitar-amp
+Icon=guitar-amp
+Type=Application
+Categories=AudioVideo;Audio;Music;
+Keywords=guitar;amp;effects;audio;dsp;
+StartupNotify=true
+Terminal=false

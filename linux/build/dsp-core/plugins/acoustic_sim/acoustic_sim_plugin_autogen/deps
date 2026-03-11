@@ -1,0 +1,6 @@
+acoustic_sim_plugin_autogen/timestamp: \
+	/home/synth/projects/openamp/dsp-core/plugins/acoustic_sim/CMakeLists.txt \
+	/home/synth/projects/openamp/dsp-core/plugins/acoustic_sim/acoustic_sim.cpp \
+	/home/synth/projects/openamp/dsp-core/plugins/acoustic_sim/acoustic_sim.h \
+	/home/synth/projects/openamp/dsp-core/plugins/acoustic_sim/acoustic_sim_plugin.cpp \
+	/usr/bin/cmake

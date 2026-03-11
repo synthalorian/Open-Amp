@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/neon_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Header / Transport Area -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/neon_surface"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="100dp"
+                android:text="START"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <com.openamp.ui.NeonPresetDisplay
+                android:id="@+id/neonPresetDisplay"
+                android:layout_width="200dp"
+                android:layout_height="60dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <com.openamp.ui.NeonKnobView
+                android:id="@+id/knobInputGain"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="8dp" />
+
+            <com.openamp.ui.NeonKnobView
+                android:id="@+id/knobOutputGain"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="12dp" />
+
+            <com.openamp.ui.NeonMeterView
+                android:id="@+id/inputLevelMeter"
+                android:layout_width="20dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="8dp" />
+
+            <com.openamp.ui.NeonMeterView
+                android:id="@+id/outputLevelMeter"
+                android:layout_width="20dp"
+                android:layout_height="60dp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fadeScrollbars="false"
+            android:scrollbarThumbVertical="@color/neon_primary">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Tuner Card -->
+                <com.openamp.ui.NeonTunerDisplay
+                    android:id="@+id/neonTunerDisplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Amp Controls Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="AMP SIMULATOR"
+                    android:textColor="@color/neon_secondary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.openamp.ui.NeonKnobView
+                            android:id="@+id/knobAmpGain"
+                            android:layout_width="100dp"
+                            android:layout_height="120dp" />
+
+                        <com.openamp.ui.NeonKnobView
+                            android:id="@+id/knobAmpDrive"
+                            android:layout_width="100dp"
+                            android:layout_height="120dp" />
+
+                        <com.openamp.ui.NeonKnobView
+                            android:id="@+id/knobAmpBass"
+                            android:layout_width="100dp"
+                            android:layout_height="120dp" />
+
+                        <com.openamp.ui.NeonKnobView
+                            android:id="@+id/knobAmpMid"
+                            android:layout_width="100dp"
+                            android:layout_height="120dp" />
+
+                        <com.openamp.ui.NeonKnobView
+                            android:id="@+id/knobAmpTreble"
+                            android:layout_width="100dp"
+                            android:layout_height="120dp" />
+
+                        <com.openamp.ui.NeonKnobView
+                            android:id="@+id/knobAmpPresence"
+                            android:layout_width="100dp"
+                            android:layout_height="120dp" />
+
+                        <com.openamp.ui.NeonKnobView
+                            android:id="@+id/knobAmpMaster"
+                            android:layout_width="100dp"
+                            android:layout_height="120dp" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- Effects Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="MODULATION &amp; TIME"
+                    android:textColor="@color/neon_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:layout_marginBottom="16dp">
+
+                    <com.openamp.ui.NeonKnobView
+                        android:id="@+id/knobDelayTime"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1" />
+
+                    <com.openamp.ui.NeonKnobView
+                        android:id="@+id/knobDelayFeedback"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1" />
+
+                    <com.openamp.ui.NeonKnobView
+                        android:id="@+id/knobDelayMix"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1" />
+
+                    <com.openamp.ui.NeonKnobView
+                        android:id="@+id/knobReverbRoom"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1" />
+
+                    <com.openamp.ui.NeonKnobView
+                        android:id="@+id/knobReverbDamp"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1" />
+
+                    <com.openamp.ui.NeonKnobView
+                        android:id="@+id/knobReverbMix"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1" />
+                </GridLayout>
+
+                <!-- Configuration area -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_neon_card"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="CAB IR"
+                            android:textColor="@color/neon_accent"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/cabIrPath"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:hint="no_ir_loaded"
+                            android:textColor="@color/neon_text"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/loadCabIrButton"
+                            style="@style/Widget.AppCompat.Button.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LOAD" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/debugStatusText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="monospace"
+                        android:text="debug: idle"
+                        android:textColor="@color/neon_muted"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- Buy Me A Coffee -->
+                <Button
+                    android:id="@+id/coffeeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="☕ Buy Me a Coffee" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Bottom Tab Bar Mockup (Quick select presets) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/neon_surface"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/ampSlotA"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:text="A" />
+
+            <Button
+                android:id="@+id/ampSlotB"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:text="B" />
+
+            <Button
+                android:id="@+id/ampSlotC"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:text="C" />
+
+            <ImageButton
+                android:id="@+id/browsePresetsButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:src="@android:drawable/ic_menu_agenda"
+                app:tint="@color/neon_secondary" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

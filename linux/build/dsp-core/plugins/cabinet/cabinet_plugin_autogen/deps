@@ -1,0 +1,6 @@
+cabinet_plugin_autogen/timestamp: \
+	/home/synth/projects/openamp/dsp-core/plugins/cabinet/CMakeLists.txt \
+	/home/synth/projects/openamp/dsp-core/plugins/cabinet/cabinet.cpp \
+	/home/synth/projects/openamp/dsp-core/plugins/cabinet/cabinet.h \
+	/home/synth/projects/openamp/dsp-core/plugins/cabinet/cabinet_plugin.cpp \
+	/usr/bin/cmake

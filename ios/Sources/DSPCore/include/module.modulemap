@@ -1,0 +1,5 @@
+module DSPCore {
+    header "DSPCore.h"
+    link "c++"
+    export *
+}

@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/openamp-dsp_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/openamp-dsp_autogen.dir/ParseCache.txt"
+  "openamp-dsp_autogen"
+  "CMakeFiles/openamp-dsp.dir/amp_simulator.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/amp_simulator.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/dsp_engine.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/dsp_engine.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/effect_chain.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/effect_chain.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/input_processor.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/input_processor.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/ir_loader.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/ir_loader.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/openamp-dsp_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/openamp-dsp_autogen/mocs_compilation.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/plugin_loader.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/plugin_loader.cpp.o.d"
+  "CMakeFiles/openamp-dsp.dir/preset_store.cpp.o"
+  "CMakeFiles/openamp-dsp.dir/preset_store.cpp.o.d"
+  "libopenamp-dsp.a"
+  "libopenamp-dsp.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/openamp-dsp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

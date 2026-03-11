@@ -1,0 +1,52 @@
+{
+  "buildFiles": [
+    "/home/synth/projects/openamp/android/app/src/main/cpp/CMakeLists.txt",
+    "/home/synth/projects/openamp/dsp-core/src/CMakeLists.txt",
+    "/home/synth/projects/openamp/third_party/oboe/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/synth/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/synth/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "oboe::@0db0cf03f2959f768628": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "oboe",
+      "output": "/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/x86/oboe/liboboe.a"
+    },
+    "openamp-dsp::@f9fa859a3c042e625dc3": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "openamp-dsp",
+      "output": "/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/x86/dsp-core/libopenamp-dsp.a"
+    },
+    "openamp-native::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "openamp-native",
+      "output": "/home/synth/projects/openamp/android/app/build/intermediates/cxx/Debug/4m10b464/obj/x86/libopenamp-native.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/home/synth/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/home/synth/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

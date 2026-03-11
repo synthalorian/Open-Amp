@@ -1,0 +1,2 @@
+ninja: Entering directory `/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/armeabi-v7a'
+ninja: no work to do.

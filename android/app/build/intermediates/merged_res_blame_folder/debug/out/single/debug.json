@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/layout_activity_main.xml.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/drawable_bg_neon_card.xml.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/drawable/bg_neon_card.xml"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/drawable_progress_neon.xml.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/drawable/progress_neon.xml"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/drawable_bg_neon_button.xml.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/drawable/bg_neon_button.xml"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.openamp.app-merged_res-27:/layout_activity_main.xml.flat",
+        "source": "com.openamp.app-main-29:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-xxxhdpi_ic_launcher_web.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-xxxhdpi/ic_launcher_web.png"
+    },
+    {
+        "merged": "/home/synth/.gradle/daemon/8.12/com.openamp.app-merged_res-27:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/home/synth/.gradle/daemon/8.12/com.openamp.app-main-29:/mipmap-xhdpi/ic_launcher_round.png"
+    }
+]
