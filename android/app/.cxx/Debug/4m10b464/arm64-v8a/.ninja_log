@@ -99,3 +99,5 @@
 1	402	1773190863074963434	CMakeFiles/openamp-native.dir/AudioEngine.cpp.o	3aca4f949e478ed6
 0	393	1773191319440953963	CMakeFiles/openamp-native.dir/AudioEngine.cpp.o	3aca4f949e478ed6
 393	415	1773191319467954494	/home/synth/projects/openamp/android/app/build/intermediates/cxx/Debug/4m10b464/obj/arm64-v8a/libopenamp-native.so	76c780f4f353f130
+1	382	1773192136350448593	CMakeFiles/openamp-native.dir/AudioEngine.cpp.o	3aca4f949e478ed6
+382	405	1773192136377449208	/home/synth/projects/openamp/android/app/build/intermediates/cxx/Debug/4m10b464/obj/arm64-v8a/libopenamp-native.so	76c780f4f353f130

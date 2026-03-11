@@ -565,13 +565,14 @@ bool AudioEngine::openStreams() {
     // Configure output stream
     outputBuilder_.setDirection(oboe::Direction::Output)
         ->setPerformanceMode(oboe::PerformanceMode::LowLatency)
-        ->setSharingMode(oboe::SharingMode::Shared)
+        ->setSharingMode(oboe::SharingMode::Exclusive) // Aggressive
         ->setChannelCount(config_.numOutputChannels)
         ->setFormat(oboe::AudioFormat::Float)
         ->setUsage(oboe::Usage::Media)
         ->setContentType(oboe::ContentType::Music)
         ->setDataCallback(this)
-        ->setErrorCallback(this);
+        ->setErrorCallback(this)
+        ->setBufferCapacityInFrames(128); // Force small buffer capacity
     
     if (outputDeviceId_ >= 0) {
         outputBuilder_.setDeviceId(outputDeviceId_);
@@ -595,13 +596,14 @@ bool AudioEngine::openStreams() {
     // Configure input stream
     inputBuilder_.setDirection(oboe::Direction::Input)
         ->setPerformanceMode(oboe::PerformanceMode::LowLatency)
-        ->setSharingMode(oboe::SharingMode::Shared)
+        ->setSharingMode(oboe::SharingMode::Exclusive) // Aggressive
         ->setChannelCount(config_.numInputChannels)
         ->setFormat(oboe::AudioFormat::Float)
         ->setInputPreset(oboe::InputPreset::Unprocessed)
         ->setSampleRate(config_.sampleRate)
         ->setUsage(oboe::Usage::Media)
-        ->setErrorCallback(this);
+        ->setErrorCallback(this)
+        ->setBufferCapacityInFrames(128); // Force small buffer capacity
     
     if (inputDeviceId_ >= 0) {
         inputBuilder_.setDeviceId(inputDeviceId_);
