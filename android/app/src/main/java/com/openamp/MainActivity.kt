@@ -86,7 +86,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         try {
-            setContentView(R.layout.activity_main)
+            try {
+                setContentView(R.layout.activity_main)
+            } catch (e: Throwable) {
+                Log.e(TAG, "Layout inflate failed", e)
+                val cause = e.cause
+                val msg = cause?.javaClass?.simpleName ?: e.javaClass.simpleName
+                Toast.makeText(this, "App failed to start: $msg ${e.message}", Toast.LENGTH_LONG).show()
+                return
+            }
 
             try {
                 audioEngine = AudioEngine()
