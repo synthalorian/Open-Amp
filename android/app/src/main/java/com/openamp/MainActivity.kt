@@ -86,16 +86,23 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         try {
-            audioEngine = AudioEngine()
-        } catch (e: Exception) {
-            Log.e(TAG, "Engine init failed", e)
-            return
-        }
+            setContentView(R.layout.activity_main)
 
-        copyFactoryPresetsFromAssets()
-        setContentView(R.layout.activity_main)
+            try {
+                audioEngine = AudioEngine()
+            } catch (e: Exception) {
+                Log.e(TAG, "Engine init failed", e)
+                Toast.makeText(this, "Audio engine init failed: ${e.message}", Toast.LENGTH_LONG).show()
+                return
+            } catch (e: UnsatisfiedLinkError) {
+                Log.e(TAG, "Native library load failed", e)
+                Toast.makeText(this, "Native library load failed: ${e.message}", Toast.LENGTH_LONG).show()
+                return
+            }
 
-        // Find views
+            copyFactoryPresetsFromAssets()
+
+            // Find views
         val startButton = findViewById<Button>(R.id.startButton)
         val coffeeButton = findViewById<Button>(R.id.coffeeButton)
         val browsePresetsButton = findViewById<ImageButton>(R.id.browsePresetsButton)
@@ -348,6 +355,10 @@ class MainActivity : ComponentActivity() {
                 audioEngine.nativeMetronomeStart()
                 btnMetronomeToggle.text = "METRO: ON"
             }
+        }
+        } catch (e: Throwable) {
+            Log.e(TAG, "App startup failed", e)
+            Toast.makeText(this, "App failed to start: ${e.javaClass.simpleName} ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 
