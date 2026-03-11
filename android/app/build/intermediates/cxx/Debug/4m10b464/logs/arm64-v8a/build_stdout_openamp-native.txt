@@ -1,5 +1,2 @@
 ninja: Entering directory `/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/arm64-v8a'
-[1/4] Linking CXX static library dsp-core/libopenamp-dsp.a
-[2/4] Building CXX object CMakeFiles/openamp-native.dir/JniBridge.cpp.o
-[3/4] Building CXX object CMakeFiles/openamp-native.dir/AudioEngine.cpp.o
-[4/4] Linking CXX shared library /home/synth/projects/openamp/android/app/build/intermediates/cxx/Debug/4m10b464/obj/arm64-v8a/libopenamp-native.so
+ninja: no work to do.

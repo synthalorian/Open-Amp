@@ -1,19 +1,2 @@
 ninja: Entering directory `/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/x86_64'
-[1/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o
-[2/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/wah/wah.cpp.o
-[3/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/metronome/metronome.cpp.o
-[4/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/cabinet/cabinet.cpp.o
-[5/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/harmonizer/harmonizer.cpp.o
-[6/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/acoustic_sim/acoustic_sim.cpp.o
-[7/18] Building CXX object dsp-core/CMakeFiles/openamp-dsp.dir/input_processor.cpp.o
-[8/18] Building CXX object dsp-core/CMakeFiles/openamp-dsp.dir/dsp_engine.cpp.o
-[9/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/looper/looper.cpp.o
-[10/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.o
-[11/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.o
-[12/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.o
-[13/18] Building CXX object dsp-core/CMakeFiles/openamp-dsp.dir/preset_store.cpp.o
-[14/18] Linking CXX static library dsp-core/libopenamp-dsp.a
-[15/18] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/src/ir_loader.cpp.o
-[16/18] Building CXX object CMakeFiles/openamp-native.dir/JniBridge.cpp.o
-[17/18] Building CXX object CMakeFiles/openamp-native.dir/AudioEngine.cpp.o
-[18/18] Linking CXX shared library /home/synth/projects/openamp/android/app/build/intermediates/cxx/Debug/4m10b464/obj/x86_64/libopenamp-native.so
+ninja: no work to do.

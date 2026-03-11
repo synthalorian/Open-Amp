@@ -325,9 +325,9 @@ class MainActivity : ComponentActivity() {
             irPicker.launch(arrayOf("*/*"))
         }
 
-        ampSlotA.setOnClickListener { loadAmpSlot("A", knobInputGain, knobOutputGain, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
-        ampSlotB.setOnClickListener { loadAmpSlot("B", knobInputGain, knobOutputGain, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
-        ampSlotC.setOnClickListener { loadAmpSlot("C", knobInputGain, knobOutputGain, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        ampSlotA.setOnClickListener { loadAmpSlot("A", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        ampSlotB.setOnClickListener { loadAmpSlot("B", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        ampSlotC.setOnClickListener { loadAmpSlot("C", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
         
         ampSlotA.setOnLongClickListener { saveAmpSlot("A"); true }
         ampSlotB.setOnLongClickListener { saveAmpSlot("B"); true }
@@ -487,15 +487,21 @@ class MainActivity : ComponentActivity() {
         ampMasterDb = prefs.getInt("${slot}_master", 0)
 
         // Sync knobs
-        knobs[0].setValue((inputGainDb + 24) / 48f)
-        knobs[1].setValue((outputGainDb + 24) / 48f)
-        knobs[2].setValue((ampGainDb + 20) / 40f)
-        knobs[3].setValue(ampDrive)
-        knobs[4].setValue((ampBassDb + 12) / 24f)
-        knobs[5].setValue((ampMidDb + 12) / 24f)
-        knobs[6].setValue((ampTrebleDb + 12) / 24f)
-        knobs[7].setValue((ampPresenceDb + 12) / 24f)
-        knobs[8].setValue((ampMasterDb + 10) / 20f)
+        if (knobs.size >= 9) {
+            knobs[0].setValue((inputGainDb + 24) / 48f)
+            knobs[1].setValue((outputGainDb + 24) / 48f)
+            // Use current noise gate threshold since it's not in amp slots yet
+            val gateThreshold = if (running) audioEngine.nativeGetNoiseGateThreshold() else -45.0f
+            knobs[2].setValue((gateThreshold + 35) / 60f)
+            knobs[3].setValue((ampGainDb + 20) / 40f)
+            knobs[4].setValue(ampDrive)
+            knobs[5].setValue((ampBassDb + 12) / 24f)
+            knobs[6].setValue((ampMidDb + 12) / 24f)
+            knobs[7].setValue((ampTrebleDb + 12) / 24f)
+            knobs[8].setValue((ampPresenceDb + 12) / 24f)
+            // Note: master knob usually exists but let's check size
+            if (knobs.size >= 10) knobs[9].setValue((ampMasterDb + 10) / 20f)
+        }
 
         applyCurrentSettings()
         updateAmpSlotHighlight(slot)
