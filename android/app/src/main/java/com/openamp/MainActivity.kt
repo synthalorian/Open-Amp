@@ -220,11 +220,15 @@ class MainActivity : ComponentActivity() {
 
         knobInputGain.onValueChanged = { v ->
             inputGainDb = (v * 48 - 24).toInt()
-            if (running) audioEngine.nativeSetInputGain(inputGainDb.toFloat())
+            runWhenEngineRunning("Input gain") {
+                audioEngine.nativeSetInputGain(inputGainDb.toFloat())
+            }
         }
         knobOutputGain.onValueChanged = { v ->
             outputGainDb = (v * 48 - 24).toInt()
-            if (running) audioEngine.nativeSetOutputGain(outputGainDb.toFloat())
+            runWhenEngineRunning("Output gain") {
+                audioEngine.nativeSetOutputGain(outputGainDb.toFloat())
+            }
         }
 
         knobDelayTime.onValueChanged = { v ->
@@ -312,7 +316,9 @@ class MainActivity : ComponentActivity() {
         }
 
         browsePresetsButton.setOnClickListener {
-            showPresetCategories()
+            runWhenEngineRunning("Preset browser") {
+                showPresetCategories()
+            }
         }
 
         loadCabIrButton.setOnClickListener {
@@ -555,6 +561,8 @@ class MainActivity : ComponentActivity() {
         ampTrebleDb = prefs.getInt("${slot}_treble", 0)
         ampPresenceDb = prefs.getInt("${slot}_presence", 0)
         ampMasterDb = prefs.getInt("${slot}_master", 0)
+        inputGainDb = prefs.getInt("${slot}_input_gain", 0)
+        outputGainDb = prefs.getInt("${slot}_output_gain", 0)
 
         // Sync knobs
         if (knobs.size >= 9) {
@@ -588,6 +596,8 @@ class MainActivity : ComponentActivity() {
             .putInt("${slot}_treble", ampTrebleDb)
             .putInt("${slot}_presence", ampPresenceDb)
             .putInt("${slot}_master", ampMasterDb)
+            .putInt("${slot}_input_gain", inputGainDb)
+            .putInt("${slot}_output_gain", outputGainDb)
             .apply()
         updateAmpSlotHighlight(slot)
         Toast.makeText(this, "Saved $slot", Toast.LENGTH_SHORT).show()
@@ -658,31 +668,36 @@ class MainActivity : ComponentActivity() {
             .setItems(presets.toTypedArray()) { _, which ->
                 val selected = presets[which]
                 val path = presetPath(selected, sourceDir, sanitize = false)
-                if (audioEngine.nativeLoadPreset(path)) {
-                    lastPresetName = selected
-                    neonPresetDisplay.setPreset(selected, false)
-                    syncFromEngine(
-                        findViewById(R.id.cabIrPath),
-                        findViewById(R.id.knobInputGain),
-                        findViewById(R.id.knobOutputGain),
-                        findViewById(R.id.knobNoiseGate),
-                        findViewById(R.id.knobAmpGain),
-                        findViewById(R.id.knobAmpDrive),
-                        findViewById(R.id.knobAmpBass),
-                        findViewById(R.id.knobAmpMid),
-                        findViewById(R.id.knobAmpTreble),
-                        findViewById(R.id.knobAmpPresence),
-                        findViewById(R.id.knobAmpMaster),
-                        findViewById(R.id.knobDelayTime),
-                        findViewById(R.id.knobDelayFeedback),
-                        findViewById(R.id.knobDelayMix),
-                        findViewById(R.id.knobReverbRoom),
-                        findViewById(R.id.knobReverbDamp),
-                        findViewById(R.id.knobReverbMix)
-                    )
-                    Toast.makeText(this, "Loaded: $selected", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Load failed: $selected", Toast.LENGTH_SHORT).show()
+                val apply = {
+                    if (audioEngine.nativeLoadPreset(path)) {
+                        lastPresetName = selected
+                        neonPresetDisplay.setPreset(selected, false)
+                        syncFromEngine(
+                            findViewById(R.id.cabIrPath),
+                            findViewById(R.id.knobInputGain),
+                            findViewById(R.id.knobOutputGain),
+                            findViewById(R.id.knobNoiseGate),
+                            findViewById(R.id.knobAmpGain),
+                            findViewById(R.id.knobAmpDrive),
+                            findViewById(R.id.knobAmpBass),
+                            findViewById(R.id.knobAmpMid),
+                            findViewById(R.id.knobAmpTreble),
+                            findViewById(R.id.knobAmpPresence),
+                            findViewById(R.id.knobAmpMaster),
+                            findViewById(R.id.knobDelayTime),
+                            findViewById(R.id.knobDelayFeedback),
+                            findViewById(R.id.knobDelayMix),
+                            findViewById(R.id.knobReverbRoom),
+                            findViewById(R.id.knobReverbDamp),
+                            findViewById(R.id.knobReverbMix)
+                        )
+                        Toast.makeText(this, "Loaded: $selected", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Load failed: $selected", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                runWhenEngineRunning("Preset: $selected") {
+                    apply()
                 }
             }
             .show()
