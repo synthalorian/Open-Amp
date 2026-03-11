@@ -514,3 +514,80 @@ extern "C" JNIEXPORT jfloat JNICALL
 Java_com_openamp_AudioEngine_nativeGetRawInputLevel(JNIEnv*, jobject) {
     return g_engine ? g_engine->getRawInputLevel() : 0.0f;
 }
+
+// Looper controls
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeLooperRecord(JNIEnv*, jobject) {
+    if (g_engine) g_engine->looperRecord();
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeLooperPlay(JNIEnv*, jobject) {
+    if (g_engine) g_engine->looperPlay();
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeLooperStop(JNIEnv*, jobject) {
+    if (g_engine) g_engine->looperStop();
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeLooperClear(JNIEnv*, jobject) {
+    if (g_engine) g_engine->looperClear();
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeLooperUndo(JNIEnv*, jobject) {
+    if (g_engine) g_engine->looperUndo();
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeLooperSetMix(JNIEnv*, jobject, jfloat mix) {
+    if (g_engine) g_engine->looperSetMix(mix);
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_openamp_AudioEngine_nativeLooperGetState(JNIEnv*, jobject) {
+    return g_engine ? g_engine->looperGetState() : 0;
+}
+
+extern "C" JNIEXPORT jfloat JNICALL
+Java_com_openamp_AudioEngine_nativeLooperGetPosition(JNIEnv*, jobject) {
+    return g_engine ? g_engine->looperGetPosition() : 0.0f;
+}
+
+extern "C" JNIEXPORT jfloat JNICALL
+Java_com_openamp_AudioEngine_nativeLooperGetDuration(JNIEnv*, jobject) {
+    return g_engine ? g_engine->looperGetDuration() : 0.0f;
+}
+
+// Metronome controls
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeMetronomeStart(JNIEnv*, jobject) {
+    if (g_engine) g_engine->metronomeStart();
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeMetronomeStop(JNIEnv*, jobject) {
+    if (g_engine) g_engine->metronomeStop();
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeMetronomeSetTempo(JNIEnv*, jobject, jfloat bpm) {
+    if (g_engine) g_engine->metronomeSetTempo(bpm);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeMetronomeSetVolume(JNIEnv*, jobject, jfloat volume) {
+    if (g_engine) g_engine->metronomeSetVolume(volume);
+}
+
+extern "C" JNIEXPORT jfloat JNICALL
+Java_com_openamp_AudioEngine_nativeMetronomeGetTempo(JNIEnv*, jobject) {
+    return g_engine ? g_engine->metronomeGetTempo() : 120.0f;
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_openamp_AudioEngine_nativeMetronomeIsPlaying(JNIEnv*, jobject) {
+    return g_engine && g_engine->metronomeIsPlaying() ? JNI_TRUE : JNI_FALSE;
+}

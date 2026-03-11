@@ -204,6 +204,103 @@
                         android:layout_columnWeight="1" />
                 </GridLayout>
 
+                <!-- Tools Section (Looper & Metronome) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="LOOP STATION &amp; RHYTHM"
+                    android:textColor="@color/neon_accent"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_neon_card"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginBottom="16dp">
+
+                    <!-- Looper Controls -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnLooperRec"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="REC"
+                            android:textColor="#FF0000" />
+
+                        <Button
+                            android:id="@+id/btnLooperPlay"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PLAY" />
+
+                        <Button
+                            android:id="@+id/btnLooperStop"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="STOP" />
+
+                        <Button
+                            android:id="@+id/btnLooperClear"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="CLR" />
+                    </LinearLayout>
+
+                    <!-- Metronome Controls -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BPM:"
+                            android:textColor="@color/neon_secondary"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/etMetronomeBpm"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="120"
+                            android:textColor="@color/neon_text"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/btnMetronomeToggle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="METRO: OFF" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <com.openamp.ui.NeonKnobView
+                            android:id="@+id/knobMetronomeVol"
+                            android:layout_width="60dp"
+                            android:layout_height="80dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
                 <!-- Configuration area -->
                 <LinearLayout
                     android:layout_width="match_parent"

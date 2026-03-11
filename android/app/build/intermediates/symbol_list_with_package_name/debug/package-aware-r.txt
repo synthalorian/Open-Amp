@@ -718,6 +718,11 @@ id beginning
 id blocking
 id bottom
 id browsePresetsButton
+id btnLooperClear
+id btnLooperPlay
+id btnLooperRec
+id btnLooperStop
+id btnMetronomeToggle
 id buttonPanel
 id cabIrPath
 id center_vertical
@@ -738,6 +743,7 @@ id disableHome
 id edit_query
 id edit_text_id
 id end
+id etMetronomeBpm
 id expand_activities_button
 id expanded_menu
 id forever
@@ -764,6 +770,7 @@ id knobDelayFeedback
 id knobDelayMix
 id knobDelayTime
 id knobInputGain
+id knobMetronomeVol
 id knobNoiseGate
 id knobOutputGain
 id knobReverbDamp

@@ -100,6 +100,15 @@ class MainActivity : ComponentActivity() {
         val loadCabIrButton = findViewById<Button>(R.id.loadCabIrButton)
         val debugStatusText = findViewById<TextView>(R.id.debugStatusText)
 
+        // Looper & Metronome views
+        val btnLooperRec = findViewById<Button>(R.id.btnLooperRec)
+        val btnLooperPlay = findViewById<Button>(R.id.btnLooperPlay)
+        val btnLooperStop = findViewById<Button>(R.id.btnLooperStop)
+        val btnLooperClear = findViewById<Button>(R.id.btnLooperClear)
+        val btnMetronomeToggle = findViewById<Button>(R.id.btnMetronomeToggle)
+        val etMetronomeBpm = findViewById<EditText>(R.id.etMetronomeBpm)
+        val knobMetronomeVol = findViewById<NeonKnobView>(R.id.knobMetronomeVol)
+
         ampSlotA = findViewById(R.id.ampSlotA)
         ampSlotB = findViewById(R.id.ampSlotB)
         ampSlotC = findViewById(R.id.ampSlotC)
@@ -146,6 +155,7 @@ class MainActivity : ComponentActivity() {
         knobReverbRoom.setLabel("ROOM")
         knobReverbDamp.setLabel("DAMP")
         knobReverbMix.setLabel("RVB MIX")
+        knobMetronomeVol.setLabel("METRO")
 
         // Knob Change Listeners
         knobAmpGain.onValueChanged = { v ->
@@ -222,6 +232,10 @@ class MainActivity : ComponentActivity() {
             reverbMix = v
             if (running) audioEngine.nativeSetReverbMix(reverbMix)
             neonPresetDisplay.setPreset(lastPresetName, true)
+        }
+
+        knobMetronomeVol.onValueChanged = { v ->
+            if (running) audioEngine.nativeMetronomeSetVolume(v)
         }
 
         neonPresetDisplay.setPreset("Init", false)
@@ -318,6 +332,26 @@ class MainActivity : ComponentActivity() {
         ampSlotA.setOnLongClickListener { saveAmpSlot("A"); true }
         ampSlotB.setOnLongClickListener { saveAmpSlot("B"); true }
         ampSlotC.setOnLongClickListener { saveAmpSlot("C"); true }
+
+        // Looper Listeners
+        btnLooperRec.setOnClickListener { if (running) audioEngine.nativeLooperRecord() }
+        btnLooperPlay.setOnClickListener { if (running) audioEngine.nativeLooperPlay() }
+        btnLooperStop.setOnClickListener { if (running) audioEngine.nativeLooperStop() }
+        btnLooperClear.setOnClickListener { if (running) audioEngine.nativeLooperClear() }
+
+        // Metronome Listeners
+        btnMetronomeToggle.setOnClickListener {
+            if (!running) return@setOnClickListener
+            if (audioEngine.nativeMetronomeIsPlaying()) {
+                audioEngine.nativeMetronomeStop()
+                btnMetronomeToggle.text = "METRO: OFF"
+            } else {
+                val bpm = etMetronomeBpm.text.toString().toFloatOrNull() ?: 120f
+                audioEngine.nativeMetronomeSetTempo(bpm)
+                audioEngine.nativeMetronomeStart()
+                btnMetronomeToggle.text = "METRO: ON"
+            }
+        }
     }
 
     private fun syncFromEngine(
@@ -420,6 +454,14 @@ class MainActivity : ComponentActivity() {
                 }
                 
                 neonTunerDisplay.setNote("E", 0f, true)
+                
+                // Sync Metronome Button State
+                if (running) {
+                    val isMetroOn = audioEngine.nativeMetronomeIsPlaying()
+                    val toggleBtn = findViewById<Button>(R.id.btnMetronomeToggle)
+                    toggleBtn.text = if (isMetroOn) "METRO: ON" else "METRO: OFF"
+                }
+
                 meterHandler.postDelayed(this, 100)
             }
         })

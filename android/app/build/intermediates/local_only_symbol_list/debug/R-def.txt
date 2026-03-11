@@ -14,9 +14,15 @@ id ampSlotA
 id ampSlotB
 id ampSlotC
 id browsePresetsButton
+id btnLooperClear
+id btnLooperPlay
+id btnLooperRec
+id btnLooperStop
+id btnMetronomeToggle
 id cabIrPath
 id coffeeButton
 id debugStatusText
+id etMetronomeBpm
 id inputLevelMeter
 id knobAmpBass
 id knobAmpDrive
@@ -29,6 +35,7 @@ id knobDelayFeedback
 id knobDelayMix
 id knobDelayTime
 id knobInputGain
+id knobMetronomeVol
 id knobNoiseGate
 id knobOutputGain
 id knobReverbDamp

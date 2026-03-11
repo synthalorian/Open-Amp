@@ -114,6 +114,22 @@ AudioEngine::AudioEngine() {
         processor_->setAmpSimulator(std::move(amp));
         processor_->setEffectChain(std::move(chain));
 
+        // Create Looper
+        auto looper = std::make_unique<openamp::Looper>();
+        if (looper) {
+            looper->prepare(config_.sampleRate, config_.bufferSize);
+            looper->setMaxDuration(60.0f);  // 1 minute max
+            looper_ = looper.get();
+        }
+        
+        // Create Metronome
+        auto metronome = std::make_unique<openamp::Metronome>();
+        if (metronome) {
+            metronome->prepare(config_.sampleRate, config_.bufferSize);
+            metronome->setMixWithAudio(true);
+            metronome_ = metronome.get();
+        }
+
         // Create IR Loader (NEW)
         irLoader_ = std::make_unique<openamp::IRLoader>();
         if (irLoader_) {
@@ -341,6 +357,25 @@ float AudioEngine::getReverbMix() const { return reverbMix_; }
 void AudioEngine::setDelayFirst(bool enabled) { delayFirst_ = enabled; }
 bool AudioEngine::getDelayFirst() const { return delayFirst_; }
 
+// Looper
+void AudioEngine::looperRecord() { if (looper_) looper_->record(); }
+void AudioEngine::looperPlay() { if (looper_) looper_->play(); }
+void AudioEngine::looperStop() { if (looper_) looper_->stop(); }
+void AudioEngine::looperClear() { if (looper_) looper_->clear(); }
+void AudioEngine::looperUndo() { if (looper_) looper_->undo(); }
+void AudioEngine::looperSetMix(float mix) { if (looper_) looper_->setMix(mix); }
+int AudioEngine::looperGetState() const { return looper_ ? static_cast<int>(looper_->getState()) : 0; }
+float AudioEngine::looperGetPosition() const { return looper_ ? looper_->getLoopInfo().position : 0.0f; }
+float AudioEngine::looperGetDuration() const { return looper_ ? looper_->getLoopInfo().durationSeconds : 0.0f; }
+
+// Metronome
+void AudioEngine::metronomeStart() { if (metronome_) metronome_->start(); }
+void AudioEngine::metronomeStop() { if (metronome_) metronome_->stop(); }
+void AudioEngine::metronomeSetTempo(float bpm) { if (metronome_) metronome_->setTempo(bpm); }
+void AudioEngine::metronomeSetVolume(float vol) { if (metronome_) metronome_->setClickLevel(vol); }
+float AudioEngine::metronomeGetTempo() const { return metronome_ ? metronome_->getTempo() : 120.0f; }
+bool AudioEngine::metronomeIsPlaying() const { return metronome_ && metronome_->isPlaying(); }
+
 // Device selection
 void AudioEngine::setInputDeviceId(int32_t deviceId) { inputDeviceId_ = deviceId; }
 void AudioEngine::setOutputDeviceId(int32_t deviceId) { outputDeviceId_ = deviceId; }
@@ -534,6 +569,26 @@ oboe::DataCallbackResult AudioEngine::onAudioReady(
         buffer.numFrames = numFrames;
         buffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
         irLoader_->process(buffer);
+    }
+    
+    // Process Looper
+    if (looper_) {
+        openamp::AudioBuffer buffer;
+        buffer.data = outputBuffer_.data();
+        buffer.numChannels = config_.numOutputChannels;
+        buffer.numFrames = numFrames;
+        buffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
+        looper_->process(buffer);
+    }
+    
+    // Process Metronome
+    if (metronome_ && metronome_->isPlaying()) {
+        openamp::AudioBuffer buffer;
+        buffer.data = outputBuffer_.data();
+        buffer.numChannels = config_.numOutputChannels;
+        buffer.numFrames = numFrames;
+        buffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
+        metronome_->process(buffer);
     }
 
     memcpy(output, outputBuffer_.data(), numOutputSamples * sizeof(float));

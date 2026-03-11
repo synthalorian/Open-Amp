@@ -99,4 +99,23 @@ class AudioEngine {
     external fun nativeSetTestToneEnabled(enabled: Boolean)
     external fun nativeGetTestToneEnabled(): Boolean
     external fun nativeGetRawInputLevel(): Float
+
+    // Looper
+    external fun nativeLooperRecord()
+    external fun nativeLooperPlay()
+    external fun nativeLooperStop()
+    external fun nativeLooperClear()
+    external fun nativeLooperUndo()
+    external fun nativeLooperSetMix(mix: Float)
+    external fun nativeLooperGetState(): Int
+    external fun nativeLooperGetPosition(): Float
+    external fun nativeLooperGetDuration(): Float
+
+    // Metronome
+    external fun nativeMetronomeStart()
+    external fun nativeMetronomeStop()
+    external fun nativeMetronomeSetTempo(bpm: Float)
+    external fun nativeMetronomeSetVolume(volume: Float)
+    external fun nativeMetronomeGetTempo(): Float
+    external fun nativeMetronomeIsPlaying(): Boolean
 }

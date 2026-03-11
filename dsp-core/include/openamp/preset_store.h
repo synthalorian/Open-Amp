@@ -31,6 +31,10 @@ struct Preset {
     float ampTrebleDb = 0.0f;
     float ampPresenceDb = 0.0f;
     float ampMasterDb = 0.0f;
+    bool noiseGateEnabled = true;
+    float noiseGateThreshold = -45.0f;
+    float noiseGateAttack = 1.0f;
+    float noiseGateRelease = 100.0f;
     std::string cabIrPath;
 };
 

@@ -11,6 +11,8 @@
 #include "reverb.h"
 #include "distortion.h"
 #include "noise_gate.h"
+#include "looper.h"
+#include "metronome.h"
 #include "cabinet.h"
 #include "acoustic_sim.h"
 #include "harmonizer.h"
@@ -133,6 +135,25 @@ public:
     uint32_t getBufferSize() const { return config_.bufferSize; }
     double getSampleRate() const { return config_.sampleRate; }
 
+    // Looper
+    void looperRecord();
+    void looperPlay();
+    void looperStop();
+    void looperClear();
+    void looperUndo();
+    void looperSetMix(float mix);
+    int looperGetState() const;
+    float looperGetPosition() const;
+    float looperGetDuration() const;
+
+    // Metronome
+    void metronomeStart();
+    void metronomeStop();
+    void metronomeSetTempo(float bpm);
+    void metronomeSetVolume(float volume);
+    float metronomeGetTempo() const;
+    bool metronomeIsPlaying() const;
+
     // Cabinet IR (legacy)
     bool setCabIRFromFile(const std::string& path);
     const std::string& getCabIrPath() const { return cabIrPath_; }
@@ -208,6 +229,10 @@ private:
     openamp::CabinetSimulator* cabinet_ = nullptr;
     openamp::AcousticSimulator* acousticSim_ = nullptr;
     openamp::Harmonizer* harmonizer_ = nullptr;
+    
+    // Looper & Metronome (NEW)
+    openamp::Looper* looper_ = nullptr;
+    openamp::Metronome* metronome_ = nullptr;
     
     // NEW: IR Loader
     std::unique_ptr<openamp::IRLoader> irLoader_;
