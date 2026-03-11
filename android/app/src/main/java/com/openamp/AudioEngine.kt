@@ -37,6 +37,13 @@ class AudioEngine {
     external fun nativeGetBufferSize(): Int
     external fun nativeGetSampleRate(): Int
 
+    external fun nativeSetNoiseGateEnabled(enabled: Boolean)
+    external fun nativeSetNoiseGateThreshold(db: Float)
+    external fun nativeSetNoiseGateAttack(ms: Float)
+    external fun nativeSetNoiseGateRelease(ms: Float)
+    external fun nativeGetNoiseGateEnabled(): Boolean
+    external fun nativeGetNoiseGateThreshold(): Float
+
     external fun nativeLoadIRFromWavFile(path: String): Boolean
     external fun nativeSetIREnabled(enabled: Boolean)
     external fun nativeSetIRMix(mix: Float)

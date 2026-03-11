@@ -15,6 +15,7 @@ add_library(openamp-native SHARED
     ${DSP_CORE_DIR}/plugins/delay/delay.cpp
     ${DSP_CORE_DIR}/plugins/distortion/distortion.cpp
     ${DSP_CORE_DIR}/plugins/reverb/reverb.cpp
+    ${DSP_CORE_DIR}/plugins/noise_gate/noise_gate.cpp
     ${DSP_CORE_DIR}/plugins/cabinet/cabinet.cpp
     ${DSP_CORE_DIR}/plugins/acoustic_sim/acoustic_sim.cpp
     ${DSP_CORE_DIR}/plugins/harmonizer/harmonizer.cpp
@@ -27,6 +28,7 @@ target_include_directories(openamp-native
         ${DSP_CORE_DIR}/plugins/delay
         ${DSP_CORE_DIR}/plugins/distortion
         ${DSP_CORE_DIR}/plugins/reverb
+        ${DSP_CORE_DIR}/plugins/noise_gate
         ${DSP_CORE_DIR}/plugins/cabinet
         ${DSP_CORE_DIR}/plugins/acoustic_sim
         ${DSP_CORE_DIR}/plugins/harmonizer

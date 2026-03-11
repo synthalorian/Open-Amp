@@ -285,6 +285,7 @@ class MainActivity : ComponentActivity() {
                                 cabIrPath,
                                 knobInputGain,
                                 knobOutputGain,
+                                knobNoiseGate,
                                 knobAmpGain,
                                 knobAmpDrive,
                                 knobAmpBass,

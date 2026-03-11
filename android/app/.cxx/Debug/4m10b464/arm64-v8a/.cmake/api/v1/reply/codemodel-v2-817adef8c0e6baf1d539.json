@@ -42,7 +42,7 @@
 				{
 					"build" : "oboe",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-oboe-Debug-b9ddc6caf46473526fd9.json",
+					"jsonFile" : "directory-oboe-Debug-276f76f22683790c4270.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.22.1"
@@ -94,21 +94,21 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "oboe::@0db0cf03f2959f768628",
-					"jsonFile" : "target-oboe-Debug-7668a10f5a9aabd2ce7a.json",
+					"jsonFile" : "target-oboe-Debug-8774ccc9ab29960c1b06.json",
 					"name" : "oboe",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "openamp-dsp::@f9fa859a3c042e625dc3",
-					"jsonFile" : "target-openamp-dsp-Debug-6bcf580d3bc41c23fe5e.json",
+					"jsonFile" : "target-openamp-dsp-Debug-139eab3c28e6d1584a75.json",
 					"name" : "openamp-dsp",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "openamp-native::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-openamp-native-Debug-59b605f1e2d9d25cc19b.json",
+					"jsonFile" : "target-openamp-native-Debug-c01f5e5bc5e25c997448.json",
 					"name" : "openamp-native",
 					"projectIndex" : 0
 				}
@@ -118,7 +118,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/armeabi-v7a",
+		"build" : "/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/arm64-v8a",
 		"source" : "/home/synth/projects/openamp/android/app/src/main/cpp"
 	},
 	"version" : 

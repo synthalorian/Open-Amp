@@ -1,2 +1,12 @@
 ninja: Entering directory `/home/synth/projects/openamp/android/app/.cxx/Debug/4m10b464/x86_64'
-ninja: no work to do.
+[1/11] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o
+[2/11] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/acoustic_sim/acoustic_sim.cpp.o
+[3/11] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/cabinet/cabinet.cpp.o
+[4/11] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/harmonizer/harmonizer.cpp.o
+[5/11] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.o
+[6/11] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.o
+[7/11] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.o
+[8/11] Building CXX object CMakeFiles/openamp-native.dir/JniBridge.cpp.o
+[9/11] Building CXX object CMakeFiles/openamp-native.dir/home/synth/projects/openamp/dsp-core/src/ir_loader.cpp.o
+[10/11] Building CXX object CMakeFiles/openamp-native.dir/AudioEngine.cpp.o
+[11/11] Linking CXX shared library /home/synth/projects/openamp/android/app/build/intermediates/cxx/Debug/4m10b464/obj/x86_64/libopenamp-native.so

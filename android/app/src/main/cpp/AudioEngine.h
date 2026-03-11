@@ -10,7 +10,7 @@
 #include "delay.h"
 #include "reverb.h"
 #include "distortion.h"
-#include "noise_gate/noise_gate.h"
+#include "noise_gate.h"
 #include "cabinet.h"
 #include "acoustic_sim.h"
 #include "harmonizer.h"

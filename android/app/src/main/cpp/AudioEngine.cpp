@@ -298,6 +298,14 @@ float AudioEngine::getAmpMasterDb() const { return ampMasterDb_; }
 void AudioEngine::setEffectsEnabled(bool enabled) { if (processor_) processor_->setEffectsEnabled(enabled); }
 bool AudioEngine::getEffectsEnabled() const { return processor_ ? processor_->isEffectsEnabled() : false; }
 
+// Noise Gate
+void AudioEngine::setNoiseGateEnabled(bool enabled) { noiseGateEnabled_ = enabled; }
+void AudioEngine::setNoiseGateThreshold(float db) { noiseGateThreshold_ = db; }
+void AudioEngine::setNoiseGateAttack(float ms) { noiseGateAttack_ = ms; }
+void AudioEngine::setNoiseGateRelease(float ms) { noiseGateRelease_ = ms; }
+bool AudioEngine::getNoiseGateEnabled() const { return noiseGateEnabled_; }
+float AudioEngine::getNoiseGateThreshold() const { return noiseGateThreshold_; }
+
 // Distortion
 void AudioEngine::setDistortionEnabled(bool enabled) { distortionEnabled_ = enabled; if (chain_) chain_->setEffectEnabled(0, enabled); }
 void AudioEngine::setDistortionType(int type) { distortionType_ = type; if (distortion_) distortion_->setType(static_cast<openamp::Distortion::Type>(type)); }

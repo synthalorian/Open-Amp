@@ -764,6 +764,7 @@ id knobDelayFeedback
 id knobDelayMix
 id knobDelayTime
 id knobInputGain
+id knobNoiseGate
 id knobOutputGain
 id knobReverbDamp
 id knobReverbMix

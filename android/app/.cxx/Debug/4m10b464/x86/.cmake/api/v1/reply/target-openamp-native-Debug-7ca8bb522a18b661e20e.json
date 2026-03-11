@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/synth/projects/openamp/android/app/build/intermediates/cxx/Debug/4m10b464/obj/x86_64/libopenamp-native.so"
+			"path" : "/home/synth/projects/openamp/android/app/build/intermediates/cxx/Debug/4m10b464/obj/x86/libopenamp-native.so"
 		}
 	],
 	"backtrace" : 1,
@@ -32,19 +32,19 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 38,
+				"line" : 40,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 44,
+				"line" : 46,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 24,
+				"line" : 25,
 				"parent" : 0
 			}
 		]
@@ -88,6 +88,10 @@
 				{
 					"backtrace" : 4,
 					"path" : "/home/synth/projects/openamp/android/app/src/main/cpp/../../../../../dsp-core/plugins/reverb"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/home/synth/projects/openamp/android/app/src/main/cpp/../../../../../dsp-core/plugins/noise_gate"
 				},
 				{
 					"backtrace" : 4,
@@ -157,7 +161,8 @@
 				5,
 				6,
 				7,
-				8
+				8,
+				9
 			],
 			"sysroot" : 
 			{
@@ -197,7 +202,7 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "/home/synth/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/x86_64-linux-android/26/liblog.so",
+				"fragment" : "/home/synth/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/i686-linux-android/26/liblog.so",
 				"role" : "libraries"
 			},
 			{
@@ -240,7 +245,8 @@
 				5,
 				6,
 				7,
-				8
+				8,
+				9
 			]
 		}
 	],
@@ -274,6 +280,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
