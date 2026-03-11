@@ -616,7 +616,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun saveCurrentPreset(name: String) {
-        val path = presetPath(name)
+        val path = presetPath(name, filesDir)
         if (audioEngine.nativeSavePreset(path, name)) {
             lastPresetName = name
             neonPresetDisplay.setPreset(name, false)
@@ -627,20 +627,23 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun showPresetCategories() {
-        val categories = mutableMapOf<String, MutableList<String>>()
-        categories["Saved"] = listPresets().toMutableList()
-        categories["Factory"] = mutableListOf("Clean Tone", "Crunch", "High Gain", "Lead", "Ambient")
-        
+        val factoryDir = File(filesDir, "presets")
+        val categories = mutableMapOf<String, Pair<List<String>, File>>()
+        categories["Saved"] = Pair(listPresets(filesDir).sorted(), filesDir)
+        categories["Factory"] = Pair(listPresetNames(factoryDir).sorted(), factoryDir)
+
         val categoryNames = categories.keys.toList()
         AlertDialog.Builder(this)
             .setTitle("Preset Categories")
             .setItems(categoryNames.toTypedArray()) { _, which ->
                 val category = categoryNames[which]
-                val presets = categories[category] ?: emptyList()
+                val entry = categories[category]
+                val presets = entry?.first ?: emptyList()
+                val sourceDir = entry?.second ?: filesDir
                 if (presets.isEmpty()) {
                     Toast.makeText(this, "No presets in $category", Toast.LENGTH_SHORT).show()
                 } else {
-                    showPresetList(presets)
+                    showPresetList(presets, sourceDir)
                 }
             }
             .setNeutralButton("Save Current") { _, _ ->
@@ -649,31 +652,58 @@ class MainActivity : ComponentActivity() {
             .show()
     }
 
-    private fun showPresetList(presets: List<String>) {
+    private fun showPresetList(presets: List<String>, sourceDir: File) {
         AlertDialog.Builder(this)
             .setTitle("Select Preset")
             .setItems(presets.toTypedArray()) { _, which ->
                 val selected = presets[which]
-                val path = presetPath(selected)
+                val path = presetPath(selected, sourceDir, sanitize = false)
                 if (audioEngine.nativeLoadPreset(path)) {
                     lastPresetName = selected
                     neonPresetDisplay.setPreset(selected, false)
+                    syncFromEngine(
+                        findViewById(R.id.cabIrPath),
+                        findViewById(R.id.knobInputGain),
+                        findViewById(R.id.knobOutputGain),
+                        findViewById(R.id.knobNoiseGate),
+                        findViewById(R.id.knobAmpGain),
+                        findViewById(R.id.knobAmpDrive),
+                        findViewById(R.id.knobAmpBass),
+                        findViewById(R.id.knobAmpMid),
+                        findViewById(R.id.knobAmpTreble),
+                        findViewById(R.id.knobAmpPresence),
+                        findViewById(R.id.knobAmpMaster),
+                        findViewById(R.id.knobDelayTime),
+                        findViewById(R.id.knobDelayFeedback),
+                        findViewById(R.id.knobDelayMix),
+                        findViewById(R.id.knobReverbRoom),
+                        findViewById(R.id.knobReverbDamp),
+                        findViewById(R.id.knobReverbMix)
+                    )
                     Toast.makeText(this, "Loaded: $selected", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Load failed: $selected", Toast.LENGTH_SHORT).show()
                 }
             }
             .show()
     }
 
-    private fun listPresets(): List<String> {
-        val files = filesDir.listFiles() ?: return emptyList()
+    private fun listPresetNames(dir: File): List<String> {
+        val files = dir.listFiles() ?: return emptyList()
         return files.filter { it.name.endsWith(".preset") }
             .map { it.name.removeSuffix(".preset") }
             .sorted()
     }
 
-    private fun presetPath(name: String): String {
-        val safeName = name.replace(Regex("[^A-Za-z0-9_-]"), "_")
-        return File(filesDir, "$safeName.preset").absolutePath
+    private fun listPresets(dir: File): List<String> = listPresetNames(dir)
+
+    private fun presetPath(name: String, dir: File, sanitize: Boolean = true): String {
+        val safeName = if (sanitize) {
+            name.replace(Regex("[^A-Za-z0-9_-]"), "_")
+        } else {
+            name
+        }
+        return File(dir, "$safeName.preset").absolutePath
     }
 
     override fun onRequestPermissionsResult(
