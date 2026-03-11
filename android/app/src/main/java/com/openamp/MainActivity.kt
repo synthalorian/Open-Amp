@@ -74,6 +74,9 @@ class MainActivity : ComponentActivity() {
     private var pendingAction: (() -> Unit)? = null
     private lateinit var debugStatusText: TextView
     private lateinit var startButton: Button
+    private lateinit var btnInputDevice: Button
+    private lateinit var btnOutputDevice: Button
+    private lateinit var btnInputMode: Button
 
     private val irPicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri == null) return@registerForActivityResult
@@ -120,6 +123,9 @@ class MainActivity : ComponentActivity() {
         val loadCabIrButton = findViewById<Button>(R.id.loadCabIrButton)
         debugStatusText = findViewById(R.id.debugStatusText)
         val etMetronomeBpm = findViewById<EditText>(R.id.etMetronomeBpm)
+        btnInputDevice = findViewById(R.id.btnInputDevice)
+        btnOutputDevice = findViewById(R.id.btnOutputDevice)
+        btnInputMode = findViewById(R.id.btnInputMode)
 
         btnLiveA = findViewById(R.id.btnLiveA)
         btnLiveB = findViewById(R.id.btnLiveB)
@@ -325,9 +331,33 @@ class MainActivity : ComponentActivity() {
             irPicker.launch(arrayOf("*/*"))
         }
 
-        btnLiveA.onClick = { loadAmpSlot("A", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
-        btnLiveB.onClick = { loadAmpSlot("B", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
-        btnLiveC.onClick = { loadAmpSlot("C", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        btnInputDevice.setOnClickListener {
+            runWhenEngineRunning("Input source") {
+                showInputDeviceSelector()
+            }
+        }
+
+        btnOutputDevice.setOnClickListener {
+            runWhenEngineRunning("Output source") {
+                showOutputDeviceSelector()
+            }
+        }
+
+        btnInputMode.setOnClickListener {
+            runWhenEngineRunning("Input mode") {
+                showInputModeSelector()
+            }
+        }
+
+        btnLiveA.onClick = {
+            runWhenEngineRunning("Load slot A") { loadAmpSlot("A", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        }
+        btnLiveB.onClick = {
+            runWhenEngineRunning("Load slot B") { loadAmpSlot("B", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        }
+        btnLiveC.onClick = {
+            runWhenEngineRunning("Load slot C") { loadAmpSlot("C", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        }
         
         btnLiveA.onLongClick = { saveAmpSlot("A") }
         btnLiveB.onLongClick = { saveAmpSlot("B") }
@@ -671,7 +701,6 @@ class MainActivity : ComponentActivity() {
                 val apply = {
                     if (audioEngine.nativeLoadPreset(path)) {
                         lastPresetName = selected
-                        neonPresetDisplay.setPreset(selected, false)
                         syncFromEngine(
                             findViewById(R.id.cabIrPath),
                             findViewById(R.id.knobInputGain),
@@ -691,7 +720,11 @@ class MainActivity : ComponentActivity() {
                             findViewById(R.id.knobReverbDamp),
                             findViewById(R.id.knobReverbMix)
                         )
-                        Toast.makeText(this, "Loaded: $selected", Toast.LENGTH_SHORT).show()
+                        neonPresetDisplay.setPreset(selected, false)
+                        val state = "Loaded: $selected | IN=${inputGainDb}dB OUT=${outputGainDb}dB Delay=${delayTimeMs}ms Reverb=${reverbMix}" 
+                        Toast.makeText(this, state, Toast.LENGTH_LONG).show()
+                        lastDebugText = state
+                        debugStatusText.text = state
                     } else {
                         Toast.makeText(this, "Load failed: $selected", Toast.LENGTH_SHORT).show()
                     }
@@ -719,6 +752,74 @@ class MainActivity : ComponentActivity() {
             name
         }
         return File(dir, "$safeName.preset").absolutePath
+    }
+
+    private fun showInputDeviceSelector() {
+        val manager = getSystemService(AUDIO_SERVICE) as AudioManager
+        val devices = manager.getDevices(AudioManager.GET_DEVICES_INPUTS)
+            .filter { it.type != AudioDeviceInfo.TYPE_UNKNOWN }
+
+        if (devices.isEmpty()) {
+            Toast.makeText(this, "No input devices available", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val names = devices.map { device ->
+            val typeName = device.productName?.toString() ?: "Unknown"
+            "${device.type}: $typeName (${device.id})"
+        }
+        val ids = devices.map { it.id }
+
+        AlertDialog.Builder(this)
+            .setTitle("Select Input Device")
+            .setItems(names.toTypedArray()) { _, which ->
+                val id = ids[which]
+                audioEngine.nativeSetInputDeviceId(id)
+                btnInputDevice.text = names[which].substringBefore(" (")
+                Toast.makeText(this, "Input device set", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun showOutputDeviceSelector() {
+        val manager = getSystemService(AUDIO_SERVICE) as AudioManager
+        val devices = manager.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
+            .filter { it.type != AudioDeviceInfo.TYPE_UNKNOWN }
+
+        if (devices.isEmpty()) {
+            Toast.makeText(this, "No output devices available", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val names = devices.map { device ->
+            val typeName = device.productName?.toString() ?: "Unknown"
+            "${device.type}: $typeName (${device.id})"
+        }
+        val ids = devices.map { it.id }
+
+        AlertDialog.Builder(this)
+            .setTitle("Select Output Device")
+            .setItems(names.toTypedArray()) { _, which ->
+                val id = ids[which]
+                audioEngine.nativeSetOutputDeviceId(id)
+                btnOutputDevice.text = names[which].substringBefore(" (")
+                Toast.makeText(this, "Output device set", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun showInputModeSelector() {
+        val modeLabels = arrayOf("L/Mono", "R", "Sum", "Auto")
+        AlertDialog.Builder(this)
+            .setTitle("Input Channel Mode")
+            .setItems(modeLabels) { _, which ->
+                audioEngine.nativeSetInputChannelMode(which)
+                btnInputMode.text = modeLabels[which]
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     override fun onRequestPermissionsResult(
