@@ -18,6 +18,7 @@ add_library(openamp-native SHARED
     ${DSP_CORE_DIR}/plugins/noise_gate/noise_gate.cpp
     ${DSP_CORE_DIR}/plugins/looper/looper.cpp
     ${DSP_CORE_DIR}/plugins/metronome/metronome.cpp
+    ${DSP_CORE_DIR}/plugins/modulation/modulation.cpp
     ${DSP_CORE_DIR}/plugins/wah/wah.cpp
     ${DSP_CORE_DIR}/plugins/cabinet/cabinet.cpp
     ${DSP_CORE_DIR}/plugins/acoustic_sim/acoustic_sim.cpp
@@ -34,6 +35,7 @@ target_include_directories(openamp-native
         ${DSP_CORE_DIR}/plugins/noise_gate
         ${DSP_CORE_DIR}/plugins/looper
         ${DSP_CORE_DIR}/plugins/metronome
+        ${DSP_CORE_DIR}/plugins/modulation
         ${DSP_CORE_DIR}/plugins/wah
         ${DSP_CORE_DIR}/plugins/cabinet
         ${DSP_CORE_DIR}/plugins/acoustic_sim

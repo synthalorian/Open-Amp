@@ -376,6 +376,18 @@ void AudioEngine::metronomeSetVolume(float vol) { if (metronome_) metronome_->se
 float AudioEngine::metronomeGetTempo() const { return metronome_ ? metronome_->getTempo() : 120.0f; }
 bool AudioEngine::metronomeIsPlaying() const { return metronome_ && metronome_->isPlaying(); }
 
+// Modulation
+void AudioEngine::setModulationEnabled(bool enabled) { /* TODO */ }
+void AudioEngine::setModulationType(int type) { /* TODO */ }
+void AudioEngine::setModulationRate(float hz) { /* TODO */ }
+void AudioEngine::setModulationDepth(float depth) { /* TODO */ }
+void AudioEngine::setModulationMix(float mix) { /* TODO */ }
+bool AudioEngine::getModulationEnabled() const { return false; }
+int AudioEngine::getModulationType() const { return 0; }
+float AudioEngine::getModulationRate() const { return 1.5f; }
+float AudioEngine::getModulationDepth() const { return 0.5f; }
+float AudioEngine::getModulationMix() const { return 0.5f; }
+
 // Device selection
 void AudioEngine::setInputDeviceId(int32_t deviceId) { inputDeviceId_ = deviceId; }
 void AudioEngine::setOutputDeviceId(int32_t deviceId) { outputDeviceId_ = deviceId; }

@@ -591,3 +591,54 @@ extern "C" JNIEXPORT jboolean JNICALL
 Java_com_openamp_AudioEngine_nativeMetronomeIsPlaying(JNIEnv*, jobject) {
     return g_engine && g_engine->metronomeIsPlaying() ? JNI_TRUE : JNI_FALSE;
 }
+
+// Modulation controls
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeSetModulationEnabled(JNIEnv*, jobject, jboolean enabled) {
+    // TODO: Implement
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeSetModulationType(JNIEnv*, jobject, jint type) {
+    // TODO: Implement
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeSetModulationRate(JNIEnv*, jobject, jfloat hz) {
+    // TODO: Implement
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeSetModulationDepth(JNIEnv*, jobject, jfloat depth) {
+    // TODO: Implement
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeSetModulationMix(JNIEnv*, jobject, jfloat mix) {
+    // TODO: Implement
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_openamp_AudioEngine_nativeGetModulationEnabled(JNIEnv*, jobject) {
+    return g_engine && g_engine->getModulationEnabled() ? JNI_TRUE : JNI_FALSE;
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_com_openamp_AudioEngine_nativeGetModulationType(JNIEnv*, jobject) {
+    return g_engine ? g_engine->getModulationType() : 0;
+}
+
+extern "C" JNIEXPORT jfloat JNICALL
+Java_com_openamp_AudioEngine_nativeGetModulationRate(JNIEnv*, jobject) {
+    return g_engine ? g_engine->getModulationRate() : 1.5f;
+}
+
+extern "C" JNIEXPORT jfloat JNICALL
+Java_com_openamp_AudioEngine_nativeGetModulationDepth(JNIEnv*, jobject) {
+    return g_engine ? g_engine->getModulationDepth() : 0.5f;
+}
+
+extern "C" JNIEXPORT jfloat JNICALL
+Java_com_openamp_AudioEngine_nativeGetModulationMix(JNIEnv*, jobject) {
+    return g_engine ? g_engine->getModulationMix() : 0.5f;
+}

@@ -118,4 +118,16 @@ class AudioEngine {
     external fun nativeMetronomeSetVolume(volume: Float)
     external fun nativeMetronomeGetTempo(): Float
     external fun nativeMetronomeIsPlaying(): Boolean
+
+    // Modulation
+    external fun nativeSetModulationEnabled(enabled: Boolean)
+    external fun nativeSetModulationType(type: Int)
+    external fun nativeSetModulationRate(hz: Float)
+    external fun nativeSetModulationDepth(depth: Float)
+    external fun nativeSetModulationMix(mix: Float)
+    external fun nativeGetModulationEnabled(): Boolean
+    external fun nativeGetModulationType(): Int
+    external fun nativeGetModulationRate(): Float
+    external fun nativeGetModulationDepth(): Float
+    external fun nativeGetModulationMix(): Float
 }

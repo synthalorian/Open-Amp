@@ -13,6 +13,7 @@
 #include "noise_gate.h"
 #include "looper.h"
 #include "metronome.h"
+#include "modulation.h"
 #include "cabinet.h"
 #include "acoustic_sim.h"
 #include "harmonizer.h"
@@ -154,6 +155,18 @@ public:
     float metronomeGetTempo() const;
     bool metronomeIsPlaying() const;
 
+    // Modulation
+    void setModulationEnabled(bool enabled);
+    void setModulationType(int type);
+    void setModulationRate(float hz);
+    void setModulationDepth(float depth);
+    void setModulationMix(float mix);
+    bool getModulationEnabled() const;
+    int getModulationType() const;
+    float getModulationRate() const;
+    float getModulationDepth() const;
+    float getModulationMix() const;
+
     // Cabinet IR (legacy)
     bool setCabIRFromFile(const std::string& path);
     const std::string& getCabIrPath() const { return cabIrPath_; }
@@ -224,6 +237,7 @@ private:
     openamp::EffectChain* chain_ = nullptr;
     openamp::NoiseGate* noiseGate_ = nullptr;
     openamp::Distortion* distortion_ = nullptr;
+    openamp::Modulation* modulation_ = nullptr;
     openamp::Delay* delay_ = nullptr;
     openamp::Reverb* reverb_ = nullptr;
     openamp::CabinetSimulator* cabinet_ = nullptr;
