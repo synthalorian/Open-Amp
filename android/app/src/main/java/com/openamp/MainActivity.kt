@@ -71,6 +71,7 @@ class MainActivity : ComponentActivity() {
 
     private val meterHandler = Handler(Looper.getMainLooper())
     private var metersRunning = false
+    private var pendingStartAfterPermission = false
 
     private val irPicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri == null) return@registerForActivityResult
@@ -114,9 +115,9 @@ class MainActivity : ComponentActivity() {
         val startButton = findViewById<Button>(R.id.startButton)
         val coffeeButton = findViewById<Button>(R.id.coffeeButton)
         val browsePresetsButton = findViewById<ImageButton>(R.id.browsePresetsButton)
-        val cabIrPath = findViewById<EditText>(R.id.cabIrPath)
         val loadCabIrButton = findViewById<Button>(R.id.loadCabIrButton)
         val debugStatusText = findViewById<TextView>(R.id.debugStatusText)
+        val etMetronomeBpm = findViewById<EditText>(R.id.etMetronomeBpm)
 
         btnLiveA = findViewById(R.id.btnLiveA)
         btnLiveB = findViewById(R.id.btnLiveB)
@@ -132,7 +133,6 @@ class MainActivity : ComponentActivity() {
         val btnLooperStop = findViewById<Button>(R.id.btnLooperStop)
         val btnLooperClear = findViewById<Button>(R.id.btnLooperClear)
         val btnMetronomeToggle = findViewById<Button>(R.id.btnMetronomeToggle)
-        val etMetronomeBpm = findViewById<EditText>(R.id.etMetronomeBpm)
         val knobMetronomeVol = findViewById<NeonKnobView>(R.id.knobMetronomeVol)
 
         neonPresetDisplay = findViewById(R.id.neonPresetDisplay)
@@ -301,31 +301,17 @@ class MainActivity : ComponentActivity() {
 
         startButton.setOnClickListener {
             if (!hasRecordPermission()) {
+                pendingStartAfterPermission = !running
                 requestRecordPermission()
+                Toast.makeText(this, "Microphone permission required. Request sent.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             if (!running) {
-                try {
-                    audioEngine.nativeCreate()
-                    applyCurrentSettings()
-                    running = audioEngine.nativeStart()
-                    
-                    if (running) {
-                        startButton.text = "STOP"
-                        startMeters(debugStatusText)
-                        Toast.makeText(this, "Engine Active", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this, "Start Failed", Toast.LENGTH_LONG).show()
-                    }
-                } catch (e: Exception) {
-                    Log.e(TAG, "Start error", e)
+                if (startEngine(startButton, debugStatusText)) {
+                    // Engine started
                 }
             } else {
-                audioEngine.nativeStop()
-                audioEngine.nativeRelease()
-                running = false
-                stopMeters()
-                startButton.text = "START"
+                stopEngine(startButton)
             }
         }
 
@@ -346,14 +332,41 @@ class MainActivity : ComponentActivity() {
         btnLiveC.onLongClick = { saveAmpSlot("C") }
         
         // Looper Listeners
-        btnLooperRec.setOnClickListener { if (running) audioEngine.nativeLooperRecord() }
-        btnLooperPlay.setOnClickListener { if (running) audioEngine.nativeLooperPlay() }
-        btnLooperStop.setOnClickListener { if (running) audioEngine.nativeLooperStop() }
-        btnLooperClear.setOnClickListener { if (running) audioEngine.nativeLooperClear() }
+        btnLooperRec.setOnClickListener {
+            if (!running) {
+                Toast.makeText(this, "Press START before using looper.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            audioEngine.nativeLooperRecord()
+        }
+        btnLooperPlay.setOnClickListener {
+            if (!running) {
+                Toast.makeText(this, "Press START before using looper.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            audioEngine.nativeLooperPlay()
+        }
+        btnLooperStop.setOnClickListener {
+            if (!running) {
+                Toast.makeText(this, "Press START before using looper.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            audioEngine.nativeLooperStop()
+        }
+        btnLooperClear.setOnClickListener {
+            if (!running) {
+                Toast.makeText(this, "Press START before using looper.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            audioEngine.nativeLooperClear()
+        }
 
         // Metronome Listeners
         btnMetronomeToggle.setOnClickListener {
-            if (!running) return@setOnClickListener
+            if (!running) {
+                Toast.makeText(this, "Press START before using metronome.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             if (audioEngine.nativeMetronomeIsPlaying()) {
                 audioEngine.nativeMetronomeStop()
                 btnMetronomeToggle.text = "METRO: OFF"
@@ -448,6 +461,38 @@ class MainActivity : ComponentActivity() {
         audioEngine.nativeSetReverbRoomSize(reverbRoom)
         audioEngine.nativeSetReverbDamping(reverbDamp)
         audioEngine.nativeSetReverbMix(reverbMix)
+    }
+
+    private fun startEngine(startButton: Button, debugStatusText: TextView): Boolean {
+        return try {
+            audioEngine.nativeCreate()
+            applyCurrentSettings()
+            running = audioEngine.nativeStart()
+            if (running) {
+                startButton.text = "STOP"
+                startMeters(debugStatusText)
+                Toast.makeText(this, "Engine Active", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Start Failed", Toast.LENGTH_LONG).show()
+            }
+            running
+        } catch (e: Exception) {
+            Log.e(TAG, "Start error", e)
+            Toast.makeText(this, "Start failed: ${e.message}", Toast.LENGTH_LONG).show()
+            false
+        }
+    }
+
+    private fun stopEngine(startButton: Button) {
+        try {
+            audioEngine.nativeStop()
+            audioEngine.nativeRelease()
+            running = false
+            stopMeters()
+            startButton.text = "START"
+        } catch (e: Exception) {
+            Log.e(TAG, "Stop error", e)
+        }
     }
 
     private fun startMeters(debugStatusText: TextView) {
@@ -620,6 +665,26 @@ class MainActivity : ComponentActivity() {
     private fun presetPath(name: String): String {
         val safeName = name.replace(Regex("[^A-Za-z0-9_-]"), "_")
         return File(filesDir, "$safeName.preset").absolutePath
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == recordPermissionRequest) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                pendingStartAfterPermission = false
+                val startButton = findViewById<Button>(R.id.startButton)
+                val debugStatusText = findViewById<TextView>(R.id.debugStatusText)
+                startEngine(startButton, debugStatusText)
+                Toast.makeText(this, "Microphone permission granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Record permission denied. Button controls are disabled until granted.", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     private fun cacheIrFromUri(uri: android.net.Uri): String? {
