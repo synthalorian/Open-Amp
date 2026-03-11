@@ -365,39 +365,33 @@
         <!-- Bottom Tab Bar Mockup (Quick select presets) -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="100dp"
             android:background="@color/neon_surface"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-            <Button
-                android:id="@+id/ampSlotA"
+            <com.openamp.ui.NeonLiveButton
+                android:id="@+id/btnLiveA"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="?attr/selectableItemBackground"
-                android:text="A" />
+                android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/ampSlotB"
+            <com.openamp.ui.NeonLiveButton
+                android:id="@+id/btnLiveB"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="?attr/selectableItemBackground"
-                android:text="B" />
+                android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/ampSlotC"
+            <com.openamp.ui.NeonLiveButton
+                android:id="@+id/btnLiveC"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="?attr/selectableItemBackground"
-                android:text="C" />
+                android:layout_weight="1" />
 
             <ImageButton
                 android:id="@+id/browsePresetsButton"
-                android:layout_width="0dp"
+                android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
                 android:src="@android:drawable/ic_menu_agenda"
                 app:tint="@color/neon_secondary" />

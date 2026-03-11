@@ -22,6 +22,7 @@ import com.openamp.ui.NeonKnobView
 import com.openamp.ui.NeonMeterView
 import com.openamp.ui.NeonPresetDisplay
 import com.openamp.ui.NeonTunerDisplay
+import com.openamp.ui.NeonLiveButton
 import com.openamp.midi.MidiController
 import java.io.File
 import java.io.FileOutputStream
@@ -37,9 +38,9 @@ class MainActivity : ComponentActivity() {
     private lateinit var audioEngine: AudioEngine
     private var running = false
 
-    private lateinit var ampSlotA: Button
-    private lateinit var ampSlotB: Button
-    private lateinit var ampSlotC: Button
+    private lateinit var btnLiveA: NeonLiveButton
+    private lateinit var btnLiveB: NeonLiveButton
+    private lateinit var btnLiveC: NeonLiveButton
 
     // New UI components
     private lateinit var neonPresetDisplay: NeonPresetDisplay
@@ -102,6 +103,14 @@ class MainActivity : ComponentActivity() {
         val loadCabIrButton = findViewById<Button>(R.id.loadCabIrButton)
         val debugStatusText = findViewById<TextView>(R.id.debugStatusText)
 
+        btnLiveA = findViewById(R.id.btnLiveA)
+        btnLiveB = findViewById(R.id.btnLiveB)
+        btnLiveC = findViewById(R.id.btnLiveC)
+        
+        btnLiveA.setLabel("A")
+        btnLiveB.setLabel("B")
+        btnLiveC.setLabel("C")
+
         // Looper & Metronome views
         val btnLooperRec = findViewById<Button>(R.id.btnLooperRec)
         val btnLooperPlay = findViewById<Button>(R.id.btnLooperPlay)
@@ -110,10 +119,6 @@ class MainActivity : ComponentActivity() {
         val btnMetronomeToggle = findViewById<Button>(R.id.btnMetronomeToggle)
         val etMetronomeBpm = findViewById<EditText>(R.id.etMetronomeBpm)
         val knobMetronomeVol = findViewById<NeonKnobView>(R.id.knobMetronomeVol)
-
-        ampSlotA = findViewById(R.id.ampSlotA)
-        ampSlotB = findViewById(R.id.ampSlotB)
-        ampSlotC = findViewById(R.id.ampSlotC)
 
         neonPresetDisplay = findViewById(R.id.neonPresetDisplay)
         neonTunerDisplay = findViewById(R.id.neonTunerDisplay)
@@ -310,55 +315,21 @@ class MainActivity : ComponentActivity() {
         }
 
         browsePresetsButton.setOnClickListener {
-            val presets = listPresets()
-            if (presets.isEmpty()) {
-                Toast.makeText(this, "No presets found", Toast.LENGTH_SHORT).show()
-            } else {
-                AlertDialog.Builder(this)
-                    .setTitle("Load Preset")
-                    .setItems(presets.toTypedArray()) { _, which ->
-                        val selected = presets[which]
-                        val path = presetPath(selected)
-                        if (audioEngine.nativeLoadPreset(path)) {
-                            lastPresetName = selected
-                            syncFromEngine(
-                                cabIrPath,
-                                knobInputGain,
-                                knobOutputGain,
-                                knobNoiseGate,
-                                knobAmpGain,
-                                knobAmpDrive,
-                                knobAmpBass,
-                                knobAmpMid,
-                                knobAmpTreble,
-                                knobAmpPresence,
-                                knobAmpMaster,
-                                knobDelayTime,
-                                knobDelayFeedback,
-                                knobDelayMix,
-                                knobReverbRoom,
-                                knobReverbDamp,
-                                knobReverbMix
-                            )
-                            neonPresetDisplay.setPreset(selected, false)
-                        }
-                    }
-                    .show()
-            }
+            showPresetCategories()
         }
 
         loadCabIrButton.setOnClickListener {
             irPicker.launch(arrayOf("*/*"))
         }
 
-        ampSlotA.setOnClickListener { loadAmpSlot("A", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
-        ampSlotB.setOnClickListener { loadAmpSlot("B", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
-        ampSlotC.setOnClickListener { loadAmpSlot("C", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        btnLiveA.onClick = { loadAmpSlot("A", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        btnLiveB.onClick = { loadAmpSlot("B", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+        btnLiveC.onClick = { loadAmpSlot("C", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
         
-        ampSlotA.setOnLongClickListener { saveAmpSlot("A"); true }
-        ampSlotB.setOnLongClickListener { saveAmpSlot("B"); true }
-        ampSlotC.setOnLongClickListener { saveAmpSlot("C"); true }
-
+        btnLiveA.onLongClick = { saveAmpSlot("A") }
+        btnLiveB.onLongClick = { saveAmpSlot("B") }
+        btnLiveC.onLongClick = { saveAmpSlot("C") }
+        
         // Looper Listeners
         btnLooperRec.setOnClickListener { if (running) audioEngine.nativeLooperRecord() }
         btnLooperPlay.setOnClickListener { if (running) audioEngine.nativeLooperPlay() }
@@ -550,11 +521,74 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun updateAmpSlotHighlight(slot: String?) {
-        val activeAlpha = 1.0f
-        val inactiveAlpha = 0.4f
-        ampSlotA.alpha = if (slot == "A") activeAlpha else inactiveAlpha
-        ampSlotB.alpha = if (slot == "B") activeAlpha else inactiveAlpha
-        ampSlotC.alpha = if (slot == "C") activeAlpha else inactiveAlpha
+        btnLiveA.setActive(slot == "A")
+        btnLiveB.setActive(slot == "B")
+        btnLiveC.setActive(slot == "C")
+    }
+
+    private fun showSavePresetDialog() {
+        val input = EditText(this)
+        input.hint = "Preset name"
+        input.setText(lastPresetName)
+        
+        AlertDialog.Builder(this)
+            .setTitle("Save Preset")
+            .setView(input)
+            .setPositiveButton("Save") { _, _ ->
+                val name = input.text.toString().ifBlank { "Untitled" }
+                saveCurrentPreset(name)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun saveCurrentPreset(name: String) {
+        val path = presetPath(name)
+        if (audioEngine.nativeSavePreset(path, name)) {
+            lastPresetName = name
+            neonPresetDisplay.setPreset(name, false)
+            Toast.makeText(this, "Saved: $name", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Save failed", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun showPresetCategories() {
+        val categories = mutableMapOf<String, MutableList<String>>()
+        categories["Saved"] = listPresets().toMutableList()
+        categories["Factory"] = mutableListOf("Clean Tone", "Crunch", "High Gain", "Lead", "Ambient")
+        
+        val categoryNames = categories.keys.toList()
+        AlertDialog.Builder(this)
+            .setTitle("Preset Categories")
+            .setItems(categoryNames.toTypedArray()) { _, which ->
+                val category = categoryNames[which]
+                val presets = categories[category] ?: emptyList()
+                if (presets.isEmpty()) {
+                    Toast.makeText(this, "No presets in $category", Toast.LENGTH_SHORT).show()
+                } else {
+                    showPresetList(presets)
+                }
+            }
+            .setNeutralButton("Save Current") { _, _ ->
+                showSavePresetDialog()
+            }
+            .show()
+    }
+
+    private fun showPresetList(presets: List<String>) {
+        AlertDialog.Builder(this)
+            .setTitle("Select Preset")
+            .setItems(presets.toTypedArray()) { _, which ->
+                val selected = presets[which]
+                val path = presetPath(selected)
+                if (audioEngine.nativeLoadPreset(path)) {
+                    lastPresetName = selected
+                    neonPresetDisplay.setPreset(selected, false)
+                    Toast.makeText(this, "Loaded: $selected", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .show()
     }
 
     private fun listPresets(): List<String> {

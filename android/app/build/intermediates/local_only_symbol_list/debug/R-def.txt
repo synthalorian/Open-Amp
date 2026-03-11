@@ -10,10 +10,10 @@ color neon_text
 drawable bg_neon_button
 drawable bg_neon_card
 drawable progress_neon
-id ampSlotA
-id ampSlotB
-id ampSlotC
 id browsePresetsButton
+id btnLiveA
+id btnLiveB
+id btnLiveC
 id btnLooperClear
 id btnLooperPlay
 id btnLooperRec

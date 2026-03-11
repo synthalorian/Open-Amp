@@ -710,14 +710,14 @@ id activity_chooser_view_content
 id add
 id alertTitle
 id always
-id ampSlotA
-id ampSlotB
-id ampSlotC
 id async
 id beginning
 id blocking
 id bottom
 id browsePresetsButton
+id btnLiveA
+id btnLiveB
+id btnLiveC
 id btnLooperClear
 id btnLooperPlay
 id btnLooperRec
