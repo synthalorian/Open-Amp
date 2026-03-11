@@ -344,6 +344,34 @@
                     android:text="debug: idle"
                     android:textColor="@color/neon_muted"
                     android:textSize="10sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnInputDevice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Input" />
+
+                    <Button
+                        android:id="@+id/btnOutputDevice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Output" />
+
+                    <Button
+                        android:id="@+id/btnInputMode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Mode" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- Buy Me A Coffee -->
