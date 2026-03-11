@@ -77,32 +77,32 @@ Java_com_openamp_AudioEngine_nativeSetOutputGain(JNIEnv*, jobject, jfloat db) {
     if (g_engine) g_engine->setOutputGain(db);
 }
 
-extern JNIEXPORT void JNICALL
+extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetNoiseGateEnabled(JNIEnv*, jobject, jboolean enabled) {
     if (g_engine) g_engine->setNoiseGateEnabled(enabled == JNI_TRUE);
 }
 
-extern JNIEXPORT void JNICALL
+extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetNoiseGateThreshold(JNIEnv*, jobject, jfloat db) {
     if (g_engine) g_engine->setNoiseGateThreshold(db);
 }
 
-extern JNIEXPORT void JNICALL
+extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetNoiseGateAttack(JNIEnv*, jobject, jfloat ms) {
     if (g_engine) g_engine->setNoiseGateAttack(ms);
 }
 
-extern JNIEXPORT void JNICALL
+extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetNoiseGateRelease(JNIEnv*, jobject, jfloat ms) {
     if (g_engine) g_engine->setNoiseGateRelease(ms);
 }
 
-extern JNIEXPORT jboolean JNICALL
+extern "C" JNIEXPORT jboolean JNICALL
 Java_com_openamp_AudioEngine_nativeGetNoiseGateEnabled(JNIEnv*, jobject) {
     return g_engine && g_engine->getNoiseGateEnabled() ? JNI_TRUE : JNI_FALSE;
 }
 
-extern JNIEXPORT jfloat JNICALL
+extern "C" JNIEXPORT jfloat JNICALL
 Java_com_openamp_AudioEngine_nativeGetNoiseGateThreshold(JNIEnv*, jobject) {
     return g_engine ? g_engine->getNoiseGateThreshold() : 0.0f;
 }
@@ -111,6 +111,11 @@ Java_com_openamp_AudioEngine_nativeGetNoiseGateThreshold(JNIEnv*, jobject) {
 extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetAmpEnabled(JNIEnv*, jobject, jboolean enabled) {
     if (g_engine) g_engine->setAmpEnabled(enabled == JNI_TRUE);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeSetEffectsEnabled(JNIEnv*, jobject, jboolean enabled) {
+    if (g_engine) g_engine->setEffectsEnabled(enabled == JNI_TRUE);
 }
 
 extern "C" JNIEXPORT void JNICALL
