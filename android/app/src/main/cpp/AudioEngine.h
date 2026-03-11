@@ -10,6 +10,7 @@
 #include "delay.h"
 #include "reverb.h"
 #include "distortion.h"
+#include "noise_gate/noise_gate.h"
 #include "cabinet.h"
 #include "acoustic_sim.h"
 #include "harmonizer.h"
@@ -64,6 +65,14 @@ public:
     // Effects master
     void setEffectsEnabled(bool enabled);
     bool getEffectsEnabled() const;
+
+    // Noise Gate
+    void setNoiseGateEnabled(bool enabled);
+    void setNoiseGateThreshold(float db);
+    void setNoiseGateAttack(float ms);
+    void setNoiseGateRelease(float ms);
+    bool getNoiseGateEnabled() const;
+    float getNoiseGateThreshold() const;
 
     // Distortion
     void setDistortionEnabled(bool enabled);
@@ -192,6 +201,7 @@ private:
     std::unique_ptr<openamp::InputProcessor> processor_;
     openamp::AmpSimulator* amp_ = nullptr;
     openamp::EffectChain* chain_ = nullptr;
+    openamp::NoiseGate* noiseGate_ = nullptr;
     openamp::Distortion* distortion_ = nullptr;
     openamp::Delay* delay_ = nullptr;
     openamp::Reverb* reverb_ = nullptr;
@@ -212,6 +222,7 @@ private:
 
     // Effect states
     bool distortionEnabled_ = false;
+    bool noiseGateEnabled_ = true;
     bool delayEnabled_ = true;
     bool reverbEnabled_ = true;
     bool delayFirst_ = true;
@@ -227,6 +238,9 @@ private:
     float ampTrebleDb_ = 0.0f;
     float ampPresenceDb_ = 0.0f;
     float ampMasterDb_ = 0.0f;
+    float noiseGateThreshold_ = -45.0f;
+    float noiseGateAttack_ = 1.0f;
+    float noiseGateRelease_ = 100.0f;
     float distortionDrive_ = 0.5f;
     float distortionTone_ = 0.5f;
     float distortionLevel_ = 0.7f;

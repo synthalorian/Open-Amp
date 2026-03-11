@@ -155,14 +155,16 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:columnCount="3"
-                    android:layout_marginBottom="16dp">
+                <com.openamp.ui.NeonKnobView
+                    android:id="@+id/knobNoiseGate"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp" />
 
-                    <com.openamp.ui.NeonKnobView
-                        android:id="@+id/knobDelayTime"
+                <com.openamp.ui.NeonKnobView
+                    android:id="@+id/knobNoiseGateRelease"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp" />
+            </LinearLayout>"
                         android:layout_width="0dp"
                         android:layout_height="120dp"
                         android:layout_columnWeight="1" />

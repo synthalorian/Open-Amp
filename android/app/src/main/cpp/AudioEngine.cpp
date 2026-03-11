@@ -120,8 +120,10 @@ AudioEngine::AudioEngine() {
             irLoader_->prepare(config_.sampleRate, config_.bufferSize);
         }
 
-        processor_->setInputGain(24.0f);
-        processor_->setOutputGain(6.0f);
+        // USB interfaces typically need more input gain
+  // Guitar pickups are often lower line level than mic input
+        processor_->setInputGain(36.0f);
+        processor_->setOutputGain(12.0f);
 
         inputBuffer_.resize(config_.bufferSize * 4);
         outputBuffer_.resize(config_.bufferSize * config_.numOutputChannels * 4);

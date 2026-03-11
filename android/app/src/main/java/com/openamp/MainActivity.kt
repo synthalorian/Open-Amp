@@ -124,13 +124,14 @@ class MainActivity : ComponentActivity() {
         val knobReverbRoom = findViewById<NeonKnobView>(R.id.knobReverbRoom)
         val knobReverbDamp = findViewById<NeonKnobView>(R.id.knobReverbDamp)
         val knobReverbMix = findViewById<NeonKnobView>(R.id.knobReverbMix)
-
+        val knobNoiseGate = findViewById<NeonKnobView>(R.id.knobNoiseGate)
         val knobInputGain = findViewById<NeonKnobView>(R.id.knobInputGain)
         val knobOutputGain = findViewById<NeonKnobView>(R.id.knobOutputGain)
 
         // Configure Knobs
         knobInputGain.setLabel("IN")
         knobOutputGain.setLabel("OUT")
+        knobNoiseGate.setLabel("GATE")
         knobAmpGain.setLabel("GAIN")
         knobAmpDrive.setLabel("DRIVE")
         knobAmpBass.setLabel("BASS")
@@ -225,6 +226,12 @@ class MainActivity : ComponentActivity() {
 
         neonPresetDisplay.setPreset("Init", false)
         updateAmpSlotHighlight(null)
+        
+        // Initialize noise gate
+        audioEngine.nativeSetNoiseGateEnabled(true)
+        audioEngine.nativeSetNoiseGateThreshold(-45.0f) // Default threshold
+        audioEngine.nativeSetNoiseGateAttack(1.0f)
+        audioEngine.nativeSetNoiseGateRelease(100.0f)
 
         coffeeButton.setOnClickListener {
             val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)
@@ -316,6 +323,7 @@ class MainActivity : ComponentActivity() {
         cabIrPath: EditText,
         knobIn: NeonKnobView,
         knobOut: NeonKnobView,
+        knobGate: NeonKnobView,
         knobGain: NeonKnobView,
         knobDrive: NeonKnobView,
         knobBass: NeonKnobView,
@@ -347,11 +355,14 @@ class MainActivity : ComponentActivity() {
         reverbDamp = audioEngine.nativeGetReverbDamp()
         reverbMix = audioEngine.nativeGetReverbMix()
         
+        val noiseGateThreshold = audioEngine.nativeGetNoiseGateThreshold()
+        
         val cabPath = audioEngine.nativeGetCabIrPath()
         if (cabPath.isNotEmpty()) cabIrPath.setText(cabPath)
 
         knobIn.setValue((inputGainDb + 24) / 48f)
         knobOut.setValue((outputGainDb + 24) / 48f)
+        knobGate.setValue((noiseGateThreshold + 35) / 60f) // -35 to -95 dB
         knobGain.setValue((ampGainDb + 20) / 40f)
         knobDrive.setValue(ampDrive)
         knobBass.setValue((ampBassDb + 12) / 24f)
