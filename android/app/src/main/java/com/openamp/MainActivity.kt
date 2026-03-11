@@ -22,6 +22,7 @@ import com.openamp.ui.NeonKnobView
 import com.openamp.ui.NeonMeterView
 import com.openamp.ui.NeonPresetDisplay
 import com.openamp.ui.NeonTunerDisplay
+import com.openamp.midi.MidiController
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -45,6 +46,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var neonTunerDisplay: NeonTunerDisplay
     private lateinit var inputLevelMeter: NeonMeterView
     private lateinit var outputLevelMeter: NeonMeterView
+    private lateinit var midiController: MidiController
 
     private var inputGainDb = 18
     private var outputGainDb = 6
@@ -246,6 +248,30 @@ class MainActivity : ComponentActivity() {
         audioEngine.nativeSetNoiseGateThreshold(-45.0f) // Default threshold
         audioEngine.nativeSetNoiseGateAttack(1.0f)
         audioEngine.nativeSetNoiseGateRelease(100.0f)
+
+        // Initialize MIDI Controller
+        midiController = MidiController(this)
+        if (midiController.initialize()) {
+            midiController.onDeviceConnected = { deviceName ->
+                Toast.makeText(this, "MIDI: $deviceName", Toast.LENGTH_SHORT).show()
+            }
+            midiController.onDeviceDisconnected = {
+                Toast.makeText(this, "MIDI disconnected", Toast.LENGTH_SHORT).show()
+            }
+            
+            // Set up default parameter callbacks
+            midiController.registerParameterCallback("preset_a") { loadAmpSlot("A", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+            midiController.registerParameterCallback("preset_b") { loadAmpSlot("B", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+            midiController.registerParameterCallback("preset_c") { loadAmpSlot("C", knobInputGain, knobOutputGain, knobNoiseGate, knobAmpGain, knobAmpDrive, knobAmpBass, knobAmpMid, knobAmpTreble, knobAmpPresence, knobAmpMaster) }
+            midiController.registerParameterCallback("output_gain") { v ->
+                outputGainDb = (v * 48 - 24).toInt()
+                knobOutputGain.setValue(v)
+                if (running) audioEngine.nativeSetOutputGain(outputGainDb.toFloat())
+            }
+            midiController.registerParameterCallback("looper_toggle") { _ ->
+                if (running) audioEngine.nativeLooperRecord()
+            }
+        }
 
         coffeeButton.setOnClickListener {
             val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)

@@ -9,6 +9,9 @@
         android:targetSdkVersion="34" />
 
     <uses-feature android:name="android.hardware.usb.host" />
+    <uses-feature
+        android:name="android.software.midi"
+        android:required="false" />
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
