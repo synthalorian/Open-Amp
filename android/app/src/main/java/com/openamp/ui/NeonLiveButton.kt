@@ -34,6 +34,7 @@ class NeonLiveButton @JvmOverloads constructor(
     init {
         glowPaint.maskFilter = BlurMaskFilter(20f, BlurMaskFilter.Blur.NORMAL)
         setLayerType(LAYER_TYPE_SOFTWARE, null)
+        isClickable = true
         isLongClickable = true
     }
 

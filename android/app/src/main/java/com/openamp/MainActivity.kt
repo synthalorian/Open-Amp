@@ -71,7 +71,9 @@ class MainActivity : ComponentActivity() {
 
     private val meterHandler = Handler(Looper.getMainLooper())
     private var metersRunning = false
-    private var pendingStartAfterPermission = false
+    private var pendingAction: (() -> Unit)? = null
+    private lateinit var debugStatusText: TextView
+    private lateinit var startButton: Button
 
     private val irPicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri == null) return@registerForActivityResult
@@ -112,11 +114,11 @@ class MainActivity : ComponentActivity() {
             copyFactoryPresetsFromAssets()
 
             // Find views
-        val startButton = findViewById<Button>(R.id.startButton)
+        startButton = findViewById(R.id.startButton)
         val coffeeButton = findViewById<Button>(R.id.coffeeButton)
         val browsePresetsButton = findViewById<ImageButton>(R.id.browsePresetsButton)
         val loadCabIrButton = findViewById<Button>(R.id.loadCabIrButton)
-        val debugStatusText = findViewById<TextView>(R.id.debugStatusText)
+        debugStatusText = findViewById(R.id.debugStatusText)
         val etMetronomeBpm = findViewById<EditText>(R.id.etMetronomeBpm)
 
         btnLiveA = findViewById(R.id.btnLiveA)
@@ -300,15 +302,9 @@ class MainActivity : ComponentActivity() {
         }
 
         startButton.setOnClickListener {
-            if (!hasRecordPermission()) {
-                pendingStartAfterPermission = !running
-                requestRecordPermission()
-                Toast.makeText(this, "Microphone permission required. Request sent.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
             if (!running) {
-                if (startEngine(startButton, debugStatusText)) {
-                    // Engine started
+                runWhenEngineRunning("Start") {
+                    // no-op after startup
                 }
             } else {
                 stopEngine(startButton)
@@ -333,48 +329,38 @@ class MainActivity : ComponentActivity() {
         
         // Looper Listeners
         btnLooperRec.setOnClickListener {
-            if (!running) {
-                Toast.makeText(this, "Press START before using looper.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            runWhenEngineRunning("Looper REC") {
+                audioEngine.nativeLooperRecord()
             }
-            audioEngine.nativeLooperRecord()
         }
         btnLooperPlay.setOnClickListener {
-            if (!running) {
-                Toast.makeText(this, "Press START before using looper.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            runWhenEngineRunning("Looper PLAY") {
+                audioEngine.nativeLooperPlay()
             }
-            audioEngine.nativeLooperPlay()
         }
         btnLooperStop.setOnClickListener {
-            if (!running) {
-                Toast.makeText(this, "Press START before using looper.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            runWhenEngineRunning("Looper STOP") {
+                audioEngine.nativeLooperStop()
             }
-            audioEngine.nativeLooperStop()
         }
         btnLooperClear.setOnClickListener {
-            if (!running) {
-                Toast.makeText(this, "Press START before using looper.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            runWhenEngineRunning("Looper CLEAR") {
+                audioEngine.nativeLooperClear()
             }
-            audioEngine.nativeLooperClear()
         }
 
         // Metronome Listeners
         btnMetronomeToggle.setOnClickListener {
-            if (!running) {
-                Toast.makeText(this, "Press START before using metronome.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            if (audioEngine.nativeMetronomeIsPlaying()) {
-                audioEngine.nativeMetronomeStop()
-                btnMetronomeToggle.text = "METRO: OFF"
-            } else {
-                val bpm = etMetronomeBpm.text.toString().toFloatOrNull() ?: 120f
-                audioEngine.nativeMetronomeSetTempo(bpm)
-                audioEngine.nativeMetronomeStart()
-                btnMetronomeToggle.text = "METRO: ON"
+            runWhenEngineRunning("Metronome") {
+                if (audioEngine.nativeMetronomeIsPlaying()) {
+                    audioEngine.nativeMetronomeStop()
+                    btnMetronomeToggle.text = "METRO: OFF"
+                } else {
+                    val bpm = etMetronomeBpm.text.toString().toFloatOrNull() ?: 120f
+                    audioEngine.nativeMetronomeSetTempo(bpm)
+                    audioEngine.nativeMetronomeStart()
+                    btnMetronomeToggle.text = "METRO: ON"
+                }
             }
         }
         } catch (e: Throwable) {
@@ -461,6 +447,29 @@ class MainActivity : ComponentActivity() {
         audioEngine.nativeSetReverbRoomSize(reverbRoom)
         audioEngine.nativeSetReverbDamping(reverbDamp)
         audioEngine.nativeSetReverbMix(reverbMix)
+    }
+
+    private fun runWhenEngineRunning(label: String, action: () -> Unit) {
+        if (running) {
+            action()
+            return
+        }
+
+        pendingAction = action
+        if (hasRecordPermission()) {
+            if (startEngine(startButton, debugStatusText)) {
+                val queued = pendingAction
+                pendingAction = null
+                queued?.invoke()
+            } else {
+                pendingAction = null
+                Toast.makeText(this, "$label blocked: unable to start engine", Toast.LENGTH_SHORT).show()
+            }
+            return
+        }
+
+        Toast.makeText(this, "$label: requesting mic permission", Toast.LENGTH_SHORT).show()
+        requestRecordPermission()
     }
 
     private fun startEngine(startButton: Button, debugStatusText: TextView): Boolean {
@@ -676,13 +685,15 @@ class MainActivity : ComponentActivity() {
 
         if (requestCode == recordPermissionRequest) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                pendingStartAfterPermission = false
-                val startButton = findViewById<Button>(R.id.startButton)
-                val debugStatusText = findViewById<TextView>(R.id.debugStatusText)
-                startEngine(startButton, debugStatusText)
                 Toast.makeText(this, "Microphone permission granted", Toast.LENGTH_SHORT).show()
+                if (startEngine(startButton, debugStatusText)) {
+                    val action = pendingAction
+                    pendingAction = null
+                    action?.invoke()
+                }
             } else {
-                Toast.makeText(this, "Record permission denied. Button controls are disabled until granted.", Toast.LENGTH_LONG).show()
+                pendingAction = null
+                Toast.makeText(this, "Record permission denied. Controls blocked until granted.", Toast.LENGTH_LONG).show()
             }
         }
     }
