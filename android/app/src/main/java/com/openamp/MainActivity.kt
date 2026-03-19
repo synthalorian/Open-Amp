@@ -311,6 +311,13 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
 
+        val openSourceButton = findViewById<Button>(R.id.openSourceButton)
+        openSourceButton.setOnClickListener {
+            val intent = android.content.Intent(android.content.Intent.ACTION_VIEW)
+            intent.data = android.net.Uri.parse("https://github.com/synthalorian/Open-Amp")
+            startActivity(intent)
+        }
+
         startButton.setOnClickListener {
             if (!running) {
                 runWhenEngineRunning("Start") {

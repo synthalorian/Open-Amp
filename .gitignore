@@ -1,0 +1,48 @@
+# Build outputs
+build/
+*.apk
+*.aab
+*.so
+*.o
+*.a
+
+# Gradle
+.gradle/
+local.properties
+*.iml
+.idea/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Qt
+*.qm
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+
+# IDE
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Native build caches
+.cxx/
+cxx/
+
+# Signing
+*.jks
+*.keystore
+
+# Temp
+*.tmp
+*.temp
+*.log
