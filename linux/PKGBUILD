@@ -1,0 +1,47 @@
+# Maintainer: synth <synthalorian@synthesis.io>
+pkgname=openamp
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Guitar amplifier simulator with real-time DSP effects"
+arch=('x86_64')
+url="https://github.com/synthalorian/Open-Amp"
+license=('MIT')
+depends=(
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-quickcontrols2'
+  'pipewire'
+  'pipewire-jack'
+  'alsa-lib'
+  'jack2'
+)
+makedepends=(
+  'cmake'
+  'gcc'
+  'pkgconf'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/synthalorian/Open-Amp/archive/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "Open-Amp-$pkgver/linux"
+  cmake -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_PIPEWIRE=ON \
+    -DUSE_ALSA=ON \
+    -DBUILD_TESTS=OFF
+  cmake --build build -j$(nproc)
+}
+
+package() {
+  cd "Open-Amp-$pkgver/linux"
+  DESTDIR="$pkgdir" cmake --install build
+
+  # Install presets
+  install -dm755 "$pkgdir/usr/share/openamp/presets"
+  cp -r "$srcdir/Open-Amp-$pkgver/presets/factory" "$pkgdir/usr/share/openamp/presets/"
+
+  # Install license
+  install -Dm644 "$srcdir/Open-Amp-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

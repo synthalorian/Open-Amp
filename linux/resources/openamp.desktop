@@ -1,10 +1,11 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Open Amp
+Name=OpenAmp
+GenericName=Guitar Amp Simulator
 Comment=Guitar Amplifier and Effects Processor
-Exec=open_amp
-Icon=open_amp
+Exec=openamp
+Icon=openamp
 Terminal=false
 Categories=AudioVideo;Audio;Music;
 Keywords=guitar;amp;effects;audio;dsp;
