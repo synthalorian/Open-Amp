@@ -268,6 +268,7 @@ private:
     bool cabinetEnabled_ = true;
     bool acousticSimEnabled_ = false;
     bool harmonizerEnabled_ = false;
+    bool modulationEnabled_ = false;
 
     // Effect parameters
     float ampGainDb_ = 0.0f;

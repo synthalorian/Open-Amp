@@ -1,8 +1,12 @@
 #include "openamp/amp_simulator.h"
+#include "openamp/dsp_constants.h"
+#include "openamp/simd_utils.h"
 #include <algorithm>
 #include <cmath>
 
 namespace openamp {
+
+using namespace constants;
 
 AmpSimulator::AmpSimulator() = default;
 
@@ -10,9 +14,9 @@ void AmpSimulator::prepare(double sampleRate, uint32_t maxBlockSize) {
     sampleRate_ = sampleRate;
     reset();
     
-    presenceFilter_.setCutoff(5000.0f, static_cast<float>(sampleRate));
-    cabHighPass_.setCutoff(80.0f, static_cast<float>(sampleRate));
-    cabLowPass_.setCutoff(6000.0f, static_cast<float>(sampleRate));
+    presenceFilter_.setCutoff(kPresenceBaseHz, static_cast<float>(sampleRate));
+    cabHighPass_.setCutoff(kCabHighPassHz, static_cast<float>(sampleRate));
+    cabLowPass_.setCutoff(kCabLowPassHz, static_cast<float>(sampleRate));
     toneStack_.setParameters(bassDb_, midDb_, trebleDb_, static_cast<float>(sampleRate));
 }
 
@@ -71,49 +75,44 @@ void AmpSimulator::setCabIR(const std::vector<float>& ir) {
 }
 
 void AmpSimulator::processPreamp(float* data, uint32_t numFrames) {
-    const float preGain = DSPUtils::dbToGain(gain_ * 40.0f - 20.0f);
-    const float driveAmount = 1.0f + drive_ * 9.0f;
-    constexpr float kPi = 3.14159265358979323846f;
-    
+    const float preGain = DSPUtils::dbToGain(gain_ * kGainRangeDb + kGainOffsetDb);
+    const float driveAmount = kDriveOffset + drive_ * kDriveScale;
+    const float emphasisCoeff = std::exp(-kTwoPi * kPreEmphasisHz / static_cast<float>(sampleRate_));
+
+    // SIMD pass 1: apply pre-gain
+    simd::apply_gain(data, numFrames, preGain);
+
+    // SIMD pass 2: tanh saturation
+    simd::soft_clip_buffer(data, numFrames, driveAmount);
+
+    // Scalar pass: stateful pre-emphasis filter (cannot vectorize due to feedback)
     for (uint32_t i = 0; i < numFrames; ++i) {
-        float sample = data[i] * preGain;
-        
-        sample = DSPUtils::tanhClip(sample, driveAmount);
-        
-        const float emphasisFreq = 2000.0f;
-        const float emphasisCoeff = std::exp(-2.0f * kPi * emphasisFreq / sampleRate_);
-        sample = sample - emphasisCoeff * preEmphasisState_;
+        float sample = data[i] - emphasisCoeff * preEmphasisState_;
         preEmphasisState_ = sample;
-        
         data[i] = sample;
     }
 }
 
 void AmpSimulator::processPowerAmp(float* data, uint32_t numFrames) {
-    const float masterGain = DSPUtils::dbToGain(master_ * 20.0f - 10.0f);
-    constexpr float kPi = 3.14159265358979323846f;
-    
+    const float masterGain = DSPUtils::dbToGain(master_ * kMasterRangeDb + kMasterOffsetDb);
+    const float deEmphasisCoeff = std::exp(-kTwoPi * kDeEmphasisHz / static_cast<float>(sampleRate_));
+
+    // SIMD pass 1: soft clip
+    simd::soft_clip_buffer(data, numFrames, kPowerAmpSoftClipDrive);
+
+    // Scalar pass: stateful de-emphasis + master gain + hard clip
     for (uint32_t i = 0; i < numFrames; ++i) {
-        float sample = data[i];
-        
-        sample = DSPUtils::softClip(sample, 2.0f);
-        
-        const float deEmphasisFreq = 2000.0f;
-        const float deEmphasisCoeff = std::exp(-2.0f * kPi * deEmphasisFreq / sampleRate_);
-        sample = sample + deEmphasisCoeff * deEmphasisState_;
+        float sample = data[i] + deEmphasisCoeff * deEmphasisState_;
         deEmphasisState_ = sample;
-        
         sample *= masterGain;
-        
-        sample = DSPUtils::hardClip(sample, 0.95f);
-        
+        sample = DSPUtils::hardClip(sample, kPowerAmpHardClipThreshold);
         data[i] = sample;
     }
 }
 
 void AmpSimulator::setGain(float gainDb) {
-    gain_ = (gainDb + 20.0f) / 40.0f;
-    gain_ = std::max(0.0f, std::min(1.0f, gain_));
+    gain_ = (gainDb - kGainOffsetDb) / kGainRangeDb;
+    gain_ = std::clamp(gain_, 0.0f, 1.0f);
 }
 
 void AmpSimulator::setBass(float db) {
@@ -132,23 +131,23 @@ void AmpSimulator::setTreble(float db) {
 }
 
 void AmpSimulator::setPresence(float db) {
-    float cutoff = 5000.0f + db * 50.0f;
+    float cutoff = kPresenceBaseHz + db * kPresenceScalePerDb;
     presenceFilter_.setCutoff(cutoff, static_cast<float>(sampleRate_));
 }
 
 void AmpSimulator::setMaster(float db) {
-    master_ = (db + 10.0f) / 20.0f;
-    master_ = std::max(0.0f, std::min(1.0f, master_));
+    master_ = (db - kMasterOffsetDb) / kMasterRangeDb;
+    master_ = std::clamp(master_, 0.0f, 1.0f);
 }
 
 void AmpSimulator::setDrive(float amount) {
-    drive_ = std::max(0.0f, std::min(1.0f, amount));
+    drive_ = std::clamp(amount, 0.0f, 1.0f);
 }
 
 void AmpSimulator::ToneStack::setParameters(float bassDb, float midDb, float trebleDb, float sampleRate) {
-    bass.setCutoff(100.0f + bassDb * 2.0f, sampleRate);
-    mid.setCutoff(1000.0f + midDb * 10.0f, sampleRate);
-    treble.setCutoff(5000.0f + trebleDb * 50.0f, sampleRate);
+    bass.setCutoff(kBassBaseHz + bassDb * kBassScalePerDb, sampleRate);
+    mid.setCutoff(kMidBaseHz + midDb * kMidScalePerDb, sampleRate);
+    treble.setCutoff(kTrebleBaseHz + trebleDb * kTrebleScalePerDb, sampleRate);
 }
 
 float AmpSimulator::ToneStack::process(float input) {

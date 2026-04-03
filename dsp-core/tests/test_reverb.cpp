@@ -15,7 +15,7 @@ TEST_CASE("Reverb - Construction", "[reverb]") {
     }
 
     SECTION("Has version") {
-        REQUIRE(reverb.getVersion() == "1.0.0");
+        REQUIRE(reverb.getVersion() == "1.1.0");
     }
 }
 

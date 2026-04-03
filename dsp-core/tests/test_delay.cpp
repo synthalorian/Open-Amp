@@ -15,7 +15,7 @@ TEST_CASE("Delay - Construction", "[delay]") {
     }
 
     SECTION("Has version") {
-        REQUIRE(delay.getVersion() == "1.0.0");
+        REQUIRE(delay.getVersion() == "1.1.0");
     }
 }
 
