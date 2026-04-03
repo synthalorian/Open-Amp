@@ -377,16 +377,35 @@ float AudioEngine::metronomeGetTempo() const { return metronome_ ? metronome_->g
 bool AudioEngine::metronomeIsPlaying() const { return metronome_ && metronome_->isPlaying(); }
 
 // Modulation
-void AudioEngine::setModulationEnabled(bool enabled) { /* TODO */ }
-void AudioEngine::setModulationType(int type) { /* TODO */ }
-void AudioEngine::setModulationRate(float hz) { /* TODO */ }
-void AudioEngine::setModulationDepth(float depth) { /* TODO */ }
-void AudioEngine::setModulationMix(float mix) { /* TODO */ }
-bool AudioEngine::getModulationEnabled() const { return false; }
-int AudioEngine::getModulationType() const { return 0; }
-float AudioEngine::getModulationRate() const { return 1.5f; }
-float AudioEngine::getModulationDepth() const { return 0.5f; }
-float AudioEngine::getModulationMix() const { return 0.5f; }
+void AudioEngine::setModulationEnabled(bool enabled) {
+    modulationEnabled_ = enabled;
+    if (modulation_) modulation_->setBypass(!enabled);
+}
+void AudioEngine::setModulationType(int type) {
+    if (modulation_) modulation_->setType(static_cast<openamp::Modulation::Type>(type));
+}
+void AudioEngine::setModulationRate(float hz) {
+    if (modulation_) modulation_->setRate(hz);
+}
+void AudioEngine::setModulationDepth(float depth) {
+    if (modulation_) modulation_->setDepth(depth);
+}
+void AudioEngine::setModulationMix(float mix) {
+    if (modulation_) modulation_->setMix(mix);
+}
+bool AudioEngine::getModulationEnabled() const { return modulationEnabled_; }
+int AudioEngine::getModulationType() const {
+    return modulation_ ? static_cast<int>(modulation_->getType()) : 0;
+}
+float AudioEngine::getModulationRate() const {
+    return modulation_ ? modulation_->getRate() : 1.5f;
+}
+float AudioEngine::getModulationDepth() const {
+    return modulation_ ? modulation_->getDepth() : 0.5f;
+}
+float AudioEngine::getModulationMix() const {
+    return modulation_ ? modulation_->getMix() : 0.5f;
+}
 
 // Device selection
 void AudioEngine::setInputDeviceId(int32_t deviceId) { inputDeviceId_ = deviceId; }

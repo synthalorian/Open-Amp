@@ -1,10 +1,13 @@
 #include "openamp/ir_loader.h"
+#include "openamp/dsp_constants.h"
 #include <fstream>
 #include <algorithm>
 #include <cmath>
 #include <cstring>
 
 namespace openamp {
+
+using namespace constants;
 
 IRLoader::IRLoader() = default;
 IRLoader::~IRLoader() = default;
@@ -29,35 +32,45 @@ void IRLoader::process(AudioBuffer& buffer) {
     if (!enabled_ || ir_.empty() || !prepared_) {
         return;
     }
-    
+
     auto startTime = std::chrono::high_resolution_clock::now();
-    
+
     for (uint32_t ch = 0; ch < buffer.numChannels; ++ch) {
         float* channelData = buffer.data + ch * buffer.numFrames;
-        
-        // Process each sample
+
+        // Apply input gain
         for (uint32_t i = 0; i < buffer.numFrames; ++i) {
-            // Add input to history buffer with input gain
-            float inputSample = channelData[i] * inputGain_;
-            historyBuffer_[historyIndex_] = inputSample;
-            
-            // Convolve with IR (simple direct convolution)
-            float output = 0.0f;
-            for (size_t j = 0; j < ir_.size(); ++j) {
-                size_t historyIdx = (historyIndex_ - j + historyBuffer_.size()) % historyBuffer_.size();
-                output += historyBuffer_[historyIdx] * ir_[j];
+            channelData[i] *= inputGain_;
+        }
+
+        // Save dry signal for mix
+        std::vector<float> dry(channelData, channelData + buffer.numFrames);
+
+        if (useFFT_ && fftConvolver_.isPrepared()) {
+            // FFT partitioned convolution (fast for long IRs)
+            fftConvolver_.process(channelData, buffer.numFrames);
+        } else {
+            // Direct convolution (efficient for short IRs)
+            for (uint32_t i = 0; i < buffer.numFrames; ++i) {
+                historyBuffer_[historyIndex_] = channelData[i];
+                float output = 0.0f;
+                size_t idx = historyIndex_;
+                for (size_t j = 0; j < ir_.size(); ++j) {
+                    output += historyBuffer_[idx] * ir_[j];
+                    idx = (idx == 0) ? (historyBuffer_.size() - 1) : (idx - 1);
+                }
+                channelData[i] = output;
+                historyIndex_ = (historyIndex_ + 1) % historyBuffer_.size();
             }
-            
-            // Apply filters
-            output = highCut_.process(output);
-            output = lowCut_.process(output);
-            output *= outputGain_;
-            
-            // Mix with dry signal
-            channelData[i] = channelData[i] * (1.0f - mix_) + output * mix_;
-            
-            // Advance history index
-            historyIndex_ = (historyIndex_ + 1) % historyBuffer_.size();
+        }
+
+        // Apply post-convolution filters, output gain, and mix
+        for (uint32_t i = 0; i < buffer.numFrames; ++i) {
+            float wet = channelData[i];
+            wet = highCut_.process(wet);
+            wet = lowCut_.process(wet);
+            wet *= outputGain_;
+            channelData[i] = dry[i] * (1.0f - mix_) + wet * mix_;
         }
     }
     
@@ -78,6 +91,7 @@ void IRLoader::process(AudioBuffer& buffer) {
 void IRLoader::reset() {
     std::fill(historyBuffer_.begin(), historyBuffer_.end(), 0.0f);
     historyIndex_ = 0;
+    if (useFFT_) fftConvolver_.reset();
     highCut_.reset();
     lowCut_.reset();
 }
@@ -117,7 +131,14 @@ bool IRLoader::loadIR(const std::string& path, std::string& errorMessage) {
     irName_ = path.substr(path.find_last_of("/\\") + 1);
     irSampleRate_ = sampleRate_;
 
-    // Reallocate history buffer
+    // Choose convolution strategy: FFT for long IRs, direct for short
+    useFFT_ = (ir_.size() > maxBlockSize_);
+
+    if (useFFT_ && prepared_) {
+        fftConvolver_.prepare(ir_, maxBlockSize_);
+    }
+
+    // Allocate direct convolution buffers (fallback or short IR)
     if (prepared_) {
         historyBuffer_.resize(ir_.size() + maxBlockSize_, 0.0f);
         historyIndex_ = 0;
@@ -262,7 +283,7 @@ void IRLoader::resampleIR(const std::vector<float>& input, double inputRate,
 
 void IRLoader::trimIR(std::vector<float>& ir) {
     // Remove leading/trailing silence below -60dB
-    const float threshold = 0.001f; // -60dB
+    const float threshold = kIRSilenceThreshold;
     
     size_t start = 0;
     while (start < ir.size() && std::abs(ir[start]) < threshold) {
@@ -289,7 +310,7 @@ void IRLoader::normalizeIR(std::vector<float>& ir) {
     
     // Normalize to -0.1dB (0.989)
     if (peak > 0.0f) {
-        float scale = 0.989f / peak;
+        float scale = kIRNormalizePeak / peak;
         for (auto& sample : ir) {
             sample *= scale;
         }
@@ -313,14 +334,14 @@ void IRLoader::setEnabled(bool enabled) {
 }
 
 void IRLoader::setHighCut(float hz) {
-    highCutHz_ = std::max(1000.0f, std::min(hz, 20000.0f));
+    highCutHz_ = std::clamp(hz, kIRMinHighCutHz, kIRMaxHighCutHz);
     if (prepared_) {
         highCut_.setCutoff(highCutHz_, static_cast<float>(sampleRate_));
     }
 }
 
 void IRLoader::setLowCut(float hz) {
-    lowCutHz_ = std::max(20.0f, std::min(hz, 500.0f));
+    lowCutHz_ = std::clamp(hz, kIRMinLowCutHz, kIRMaxLowCutHz);
     if (prepared_) {
         lowCut_.setCutoff(lowCutHz_, static_cast<float>(sampleRate_));
     }

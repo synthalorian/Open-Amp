@@ -23,8 +23,8 @@ set(TEST_SOURCES
 add_executable(dsp-unit-tests ${TEST_SOURCES})
 
 target_include_directories(dsp-unit-tests PRIVATE
-    ${CMAKE_SOURCE_DIR}/include
-    ${CMAKE_SOURCE_DIR}/plugins
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
 )
 
 target_link_libraries(dsp-unit-tests PRIVATE

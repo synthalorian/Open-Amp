@@ -600,27 +600,27 @@ Java_com_openamp_AudioEngine_nativeMetronomeIsPlaying(JNIEnv*, jobject) {
 // Modulation controls
 extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetModulationEnabled(JNIEnv*, jobject, jboolean enabled) {
-    // TODO: Implement
+    if (g_engine) g_engine->setModulationEnabled(enabled == JNI_TRUE);
 }
 
 extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetModulationType(JNIEnv*, jobject, jint type) {
-    // TODO: Implement
+    if (g_engine) g_engine->setModulationType(type);
 }
 
 extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetModulationRate(JNIEnv*, jobject, jfloat hz) {
-    // TODO: Implement
+    if (g_engine) g_engine->setModulationRate(hz);
 }
 
 extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetModulationDepth(JNIEnv*, jobject, jfloat depth) {
-    // TODO: Implement
+    if (g_engine) g_engine->setModulationDepth(depth);
 }
 
 extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetModulationMix(JNIEnv*, jobject, jfloat mix) {
-    // TODO: Implement
+    if (g_engine) g_engine->setModulationMix(mix);
 }
 
 extern "C" JNIEXPORT jboolean JNICALL

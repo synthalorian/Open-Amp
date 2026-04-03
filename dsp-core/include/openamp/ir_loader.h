@@ -2,6 +2,7 @@
 
 #include "openamp/plugin_interface.h"
 #include "openamp/dsp_utils.h"
+#include "openamp/fft_convolver.h"
 #include <vector>
 #include <string>
 #include <memory>
@@ -65,9 +66,13 @@ private:
     uint32_t maxBlockSize_ = 256;
     bool prepared_ = false;
     
-    // Convolution buffers
+    // Convolution buffers (direct, for short IRs)
     std::vector<float> historyBuffer_;
     size_t historyIndex_ = 0;
+
+    // FFT convolver (for long IRs)
+    PartitionedConvolver fftConvolver_;
+    bool useFFT_ = false;
     
     // Filters
     OnePoleFilter highCut_;
