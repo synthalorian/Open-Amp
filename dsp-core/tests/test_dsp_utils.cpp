@@ -50,37 +50,43 @@ TEST_CASE("OnePoleFilter - Reset", "[dsp_utils]") {
     REQUIRE(filter.process(0.0f) == Approx(0.0f));
 }
 
-TEST_CASE("dbToLinear and linearToDb", "[dsp_utils]") {
-    SECTION("0 dB = 1.0 linear") {
-        REQUIRE(dbToLinear(0.0f) == Approx(1.0f));
+TEST_CASE("DSPUtils::dbToGain and gainToDb", "[dsp_utils]") {
+    SECTION("0 dB = 1.0 gain") {
+        REQUIRE(DSPUtils::dbToGain(0.0f) == Approx(1.0f));
     }
 
-    SECTION("6 dB ≈ 2.0 linear") {
-        REQUIRE(dbToLinear(6.0f) == Approx(2.0f).margin(0.1));
+    SECTION("6 dB ≈ 2.0 gain") {
+        REQUIRE(DSPUtils::dbToGain(6.0f) == Approx(2.0f).margin(0.1));
     }
 
-    SECTION("-6 dB ≈ 0.5 linear") {
-        REQUIRE(dbToLinear(-6.0f) == Approx(0.5f).margin(0.05));
+    SECTION("-6 dB ≈ 0.5 gain") {
+        REQUIRE(DSPUtils::dbToGain(-6.0f) == Approx(0.5f).margin(0.05));
     }
 
     SECTION("Round trip") {
         float originalDb = 12.0f;
-        float linear = dbToLinear(originalDb);
-        float backToDb = linearToDb(linear);
+        float gain = DSPUtils::dbToGain(originalDb);
+        float backToDb = DSPUtils::gainToDb(gain);
         REQUIRE(backToDb == Approx(originalDb).margin(0.01));
     }
 }
 
-TEST_CASE("clamp function", "[dsp_utils]") {
-    REQUIRE(clamp(0.5f, 0.0f, 1.0f) == Approx(0.5f));
-    REQUIRE(clamp(-1.0f, 0.0f, 1.0f) == Approx(0.0f));
-    REQUIRE(clamp(2.0f, 0.0f, 1.0f) == Approx(1.0f));
-    REQUIRE(clamp(50.0f, 0.0f, 100.0f) == Approx(50.0f));
-}
+TEST_CASE("DSPUtils clipping functions", "[dsp_utils]") {
+    SECTION("hardClip clamps to threshold") {
+        REQUIRE(DSPUtils::hardClip(2.0f, 1.0f) == Approx(1.0f));
+        REQUIRE(DSPUtils::hardClip(-2.0f, 1.0f) == Approx(-1.0f));
+        REQUIRE(DSPUtils::hardClip(0.5f, 1.0f) == Approx(0.5f));
+    }
 
-TEST_CASE("lerp function", "[dsp_utils]") {
-    REQUIRE(lerp(0.0f, 10.0f, 0.0f) == Approx(0.0f));
-    REQUIRE(lerp(0.0f, 10.0f, 1.0f) == Approx(10.0f));
-    REQUIRE(lerp(0.0f, 10.0f, 0.5f) == Approx(5.0f));
-    REQUIRE(lerp(-10.0f, 10.0f, 0.5f) == Approx(0.0f));
+    SECTION("softClip is bounded") {
+        float out = DSPUtils::softClip(10.0f, 1.0f);
+        REQUIRE(out < 1.0f);
+        REQUIRE(out > 0.0f);
+    }
+
+    SECTION("tanhClip is bounded") {
+        float out = DSPUtils::tanhClip(100.0f, 1.0f);
+        REQUIRE(out <= 1.0f);
+        REQUIRE(out > 0.0f);
+    }
 }
