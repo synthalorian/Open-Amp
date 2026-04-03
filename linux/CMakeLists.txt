@@ -16,6 +16,15 @@ option(BUILD_TESTS "Build unit tests" OFF)
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets Quick QuickControls2)
 find_package(PkgConfig REQUIRED)
 
+# JACK (required for real-time guitar processing)
+pkg_check_modules(JACK jack)
+if(JACK_FOUND)
+    message(STATUS "JACK found: ${JACK_VERSION}")
+    add_definitions(-DUSE_JACK)
+else()
+    message(FATAL_ERROR "JACK not found. Install: sudo pacman -S pipewire-jack")
+endif()
+
 # PipeWire
 if(USE_PIPEWIRE)
     pkg_check_modules(PIPEWIRE libpipewire-0.3)
@@ -23,7 +32,7 @@ if(USE_PIPEWIRE)
         message(STATUS "PipeWire found: ${PIPEWIRE_VERSION}")
         add_definitions(-DUSE_PIPEWIRE)
     else()
-        message(WARNING "PipeWire not found, falling back to ALSA")
+        message(WARNING "PipeWire not found, skipping PipeWire backend")
         set(USE_PIPEWIRE OFF)
     endif()
 endif()
@@ -48,7 +57,9 @@ set(SOURCES
     src/main.cpp
     src/audio/audio_backend.cpp
     src/audio/pipewire_backend.cpp
+    src/audio/pipewire_direct_backend.cpp
     src/audio/alsa_backend.cpp
+    src/audio/jack_backend.cpp
     src/audio/midi_handler.cpp
     src/ui/main_window.cpp
     src/ui/knob_widget.cpp
@@ -63,10 +74,13 @@ set(SOURCES
     src/ui/latency_display_widget.cpp
 )
 
+# Headers
 set(HEADERS
     src/audio/audio_backend.h
     src/audio/pipewire_backend.h
+    src/audio/pipewire_direct_backend.h
     src/audio/alsa_backend.h
+    src/audio/jack_backend.h
     src/audio/midi_handler.h
     src/ui/main_window.h
     src/ui/knob_widget.h
@@ -81,21 +95,20 @@ set(HEADERS
     src/ui/latency_display_widget.h
 )
 
-# Resources (optional - comment out if icon doesn't exist)
-# set(RESOURCES
-#     resources/qml.qrc
-# )
-
 # Executable
-add_executable(openamp ${SOURCES} ${HEADERS} ${RESOURCES})
+add_executable(openamp ${SOURCES} ${HEADERS})
 
 target_include_directories(openamp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${DSP_CORE_DIR}/include
+    ${DSP_CORE_DIR}
 )
 
 target_link_libraries(openamp PRIVATE
     openamp-dsp
+    looper_plugin
+    metronome_plugin
+    tuner_plugin
     Qt6::Core
     Qt6::Widgets
     Qt6::Quick
@@ -112,10 +125,16 @@ if(ALSA_FOUND)
     target_link_libraries(openamp PRIVATE ${ALSA_LIBRARIES})
 endif()
 
+if(JACK_FOUND)
+    target_include_directories(openamp PRIVATE ${JACK_INCLUDE_DIRS})
+    target_link_libraries(openamp PRIVATE ${JACK_LIBRARIES})
+endif()
+
 # Install
 install(TARGETS openamp RUNTIME DESTINATION bin)
 install(DIRECTORY resources/icons DESTINATION share/openamp)
 install(FILES resources/openamp.desktop DESTINATION share/applications)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/../presets/factory DESTINATION share/openamp/presets)
 
 # Tests
 if(BUILD_TESTS)
