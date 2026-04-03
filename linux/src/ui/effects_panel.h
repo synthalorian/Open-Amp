@@ -4,6 +4,8 @@
 #include <memory>
 #include "theme.h"
 #include "openamp/dsp_engine.h"
+#include "plugins/looper/looper.h"
+#include "plugins/metronome/metronome.h"
 
 namespace openamp {
 
@@ -46,6 +48,27 @@ private:
     KnobWidget* reverbRoom_ = nullptr;
     KnobWidget* reverbDamp_ = nullptr;
     KnobWidget* reverbMix_ = nullptr;
+
+    // Noise Gate
+    PedalWidget* noiseGatePedal_ = nullptr;
+    KnobWidget* noiseGateThreshold_ = nullptr;
+    KnobWidget* noiseGateAttack_ = nullptr;
+    KnobWidget* noiseGateRelease_ = nullptr;
+
+    // Looper
+    PedalWidget* looperRecPedal_ = nullptr;
+    PedalWidget* looperPlayPedal_ = nullptr;
+    PedalWidget* looperClearPedal_ = nullptr;
+    KnobWidget* looperMix_ = nullptr;
+
+    // Metronome
+    PedalWidget* metronomePedal_ = nullptr;
+    KnobWidget* metronomeTempo_ = nullptr;
+    KnobWidget* metronomeVol_ = nullptr;
+
+    // Plugin instances (owned by EffectsPanel, not DSPEngine)
+    std::unique_ptr<Looper> looper_;
+    std::unique_ptr<Metronome> metronome_;
 };
 
 } // namespace openamp

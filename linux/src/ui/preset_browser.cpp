@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QStandardPaths>
+#include <QCoreApplication>
 
 namespace openamp {
 
@@ -14,8 +15,27 @@ PresetBrowser::PresetBrowser(DSPEngine* engine, QWidget* parent)
     : QWidget(parent)
     , engine_(engine)
 {
-    // Set up preset paths
-    factoryPresetsPath_ = QDir::currentPath() + "/../presets/factory";
+    // Set up preset paths - check multiple locations
+    QString exePath = QCoreApplication::applicationDirPath();
+    
+    // 1. Try relative to executable (installed or local build)
+    factoryPresetsPath_ = exePath + "/../share/openamp/presets/factory";
+
+    // 2. Try relative to build directory
+    if (!QDir(factoryPresetsPath_).exists()) {
+        factoryPresetsPath_ = exePath + "/../presets/factory";
+    }
+
+    // 3. Try system-wide installation path
+    if (!QDir(factoryPresetsPath_).exists()) {
+        factoryPresetsPath_ = "/usr/share/openamp/presets/factory";
+    }
+
+    // 4. Try project source directory (development)
+    if (!QDir(factoryPresetsPath_).exists()) {
+        factoryPresetsPath_ = exePath + "/../../presets/factory";
+    }
+
     userPresetsPath_ = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/presets";
 
     // Ensure user presets directory exists
@@ -148,17 +168,22 @@ void PresetBrowser::connectSignals() {
 
     connect(presetList_, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem* item) {
         QString name = item->text();
-        QString path = getPresetPath(name);
+        QString path = item->data(Qt::UserRole).toString();
+
         if (path.isEmpty()) {
-            path = getPresetPath(name, false);
+            path = getPresetPath(name);
+            if (path.isEmpty()) {
+                path = getPresetPath(name, false);
+            }
         }
 
         if (!path.isEmpty() && engine_) {
             std::string error;
             if (engine_->loadPreset(path.toStdString(), error)) {
-                emit presetLoaded(name);
+                // IMPORTANT: We need the full path for MainWindow to load it
+                emit presetLoaded(path); 
             } else {
-                QMessageBox::warning(this, "Error", QString::fromStdString(error));
+                QMessageBox::warning(this, "Error", "Failed to load preset: " + QString::fromStdString(error));
             }
         }
     });
