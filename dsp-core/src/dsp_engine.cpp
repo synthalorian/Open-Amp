@@ -77,6 +77,11 @@ void DSPEngine::process(float* data, uint32_t numFrames) {
         if (delayEnabled_ && delay_) delay_->process(buffer);
     }
 
+    // Final safety limiter to prevent digital clipping
+    for (uint32_t i = 0; i < numFrames; ++i) {
+        data[i] = std::clamp(data[i], -1.0f, 1.0f);
+    }
+
     latencyMonitor_.markOutputTime();
 }
 
