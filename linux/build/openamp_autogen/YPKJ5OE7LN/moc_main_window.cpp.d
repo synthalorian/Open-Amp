@@ -4,6 +4,7 @@
   /home/synth/projects/openamp/dsp-core/include/openamp/dsp_engine.h \
   /home/synth/projects/openamp/dsp-core/include/openamp/dsp_utils.h \
   /home/synth/projects/openamp/dsp-core/include/openamp/effect_chain.h \
+  /home/synth/projects/openamp/dsp-core/include/openamp/fft_convolver.h \
   /home/synth/projects/openamp/dsp-core/include/openamp/ir_loader.h \
   /home/synth/projects/openamp/dsp-core/include/openamp/latency_monitor.h \
   /home/synth/projects/openamp/dsp-core/include/openamp/plugin_interface.h \

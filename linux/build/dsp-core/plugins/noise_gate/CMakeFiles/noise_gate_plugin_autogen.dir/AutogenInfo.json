@@ -24,7 +24,7 @@
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/noise_gate/noise_gate_plugin_autogen/include",
 	"MOC_COMPILATION_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/noise_gate/noise_gate_plugin_autogen/mocs_compilation.cpp",
-	"MOC_DEFINITIONS" : [ "USE_ALSA", "USE_PIPEWIRE", "noise_gate_plugin_EXPORTS" ],
+	"MOC_DEFINITIONS" : [ "USE_ALSA", "USE_JACK", "USE_PIPEWIRE", "noise_gate_plugin_EXPORTS" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
 		[
@@ -80,7 +80,7 @@
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/uic",
 	"QT_VERSION_MAJOR" : 6,
-	"QT_VERSION_MINOR" : 10,
+	"QT_VERSION_MINOR" : 11,
 	"SETTINGS_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[

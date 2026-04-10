@@ -1,6 +1,8 @@
 #include "cabinet.h"
 #include <cmath>
 #include <algorithm>
+#include <fstream>
+#include <cstring>
 
 namespace openamp {
 
@@ -270,12 +272,120 @@ void CabinetSimulator::generateBuiltinIR(CabinetType type) {
 }
 
 bool CabinetSimulator::loadIR(const std::string& path) {
-    // TODO: Implement WAV file loading for custom IRs
-    // For now, just mark as custom and use generated
-    (void)path;
+    std::ifstream file(path, std::ios::binary);
+    if (!file) return false;
+
+    // Read RIFF header
+    char riff[4];
+    file.read(riff, 4);
+    if (std::strncmp(riff, "RIFF", 4) != 0) return false;
+
+    uint32_t fileSize;
+    file.read(reinterpret_cast<char*>(&fileSize), 4);
+
+    char wave[4];
+    file.read(wave, 4);
+    if (std::strncmp(wave, "WAVE", 4) != 0) return false;
+
+    // Parse chunks
+    uint16_t numChannels = 0;
+    uint32_t wavSampleRate = 0;
+    uint16_t bitsPerSample = 0;
+    std::vector<float> samples;
+    bool foundFmt = false, foundData = false;
+
+    while (file && (!foundFmt || !foundData)) {
+        char chunkId[4];
+        uint32_t chunkSize;
+        file.read(chunkId, 4);
+        if (!file) break;
+        file.read(reinterpret_cast<char*>(&chunkSize), 4);
+        if (!file) break;
+
+        if (std::strncmp(chunkId, "fmt ", 4) == 0) {
+            uint16_t audioFormat;
+            file.read(reinterpret_cast<char*>(&audioFormat), 2);
+            if (audioFormat != 1) return false;  // PCM only
+            file.read(reinterpret_cast<char*>(&numChannels), 2);
+            file.read(reinterpret_cast<char*>(&wavSampleRate), 4);
+            uint32_t byteRate; file.read(reinterpret_cast<char*>(&byteRate), 4);
+            uint16_t blockAlign; file.read(reinterpret_cast<char*>(&blockAlign), 2);
+            file.read(reinterpret_cast<char*>(&bitsPerSample), 2);
+            if (chunkSize > 16) file.seekg(chunkSize - 16, std::ios::cur);
+            foundFmt = true;
+        } else if (std::strncmp(chunkId, "data", 4) == 0) {
+            size_t numSamples = chunkSize / (bitsPerSample / 8);
+            samples.resize(numSamples);
+            if (bitsPerSample == 16) {
+                std::vector<int16_t> raw(numSamples);
+                file.read(reinterpret_cast<char*>(raw.data()), chunkSize);
+                for (size_t i = 0; i < numSamples; ++i)
+                    samples[i] = raw[i] / 32768.0f;
+            } else if (bitsPerSample == 24) {
+                for (size_t i = 0; i < numSamples; ++i) {
+                    uint8_t bytes[3];
+                    file.read(reinterpret_cast<char*>(bytes), 3);
+                    int32_t s = bytes[0] | (bytes[1] << 8) | (bytes[2] << 16);
+                    if (s & 0x800000) s |= 0xFF000000;
+                    samples[i] = s / 8388608.0f;
+                }
+            } else if (bitsPerSample == 32) {
+                std::vector<int32_t> raw(numSamples);
+                file.read(reinterpret_cast<char*>(raw.data()), chunkSize);
+                for (size_t i = 0; i < numSamples; ++i)
+                    samples[i] = raw[i] / 2147483648.0f;
+            } else {
+                return false;
+            }
+            foundData = true;
+        } else {
+            file.seekg(chunkSize, std::ios::cur);
+        }
+    }
+
+    if (!foundFmt || !foundData || samples.empty()) return false;
+
+    // Convert stereo to mono
+    if (numChannels == 2) {
+        std::vector<float> mono;
+        mono.reserve(samples.size() / 2);
+        for (size_t i = 0; i + 1 < samples.size(); i += 2)
+            mono.push_back((samples[i] + samples[i + 1]) * 0.5f);
+        samples = std::move(mono);
+    }
+
+    // Resample if needed (linear interpolation)
+    if (wavSampleRate != static_cast<uint32_t>(sampleRate_)) {
+        double ratio = static_cast<double>(wavSampleRate) / sampleRate_;
+        size_t outSize = static_cast<size_t>(samples.size() / ratio);
+        std::vector<float> resampled(outSize);
+        for (size_t i = 0; i < outSize; ++i) {
+            double srcIdx = i * ratio;
+            size_t i0 = static_cast<size_t>(srcIdx);
+            size_t i1 = std::min(i0 + 1, samples.size() - 1);
+            double frac = srcIdx - i0;
+            resampled[i] = samples[i0] * static_cast<float>(1.0 - frac) +
+                           samples[i1] * static_cast<float>(frac);
+        }
+        samples = std::move(resampled);
+    }
+
+    // Normalize
+    float peak = 0.001f;
+    for (float s : samples) peak = std::max(peak, std::abs(s));
+    for (float& s : samples) s /= peak;
+
+    // Store as IR data
+    irData_ = std::move(samples);
+    irLength_ = static_cast<uint32_t>(irData_.size());
+    irLoaded_ = true;
     currentType_ = CabinetType::Custom;
-    irName_ = "Custom IR";
-    return false;  // Not yet implemented
+
+    // Extract filename for display
+    auto pos = path.find_last_of("/\\");
+    irName_ = (pos != std::string::npos) ? path.substr(pos + 1) : path;
+
+    return true;
 }
 
 void CabinetSimulator::setCabinetType(CabinetType type) {

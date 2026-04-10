@@ -187,7 +187,7 @@ void MainWindow::setupUI() {
     connect(meterTimer_, &QTimer::timeout, this, &MainWindow::updateMeters);
     meterTimer_->start(33);  // ~30 FPS
 
-    // Set dark theme
+    // Set retrowave theme
     setStyleSheet(QString(
         "QMainWindow {"
         "  background-color: %1;"
@@ -198,8 +198,28 @@ void MainWindow::setupUI() {
         "QSplitter::handle:horizontal {"
         "  width: 2px;"
         "}"
+        "QMenuBar {"
+        "  background-color: %3;"
+        "  color: %4;"
+        "}"
+        "QMenuBar::item:selected {"
+        "  background-color: %5;"
+        "  color: black;"
+        "}"
+        "QMenu {"
+        "  background-color: %3;"
+        "  color: %4;"
+        "  border: 1px solid %5;"
+        "}"
+        "QMenu::item:selected {"
+        "  background-color: %5;"
+        "  color: black;"
+        "}"
     ).arg(theme_.background.name(),
-          theme_.surfaceVariant.name()));
+          theme_.accent.name(),
+          theme_.surface.name(),
+          theme_.textSecondary.name(),
+          theme_.accent.name()));
 }
 
 void MainWindow::setupMenuBar() {
@@ -274,24 +294,31 @@ void MainWindow::setupToolBar() {
     toolbar->setStyleSheet(QString(
         "QToolBar {"
         "  background-color: %1;"
-        "  border: none;"
-        "  spacing: 10px;"
-        "  padding: 5px;"
+        "  border-bottom: 1px solid %2;"
+        "  spacing: 15px;"
+        "  padding: 10px;"
         "}"
         "QToolButton {"
-        "  background-color: %2;"
-        "  color: %3;"
-        "  border: none;"
-        "  border-radius: 5px;"
-        "  padding: 8px 15px;"
+        "  background-color: %3;"
+        "  color: %4;"
+        "  border: 1px solid %2;"
+        "  border-radius: 4px;"
+        "  padding: 8px 20px;"
+        "  font-weight: bold;"
         "}"
         "QToolButton:hover {"
-        "  background-color: %4;"
+        "  background-color: %5;"
+        "  color: white;"
         "}"
-    ).arg(theme_.surface.name(),
+        "QToolButton:checked {"
+        "  background-color: %2;"
+        "  color: black;"
+        "}"
+    ).arg(theme_.background.name(),
           theme_.accent.name(),
-          theme_.textPrimary.name(),
-          theme_.accentLight.name()));
+          theme_.surface.name(),
+          theme_.textSecondary.name(),
+          theme_.accentDark.name()));
 
     // Audio toggle button
     audioToggleAction_ = toolbar->addAction("▶ Start Audio");
@@ -326,23 +353,29 @@ void MainWindow::setupStatusBar() {
         "QStatusBar {"
         "  background-color: %1;"
         "  color: %2;"
+        "  border-top: 1px solid %3;"
         "}"
-    ).arg(theme_.surface.name(),
-          theme_.textSecondary.name()));
+    ).arg(theme_.background.name(),
+          theme_.textMuted.name(),
+          theme_.surfaceVariant.name()));
 
     statusLabel_ = new QLabel("Ready");
+    statusLabel_->setFont(QFont(theme_.fontFamily, theme_.fontSizeSmall));
     statusBar->addWidget(statusLabel_);
 
     latencyLabel_ = new QLabel("Latency: -- ms");
+    latencyLabel_->setFont(QFont(theme_.fontFamily, theme_.fontSizeSmall));
     statusBar->addPermanentWidget(latencyLabel_);
 
     presetLabel_ = new QLabel("No preset loaded");
+    presetLabel_->setFont(QFont(theme_.fontFamily, theme_.fontSizeSmall, QFont::Bold));
+    presetLabel_->setStyleSheet(QString("color: %1;").arg(theme_.accent.name()));
     statusBar->addPermanentWidget(presetLabel_);
 }
 
 void MainWindow::connectSignals() {
     connect(presetBrowser_, &PresetBrowser::presetLoaded,
-            this, &MainWindow::updatePresetDisplay);
+            this, &MainWindow::loadPreset); // Connect directly to loadPreset(QString)
 
     connect(ampPanel_, &AmpPanel::settingsChanged, this, [this] {
         presetLabel_->setText("* Modified");
@@ -364,6 +397,10 @@ void MainWindow::connectSignals() {
 void MainWindow::startAudio() {
     if (!audio_ || audioRunning_) return;
 
+    // Reset meters
+    if (inputMeter_) inputMeter_->setLevel(-60.0f);
+    if (outputMeter_) outputMeter_->setLevel(-60.0f, -60.0f);
+
     engine_->prepare(audio_->getConfig().sampleRate, audio_->getConfig().bufferSize);
 
     auto callback = [this](float* input, float* output, uint32_t frames) {
@@ -371,7 +408,6 @@ void MainWindow::startAudio() {
         engine_->process(input, frames);
 
         // Convert mono processed input to stereo output
-        // Output buffer is interleaved: [L0, R0, L1, R1, L2, R2, ...]
         for (uint32_t i = 0; i < frames; ++i) {
             float sample = input[i];
             output[i * 2] = sample;      // Left channel
@@ -385,13 +421,12 @@ void MainWindow::startAudio() {
         statusLabel_->setText("Audio running");
         updateLatencyDisplay();
         
-        // Start latency monitoring (10Hz update)
         if (latencyDisplay_) {
             latencyDisplay_->startMonitoring(100);
         }
     } else {
         QMessageBox::critical(this, "Error",
-            QString("Failed to start audio: %1")
+            QString("Failed to start audio: %1\n\nPlease check Settings to ensure your USB Interface is selected.")
                 .arg(QString::fromStdString(audio_->getLastError())));
     }
 }

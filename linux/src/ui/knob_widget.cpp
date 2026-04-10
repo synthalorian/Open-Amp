@@ -51,16 +51,21 @@ void KnobWidget::paintEvent(QPaintEvent*) {
     int knobY = 5;
 
     // Draw label
-    painter.setFont(QFont(theme_.fontFamily, theme_.fontSizeSmall));
+    painter.setFont(QFont(theme_.fontFamily, theme_.fontSizeSmall, QFont::Bold));
     painter.setPen(theme_.textSecondary);
     QFontMetrics fm(painter.font());
-    QRect labelRect = fm.boundingRect(label_);
-    painter.drawText((w - labelRect.width()) / 2, knobY + knobSize + 18, label_);
+    
+    // Check if label fits, if not, elide it
+    QString elidedLabel = fm.elidedText(label_, Qt::ElideRight, w - 4);
+    QRect labelRect = fm.boundingRect(elidedLabel);
+    painter.drawText((w - labelRect.width()) / 2, knobY + knobSize + 16, elidedLabel);
 
     // Draw value
+    painter.setFont(QFont(theme_.fontFamily, theme_.fontSizeSmall - 1));
+    painter.setPen(theme_.textMuted);
     QString valueText = QString::number(value_, 'f', 1) + valueSuffix_;
     QRect valueRect = fm.boundingRect(valueText);
-    painter.drawText((w - valueRect.width()) / 2, knobY + knobSize + 32, valueText);
+    painter.drawText((w - valueRect.width()) / 2, knobY + knobSize + 28, valueText);
 
     // Knob center
     painter.setBrush(theme_.knobCenter);
