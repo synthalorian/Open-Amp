@@ -138,16 +138,17 @@ dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin.cpp.o: 
  /usr/include/bits/byteswap.h /usr/include/bits/uintn-identity.h \
  /usr/include/sys/select.h /usr/include/bits/select.h \
  /usr/include/bits/types/sigset_t.h /usr/include/alloca.h \
- /usr/include/bits/stdlib-float.h /usr/include/c++/15.2.1/bits/std_abs.h \
- /usr/include/c++/15.2.1/cstdio /usr/include/stdio.h \
- /usr/include/bits/types/__fpos_t.h /usr/include/bits/types/__fpos64_t.h \
+ /usr/include/bits/stdlib-bsearch.h /usr/include/bits/stdlib-float.h \
+ /usr/include/c++/15.2.1/bits/std_abs.h /usr/include/c++/15.2.1/cstdio \
+ /usr/include/stdio.h /usr/include/bits/types/__fpos_t.h \
+ /usr/include/bits/types/__fpos64_t.h \
  /usr/include/bits/types/struct_FILE.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
- /usr/include/bits/stdio_lim.h /usr/include/c++/15.2.1/cerrno \
- /usr/include/errno.h /usr/include/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/bits/types/error_t.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/stdio.h \
+ /usr/include/c++/15.2.1/cerrno /usr/include/errno.h \
+ /usr/include/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
  /usr/include/c++/15.2.1/bits/charconv.h \
  /usr/include/c++/15.2.1/bits/basic_string.tcc \
  /usr/include/c++/15.2.1/functional \
@@ -159,4 +160,28 @@ dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin.cpp.o: 
  /usr/include/c++/15.2.1/bits/enable_special_members.h \
  /usr/include/c++/15.2.1/bits/node_handle.h \
  /usr/include/c++/15.2.1/bits/erase_if.h /usr/include/c++/15.2.1/array \
- /usr/include/c++/15.2.1/compare
+ /usr/include/c++/15.2.1/compare /usr/include/c++/15.2.1/fstream \
+ /usr/include/c++/15.2.1/istream /usr/include/c++/15.2.1/ios \
+ /usr/include/c++/15.2.1/bits/ios_base.h \
+ /usr/include/c++/15.2.1/bits/locale_classes.h \
+ /usr/include/c++/15.2.1/bits/locale_classes.tcc \
+ /usr/include/c++/15.2.1/system_error \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
+ /usr/include/c++/15.2.1/stdexcept /usr/include/c++/15.2.1/streambuf \
+ /usr/include/c++/15.2.1/bits/streambuf.tcc \
+ /usr/include/c++/15.2.1/bits/basic_ios.h \
+ /usr/include/c++/15.2.1/bits/locale_facets.h \
+ /usr/include/c++/15.2.1/cwctype /usr/include/wctype.h \
+ /usr/include/bits/wctype-wchar.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h \
+ /usr/include/c++/15.2.1/bits/streambuf_iterator.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/ctype_inline.h \
+ /usr/include/c++/15.2.1/bits/locale_facets.tcc \
+ /usr/include/c++/15.2.1/bits/basic_ios.tcc \
+ /usr/include/c++/15.2.1/ostream /usr/include/c++/15.2.1/bits/ostream.h \
+ /usr/include/c++/15.2.1/bits/ostream.tcc \
+ /usr/include/c++/15.2.1/bits/istream.tcc \
+ /usr/include/c++/15.2.1/bits/codecvt.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
+ /usr/include/c++/15.2.1/bits/fstream.tcc

@@ -11,6 +11,8 @@ drawable bg_neon_button
 drawable bg_neon_card
 drawable progress_neon
 id browsePresetsButton
+id btnInputDevice
+id btnInputMode
 id btnLiveA
 id btnLiveB
 id btnLiveC
@@ -19,6 +21,7 @@ id btnLooperPlay
 id btnLooperRec
 id btnLooperStop
 id btnMetronomeToggle
+id btnOutputDevice
 id cabIrPath
 id coffeeButton
 id debugStatusText
@@ -44,8 +47,10 @@ id knobReverbRoom
 id loadCabIrButton
 id neonPresetDisplay
 id neonTunerDisplay
+id openSourceButton
 id outputLevelMeter
 id startButton
+id versionText
 layout activity_main
 mipmap ic_launcher
 mipmap ic_launcher_round

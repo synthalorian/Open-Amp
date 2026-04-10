@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <functional>
+#include <fstream>
 
 namespace openamp {
 
@@ -87,6 +88,9 @@ private:
     std::vector<int16_t> sampleBuffer_;
     std::vector<uint8_t> fileBuffer_;
     static constexpr int kBufferSize = 4096;
+
+    // File handle
+    std::ofstream outputFile_;
     
     // Callbacks
     StateCallback stateCallback_;

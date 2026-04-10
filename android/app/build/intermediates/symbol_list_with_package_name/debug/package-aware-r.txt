@@ -715,6 +715,8 @@ id beginning
 id blocking
 id bottom
 id browsePresetsButton
+id btnInputDevice
+id btnInputMode
 id btnLiveA
 id btnLiveB
 id btnLiveC
@@ -723,6 +725,7 @@ id btnLooperPlay
 id btnLooperRec
 id btnLooperStop
 id btnMetronomeToggle
+id btnOutputDevice
 id buttonPanel
 id cabIrPath
 id center_vertical
@@ -794,6 +797,7 @@ id notification_main_column
 id notification_main_column_container
 id off
 id on
+id openSourceButton
 id outputLevelMeter
 id parentPanel
 id progress_circular
@@ -858,6 +862,7 @@ id unchecked
 id uniform
 id up
 id useLogo
+id versionText
 id view_tree_lifecycle_owner
 id view_tree_on_back_pressed_dispatcher_owner
 id view_tree_saved_state_registry_owner

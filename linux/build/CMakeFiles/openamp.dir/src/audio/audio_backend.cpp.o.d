@@ -88,16 +88,17 @@ CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o: \
  /usr/include/bits/pthreadtypes-arch.h \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/bits/stdlib-float.h /usr/include/c++/15.2.1/bits/std_abs.h \
- /usr/include/c++/15.2.1/cstdio /usr/include/stdio.h \
- /usr/include/bits/types/__fpos_t.h /usr/include/bits/types/__fpos64_t.h \
+ /usr/include/bits/stdlib-bsearch.h /usr/include/bits/stdlib-float.h \
+ /usr/include/c++/15.2.1/bits/std_abs.h /usr/include/c++/15.2.1/cstdio \
+ /usr/include/stdio.h /usr/include/bits/types/__fpos_t.h \
+ /usr/include/bits/types/__fpos64_t.h \
  /usr/include/bits/types/struct_FILE.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
- /usr/include/bits/stdio_lim.h /usr/include/c++/15.2.1/cerrno \
- /usr/include/errno.h /usr/include/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/bits/types/error_t.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/stdio.h \
+ /usr/include/c++/15.2.1/cerrno /usr/include/errno.h \
+ /usr/include/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
  /usr/include/c++/15.2.1/bits/charconv.h \
  /usr/include/c++/15.2.1/bits/basic_string.tcc \
  /usr/include/c++/15.2.1/bits/memory_resource.h \
@@ -160,12 +161,25 @@ CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o: \
  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
  /usr/include/bits/stdint-least.h \
- /home/synth/projects/openamp/linux/src/audio/pipewire_backend.h \
+ /home/synth/projects/openamp/linux/src/audio/jack_backend.h \
+ /usr/include/jack/jack.h /usr/include/jack/systemdeps.h \
+ /usr/include/inttypes.h /usr/include/jack/types.h \
+ /usr/include/jack/transport.h /usr/include/jack/weakmacros.h \
+ /usr/include/c++/15.2.1/atomic /usr/include/c++/15.2.1/thread \
+ /usr/include/c++/15.2.1/bits/std_thread.h \
+ /usr/include/c++/15.2.1/bits/this_thread_sleep.h \
+ /usr/include/c++/15.2.1/bits/chrono.h /usr/include/c++/15.2.1/ratio \
+ /usr/include/c++/15.2.1/limits /usr/include/c++/15.2.1/ctime \
+ /usr/include/c++/15.2.1/bits/parse_numbers.h \
+ /usr/include/c++/15.2.1/mutex /usr/include/c++/15.2.1/bits/std_mutex.h \
+ /usr/include/c++/15.2.1/bits/unique_lock.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
+ /home/synth/projects/openamp/linux/src/audio/pipewire_direct_backend.h \
  /usr/include/pipewire-0.3/pipewire/pipewire.h \
  /usr/include/spa-0.2/spa/support/plugin.h \
- /usr/include/spa-0.2/spa/utils/defs.h /usr/include/inttypes.h \
- /usr/include/signal.h /usr/include/bits/signum-generic.h \
- /usr/include/bits/signum-arch.h /usr/include/bits/types/sig_atomic_t.h \
+ /usr/include/spa-0.2/spa/utils/defs.h /usr/include/signal.h \
+ /usr/include/bits/signum-generic.h /usr/include/bits/signum-arch.h \
+ /usr/include/bits/types/sig_atomic_t.h \
  /usr/include/bits/types/siginfo_t.h /usr/include/bits/types/__sigval_t.h \
  /usr/include/bits/siginfo-arch.h /usr/include/bits/siginfo-consts.h \
  /usr/include/bits/siginfo-consts-arch.h \
@@ -219,7 +233,7 @@ CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o: \
  /usr/include/bits/mathcalls-helper-functions.h \
  /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
  /usr/include/bits/iscanonical.h /usr/include/c++/15.2.1/bits/specfun.h \
- /usr/include/c++/15.2.1/limits /usr/include/c++/15.2.1/tr1/gamma.tcc \
+ /usr/include/c++/15.2.1/tr1/gamma.tcc \
  /usr/include/c++/15.2.1/tr1/special_function_util.h \
  /usr/include/c++/15.2.1/tr1/bessel_function.tcc \
  /usr/include/c++/15.2.1/tr1/beta_function.tcc \
@@ -260,7 +274,6 @@ CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o: \
  /usr/include/spa-0.2/spa/support/thread.h \
  /usr/include/pipewire-0.3/pipewire/timer-queue.h \
  /usr/include/pipewire-0.3/pipewire/version.h \
- /usr/include/pipewire-0.3/pipewire/extensions/metadata.h \
  /usr/include/spa-0.2/spa/param/audio/format-utils.h \
  /usr/include/spa-0.2/spa/pod/parser.h \
  /usr/include/spa-0.2/spa/pod/body.h \
@@ -309,15 +322,9 @@ CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o: \
  /usr/include/spa-0.2/spa/param/audio/truehd-utils.h \
  /usr/include/spa-0.2/spa/param/audio/dts-utils.h \
  /usr/include/spa-0.2/spa/param/audio/mpegh-utils.h \
- /usr/include/spa-0.2/spa/utils/keys.h /usr/include/c++/15.2.1/atomic \
- /usr/include/c++/15.2.1/mutex /usr/include/c++/15.2.1/bits/chrono.h \
- /usr/include/c++/15.2.1/ratio /usr/include/c++/15.2.1/ctime \
- /usr/include/c++/15.2.1/bits/parse_numbers.h \
- /usr/include/c++/15.2.1/bits/std_mutex.h \
- /usr/include/c++/15.2.1/bits/unique_lock.h \
- /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/error_constants.h \
- /usr/include/c++/15.2.1/thread /usr/include/c++/15.2.1/bits/std_thread.h \
- /usr/include/c++/15.2.1/bits/this_thread_sleep.h \
+ /home/synth/projects/openamp/linux/src/audio/pipewire_backend.h \
+ /usr/include/pipewire-0.3/pipewire/extensions/metadata.h \
+ /usr/include/spa-0.2/spa/utils/keys.h \
  /usr/include/c++/15.2.1/condition_variable \
  /home/synth/projects/openamp/linux/src/audio/alsa_backend.h \
  /usr/include/alsa/asoundlib.h /usr/include/fcntl.h \
