@@ -79,17 +79,16 @@ void LevelMeter::paintEvent(QPaintEvent*) {
         // Draw gradient level
         if (levelHeight > 0) {
             QLinearGradient gradient(x, 10 + levelY, x, 10 + meterHeight);
-            gradient.setColorAt(0.0, QColor(0, 200, 0));      // Green at bottom
-            gradient.setColorAt(0.6, QColor(200, 200, 0));    // Yellow in middle
-            gradient.setColorAt(0.85, QColor(255, 100, 0));   // Orange
-            gradient.setColorAt(1.0, QColor(255, 0, 0));      // Red at top
+            gradient.setColorAt(0.0, QColor(0, 255, 255));    // Cyan at bottom
+            gradient.setColorAt(0.6, QColor(255, 0, 255));    // Magenta in middle
+            gradient.setColorAt(0.9, QColor(255, 0, 127));    // Neon Pink at top
             
             painter.fillRect(x, 10 + levelY, meterWidth, levelHeight, gradient);
         }
 
         // Peak indicator
         float peakY = dbToY(peak, meterHeight);
-        painter.setPen(QPen(QColor(255, 255, 255), 2));
+        painter.setPen(QPen(theme_.textPrimary, 2));
         painter.drawLine(x, 10 + peakY, x + meterWidth, 10 + peakY);
 
         // Scale markers

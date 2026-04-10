@@ -89,7 +89,8 @@ CMakeFiles/openamp.dir/src/ui/preset_browser.cpp.o: \
  /usr/include/bits/pthreadtypes-arch.h \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/bits/stdlib-float.h /usr/include/c++/15.2.1/bits/std_abs.h \
+ /usr/include/bits/stdlib-bsearch.h /usr/include/bits/stdlib-float.h \
+ /usr/include/c++/15.2.1/bits/std_abs.h \
  /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
  /usr/include/c++/15.2.1/pstl/execution_defs.h \
  /usr/include/qt6/QtCore/qatomic.h /usr/include/qt6/QtCore/qbasicatomic.h \
@@ -250,11 +251,11 @@ CMakeFiles/openamp.dir/src/ui/preset_browser.cpp.o: \
  /usr/include/bits/types/__fpos_t.h /usr/include/bits/types/__fpos64_t.h \
  /usr/include/bits/types/struct_FILE.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
- /usr/include/bits/stdio_lim.h /usr/include/c++/15.2.1/cerrno \
- /usr/include/errno.h /usr/include/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/bits/types/error_t.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/stdio.h \
+ /usr/include/c++/15.2.1/cerrno /usr/include/errno.h \
+ /usr/include/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
  /usr/include/c++/15.2.1/bits/charconv.h \
  /usr/include/c++/15.2.1/bits/basic_string.tcc \
  /usr/include/c++/15.2.1/bits/locale_classes.tcc \
@@ -381,6 +382,7 @@ CMakeFiles/openamp.dir/src/ui/preset_browser.cpp.o: \
  /home/synth/projects/openamp/linux/../dsp-core/include/openamp/effect_chain.h \
  /home/synth/projects/openamp/linux/../dsp-core/include/openamp/preset_store.h \
  /home/synth/projects/openamp/linux/../dsp-core/include/openamp/ir_loader.h \
+ /home/synth/projects/openamp/linux/../dsp-core/include/openamp/fft_convolver.h \
  /home/synth/projects/openamp/linux/../dsp-core/include/openamp/latency_monitor.h \
  /usr/include/qt6/QtWidgets/QVBoxLayout \
  /usr/include/qt6/QtWidgets/qboxlayout.h \
@@ -430,4 +432,14 @@ CMakeFiles/openamp.dir/src/ui/preset_browser.cpp.o: \
  /usr/include/qt6/QtWidgets/qinputdialog.h \
  /usr/include/qt6/QtWidgets/qlineedit.h \
  /usr/include/qt6/QtCore/QStandardPaths \
- /usr/include/qt6/QtCore/qstandardpaths.h
+ /usr/include/qt6/QtCore/qstandardpaths.h \
+ /usr/include/qt6/QtCore/QCoreApplication \
+ /usr/include/qt6/QtCore/qcoreapplication.h \
+ /usr/include/qt6/QtCore/qcoreevent.h \
+ /usr/include/qt6/QtCore/qbasictimer.h \
+ /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
+ /usr/include/qt6/QtCore/qeventloop.h \
+ /usr/include/qt6/QtCore/qdeadlinetimer.h \
+ /usr/include/qt6/QtCore/qnativeinterface.h \
+ /usr/include/qt6/QtCore/qcoreapplication_platform.h \
+ /usr/include/qt6/QtCore/qcoreapplication.h

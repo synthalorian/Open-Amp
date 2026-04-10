@@ -7,37 +7,37 @@ namespace openamp {
 
 struct Theme {
     // Background colors
-    QColor background = QColor(30, 30, 35);
-    QColor surface = QColor(40, 40, 48);
-    QColor surfaceVariant = QColor(50, 50, 60);
+    QColor background = QColor(10, 10, 15);      // Deeper black
+    QColor surface = QColor(25, 15, 35);         // Dark purple
+    QColor surfaceVariant = QColor(40, 20, 50);  // Lighter purple
 
     // Text colors
-    QColor textPrimary = QColor(240, 240, 245);
-    QColor textSecondary = QColor(160, 160, 170);
-    QColor textMuted = QColor(100, 100, 110);
+    QColor textPrimary = QColor(255, 255, 255);
+    QColor textSecondary = QColor(0, 255, 255);  // Cyan
+    QColor textMuted = QColor(255, 0, 255);      // Magenta
 
     // Accent colors
-    QColor accent = QColor(255, 140, 0);  // Orange
-    QColor accentLight = QColor(255, 170, 50);
-    QColor accentDark = QColor(200, 100, 0);
+    QColor accent = QColor(255, 0, 127);         // Neon Pink
+    QColor accentLight = QColor(255, 100, 180);
+    QColor accentDark = QColor(150, 0, 75);
 
     // Status colors
-    QColor enabled = QColor(0, 200, 100);
-    QColor disabled = QColor(80, 80, 90);
-    QColor warning = QColor(255, 180, 0);
-    QColor error = QColor(255, 80, 80);
+    QColor enabled = QColor(0, 255, 100);        // Neon Green
+    QColor disabled = QColor(50, 50, 60);
+    QColor warning = QColor(255, 255, 0);        // Yellow
+    QColor error = QColor(255, 0, 0);            // Red
 
     // Knob colors
-    QColor knobRing = QColor(60, 60, 70);
-    QColor knobValue = QColor(255, 140, 0);
-    QColor knobCenter = QColor(50, 50, 58);
+    QColor knobRing = QColor(0, 255, 255);       // Cyan Ring
+    QColor knobValue = QColor(255, 0, 255);      // Magenta Value
+    QColor knobCenter = QColor(20, 10, 30);      // Dark Center
 
     // Fonts
     QString fontFamily = "Inter";
-    int fontSizeSmall = 11;
-    int fontSizeNormal = 13;
-    int fontSizeLarge = 16;
-    int fontSizeTitle = 20;
+    int fontSizeSmall = 10;
+    int fontSizeNormal = 12;
+    int fontSizeLarge = 14;
+    int fontSizeTitle = 18;
 
     static Theme dark() {
         return Theme();

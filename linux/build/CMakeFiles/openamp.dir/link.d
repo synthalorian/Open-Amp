@@ -6,7 +6,9 @@ openamp: \
   CMakeFiles/openamp.dir/src/main.cpp.o \
   CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o \
   CMakeFiles/openamp.dir/src/audio/pipewire_backend.cpp.o \
+  CMakeFiles/openamp.dir/src/audio/pipewire_direct_backend.cpp.o \
   CMakeFiles/openamp.dir/src/audio/alsa_backend.cpp.o \
+  CMakeFiles/openamp.dir/src/audio/jack_backend.cpp.o \
   CMakeFiles/openamp.dir/src/audio/midi_handler.cpp.o \
   CMakeFiles/openamp.dir/src/ui/main_window.cpp.o \
   CMakeFiles/openamp.dir/src/ui/knob_widget.cpp.o \
@@ -20,18 +22,22 @@ openamp: \
   CMakeFiles/openamp.dir/src/ui/ir_panel_widget.cpp.o \
   CMakeFiles/openamp.dir/src/ui/latency_display_widget.cpp.o \
   dsp-core/src/libopenamp-dsp.a \
-  /usr/lib/libQt6Widgets.so.6.10.2 \
-  /usr/lib/libQt6QuickControls2.so.6.10.2 \
+  dsp-core/plugins/looper/liblooper_plugin.so \
+  dsp-core/plugins/metronome/libmetronome_plugin.so \
+  dsp-core/plugins/tuner/libtuner_plugin.so \
+  /usr/lib/libQt6Widgets.so.6.11.0 \
+  /usr/lib/libQt6QuickControls2.so.6.11.0 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libpipewire-0.3.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libasound.so \
-  /usr/lib/libQt6Quick.so.6.10.2 \
-  /usr/lib/libQt6OpenGL.so.6.10.2 \
-  /usr/lib/libQt6Gui.so.6.10.2 \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libjack.so \
+  /usr/lib/libQt6Quick.so.6.11.0 \
+  /usr/lib/libQt6OpenGL.so.6.11.0 \
+  /usr/lib/libQt6Gui.so.6.11.0 \
   /usr/lib/libGLX.so \
   /usr/lib/libOpenGL.so \
-  /usr/lib/libQt6Qml.so.6.10.2 \
-  /usr/lib/libQt6Network.so.6.10.2 \
-  /usr/lib/libQt6Core.so.6.10.2 \
+  /usr/lib/libQt6Qml.so.6.11.0 \
+  /usr/lib/libQt6Network.so.6.11.0 \
+  /usr/lib/libQt6Core.so.6.11.0 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
@@ -82,6 +88,7 @@ openamp: \
   /usr/lib/libproxy.so.1 \
   /usr/lib/libproxy.so.1 \
   /usr/lib/libcrypto.so.3 \
+  /usr/lib/liburing.so.2 \
   /usr/lib/libicui18n.so.78 \
   /usr/lib/libicuuc.so.78 \
   /usr/lib/libsystemd.so.0 \
@@ -170,7 +177,11 @@ CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o:
 
 CMakeFiles/openamp.dir/src/audio/pipewire_backend.cpp.o:
 
+CMakeFiles/openamp.dir/src/audio/pipewire_direct_backend.cpp.o:
+
 CMakeFiles/openamp.dir/src/audio/alsa_backend.cpp.o:
+
+CMakeFiles/openamp.dir/src/audio/jack_backend.cpp.o:
 
 CMakeFiles/openamp.dir/src/audio/midi_handler.cpp.o:
 
@@ -198,29 +209,37 @@ CMakeFiles/openamp.dir/src/ui/latency_display_widget.cpp.o:
 
 dsp-core/src/libopenamp-dsp.a:
 
-/usr/lib/libQt6Widgets.so.6.10.2:
+dsp-core/plugins/looper/liblooper_plugin.so:
 
-/usr/lib/libQt6QuickControls2.so.6.10.2:
+dsp-core/plugins/metronome/libmetronome_plugin.so:
+
+dsp-core/plugins/tuner/libtuner_plugin.so:
+
+/usr/lib/libQt6Widgets.so.6.11.0:
+
+/usr/lib/libQt6QuickControls2.so.6.11.0:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libpipewire-0.3.so:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libasound.so:
 
-/usr/lib/libQt6Quick.so.6.10.2:
+/usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libjack.so:
 
-/usr/lib/libQt6OpenGL.so.6.10.2:
+/usr/lib/libQt6Quick.so.6.11.0:
 
-/usr/lib/libQt6Gui.so.6.10.2:
+/usr/lib/libQt6OpenGL.so.6.11.0:
+
+/usr/lib/libQt6Gui.so.6.11.0:
 
 /usr/lib/libGLX.so:
 
 /usr/lib/libOpenGL.so:
 
-/usr/lib/libQt6Qml.so.6.10.2:
+/usr/lib/libQt6Qml.so.6.11.0:
 
-/usr/lib/libQt6Network.so.6.10.2:
+/usr/lib/libQt6Network.so.6.11.0:
 
-/usr/lib/libQt6Core.so.6.10.2:
+/usr/lib/libQt6Core.so.6.11.0:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so:
 
@@ -321,6 +340,8 @@ dsp-core/src/libopenamp-dsp.a:
 /usr/lib/libproxy.so.1:
 
 /usr/lib/libcrypto.so.3:
+
+/usr/lib/liburing.so.2:
 
 /usr/lib/libicui18n.so.78:
 

@@ -28,13 +28,13 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -431,6 +431,9 @@ Vulkan_LIBRARY:FILEPATH=/lib/libvulkan.so
 pkgcfg_lib_ALSA_asound:FILEPATH=/usr/lib/libasound.so
 
 //Path to a library.
+pkgcfg_lib_JACK_jack:FILEPATH=/usr/lib/libjack.so
+
+//Path to a library.
 pkgcfg_lib_PIPEWIRE_pipewire-0.3:FILEPATH=/usr/lib/libpipewire-0.3.so
 
 
@@ -482,9 +485,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/synth/projects/openamp/linux/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=4
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=2
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=3
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -652,6 +655,41 @@ FIND_PACKAGE_MESSAGE_DETAILS_WrapAtomic:INTERNAL=[1][v()]
 FIND_PACKAGE_MESSAGE_DETAILS_WrapOpenGL:INTERNAL=[ON][v()]
 //Test HAVE_STDATOMIC
 HAVE_STDATOMIC:INTERNAL=1
+JACK_CFLAGS:INTERNAL=-I/usr/include;-D_REENTRANT
+JACK_CFLAGS_I:INTERNAL=
+JACK_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+JACK_FOUND:INTERNAL=1
+JACK_INCLUDEDIR:INTERNAL=/usr/include
+JACK_INCLUDE_DIRS:INTERNAL=/usr/include
+JACK_LDFLAGS:INTERNAL=-L/usr/lib;-ljack
+JACK_LDFLAGS_OTHER:INTERNAL=
+JACK_LIBDIR:INTERNAL=/usr/lib
+JACK_LIBRARIES:INTERNAL=jack
+JACK_LIBRARY_DIRS:INTERNAL=/usr/lib
+JACK_LIBS:INTERNAL=
+JACK_LIBS_L:INTERNAL=
+JACK_LIBS_OTHER:INTERNAL=
+JACK_LIBS_PATHS:INTERNAL=
+JACK_MODULE_NAME:INTERNAL=jack
+JACK_PREFIX:INTERNAL=/usr
+JACK_STATIC_CFLAGS:INTERNAL=-I/usr/include;-D_REENTRANT
+JACK_STATIC_CFLAGS_I:INTERNAL=
+JACK_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+JACK_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+JACK_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-ljack
+JACK_STATIC_LDFLAGS_OTHER:INTERNAL=
+JACK_STATIC_LIBDIR:INTERNAL=
+JACK_STATIC_LIBRARIES:INTERNAL=jack
+JACK_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+JACK_STATIC_LIBS:INTERNAL=
+JACK_STATIC_LIBS_L:INTERNAL=
+JACK_STATIC_LIBS_OTHER:INTERNAL=
+JACK_STATIC_LIBS_PATHS:INTERNAL=
+JACK_VERSION:INTERNAL=3.1602.0
+JACK_jack_INCLUDEDIR:INTERNAL=
+JACK_jack_LIBDIR:INTERNAL=
+JACK_jack_PREFIX:INTERNAL=
+JACK_jack_VERSION:INTERNAL=
 //ADVANCED property for variable: OPENGL_EGL_INCLUDE_DIR
 OPENGL_EGL_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENGL_GLES2_INCLUDE_DIR
@@ -678,9 +716,9 @@ OPENGL_glx_LIBRARY-ADVANCED:INTERNAL=1
 OPENGL_opengl_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENGL_xmesa_INCLUDE_DIR
 OPENGL_xmesa_INCLUDE_DIR-ADVANCED:INTERNAL=1
-PIPEWIRE_CFLAGS:INTERNAL=-I/usr/include/pipewire-0.3;-I/usr/include/spa-0.2;-D_REENTRANT
+PIPEWIRE_CFLAGS:INTERNAL=-I/usr/include/pipewire-0.3;-I/usr/include/spa-0.2;-D_REENTRANT;-fno-strict-aliasing;-fno-strict-overflow
 PIPEWIRE_CFLAGS_I:INTERNAL=
-PIPEWIRE_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+PIPEWIRE_CFLAGS_OTHER:INTERNAL=-D_REENTRANT;-fno-strict-aliasing;-fno-strict-overflow
 PIPEWIRE_FOUND:INTERNAL=1
 PIPEWIRE_INCLUDEDIR:INTERNAL=/usr/include
 PIPEWIRE_INCLUDE_DIRS:INTERNAL=/usr/include/pipewire-0.3;/usr/include/spa-0.2
@@ -695,9 +733,9 @@ PIPEWIRE_LIBS_OTHER:INTERNAL=
 PIPEWIRE_LIBS_PATHS:INTERNAL=
 PIPEWIRE_MODULE_NAME:INTERNAL=libpipewire-0.3
 PIPEWIRE_PREFIX:INTERNAL=/usr
-PIPEWIRE_STATIC_CFLAGS:INTERNAL=-I/usr/include/pipewire-0.3;-I/usr/include/spa-0.2;-D_REENTRANT
+PIPEWIRE_STATIC_CFLAGS:INTERNAL=-I/usr/include/pipewire-0.3;-I/usr/include/spa-0.2;-D_REENTRANT;-fno-strict-aliasing;-fno-strict-overflow
 PIPEWIRE_STATIC_CFLAGS_I:INTERNAL=
-PIPEWIRE_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT
+PIPEWIRE_STATIC_CFLAGS_OTHER:INTERNAL=-D_REENTRANT;-fno-strict-aliasing;-fno-strict-overflow
 PIPEWIRE_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/pipewire-0.3;/usr/include/spa-0.2
 PIPEWIRE_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lpipewire-0.3
 PIPEWIRE_STATIC_LDFLAGS_OTHER:INTERNAL=
@@ -708,7 +746,7 @@ PIPEWIRE_STATIC_LIBS:INTERNAL=
 PIPEWIRE_STATIC_LIBS_L:INTERNAL=
 PIPEWIRE_STATIC_LIBS_OTHER:INTERNAL=
 PIPEWIRE_STATIC_LIBS_PATHS:INTERNAL=
-PIPEWIRE_VERSION:INTERNAL=1.4.10
+PIPEWIRE_VERSION:INTERNAL=1.6.2
 PIPEWIRE_libpipewire-0.3_INCLUDEDIR:INTERNAL=
 PIPEWIRE_libpipewire-0.3_LIBDIR:INTERNAL=
 PIPEWIRE_libpipewire-0.3_PREFIX:INTERNAL=
@@ -743,6 +781,8 @@ QT_FEATURE_arm_crc32:INTERNAL=OFF
 QT_FEATURE_arm_crypto:INTERNAL=OFF
 //Qt feature: arm_sve (from target Qt6::Core)
 QT_FEATURE_arm_sve:INTERNAL=OFF
+//Qt feature: async_io (from target Qt6::Core)
+QT_FEATURE_async_io:INTERNAL=ON
 //Qt feature: avx (from target Qt6::Core)
 QT_FEATURE_avx:INTERNAL=ON
 //Qt feature: avx2 (from target Qt6::Core)
@@ -1103,6 +1143,8 @@ QT_FEATURE_libresolv:INTERNAL=ON
 QT_FEATURE_libstdcpp_assertions:INTERNAL=ON
 //Qt feature: libudev (from target Qt6::Core)
 QT_FEATURE_libudev:INTERNAL=ON
+//Qt feature: liburing (from target Qt6::Core)
+QT_FEATURE_liburing:INTERNAL=ON
 //Qt feature: lineedit (from target Qt6::Widgets)
 QT_FEATURE_lineedit:INTERNAL=ON
 //Qt feature: linkat (from target Qt6::Core)
@@ -1261,6 +1303,8 @@ QT_FEATURE_qml_delegate_model:INTERNAL=ON
 QT_FEATURE_qml_itemmodel:INTERNAL=ON
 //Qt feature: qml_jit (from target Qt6::Qml)
 QT_FEATURE_qml_jit:INTERNAL=ON
+//Qt feature: qml_labs (from target Qt6::Qml)
+QT_FEATURE_qml_labs:INTERNAL=ON
 //Qt feature: qml_list_model (from target Qt6::QmlModels)
 QT_FEATURE_qml_list_model:INTERNAL=ON
 //Qt feature: qml_locale (from target Qt6::Qml)
@@ -1291,6 +1335,8 @@ QT_FEATURE_qml_worker_script:INTERNAL=ON
 QT_FEATURE_qml_xml_http_request:INTERNAL=ON
 //Qt feature: qml_xmllistmodel (from target Qt6::Qml)
 QT_FEATURE_qml_xmllistmodel:INTERNAL=ON
+//Qt feature: qmlcontextpropertydump (from target Qt6::Qml)
+QT_FEATURE_qmlcontextpropertydump:INTERNAL=ON
 //Qt feature: qqnx_imf (from target Qt6::Gui)
 QT_FEATURE_qqnx_imf:INTERNAL=OFF
 //Qt feature: qqnx_pps (from target Qt6::Core)
@@ -1303,6 +1349,8 @@ QT_FEATURE_quick_animatedimage:INTERNAL=ON
 QT_FEATURE_quick_canvas:INTERNAL=ON
 //Qt feature: quick_designer (from target Qt6::Quick)
 QT_FEATURE_quick_designer:INTERNAL=ON
+//Qt feature: quick_dialogs (from target Qt6::Quick)
+QT_FEATURE_quick_dialogs:INTERNAL=ON
 //Qt feature: quick_draganddrop (from target Qt6::Quick)
 QT_FEATURE_quick_draganddrop:INTERNAL=ON
 //Qt feature: quick_flipable (from target Qt6::Quick)
@@ -1334,6 +1382,8 @@ QT_FEATURE_quick_sprite:INTERNAL=ON
 QT_FEATURE_quick_tableview:INTERNAL=ON
 //Qt feature: quick_treeview (from target Qt6::Quick)
 QT_FEATURE_quick_treeview:INTERNAL=ON
+//Qt feature: quick_vectorimage (from target Qt6::Quick)
+QT_FEATURE_quick_vectorimage:INTERNAL=ON
 //Qt feature: quick_viewtransitions (from target Qt6::Quick)
 QT_FEATURE_quick_viewtransitions:INTERNAL=ON
 //Qt feature: quickcontrols2_basic (from target Qt6::QuickControls2)
@@ -1350,6 +1400,8 @@ QT_FEATURE_quickcontrols2_ios:INTERNAL=OFF
 QT_FEATURE_quickcontrols2_macos:INTERNAL=OFF
 //Qt feature: quickcontrols2_material (from target Qt6::QuickControls2)
 QT_FEATURE_quickcontrols2_material:INTERNAL=ON
+//Qt feature: quickcontrols2_stylekit (from target Qt6::QuickControls2)
+QT_FEATURE_quickcontrols2_stylekit:INTERNAL=ON
 //Qt feature: quickcontrols2_universal (from target Qt6::QuickControls2)
 QT_FEATURE_quickcontrols2_universal:INTERNAL=ON
 //Qt feature: quickcontrols2_windows (from target Qt6::QuickControls2)
@@ -1540,6 +1592,8 @@ QT_FEATURE_tabwidget:INTERNAL=ON
 QT_FEATURE_temporaryfile:INTERNAL=ON
 //Qt feature: test_gui (from target Qt6::Core)
 QT_FEATURE_test_gui:INTERNAL=ON
+//Qt feature: test_squish (from target Qt6::Core)
+QT_FEATURE_test_squish:INTERNAL=ON
 //Qt feature: testlib (from target Qt6::Core)
 QT_FEATURE_testlib:INTERNAL=ON
 //Qt feature: textbrowser (from target Qt6::Widgets)
@@ -1676,6 +1730,11 @@ QT_FEATURE_wheelevent:INTERNAL=ON
 QT_FEATURE_widgets:INTERNAL=ON
 //Qt feature: widgettextcontrol (from target Qt6::Widgets)
 QT_FEATURE_widgettextcontrol:INTERNAL=ON
+//Qt feature: windows_ioring (from target Qt6::Core)
+QT_FEATURE_windows_ioring:INTERNAL=OFF
+//Qt feature: windows_ioring_skip_builder_param_checks (from target
+// Qt6::Core)
+QT_FEATURE_windows_ioring_skip_builder_param_checks:INTERNAL=OFF
 //Qt feature: winsdkicu (from target Qt6::Core)
 QT_FEATURE_winsdkicu:INTERNAL=OFF
 //Qt feature: wizard (from target Qt6::Widgets)
@@ -1725,12 +1784,16 @@ Vulkan_LIBRARY-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 __pkg_config_arguments_ALSA:INTERNAL=alsa
+__pkg_config_arguments_JACK:INTERNAL=jack
 __pkg_config_arguments_PIPEWIRE:INTERNAL=libpipewire-0.3
 __pkg_config_checked_ALSA:INTERNAL=1
+__pkg_config_checked_JACK:INTERNAL=1
 __pkg_config_checked_PIPEWIRE:INTERNAL=1
 __qt_qml_macros_module_base_dir:INTERNAL=/usr/lib/cmake/Qt6Qml
 //ADVANCED property for variable: pkgcfg_lib_ALSA_asound
 pkgcfg_lib_ALSA_asound-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_JACK_jack
+pkgcfg_lib_JACK_jack-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_PIPEWIRE_pipewire-0.3
 pkgcfg_lib_PIPEWIRE_pipewire-0.3-ADVANCED:INTERNAL=1
 prefix_result:INTERNAL=/usr/lib
