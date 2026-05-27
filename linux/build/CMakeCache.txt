@@ -34,7 +34,7 @@ CMAKE_BUILD_TYPE:STRING=Release
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
+CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -334,9 +334,6 @@ QT_ADDITIONAL_HOST_PACKAGES_PREFIX_PATH:STRING=
 //Additional directories where find(Qt6 ...) components are searched
 QT_ADDITIONAL_PACKAGES_PREFIX_PATH:STRING=
 
-//The directory containing a CMake configuration file for Qt6Concurrent.
-Qt6Concurrent_DIR:PATH=/usr/lib/cmake/Qt6Concurrent
-
 //The directory containing a CMake configuration file for Qt6CoreTools.
 Qt6CoreTools_DIR:PATH=/usr/lib/cmake/Qt6CoreTools
 
@@ -349,9 +346,6 @@ Qt6DBusTools_DIR:PATH=/usr/lib/cmake/Qt6DBusTools
 //The directory containing a CMake configuration file for Qt6DBus.
 Qt6DBus_DIR:PATH=/usr/lib/cmake/Qt6DBus
 
-//The directory containing a CMake configuration file for Qt6ExamplesAssetDownloaderPrivate.
-Qt6ExamplesAssetDownloaderPrivate_DIR:PATH=/usr/lib/cmake/Qt6ExamplesAssetDownloaderPrivate
-
 //The directory containing a CMake configuration file for Qt6GuiTools.
 Qt6GuiTools_DIR:PATH=/usr/lib/cmake/Qt6GuiTools
 
@@ -363,9 +357,6 @@ Qt6Network_DIR:PATH=/usr/lib/cmake/Qt6Network
 
 //The directory containing a CMake configuration file for Qt6OpenGL.
 Qt6OpenGL_DIR:PATH=/usr/lib/cmake/Qt6OpenGL
-
-//The directory containing a CMake configuration file for Qt6QmlAssetDownloader.
-Qt6QmlAssetDownloader_DIR:PATH=/usr/lib/cmake/Qt6QmlAssetDownloader
 
 //The directory containing a CMake configuration file for Qt6QmlCompilerPlusPrivateTools.
 Qt6QmlCompilerPlusPrivateTools_DIR:PATH=Qt6QmlCompilerPlusPrivateTools_DIR-NOTFOUND
@@ -416,16 +407,16 @@ USE_ALSA:BOOL=ON
 USE_PIPEWIRE:BOOL=ON
 
 //Path to a program.
-Vulkan_GLSLANG_VALIDATOR_EXECUTABLE:FILEPATH=/bin/glslangValidator
+Vulkan_GLSLANG_VALIDATOR_EXECUTABLE:FILEPATH=/usr/bin/glslangValidator
 
 //Path to a program.
-Vulkan_GLSLC_EXECUTABLE:FILEPATH=/bin/glslc
+Vulkan_GLSLC_EXECUTABLE:FILEPATH=/usr/bin/glslc
 
 //Path to a file.
-Vulkan_INCLUDE_DIR:PATH=Vulkan_INCLUDE_DIR-NOTFOUND
+Vulkan_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a library.
-Vulkan_LIBRARY:FILEPATH=/lib/libvulkan.so
+Vulkan_LIBRARY:FILEPATH=/usr/lib/libvulkan.so
 
 //Path to a library.
 pkgcfg_lib_ALSA_asound:FILEPATH=/usr/lib/libasound.so
@@ -487,7 +478,7 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=4
 //Minor version of cmake used to create the current loaded cache
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=3
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -653,6 +644,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 FIND_PACKAGE_MESSAGE_DETAILS_WrapAtomic:INTERNAL=[1][v()]
 //Details about finding WrapOpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_WrapOpenGL:INTERNAL=[ON][v()]
+//Details about finding WrapVulkanHeaders
+FIND_PACKAGE_MESSAGE_DETAILS_WrapVulkanHeaders:INTERNAL=[/usr/include][v()]
 //Test HAVE_STDATOMIC
 HAVE_STDATOMIC:INTERNAL=1
 JACK_CFLAGS:INTERNAL=-I/usr/include;-D_REENTRANT
@@ -685,7 +678,7 @@ JACK_STATIC_LIBS:INTERNAL=
 JACK_STATIC_LIBS_L:INTERNAL=
 JACK_STATIC_LIBS_OTHER:INTERNAL=
 JACK_STATIC_LIBS_PATHS:INTERNAL=
-JACK_VERSION:INTERNAL=3.1602.0
+JACK_VERSION:INTERNAL=3.1604.0
 JACK_jack_INCLUDEDIR:INTERNAL=
 JACK_jack_LIBDIR:INTERNAL=
 JACK_jack_PREFIX:INTERNAL=
@@ -746,7 +739,7 @@ PIPEWIRE_STATIC_LIBS:INTERNAL=
 PIPEWIRE_STATIC_LIBS_L:INTERNAL=
 PIPEWIRE_STATIC_LIBS_OTHER:INTERNAL=
 PIPEWIRE_STATIC_LIBS_PATHS:INTERNAL=
-PIPEWIRE_VERSION:INTERNAL=1.6.2
+PIPEWIRE_VERSION:INTERNAL=1.6.4
 PIPEWIRE_libpipewire-0.3_INCLUDEDIR:INTERNAL=
 PIPEWIRE_libpipewire-0.3_LIBDIR:INTERNAL=
 PIPEWIRE_libpipewire-0.3_PREFIX:INTERNAL=
@@ -1749,8 +1742,6 @@ QT_FEATURE_xcb_egl_plugin:INTERNAL=ON
 QT_FEATURE_xcb_glx:INTERNAL=ON
 //Qt feature: xcb_glx_plugin (from target Qt6::Gui)
 QT_FEATURE_xcb_glx_plugin:INTERNAL=ON
-//Qt feature: xcb_native_painting (from target Qt6::Gui)
-QT_FEATURE_xcb_native_painting:INTERNAL=OFF
 //Qt feature: xcb_sm (from target Qt6::Gui)
 QT_FEATURE_xcb_sm:INTERNAL=ON
 //Qt feature: xcb_xlib (from target Qt6::Gui)
@@ -1769,8 +1760,6 @@ QT_FEATURE_xmlstream:INTERNAL=ON
 QT_FEATURE_xmlstreamreader:INTERNAL=ON
 //Qt feature: xmlstreamwriter (from target Qt6::Core)
 QT_FEATURE_xmlstreamwriter:INTERNAL=ON
-//Qt feature: xrender (from target Qt6::Gui)
-QT_FEATURE_xrender:INTERNAL=OFF
 //Qt feature: zstd (from target Qt6::Core)
 QT_FEATURE_zstd:INTERNAL=ON
 //ADVANCED property for variable: Vulkan_GLSLANG_VALIDATOR_EXECUTABLE

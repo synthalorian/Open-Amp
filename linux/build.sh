@@ -27,4 +27,4 @@ make -j$(nproc)
 
 echo "✅ Build complete!"
 echo ""
-echo "Run with: ${BUILD_DIR}/guitar-amp-linux"
+echo "Run with: ${BUILD_DIR}/openamp"
