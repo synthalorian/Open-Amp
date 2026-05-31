@@ -1,3 +1,0 @@
-/home/synth/projects/openamp/android/app/src/main/cpp/CMakeLists.txt
-/home/synth/projects/openamp/dsp-core/src/CMakeLists.txt
-/home/synth/projects/openamp/third_party/oboe/CMakeLists.txt
