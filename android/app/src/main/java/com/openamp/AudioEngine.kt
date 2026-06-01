@@ -130,4 +130,11 @@ class AudioEngine {
     external fun nativeGetModulationRate(): Float
     external fun nativeGetModulationDepth(): Float
     external fun nativeGetModulationMix(): Float
+
+    // Phase 3: Tuner
+    external fun nativeSetTunerEnabled(enabled: Boolean)
+    external fun nativeGetTunerEnabled(): Boolean
+    external fun nativeGetTunerNote(): String
+    external fun nativeGetTunerCents(): Float
+    external fun nativeGetTunerValid(): Boolean
 }
