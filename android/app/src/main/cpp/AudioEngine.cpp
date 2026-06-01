@@ -3,6 +3,15 @@
 #include "openamp/effect_chain.h"
 #include "openamp/ir_loader.h"
 #include "openamp/latency_monitor.h"
+// Phase 2: Add NoiseGate/Compressor/EQ includes
+#include "noise_gate.h"
+#include "compressor.h"
+#include "eq.h"
+#include "modulation.h"
+#include "cabinet.h"
+#include "acoustic_sim.h"
+#include "harmonizer.h"
+#include "tuner.h"
 #include <android/log.h>
 #include <fstream>
 #include <string>
@@ -136,14 +145,85 @@ AudioEngine::AudioEngine() {
             irLoader_->prepare(config_.sampleRate, config_.bufferSize);
         }
 
+        // Phase 4: Create Modulation
+        modulationOwner_ = std::make_unique<openamp::Modulation>();
+        if (modulationOwner_) {
+            modulationOwner_->prepare(config_.sampleRate, config_.bufferSize);
+            modulationOwner_->setBypass(!modulationEnabled_);
+            modulation_ = modulationOwner_.get();
+            LOGI("AudioEngine: Modulation created");
+        }
+
+        // Phase 4: Create Cabinet Simulator
+        cabinetOwner_ = std::make_unique<openamp::CabinetSimulator>();
+        if (cabinetOwner_) {
+            cabinetOwner_->prepare(config_.sampleRate, config_.bufferSize);
+            cabinetOwner_->setMix(cabinetMix_);
+            cabinet_ = cabinetOwner_.get();
+            LOGI("AudioEngine: Cabinet simulator created");
+        }
+
+        // Phase 4: Create Acoustic Simulator
+        acousticSimOwner_ = std::make_unique<openamp::AcousticSimulator>();
+        if (acousticSimOwner_) {
+            acousticSimOwner_->prepare(config_.sampleRate, config_.bufferSize);
+            acousticSimOwner_->setAmount(acousticAmount_);
+            acousticSimOwner_->setBodySize(acousticBodySize_);
+            acousticSimOwner_->setBrightness(acousticBrightness_);
+            acousticSim_ = acousticSimOwner_.get();
+            LOGI("AudioEngine: Acoustic simulator created");
+        }
+
+        // Phase 4: Create Harmonizer
+        harmonizerOwner_ = std::make_unique<openamp::Harmonizer>();
+        if (harmonizerOwner_) {
+            harmonizerOwner_->prepare(config_.sampleRate, config_.bufferSize);
+            harmonizerOwner_->setMix(harmonizerMix_);
+            harmonizer_ = harmonizerOwner_.get();
+            LOGI("AudioEngine: Harmonizer created");
+        }
+
+        // Phase 2: Wire Noise Gate, Compressor, EQ from AudioEngine to InputProcessor
+        if (processor_) {
+            processor_->setNoiseGateEnabled(noiseGateEnabled_);
+            processor_->setCompressorEnabled(compressorEnabled_);
+            processor_->setEQEnabled(eqEnabled_);
+        
+            if (openamp::NoiseGate* ng = processor_->getNoiseGate()) {
+                ng->setThreshold(noiseGateThreshold_);
+                ng->setAttack(noiseGateAttack_);
+                ng->setRelease(noiseGateRelease_);
+            }
+            if (openamp::Compressor* comp = processor_->getCompressor()) {
+                comp->setThreshold(compressorThreshold_);
+                comp->setRatio(compressorRatio_);
+                comp->setAttack(compressorAttack_);
+                comp->setRelease(compressorRelease_);
+            }
+        }
+
+        // Phase 3: Create Tuner
+        tuner_ = std::make_unique<openamp::Tuner>();
+        if (tuner_) {
+            tuner_->prepare(config_.sampleRate, config_.bufferSize);
+            tuner_->setMute(false); // Don't mute audio when tuning
+            LOGI("AudioEngine: Tuner created");
+        }
+
         // USB interfaces typically need more input gain
-  // Guitar pickups are often lower line level than mic input
         processor_->setInputGain(36.0f);
         processor_->setOutputGain(12.0f);
 
         inputBuffer_.resize(config_.bufferSize * 4);
         outputBuffer_.resize(config_.bufferSize * config_.numOutputChannels * 4);
         inputInterleavedBuffer_.resize(config_.bufferSize * 4);
+
+        // Phase 1: Initialize ring buffer for input→output synchronization
+        ringSize_ = kRingBufferFrames;
+        ringBuffer_.resize(ringSize_, 0.0f);
+        ringWritePos_.store(0);
+        ringReadPos_.store(0);
+        LOGI("AudioEngine: Ring buffer initialized: %zu frames", ringSize_);
 
         LOGI("AudioEngine: Constructor complete");
     } catch (const std::exception& e) {
@@ -407,6 +487,81 @@ float AudioEngine::getModulationMix() const {
     return modulation_ ? modulation_->getMix() : 0.5f;
 }
 
+// Phase 4: Cabinet
+void AudioEngine::setCabinetEnabled(bool enabled) {
+    cabinetEnabled_ = enabled;
+}
+void AudioEngine::setCabinetType(int type) {
+    cabinetType_ = type;
+    if (cabinet_) {
+        cabinet_->setCabinetType(static_cast<openamp::CabinetSimulator::CabinetType>(type));
+    }
+}
+void AudioEngine::setCabinetMix(float amount) {
+    cabinetMix_ = amount;
+    if (cabinet_) cabinet_->setMix(amount);
+}
+bool AudioEngine::getCabinetEnabled() const { return cabinetEnabled_; }
+int AudioEngine::getCabinetType() const { return cabinetType_; }
+float AudioEngine::getCabinetMix() const { return cabinetMix_; }
+
+// Phase 4: Acoustic Simulator
+void AudioEngine::setAcousticSimEnabled(bool enabled) {
+    acousticSimEnabled_ = enabled;
+}
+void AudioEngine::setAcousticAmount(float amount) {
+    acousticAmount_ = amount;
+    if (acousticSim_) acousticSim_->setAmount(amount);
+}
+void AudioEngine::setAcousticBodySize(float size) {
+    acousticBodySize_ = size;
+    if (acousticSim_) acousticSim_->setBodySize(size);
+}
+void AudioEngine::setAcousticBrightness(float amount) {
+    acousticBrightness_ = amount;
+    if (acousticSim_) acousticSim_->setBrightness(amount);
+}
+bool AudioEngine::getAcousticSimEnabled() const { return acousticSimEnabled_; }
+float AudioEngine::getAcousticAmount() const { return acousticAmount_; }
+
+// Phase 4: Harmonizer
+void AudioEngine::setHarmonizerEnabled(bool enabled) {
+    harmonizerEnabled_ = enabled;
+}
+void AudioEngine::setHarmonizerMode(int mode) {
+    harmonizerMode_ = mode;
+    if (harmonizer_) {
+        harmonizer_->setMode(static_cast<openamp::Harmonizer::Mode>(mode));
+    }
+}
+void AudioEngine::setHarmonizerMix(float amount) {
+    harmonizerMix_ = amount;
+    if (harmonizer_) harmonizer_->setMix(amount);
+}
+bool AudioEngine::getHarmonizerEnabled() const { return harmonizerEnabled_; }
+int AudioEngine::getHarmonizerMode() const { return harmonizerMode_; }
+float AudioEngine::getHarmonizerMix() const { return harmonizerMix_; }
+
+// Phase 3: Tuner
+void AudioEngine::setTunerEnabled(bool enabled) {
+    tunerEnabled_ = enabled;
+}
+bool AudioEngine::getTunerEnabled() const { return tunerEnabled_; }
+std::string AudioEngine::getTunerNote() const {
+    if (!tuner_) return "--";
+    auto result = tuner_->getLastDetection();
+    return result.valid ? result.noteName : "--";
+}
+float AudioEngine::getTunerCents() const {
+    if (!tuner_) return 0.0f;
+    auto result = tuner_->getLastDetection();
+    return result.valid ? result.cents : 0.0f;
+}
+bool AudioEngine::getTunerValid() const {
+    if (!tuner_) return false;
+    return tuner_->getLastDetection().valid;
+}
+
 // Device selection
 void AudioEngine::setInputDeviceId(int32_t deviceId) { inputDeviceId_ = deviceId; }
 void AudioEngine::setOutputDeviceId(int32_t deviceId) { outputDeviceId_ = deviceId; }
@@ -450,6 +605,30 @@ bool AudioEngine::savePreset(const std::string& path, const std::string& name) {
     preset.ampPresenceDb = ampPresenceDb_;
     preset.ampMasterDb = ampMasterDb_;
     preset.cabIrPath = cabIrPath_;
+
+    // Phase 4: Modulation
+    preset.modulationEnabled = modulationEnabled_;
+    preset.modulationType = modulation_ ? static_cast<int>(modulation_->getType()) : modulationType_;
+    preset.modulationRate = modulation_ ? modulation_->getRate() : modulationRate_;
+    preset.modulationDepth = modulation_ ? modulation_->getDepth() : modulationDepth_;
+    preset.modulationMix = modulation_ ? modulation_->getMix() : modulationMix_;
+
+    // Phase 4: Cabinet
+    preset.cabinetEnabled = cabinetEnabled_;
+    preset.cabinetType = cabinetType_;
+    preset.cabinetMix = cabinetMix_;
+
+    // Phase 4: Acoustic Sim
+    preset.acousticSimEnabled = acousticSimEnabled_;
+    preset.acousticAmount = acousticAmount_;
+    preset.acousticBodySize = acousticBodySize_;
+    preset.acousticBrightness = acousticBrightness_;
+
+    // Phase 4: Harmonizer
+    preset.harmonizerEnabled = harmonizerEnabled_;
+    preset.harmonizerMode = harmonizerMode_;
+    preset.harmonizerMix = harmonizerMix_;
+
     std::string error;
     return openamp::PresetStore::savePreset(preset, path, error);
 }
@@ -520,6 +699,26 @@ void AudioEngine::applyPreset(const openamp::Preset& preset) {
     setAmpPresenceDb(preset.ampPresenceDb);
     setAmpMasterDb(preset.ampMasterDb);
     if (!preset.cabIrPath.empty()) setCabIRFromFile(preset.cabIrPath);
+
+    // Phase 4: Apply new effect presets
+    setModulationEnabled(preset.modulationEnabled);
+    setModulationType(preset.modulationType);
+    setModulationRate(preset.modulationRate);
+    setModulationDepth(preset.modulationDepth);
+    setModulationMix(preset.modulationMix);
+
+    setCabinetEnabled(preset.cabinetEnabled);
+    setCabinetType(preset.cabinetType);
+    setCabinetMix(preset.cabinetMix);
+
+    setAcousticSimEnabled(preset.acousticSimEnabled);
+    setAcousticAmount(preset.acousticAmount);
+    setAcousticBodySize(preset.acousticBodySize);
+    setAcousticBrightness(preset.acousticBrightness);
+
+    setHarmonizerEnabled(preset.harmonizerEnabled);
+    setHarmonizerMode(preset.harmonizerMode);
+    setHarmonizerMix(preset.harmonizerMix);
 }
 
 oboe::DataCallbackResult AudioEngine::onAudioReady(
@@ -541,20 +740,26 @@ oboe::DataCallbackResult AudioEngine::onAudioReady(
     if (static_cast<size_t>(numInputSamples) > inputInterleavedBuffer_.size()) inputInterleavedBuffer_.resize(numInputSamples);
     if (static_cast<size_t>(numOutputSamples) > outputBuffer_.size()) outputBuffer_.resize(numOutputSamples);
 
+    // Phase 1: Blocking read with calculated timeout instead of non-blocking (timeout=0)
+    // Calculate timeout as 2x the buffer duration in nanoseconds
     int32_t framesRead = 0;
     if (inputStream_) {
-        auto readResult = inputStream_->read(inputInterleavedBuffer_.data(), numFrames, 0);
+        const int64_t timeoutNanos = static_cast<int64_t>(numFrames * 2 * 1e9 / config_.sampleRate);
+        auto readResult = inputStream_->read(inputInterleavedBuffer_.data(), numFrames, timeoutNanos);
         if (readResult) {
             framesRead = readResult.value();
             inputReadCount_.fetch_add(1);
         } else if (readResult.error() == oboe::Result::ErrorTimeout) {
             inputTimeoutCount_.fetch_add(1);
+            LOGD("AudioEngine: Input read timeout (requested %d frames)", numFrames);
         } else {
             inputErrorCount_.fetch_add(1);
+            LOGE("AudioEngine: Input read error: %d", static_cast<int>(readResult.error()));
         }
     }
     lastFramesRead_.store(framesRead);
 
+    // Convert interleaved input to mono
     const int32_t safeChannels = std::max(1, inputChannels);
     for (int32_t i = 0; i < framesRead; ++i) {
         const int32_t base = i * safeChannels;
@@ -572,6 +777,27 @@ oboe::DataCallbackResult AudioEngine::onAudioReady(
         inputBuffer_[i] = mono;
     }
     for (int32_t i = framesRead; i < numFrames; ++i) inputBuffer_[i] = 0.0f;
+
+    // Phase 1: Write input to ring buffer, then read back for processing
+    // This decouples input timing from output callback timing
+    writeToRing(inputBuffer_.data(), numFrames);
+    size_t ringFramesRead = readFromRing(inputBuffer_.data(), numFrames);
+    if (ringFramesRead < static_cast<size_t>(numFrames)) {
+        // Zero-fill if ring buffer underruns
+        for (size_t i = ringFramesRead; i < static_cast<size_t>(numFrames); ++i) {
+            inputBuffer_[i] = 0.0f;
+        }
+    }
+
+    // Phase 3: Process Tuner (before output, using input buffer)
+    if (tunerEnabled_ && tuner_) {
+        openamp::AudioBuffer tunerBuffer;
+        tunerBuffer.data = inputBuffer_.data();
+        tunerBuffer.numChannels = 1;
+        tunerBuffer.numFrames = numFrames;
+        tunerBuffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
+        tuner_->process(tunerBuffer);
+    }
 
     if (testToneEnabled_) {
         const float freq = 440.0f;
@@ -600,6 +826,46 @@ oboe::DataCallbackResult AudioEngine::onAudioReady(
         buffer.numFrames = numFrames;
         buffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
         irLoader_->process(buffer);
+    }
+
+    // Phase 4: Process Cabinet Simulator
+    if (cabinetEnabled_ && cabinet_) {
+        openamp::AudioBuffer buffer;
+        buffer.data = outputBuffer_.data();
+        buffer.numChannels = config_.numOutputChannels;
+        buffer.numFrames = numFrames;
+        buffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
+        cabinet_->process(buffer);
+    }
+
+    // Phase 4: Process Modulation (Chorus/Flanger/Phaser/Tremolo/Vibrato)
+    if (modulationEnabled_ && modulation_ && !modulation_->isBypassed()) {
+        openamp::AudioBuffer buffer;
+        buffer.data = outputBuffer_.data();
+        buffer.numChannels = config_.numOutputChannels;
+        buffer.numFrames = numFrames;
+        buffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
+        modulation_->process(buffer);
+    }
+
+    // Phase 4: Process Acoustic Simulator
+    if (acousticSimEnabled_ && acousticSim_) {
+        openamp::AudioBuffer buffer;
+        buffer.data = outputBuffer_.data();
+        buffer.numChannels = config_.numOutputChannels;
+        buffer.numFrames = numFrames;
+        buffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
+        acousticSim_->process(buffer);
+    }
+
+    // Phase 4: Process Harmonizer
+    if (harmonizerEnabled_ && harmonizer_) {
+        openamp::AudioBuffer buffer;
+        buffer.data = outputBuffer_.data();
+        buffer.numChannels = config_.numOutputChannels;
+        buffer.numFrames = numFrames;
+        buffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
+        harmonizer_->process(buffer);
     }
     
     // Process Looper
@@ -656,8 +922,7 @@ bool AudioEngine::openStreams() {
         ->setFormat(oboe::AudioFormat::Float)
         ->setUsage(oboe::Usage::Media)
         ->setContentType(oboe::ContentType::Music)
-        ->setDataCallback(this)
-        ->setErrorCallback(this)
+        ->setCallback(this)
         ->setBufferCapacityInFrames(128); // Force small buffer capacity
     
     if (outputDeviceId_ >= 0) {
@@ -688,7 +953,7 @@ bool AudioEngine::openStreams() {
         ->setInputPreset(oboe::InputPreset::Unprocessed)
         ->setSampleRate(config_.sampleRate)
         ->setUsage(oboe::Usage::Media)
-        ->setErrorCallback(this)
+        ->setCallback(this)
         ->setBufferCapacityInFrames(128); // Force small buffer capacity
     
     if (inputDeviceId_ >= 0) {
@@ -715,15 +980,29 @@ bool AudioEngine::openStreams() {
         LOGI("AudioEngine: Input stream opened successfully");
     }
 
-    // Reinitialize processor with actual config
+    // Phase 2: Re-prepare noise gate, compressor, EQ with actual sample rate
     if (processor_) {
+        processor_->initialize(config_);
         LOGI("AudioEngine: Reinitializing processor with sample rate %f, buffer size %u", 
              config_.sampleRate, config_.bufferSize);
-        processor_->initialize(config_);
         
         // Re-prepare IR loader with actual sample rate
         if (irLoader_) {
             irLoader_->prepare(config_.sampleRate, config_.bufferSize);
+        }
+
+        // Phase 4: Re-prepare new effects with actual sample rate
+        if (modulationOwner_) {
+            modulationOwner_->prepare(config_.sampleRate, config_.bufferSize);
+        }
+        if (cabinetOwner_) {
+            cabinetOwner_->prepare(config_.sampleRate, config_.bufferSize);
+        }
+        if (acousticSimOwner_) {
+            acousticSimOwner_->prepare(config_.sampleRate, config_.bufferSize);
+        }
+        if (harmonizerOwner_) {
+            harmonizerOwner_->prepare(config_.sampleRate, config_.bufferSize);
         }
     }
     
@@ -734,6 +1013,29 @@ bool AudioEngine::openStreams() {
 void AudioEngine::closeStreams() {
     inputStream_.reset();
     outputStream_.reset();
+}
+
+// Phase 1: Lock-free ring buffer for input→output synchronization
+void AudioEngine::writeToRing(const float* data, size_t frames) {
+    size_t writePos = ringWritePos_.load(std::memory_order_relaxed);
+    for (size_t i = 0; i < frames; ++i) {
+        ringBuffer_[writePos % ringSize_] = data[i];
+        ++writePos;
+    }
+    ringWritePos_.store(writePos, std::memory_order_release);
+}
+
+size_t AudioEngine::readFromRing(float* data, size_t frames) {
+    size_t readPos = ringReadPos_.load(std::memory_order_relaxed);
+    size_t writePos = ringWritePos_.load(std::memory_order_acquire);
+    size_t available = writePos - readPos;
+    size_t toRead = std::min(frames, available);
+    for (size_t i = 0; i < toRead; ++i) {
+        data[i] = ringBuffer_[readPos % ringSize_];
+        ++readPos;
+    }
+    ringReadPos_.store(readPos, std::memory_order_relaxed);
+    return toRead;
 }
 
 } // namespace openamp_android

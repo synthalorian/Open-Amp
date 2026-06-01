@@ -281,6 +281,9 @@ class MainActivity : ComponentActivity() {
         audioEngine.nativeSetNoiseGateAttack(1.0f)
         audioEngine.nativeSetNoiseGateRelease(100.0f)
 
+        // Initialize tuner (disabled by default)
+        audioEngine.nativeSetTunerEnabled(false)
+
         // Initialize MIDI Controller
         midiController = MidiController(this)
         if (midiController.initialize()) {
@@ -404,6 +407,16 @@ class MainActivity : ComponentActivity() {
                     audioEngine.nativeMetronomeStart()
                     btnMetronomeToggle.text = "METRO: ON"
                 }
+            }
+        }
+
+        // Tuner toggle
+        val btnTunerToggle = findViewById<Button>(R.id.btnTunerToggle)
+        btnTunerToggle.setOnClickListener {
+            runWhenEngineRunning("Tuner") {
+                val enabled = !audioEngine.nativeGetTunerEnabled()
+                audioEngine.nativeSetTunerEnabled(enabled)
+                btnTunerToggle.text = if (enabled) "TUNER: ON" else "TUNER: OFF"
             }
         }
         } catch (e: Throwable) {
@@ -567,6 +580,14 @@ class MainActivity : ComponentActivity() {
                 }
                 
                 neonTunerDisplay.setNote("E", 0f, true)
+                
+                // Phase 3: Real tuner data
+                if (audioEngine.nativeGetTunerEnabled()) {
+                    val note = audioEngine.nativeGetTunerNote()
+                    val cents = audioEngine.nativeGetTunerCents()
+                    val valid = audioEngine.nativeGetTunerValid()
+                    neonTunerDisplay.setNote(note, cents, valid)
+                }
                 
                 // Sync Metronome Button State
                 if (running) {

@@ -43,6 +43,29 @@ bool PresetStore::savePreset(const Preset& preset, const std::string& path, std:
     file << "ampPresenceDb=" << preset.ampPresenceDb << "\n";
     file << "ampMasterDb=" << preset.ampMasterDb << "\n";
     file << "cabIrPath=" << preset.cabIrPath << "\n";
+
+    // Phase 4: Modulation
+    file << "modulationEnabled=" << (preset.modulationEnabled ? "1" : "0") << "\n";
+    file << "modulationType=" << preset.modulationType << "\n";
+    file << "modulationRate=" << preset.modulationRate << "\n";
+    file << "modulationDepth=" << preset.modulationDepth << "\n";
+    file << "modulationMix=" << preset.modulationMix << "\n";
+
+    // Phase 4: Cabinet
+    file << "cabinetEnabled=" << (preset.cabinetEnabled ? "1" : "0") << "\n";
+    file << "cabinetType=" << preset.cabinetType << "\n";
+    file << "cabinetMix=" << preset.cabinetMix << "\n";
+
+    // Phase 4: Acoustic Sim
+    file << "acousticSimEnabled=" << (preset.acousticSimEnabled ? "1" : "0") << "\n";
+    file << "acousticAmount=" << preset.acousticAmount << "\n";
+    file << "acousticBodySize=" << preset.acousticBodySize << "\n";
+    file << "acousticBrightness=" << preset.acousticBrightness << "\n";
+
+    // Phase 4: Harmonizer
+    file << "harmonizerEnabled=" << (preset.harmonizerEnabled ? "1" : "0") << "\n";
+    file << "harmonizerMode=" << preset.harmonizerMode << "\n";
+    file << "harmonizerMix=" << preset.harmonizerMix << "\n";
     return true;
 }
 
@@ -89,6 +112,25 @@ bool PresetStore::loadPreset(const std::string& path, Preset& preset, std::strin
         else if (key == "ampPresenceDb") preset.ampPresenceDb = std::stof(value);
         else if (key == "ampMasterDb") preset.ampMasterDb = std::stof(value);
         else if (key == "cabIrPath") preset.cabIrPath = value;
+        // Phase 4: Modulation
+        else if (key == "modulationEnabled") preset.modulationEnabled = parseBool(value);
+        else if (key == "modulationType") preset.modulationType = std::stoi(value);
+        else if (key == "modulationRate") preset.modulationRate = std::stof(value);
+        else if (key == "modulationDepth") preset.modulationDepth = std::stof(value);
+        else if (key == "modulationMix") preset.modulationMix = std::stof(value);
+        // Phase 4: Cabinet
+        else if (key == "cabinetEnabled") preset.cabinetEnabled = parseBool(value);
+        else if (key == "cabinetType") preset.cabinetType = std::stoi(value);
+        else if (key == "cabinetMix") preset.cabinetMix = std::stof(value);
+        // Phase 4: Acoustic Sim
+        else if (key == "acousticSimEnabled") preset.acousticSimEnabled = parseBool(value);
+        else if (key == "acousticAmount") preset.acousticAmount = std::stof(value);
+        else if (key == "acousticBodySize") preset.acousticBodySize = std::stof(value);
+        else if (key == "acousticBrightness") preset.acousticBrightness = std::stof(value);
+        // Phase 4: Harmonizer
+        else if (key == "harmonizerEnabled") preset.harmonizerEnabled = parseBool(value);
+        else if (key == "harmonizerMode") preset.harmonizerMode = std::stoi(value);
+        else if (key == "harmonizerMix") preset.harmonizerMix = std::stof(value);
     }
 
     return true;
