@@ -11,6 +11,14 @@ A professional cross-platform guitar amplifier and effects processor.
 - **MIDI support** - Control parameters via MIDI controllers
 - **Cross-platform** - Linux, iOS, and Android
 
+## What's New (v1.2.0)
+
+- **Fixed Android audio architecture** - Blocking input reads with lock-free ring buffer eliminate dropouts and silence
+- **Noise Gate, Compressor, EQ** - Now fully wired into the Android signal chain (Input → Gate → Comp → EQ → Effects → Amp)
+- **Working tuner** - Real-time chromatic pitch detection with note name and cents display, toggle on/off
+- **Modulation, Cabinet, Acoustic Sim, Harmonizer** - All four effect categories now process audio in Android builds
+- **Preset serialization** - All new effect parameters save and load correctly across platforms
+
 ## 📱 Platforms
 - **Linux** - Qt 6 UI with PipeWire/ALSA audio
 - **Android** - Kotlin UI with Oboe audio engine
@@ -155,6 +163,12 @@ make -j$(nproc)
 - **Latency:** ~5ms at 48kHz/256 samples
 - **Bit Depth:** 32-bit float internal processing
 
+## Signal Chain
+
+```
+Input → Gain → Noise Gate → Compressor → EQ → Distortion → Amp → IR Loader → Cabinet → Modulation → Acoustic Sim → Harmonizer → Delay → Reverb → Output
+```
+
 ## Effect Algorithms
 
 ### Distortion (v1.1)
@@ -196,7 +210,7 @@ MIT License - See LICENSE file for details.
 
 ## Credits
 
-Developed by Synthalorian
+Made by synth with synthshark
 
 Built with:
 - Qt 6 (Linux)
