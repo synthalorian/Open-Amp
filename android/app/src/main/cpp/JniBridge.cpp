@@ -597,6 +597,33 @@ Java_com_openamp_AudioEngine_nativeMetronomeIsPlaying(JNIEnv*, jobject) {
     return g_engine && g_engine->metronomeIsPlaying() ? JNI_TRUE : JNI_FALSE;
 }
 
+// Phase 3: Tuner JNI
+extern "C" JNIEXPORT void JNICALL
+Java_com_openamp_AudioEngine_nativeSetTunerEnabled(JNIEnv*, jobject, jboolean enabled) {
+    if (g_engine) g_engine->setTunerEnabled(enabled == JNI_TRUE);
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_openamp_AudioEngine_nativeGetTunerEnabled(JNIEnv*, jobject) {
+    return g_engine && g_engine->getTunerEnabled() ? JNI_TRUE : JNI_FALSE;
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_openamp_AudioEngine_nativeGetTunerNote(JNIEnv* env, jobject) {
+    std::string note = g_engine ? g_engine->getTunerNote() : "--";
+    return env->NewStringUTF(note.c_str());
+}
+
+extern "C" JNIEXPORT jfloat JNICALL
+Java_com_openamp_AudioEngine_nativeGetTunerCents(JNIEnv*, jobject) {
+    return g_engine ? g_engine->getTunerCents() : 0.0f;
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_com_openamp_AudioEngine_nativeGetTunerValid(JNIEnv*, jobject) {
+    return g_engine && g_engine->getTunerValid() ? JNI_TRUE : JNI_FALSE;
+}
+
 // Modulation controls
 extern "C" JNIEXPORT void JNICALL
 Java_com_openamp_AudioEngine_nativeSetModulationEnabled(JNIEnv*, jobject, jboolean enabled) {

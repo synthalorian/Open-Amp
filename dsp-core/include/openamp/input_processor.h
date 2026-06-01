@@ -2,6 +2,9 @@
 
 #include "openamp/amp_simulator.h"
 #include "openamp/effect_chain.h"
+#include "noise_gate.h"
+#include "compressor.h"
+#include "eq.h"
 #include <atomic>
 #include <cstdint>
 #include <memory>
@@ -53,6 +56,18 @@ public:
     bool isAmpEnabled() const { return ampEnabled_; }
     bool isEffectsEnabled() const { return effectsEnabled_; }
     
+    // Phase 2: Noise Gate / Compressor / EQ controls
+    void setNoiseGateEnabled(bool enabled) { noiseGateEnabled_ = enabled; }
+    void setCompressorEnabled(bool enabled) { compressorEnabled_ = enabled; }
+    void setEQEnabled(bool enabled) { eqEnabled_ = enabled; }
+    bool isNoiseGateEnabled() const { return noiseGateEnabled_; }
+    bool isCompressorEnabled() const { return compressorEnabled_; }
+    bool isEQEnabled() const { return eqEnabled_; }
+    
+    NoiseGate* getNoiseGate() { return noiseGate_.get(); }
+    Compressor* getCompressor() { return compressor_.get(); }
+    EQ* getEQ() { return eq_.get(); }
+    
     float getInputLevel() const { return inputLevel_.load(); }
     float getOutputLevel() const { return outputLevel_.load(); }
     
@@ -67,12 +82,20 @@ private:
     std::unique_ptr<AmpSimulator> ampSimulator_;
     std::unique_ptr<EffectChain> effectChain_;
     
+    // Phase 2: Input dynamics and tone shaping
+    std::unique_ptr<NoiseGate> noiseGate_;
+    std::unique_ptr<Compressor> compressor_;
+    std::unique_ptr<EQ> eq_;
+    
     float inputGain_ = 1.0f;
     float outputGain_ = 1.0f;
     float inputGainDb_ = 0.0f;
     float outputGainDb_ = 0.0f;
     bool ampEnabled_ = true;
     bool effectsEnabled_ = true;
+    bool noiseGateEnabled_ = true;
+    bool compressorEnabled_ = false;
+    bool eqEnabled_ = false;
     
     std::atomic<float> inputLevel_{0.0f};
     std::atomic<float> outputLevel_{0.0f};

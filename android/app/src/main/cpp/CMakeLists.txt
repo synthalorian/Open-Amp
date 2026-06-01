@@ -23,6 +23,8 @@ add_library(openamp-native SHARED
     ${DSP_CORE_DIR}/plugins/cabinet/cabinet.cpp
     ${DSP_CORE_DIR}/plugins/acoustic_sim/acoustic_sim.cpp
     ${DSP_CORE_DIR}/plugins/harmonizer/harmonizer.cpp
+    ${DSP_CORE_DIR}/plugins/tuner/tuner.cpp
+    ${DSP_CORE_DIR}/plugins/eq/eq.cpp
     ${DSP_CORE_SRC_DIR}/ir_loader.cpp
 )
 
@@ -40,6 +42,8 @@ target_include_directories(openamp-native
         ${DSP_CORE_DIR}/plugins/cabinet
         ${DSP_CORE_DIR}/plugins/acoustic_sim
         ${DSP_CORE_DIR}/plugins/harmonizer
+        ${DSP_CORE_DIR}/plugins/tuner
+        ${DSP_CORE_DIR}/plugins/eq
         ${CMAKE_CURRENT_LIST_DIR}
 )
 

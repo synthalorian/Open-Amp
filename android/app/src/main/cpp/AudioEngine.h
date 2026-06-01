@@ -17,6 +17,26 @@
 #include "cabinet.h"
 #include "acoustic_sim.h"
 #include "harmonizer.h"
+
+namespace openamp {
+    class InputProcessor;
+    class AmpSimulator;
+    class EffectChain;
+    class NoiseGate;
+    class Distortion;
+    class Modulation;
+    class Delay;
+    class Reverb;
+    class CabinetSimulator;
+    class AcousticSimulator;
+    class Harmonizer;
+    class Looper;
+    class Metronome;
+    class IRLoader;
+    class LatencyMonitor;
+    class Tuner;
+}
+
 #include <atomic>
 #include <mutex>
 #include <thread>
@@ -199,6 +219,13 @@ public:
     bool savePreset(const std::string& path, const std::string& name);
     bool loadPreset(const std::string& path);
 
+    // Phase 3: Tuner
+    void setTunerEnabled(bool enabled);
+    bool getTunerEnabled() const;
+    std::string getTunerNote() const;
+    float getTunerCents() const;
+    bool getTunerValid() const;
+
     // Meters
     float getInputLevel() const;
     float getOutputLevel() const;
@@ -247,11 +274,21 @@ private:
     // Looper & Metronome (NEW)
     openamp::Looper* looper_ = nullptr;
     openamp::Metronome* metronome_ = nullptr;
-    
+
+    // Phase 3: Tuner
+    std::unique_ptr<openamp::Tuner> tuner_;
+    bool tunerEnabled_ = false;
+
     // NEW: IR Loader
     std::unique_ptr<openamp::IRLoader> irLoader_;
     bool irEnabled_ = false;
     float irMix_ = 1.0f;
+
+    // Phase 4: Modulation, Cabinet, Acoustic Sim, Harmonizer
+    std::unique_ptr<openamp::Modulation> modulationOwner_;
+    std::unique_ptr<openamp::CabinetSimulator> cabinetOwner_;
+    std::unique_ptr<openamp::AcousticSimulator> acousticSimOwner_;
+    std::unique_ptr<openamp::Harmonizer> harmonizerOwner_;
     
     // NEW: Latency Monitor
     openamp::LatencyMonitor latencyMonitor_;
@@ -262,6 +299,8 @@ private:
     // Effect states
     bool distortionEnabled_ = false;
     bool noiseGateEnabled_ = true;
+    bool compressorEnabled_ = false;
+    bool eqEnabled_ = false;
     bool delayEnabled_ = true;
     bool reverbEnabled_ = true;
     bool delayFirst_ = true;
@@ -278,9 +317,14 @@ private:
     float ampTrebleDb_ = 0.0f;
     float ampPresenceDb_ = 0.0f;
     float ampMasterDb_ = 0.0f;
+    // Phase 2: Noise gate / compressor / EQ member variables
     float noiseGateThreshold_ = -45.0f;
     float noiseGateAttack_ = 1.0f;
     float noiseGateRelease_ = 100.0f;
+    float compressorThreshold_ = -20.0f;
+    float compressorRatio_ = 4.0f;
+    float compressorAttack_ = 10.0f;
+    float compressorRelease_ = 100.0f;
     float distortionDrive_ = 0.5f;
     float distortionTone_ = 0.5f;
     float distortionLevel_ = 0.7f;
@@ -301,12 +345,28 @@ private:
     int harmonizerMode_ = 0;
     float harmonizerMix_ = 0.5f;
 
+    // Phase 4: Modulation parameters
+    int modulationType_ = 0;
+    float modulationRate_ = 1.5f;
+    float modulationDepth_ = 0.5f;
+    float modulationMix_ = 0.5f;
+
     std::string cabIrPath_;
 
     // Buffers
     std::vector<float> inputBuffer_;          // mono buffer into DSP
     std::vector<float> inputInterleavedBuffer_; // raw input from stream (possibly multi-channel)
     std::vector<float> outputBuffer_;
+
+    // Phase 1: Lock-free ring buffer for input→output synchronization
+    std::vector<float> ringBuffer_;
+    std::atomic<size_t> ringWritePos_{0};
+    std::atomic<size_t> ringReadPos_{0};
+    size_t ringSize_ = 0;
+    static constexpr size_t kRingBufferFrames = 2048; // ~42ms at 48kHz
+
+    void writeToRing(const float* data, size_t frames);
+    size_t readFromRing(float* data, size_t frames);
 
     // Debug counters/state
     std::atomic<uint64_t> callbackCount_{0};

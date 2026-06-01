@@ -1,6 +1,9 @@
 #include "openamp/input_processor.h"
 #include "openamp/dsp_utils.h"
 #include "openamp/preset_store.h"
+#include "noise_gate.h"
+#include "compressor.h"
+#include "eq.h"
 #include <cmath>
 #include <vector>
 #include <cstdlib>
@@ -21,12 +24,36 @@ bool InputProcessor::initialize(const ProcessingConfig& config) {
         effectChain_->prepare(config.sampleRate, config.bufferSize);
     }
     
+    // Phase 2: Initialize noise gate, compressor, EQ
+    if (!noiseGate_) {
+        noiseGate_ = std::make_unique<NoiseGate>();
+        noiseGate_->prepare(config.sampleRate, config.bufferSize);
+        noiseGate_->setThreshold(-45.0f);
+        noiseGate_->setAttack(1.0f);
+        noiseGate_->setRelease(100.0f);
+    }
+    if (!compressor_) {
+        compressor_ = std::make_unique<Compressor>();
+        compressor_->prepare(config.sampleRate, config.bufferSize);
+        compressor_->setThreshold(-20.0f);
+        compressor_->setRatio(4.0f);
+        compressor_->setAttack(10.0f);
+        compressor_->setRelease(100.0f);
+    }
+    if (!eq_) {
+        eq_ = std::make_unique<EQ>();
+        eq_->prepare(config.sampleRate, config.bufferSize);
+    }
+    
     return true;
 }
 
 void InputProcessor::shutdown() {
     ampSimulator_.reset();
     effectChain_.reset();
+    noiseGate_.reset();
+    compressor_.reset();
+    eq_.reset();
 }
 
 void InputProcessor::processInput(const float* inputBuffer, float* outputBuffer, uint32_t numFrames) {
@@ -42,24 +69,31 @@ void InputProcessor::processInput(const float* inputBuffer, float* outputBuffer,
         processedBuffer[i] = inputBuffer[i] * inputGain_;
     }
     
+    // Phase 2: Signal chain — Noise Gate → Compressor → EQ → Effects → Amp
+    AudioBuffer monoBuffer;
+    monoBuffer.data = processedBuffer.data();
+    monoBuffer.numChannels = 1;
+    monoBuffer.numFrames = numFrames;
+    monoBuffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
+    
+    if (noiseGate_ && noiseGateEnabled_) {
+        noiseGate_->process(monoBuffer);
+    }
+    
+    if (compressor_ && compressorEnabled_) {
+        compressor_->process(monoBuffer);
+    }
+    
+    if (eq_ && eqEnabled_) {
+        eq_->process(monoBuffer);
+    }
+    
     if (effectChain_ && effectsEnabled_) {
-        AudioBuffer effectBuffer;
-        effectBuffer.data = processedBuffer.data();
-        effectBuffer.numChannels = 1;
-        effectBuffer.numFrames = numFrames;
-        effectBuffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
-        
-        effectChain_->process(effectBuffer);
+        effectChain_->process(monoBuffer);
     }
     
     if (ampSimulator_ && ampEnabled_) {
-        AudioBuffer ampBuffer;
-        ampBuffer.data = processedBuffer.data();
-        ampBuffer.numChannels = 1;
-        ampBuffer.numFrames = numFrames;
-        ampBuffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
-        
-        ampSimulator_->process(ampBuffer);
+        ampSimulator_->process(monoBuffer);
     }
     
     for (uint32_t i = 0; i < numFrames; ++i) {
