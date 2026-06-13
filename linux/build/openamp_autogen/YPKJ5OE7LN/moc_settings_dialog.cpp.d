@@ -1,7 +1,7 @@
-/home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_settings_dialog.cpp: /home/synth/projects/openamp/linux/src/ui/settings_dialog.h \
-  /home/synth/projects/openamp/linux/build/openamp_autogen/moc_predefs.h \
-  /home/synth/projects/openamp/linux/src/audio/audio_backend.h \
-  /home/synth/projects/openamp/linux/src/ui/theme.h \
+/home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_settings_dialog.cpp: /home/synth/projects/05-active-dev/openamp/linux/src/ui/settings_dialog.h \
+  /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/moc_predefs.h \
+  /home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.h \
+  /home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \

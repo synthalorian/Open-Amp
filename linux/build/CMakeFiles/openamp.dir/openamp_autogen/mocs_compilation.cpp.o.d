@@ -1,8 +1,8 @@
 CMakeFiles/openamp.dir/openamp_autogen/mocs_compilation.cpp.o: \
- /home/synth/projects/openamp/linux/build/openamp_autogen/mocs_compilation.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/mocs_compilation.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_amp_panel.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/amp_panel.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_amp_panel.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/amp_panel.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
@@ -349,26 +349,26 @@ CMakeFiles/openamp.dir/openamp_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtGui/qfontvariableaxis.h \
  /usr/include/qt6/QtWidgets/qsizepolicy.h \
  /usr/include/qt6/QtGui/qcursor.h /usr/include/qt6/QtGui/qbitmap.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/theme.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/theme.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtCore/QString \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/dsp_engine.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/amp_simulator.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/plugin_interface.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/dsp_utils.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/effect_chain.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/preset_store.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/ir_loader.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/fft_convolver.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/latency_monitor.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/dsp_engine.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/amp_simulator.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/dsp_utils.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/effect_chain.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/preset_store.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/ir_loader.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/fft_convolver.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/latency_monitor.h \
  /usr/include/qt6/QtCore/qtmochelpers.h \
  /usr/include/qt6/QtCore/qtmocconstants.h \
  /usr/include/qt6/QtCore/q20algorithm.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_effects_panel.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/effects_panel.h \
- /home/synth/projects/openamp/linux/../dsp-core/plugins/looper/looper.h \
- /home/synth/projects/openamp/linux/../dsp-core/plugins/metronome/metronome.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_ir_panel_widget.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/ir_panel_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_effects_panel.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/effects_panel.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/plugins/looper/looper.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/plugins/metronome/metronome.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_ir_panel_widget.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/ir_panel_widget.h \
  /usr/include/qt6/QtWidgets/QLabel /usr/include/qt6/QtWidgets/qlabel.h \
  /usr/include/qt6/QtWidgets/qframe.h /usr/include/qt6/QtGui/qpicture.h \
  /usr/include/qt6/QtCore/qiodevice.h \
@@ -381,28 +381,28 @@ CMakeFiles/openamp.dir/openamp_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtGui/qtextcursor.h \
  /usr/include/qt6/QtGui/qtextformat.h /usr/include/qt6/QtGui/qpen.h \
  /usr/include/qt6/QtGui/qtextoption.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_knob_widget.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/knob_widget.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_latency_display_widget.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/latency_display_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_knob_widget.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/knob_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_latency_display_widget.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/latency_display_widget.h \
  /usr/include/qt6/QtCore/QTimer /usr/include/qt6/QtCore/qtimer.h \
  /usr/include/qt6/QtCore/qbasictimer.h \
  /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
  /usr/include/qt6/QtCore/qeventloop.h \
  /usr/include/qt6/QtCore/qdeadlinetimer.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_main_window.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/main_window.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_main_window.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/main_window.h \
  /usr/include/qt6/QtWidgets/QMainWindow \
  /usr/include/qt6/QtWidgets/qmainwindow.h \
  /usr/include/qt6/QtWidgets/qtabwidget.h \
- /home/synth/projects/openamp/linux/src/audio/audio_backend.h \
- /home/synth/projects/openamp/linux/src/audio/midi_handler.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_meter_widget.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/meter_widget.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_pedal_widget.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/pedal_widget.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_preset_browser.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/preset_browser.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/midi_handler.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_meter_widget.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/meter_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_pedal_widget.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/pedal_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_preset_browser.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/preset_browser.h \
  /usr/include/qt6/QtWidgets/QListWidget \
  /usr/include/qt6/QtWidgets/qlistwidget.h \
  /usr/include/qt6/QtWidgets/qlistview.h \
@@ -422,8 +422,8 @@ CMakeFiles/openamp.dir/openamp_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtWidgets/qrubberband.h \
  /usr/include/qt6/QtWidgets/QLineEdit \
  /usr/include/qt6/QtWidgets/qlineedit.h \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_settings_dialog.cpp \
- /home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/settings_dialog.h \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_settings_dialog.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/../../../src/ui/settings_dialog.h \
  /usr/include/qt6/QtWidgets/QDialog /usr/include/qt6/QtWidgets/qdialog.h \
  /usr/include/qt6/QtWidgets/QComboBox \
  /usr/include/qt6/QtWidgets/qcombobox.h \

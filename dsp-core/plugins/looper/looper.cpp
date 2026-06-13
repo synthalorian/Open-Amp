@@ -12,8 +12,7 @@ void Looper::prepare(double sampleRate, uint32_t /*maxBlockSize*/) {
     
     // Pre-allocate loop buffer for max duration
     size_t maxSize = static_cast<size_t>(maxDurationSeconds_ * sampleRate_);
-    loopBuffer_.reserve(maxSize);
-    loopBuffer_.clear();
+    loopBuffer_.resize(maxSize);
     
     loopLength_ = 0;
     playPosition_ = 0;
@@ -22,7 +21,7 @@ void Looper::prepare(double sampleRate, uint32_t /*maxBlockSize*/) {
 }
 
 void Looper::reset() {
-    loopBuffer_.clear();
+    std::fill(loopBuffer_.begin(), loopBuffer_.end(), 0.0f);
     loopLength_ = 0;
     playPosition_ = 0;
     numOverdubs_ = 0;
@@ -44,9 +43,9 @@ void Looper::process(AudioBuffer& buffer) {
         switch (state_) {
             case State::Recording: {
                 // Record input to buffer
-                if (loopBuffer_.size() < loopBuffer_.capacity()) {
-                    loopBuffer_.push_back(input);
-                    loopLength_ = loopBuffer_.size();
+                if (loopLength_ < loopBuffer_.size()) {
+                    loopBuffer_[loopLength_] = input;
+                    ++loopLength_;
                 }
                 // Pass through input
                 output = input;
@@ -99,7 +98,7 @@ void Looper::record() {
     if (state_ == State::Stopped) {
         // Start new recording
         saveToUndo();
-        loopBuffer_.clear();
+        std::fill(loopBuffer_.begin(), loopBuffer_.end(), 0.0f);
         loopLength_ = 0;
         playPosition_ = 0;
         numOverdubs_ = 0;
@@ -108,7 +107,6 @@ void Looper::record() {
         // Stop recording, start playback
         if (quantize_) {
             loopLength_ = getQuantizedLength();
-            loopBuffer_.resize(loopLength_);
         }
         numOverdubs_ = 0;
         changeState(State::Playing);
@@ -154,7 +152,7 @@ void Looper::overdub() {
 
 void Looper::clear() {
     saveToUndo();
-    loopBuffer_.clear();
+    std::fill(loopBuffer_.begin(), loopBuffer_.end(), 0.0f);
     loopLength_ = 0;
     playPosition_ = 0;
     numOverdubs_ = 0;
@@ -174,7 +172,7 @@ Looper::LoopInfo Looper::getLoopInfo() const {
 void Looper::setMaxDuration(float seconds) {
     maxDurationSeconds_ = std::clamp(seconds, 1.0f, 300.0f);  // 1s to 5min
     size_t maxSize = static_cast<size_t>(maxDurationSeconds_ * sampleRate_);
-    loopBuffer_.reserve(maxSize);
+    loopBuffer_.resize(maxSize);
 }
 
 void Looper::setPlaybackLevel(float level) {

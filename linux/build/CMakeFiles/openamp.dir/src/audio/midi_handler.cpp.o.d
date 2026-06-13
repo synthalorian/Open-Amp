@@ -1,7 +1,7 @@
 CMakeFiles/openamp.dir/src/audio/midi_handler.cpp.o: \
- /home/synth/projects/openamp/linux/src/audio/midi_handler.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/midi_handler.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/linux/src/audio/midi_handler.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/midi_handler.h \
  /usr/include/c++/16.1.1/string \
  /usr/include/c++/16.1.1/bits/requires_hosted.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \

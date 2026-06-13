@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/sbin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/sbin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/synth/projects/openamp/linux
+CMAKE_SOURCE_DIR = /home/synth/projects/05-active-dev/openamp/linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
+CMAKE_BINARY_DIR = /home/synth/projects/05-active-dev/openamp/linux/build
 
 # Include any dependencies generated for this target.
 include dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/depend.make
@@ -75,44 +75,44 @@ dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/codegen:
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o: dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/flags.make
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o: dsp-core/plugins/modulation/modulation_plugin_autogen/mocs_compilation.cpp
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o: dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o -MF CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o -c /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation/modulation_plugin_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o -MF CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o -c /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation/modulation_plugin_autogen/mocs_compilation.cpp
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.i"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation/modulation_plugin_autogen/mocs_compilation.cpp > CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation/modulation_plugin_autogen/mocs_compilation.cpp > CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.i
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.s"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation/modulation_plugin_autogen/mocs_compilation.cpp -o CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation/modulation_plugin_autogen/mocs_compilation.cpp -o CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.s
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o: dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/flags.make
-dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o: /home/synth/projects/openamp/dsp-core/plugins/modulation/modulation.cpp
+dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o: /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation.cpp
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o: dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o -MF CMakeFiles/modulation_plugin.dir/modulation.cpp.o.d -o CMakeFiles/modulation_plugin.dir/modulation.cpp.o -c /home/synth/projects/openamp/dsp-core/plugins/modulation/modulation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o -MF CMakeFiles/modulation_plugin.dir/modulation.cpp.o.d -o CMakeFiles/modulation_plugin.dir/modulation.cpp.o -c /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation.cpp
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/modulation_plugin.dir/modulation.cpp.i"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/openamp/dsp-core/plugins/modulation/modulation.cpp > CMakeFiles/modulation_plugin.dir/modulation.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation.cpp > CMakeFiles/modulation_plugin.dir/modulation.cpp.i
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/modulation_plugin.dir/modulation.cpp.s"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/openamp/dsp-core/plugins/modulation/modulation.cpp -o CMakeFiles/modulation_plugin.dir/modulation.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation.cpp -o CMakeFiles/modulation_plugin.dir/modulation.cpp.s
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o: dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/flags.make
-dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o: /home/synth/projects/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp
+dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o: /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o: dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o -MF CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o.d -o CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o -c /home/synth/projects/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o -MF CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o.d -o CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o -c /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.i"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp > CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp > CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.i
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.s"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp -o CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp -o CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.s
 
 # Object files for target modulation_plugin
 modulation_plugin_OBJECTS = \
@@ -130,18 +130,18 @@ dsp-core/plugins/modulation/libmodulation_plugin.so: dsp-core/plugins/modulation
 dsp-core/plugins/modulation/libmodulation_plugin.so: dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/compiler_depend.ts
 dsp-core/plugins/modulation/libmodulation_plugin.so: dsp-core/src/libopenamp-dsp.a
 dsp-core/plugins/modulation/libmodulation_plugin.so: dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmodulation_plugin.so"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/modulation_plugin.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmodulation_plugin.so"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/modulation_plugin.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/build: dsp-core/plugins/modulation/libmodulation_plugin.so
 .PHONY : dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/build
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/clean:
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation && $(CMAKE_COMMAND) -P CMakeFiles/modulation_plugin.dir/cmake_clean.cmake
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation && $(CMAKE_COMMAND) -P CMakeFiles/modulation_plugin.dir/cmake_clean.cmake
 .PHONY : dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/clean
 
 dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/depend:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/openamp/linux /home/synth/projects/openamp/dsp-core/plugins/modulation /home/synth/projects/openamp/linux/build /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation /home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/DependInfo.cmake "--color=$(COLOR)" modulation_plugin
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/05-active-dev/openamp/linux /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation /home/synth/projects/05-active-dev/openamp/linux/build /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/DependInfo.cmake "--color=$(COLOR)" modulation_plugin
 .PHONY : dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/depend
 

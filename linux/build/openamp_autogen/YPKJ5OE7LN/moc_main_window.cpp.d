@@ -1,17 +1,17 @@
-/home/synth/projects/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_main_window.cpp: /home/synth/projects/openamp/linux/src/ui/main_window.h \
-  /home/synth/projects/openamp/linux/build/openamp_autogen/moc_predefs.h \
-  /home/synth/projects/openamp/dsp-core/include/openamp/amp_simulator.h \
-  /home/synth/projects/openamp/dsp-core/include/openamp/dsp_engine.h \
-  /home/synth/projects/openamp/dsp-core/include/openamp/dsp_utils.h \
-  /home/synth/projects/openamp/dsp-core/include/openamp/effect_chain.h \
-  /home/synth/projects/openamp/dsp-core/include/openamp/fft_convolver.h \
-  /home/synth/projects/openamp/dsp-core/include/openamp/ir_loader.h \
-  /home/synth/projects/openamp/dsp-core/include/openamp/latency_monitor.h \
-  /home/synth/projects/openamp/dsp-core/include/openamp/plugin_interface.h \
-  /home/synth/projects/openamp/dsp-core/include/openamp/preset_store.h \
-  /home/synth/projects/openamp/linux/src/audio/audio_backend.h \
-  /home/synth/projects/openamp/linux/src/audio/midi_handler.h \
-  /home/synth/projects/openamp/linux/src/ui/theme.h \
+/home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/YPKJ5OE7LN/moc_main_window.cpp: /home/synth/projects/05-active-dev/openamp/linux/src/ui/main_window.h \
+  /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/moc_predefs.h \
+  /home/synth/projects/05-active-dev/openamp/dsp-core/include/openamp/amp_simulator.h \
+  /home/synth/projects/05-active-dev/openamp/dsp-core/include/openamp/dsp_engine.h \
+  /home/synth/projects/05-active-dev/openamp/dsp-core/include/openamp/dsp_utils.h \
+  /home/synth/projects/05-active-dev/openamp/dsp-core/include/openamp/effect_chain.h \
+  /home/synth/projects/05-active-dev/openamp/dsp-core/include/openamp/fft_convolver.h \
+  /home/synth/projects/05-active-dev/openamp/dsp-core/include/openamp/ir_loader.h \
+  /home/synth/projects/05-active-dev/openamp/dsp-core/include/openamp/latency_monitor.h \
+  /home/synth/projects/05-active-dev/openamp/dsp-core/include/openamp/plugin_interface.h \
+  /home/synth/projects/05-active-dev/openamp/dsp-core/include/openamp/preset_store.h \
+  /home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.h \
+  /home/synth/projects/05-active-dev/openamp/linux/src/audio/midi_handler.h \
+  /home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \

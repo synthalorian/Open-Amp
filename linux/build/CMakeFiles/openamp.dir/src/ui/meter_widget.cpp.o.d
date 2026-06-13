@@ -1,7 +1,7 @@
 CMakeFiles/openamp.dir/src/ui/meter_widget.cpp.o: \
- /home/synth/projects/openamp/linux/src/ui/meter_widget.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/meter_widget.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/linux/src/ui/meter_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/meter_widget.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
@@ -353,7 +353,7 @@ CMakeFiles/openamp.dir/src/ui/meter_widget.cpp.o: \
  /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
  /usr/include/qt6/QtCore/qeventloop.h \
  /usr/include/qt6/QtCore/qdeadlinetimer.h \
- /home/synth/projects/openamp/linux/src/ui/theme.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtCore/QString \
  /usr/include/qt6/QtGui/QPainter /usr/include/qt6/QtGui/qpainter.h \
  /usr/include/qt6/QtGui/qtextoption.h /usr/include/qt6/QtGui/qpen.h \

@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/synth/projects/openamp/dsp-core/plugins/recorder/recorder.cpp" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder.cpp.o" "gcc" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder.cpp.o.d"
-  "/home/synth/projects/openamp/dsp-core/plugins/recorder/recorder_plugin.cpp" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin.cpp.o" "gcc" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin.cpp.o.d"
-  "/home/synth/projects/openamp/linux/build/dsp-core/plugins/recorder/recorder_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin_autogen/mocs_compilation.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/recorder/recorder.cpp" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder.cpp.o" "gcc" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/recorder/recorder_plugin.cpp" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin.cpp.o" "gcc" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/recorder/recorder_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/recorder_plugin_autogen/mocs_compilation.cpp.o.d"
   "" "dsp-core/plugins/recorder/librecorder_plugin.so" "gcc" "dsp-core/plugins/recorder/CMakeFiles/recorder_plugin.dir/link.d"
   )
 

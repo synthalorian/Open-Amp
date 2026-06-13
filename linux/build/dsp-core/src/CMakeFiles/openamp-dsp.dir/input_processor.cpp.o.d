@@ -1,9 +1,9 @@
 dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.o: \
- /home/synth/projects/openamp/dsp-core/src/input_processor.cpp \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/input_processor.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/input_processor.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/amp_simulator.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/input_processor.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/amp_simulator.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/plugin_interface.h \
  /usr/include/c++/16.1.1/cstdint \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -156,7 +156,7 @@ dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.o: \
  /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
  /usr/include/c++/16.1.1/bits/charconv.h \
  /usr/include/c++/16.1.1/bits/basic_string.tcc \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/dsp_utils.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/dsp_utils.h \
  /usr/include/c++/16.1.1/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -177,7 +177,10 @@ dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.o: \
  /usr/include/c++/16.1.1/tr1/poly_laguerre.tcc \
  /usr/include/c++/16.1.1/tr1/riemann_zeta.tcc \
  /usr/include/c++/16.1.1/array /usr/include/c++/16.1.1/compare \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/effect_chain.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/effect_chain.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../plugins/noise_gate/noise_gate.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../plugins/compressor/compressor.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../plugins/eq/eq.h \
  /usr/include/c++/16.1.1/atomic /usr/include/c++/16.1.1/mutex \
  /usr/include/c++/16.1.1/bits/chrono.h /usr/include/c++/16.1.1/ratio \
  /usr/include/c++/16.1.1/ctime \
@@ -186,4 +189,4 @@ dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.o: \
  /usr/include/c++/16.1.1/bits/std_mutex.h \
  /usr/include/c++/16.1.1/bits/unique_lock.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/error_constants.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/preset_store.h
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/preset_store.h

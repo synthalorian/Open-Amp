@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/sbin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/sbin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/synth/projects/openamp/linux
+CMAKE_SOURCE_DIR = /home/synth/projects/05-active-dev/openamp/linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
+CMAKE_BINARY_DIR = /home/synth/projects/05-active-dev/openamp/linux/build
 
 # Utility rule file for openamp_autogen.
 
@@ -71,9 +71,9 @@ CMakeFiles/openamp_autogen: openamp_autogen/timestamp
 openamp_autogen/timestamp: /usr/lib/qt6/moc
 openamp_autogen/timestamp: /usr/lib/qt6/uic
 openamp_autogen/timestamp: CMakeFiles/openamp_autogen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target openamp"
-	/usr/bin/cmake -E cmake_autogen /home/synth/projects/openamp/linux/build/CMakeFiles/openamp_autogen.dir/AutogenInfo.json Release
-	/usr/bin/cmake -E touch /home/synth/projects/openamp/linux/build/openamp_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target openamp"
+	/usr/sbin/cmake -E cmake_autogen /home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles/openamp_autogen.dir/AutogenInfo.json Release
+	/usr/sbin/cmake -E touch /home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/timestamp
 
 CMakeFiles/openamp_autogen.dir/codegen:
 .PHONY : CMakeFiles/openamp_autogen.dir/codegen
@@ -92,6 +92,6 @@ CMakeFiles/openamp_autogen.dir/clean:
 .PHONY : CMakeFiles/openamp_autogen.dir/clean
 
 CMakeFiles/openamp_autogen.dir/depend:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/openamp/linux /home/synth/projects/openamp/linux /home/synth/projects/openamp/linux/build /home/synth/projects/openamp/linux/build /home/synth/projects/openamp/linux/build/CMakeFiles/openamp_autogen.dir/DependInfo.cmake "--color=$(COLOR)" openamp_autogen
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/05-active-dev/openamp/linux /home/synth/projects/05-active-dev/openamp/linux /home/synth/projects/05-active-dev/openamp/linux/build /home/synth/projects/05-active-dev/openamp/linux/build /home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles/openamp_autogen.dir/DependInfo.cmake "--color=$(COLOR)" openamp_autogen
 .PHONY : CMakeFiles/openamp_autogen.dir/depend
 

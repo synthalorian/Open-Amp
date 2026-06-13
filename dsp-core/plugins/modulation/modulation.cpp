@@ -125,10 +125,11 @@ void Modulation::prepare(double sampleRate, uint32_t /*maxBlockSize*/) {
     phaserLFO_.prepare(sampleRate);
     phaserLFO_.setFrequency(rate_);
     
-    // Setup tremolo
-    tremoloLFO_.prepare(sampleRate);
-    tremoloLFO_.setFrequency(rate_);
-    tremoloLFO_.setWaveform(tremoloWaveform_);
+    // Setup vibrato
+    size_t maxVibratoSamples = static_cast<size_t>(20.0f * sampleRate_ / 1000.0f);
+    vibratoDelay_.setSize(maxVibratoSamples);
+    vibratoLFO_.prepare(sampleRate);
+    vibratoLFO_.setFrequency(rate_);
     
     updateCoefficients();
 }
@@ -275,26 +276,17 @@ void Modulation::processTremolo(float* data, uint32_t numFrames) {
 }
 
 void Modulation::processVibrato(float* data, uint32_t numFrames) {
-    DelayLine vibratoDelay;
-    float maxDelayMs = 10.0f;
-    size_t maxDelaySamples = static_cast<size_t>(maxDelayMs * sampleRate_ / 1000.0f) + 1;
-    vibratoDelay.setSize(maxDelaySamples);
-    
     float baseDelaySamples = 5.0f * static_cast<float>(sampleRate_) / 1000.0f;
     float modulationRange = 5.0f * static_cast<float>(sampleRate_) / 1000.0f;
-    
-    LFO vibratoLFO;
-    vibratoLFO.prepare(sampleRate_);
-    vibratoLFO.setFrequency(rate_);
     
     for (uint32_t i = 0; i < numFrames; ++i) {
         float input = data[i];
         
-        float lfo = vibratoLFO.process();
+        float lfo = vibratoLFO_.process();
         float delaySamples = baseDelaySamples + lfo * depth_ * modulationRange;
         
-        vibratoDelay.write(input);
-        float output = vibratoDelay.read(delaySamples);
+        vibratoDelay_.write(input);
+        float output = vibratoDelay_.read(delaySamples);
         
         data[i] = output;
     }

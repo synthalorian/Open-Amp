@@ -25,19 +25,19 @@ openamp: \
   dsp-core/plugins/looper/liblooper_plugin.so \
   dsp-core/plugins/metronome/libmetronome_plugin.so \
   dsp-core/plugins/tuner/libtuner_plugin.so \
-  /usr/lib/libQt6Widgets.so.6.11.0 \
-  /usr/lib/libQt6QuickControls2.so.6.11.0 \
+  /usr/lib/libQt6Widgets.so.6.11.1 \
+  /usr/lib/libQt6QuickControls2.so.6.11.1 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/../../../../lib/libpipewire-0.3.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/../../../../lib/libasound.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/../../../../lib/libjack.so \
-  /usr/lib/libQt6Quick.so.6.11.0 \
-  /usr/lib/libQt6OpenGL.so.6.11.0 \
-  /usr/lib/libQt6Gui.so.6.11.0 \
+  /usr/lib/libQt6Quick.so.6.11.1 \
+  /usr/lib/libQt6OpenGL.so.6.11.1 \
+  /usr/lib/libQt6Gui.so.6.11.1 \
   /usr/lib/libGLX.so \
   /usr/lib/libOpenGL.so \
-  /usr/lib/libQt6Qml.so.6.11.0 \
-  /usr/lib/libQt6Network.so.6.11.0 \
-  /usr/lib/libQt6Core.so.6.11.0 \
+  /usr/lib/libQt6Qml.so.6.11.1 \
+  /usr/lib/libQt6Network.so.6.11.1 \
+  /usr/lib/libQt6Core.so.6.11.1 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/../../../../lib/libm.so \
@@ -221,9 +221,9 @@ dsp-core/plugins/metronome/libmetronome_plugin.so:
 
 dsp-core/plugins/tuner/libtuner_plugin.so:
 
-/usr/lib/libQt6Widgets.so.6.11.0:
+/usr/lib/libQt6Widgets.so.6.11.1:
 
-/usr/lib/libQt6QuickControls2.so.6.11.0:
+/usr/lib/libQt6QuickControls2.so.6.11.1:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/../../../../lib/libpipewire-0.3.so:
 
@@ -231,21 +231,21 @@ dsp-core/plugins/tuner/libtuner_plugin.so:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/../../../../lib/libjack.so:
 
-/usr/lib/libQt6Quick.so.6.11.0:
+/usr/lib/libQt6Quick.so.6.11.1:
 
-/usr/lib/libQt6OpenGL.so.6.11.0:
+/usr/lib/libQt6OpenGL.so.6.11.1:
 
-/usr/lib/libQt6Gui.so.6.11.0:
+/usr/lib/libQt6Gui.so.6.11.1:
 
 /usr/lib/libGLX.so:
 
 /usr/lib/libOpenGL.so:
 
-/usr/lib/libQt6Qml.so.6.11.0:
+/usr/lib/libQt6Qml.so.6.11.1:
 
-/usr/lib/libQt6Network.so.6.11.0:
+/usr/lib/libQt6Network.so.6.11.1:
 
-/usr/lib/libQt6Core.so.6.11.0:
+/usr/lib/libQt6Core.so.6.11.1:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/../../../../lib/libstdc++.so:
 

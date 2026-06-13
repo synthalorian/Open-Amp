@@ -1,15 +1,15 @@
 {
-	"BUILD_DIR" : "/home/synth/projects/openamp/linux/build/openamp_autogen",
-	"CMAKE_BINARY_DIR" : "/home/synth/projects/openamp/linux/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/synth/projects/openamp/linux/build",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/synth/projects/openamp/linux",
-	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"BUILD_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen",
+	"CMAKE_BINARY_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/synth/projects/05-active-dev/openamp/linux",
+	"CMAKE_EXECUTABLE" : "/usr/sbin/cmake",
 	"CMAKE_LIST_FILES" : 
 	[
-		"/home/synth/projects/openamp/linux/CMakeLists.txt",
+		"/home/synth/projects/05-active-dev/openamp/linux/CMakeLists.txt",
 		"/usr/share/cmake/Modules/CMakeDetermineSystem.cmake",
 		"/usr/share/cmake/Modules/CMakeSystem.cmake.in",
-		"/home/synth/projects/openamp/linux/build/CMakeFiles/4.3.2/CMakeSystem.cmake",
+		"/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles/4.3.3/CMakeSystem.cmake",
 		"/usr/share/cmake/Modules/CMakeUnixFindMake.cmake",
 		"/usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake",
 		"/usr/share/cmake/Modules/Platform/Linux-Initialize.cmake",
@@ -65,7 +65,7 @@
 		"/usr/share/cmake/Modules/CMakeFindBinUtils.cmake",
 		"/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake",
 		"/usr/share/cmake/Modules/CMakeCXXCompiler.cmake.in",
-		"/home/synth/projects/openamp/linux/build/CMakeFiles/4.3.2/CMakeCXXCompiler.cmake",
+		"/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles/4.3.3/CMakeCXXCompiler.cmake",
 		"/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake",
 		"/usr/share/cmake/Modules/CMakeGenericSystem.cmake",
 		"/usr/share/cmake/Modules/CMakeInitializeConfigs.cmake",
@@ -91,7 +91,7 @@
 		"/usr/share/cmake/Modules/CMakeDetermineCompilerSupport.cmake",
 		"/usr/share/cmake/Modules/Internal/FeatureTesting.cmake",
 		"/usr/share/cmake/Modules/CMakeCXXCompiler.cmake.in",
-		"/home/synth/projects/openamp/linux/build/CMakeFiles/4.3.2/CMakeCXXCompiler.cmake",
+		"/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles/4.3.3/CMakeCXXCompiler.cmake",
 		"/usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake",
 		"/usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake",
 		"/usr/share/cmake/Modules/Linker/GNU-CXX.cmake",
@@ -133,11 +133,13 @@
 		"/usr/lib/cmake/Qt6/QtPublicPluginHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicPluginHelpers_v2.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomAttributionHelpers.cmake",
+		"/usr/lib/cmake/Qt6/QtPublicSbomBuildToolHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomCommonGenerationHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomCpeHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomCycloneDXHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomDocumentNamespaceHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomDepHelpers.cmake",
+		"/usr/lib/cmake/Qt6/QtPublicSbomExternalReferenceHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomFileHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomGenerationHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomGenerationCycloneDXHelpers.cmake",
@@ -147,6 +149,7 @@
 		"/usr/lib/cmake/Qt6/QtPublicSbomPurlHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomPythonHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomQtEntityHelpers.cmake",
+		"/usr/lib/cmake/Qt6/QtPublicSbomRelationshipHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicSbomSystemDepHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicTargetHelpers.cmake",
 		"/usr/lib/cmake/Qt6/QtPublicTestHelpers.cmake",
@@ -461,6 +464,12 @@
 		"/usr/lib/cmake/Qt6Gui/Qt6QVncIntegrationPluginTargets.cmake",
 		"/usr/lib/cmake/Qt6Gui/Qt6QVncIntegrationPluginTargets-relwithdebinfo.cmake",
 		"/usr/lib/cmake/Qt6Gui/Qt6QVncIntegrationPluginAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandAdwaitaDecorationPluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandAdwaitaDecorationPluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandAdwaitaDecorationPluginTargets.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandAdwaitaDecorationPluginTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandAdwaitaDecorationPluginAdditionalTargetInfo.cmake",
 		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandBradientDecorationPluginConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandBradientDecorationPluginTargetsPrecheck.cmake",
@@ -485,6 +494,18 @@
 		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandIntegrationPluginTargets.cmake",
 		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandIntegrationPluginTargets-relwithdebinfo.cmake",
 		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandIntegrationPluginAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandIviShellIntegrationPluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandIviShellIntegrationPluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandIviShellIntegrationPluginTargets.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandIviShellIntegrationPluginTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandIviShellIntegrationPluginAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandQtShellIntegrationPluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandQtShellIntegrationPluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandQtShellIntegrationPluginTargets.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandQtShellIntegrationPluginTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandQtShellIntegrationPluginAdditionalTargetInfo.cmake",
 		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandWlShellIntegrationPluginConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Gui/Qt6QWaylandWlShellIntegrationPluginTargetsPrecheck.cmake",
@@ -692,6 +713,48 @@
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6TextToSpeechQmlTargets.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6TextToSpeechQmlTargets-relwithdebinfo.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6TextToSpeechQmlAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorIviapplicationpluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorIviapplicationpluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorIviapplicationpluginTargets.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorIviapplicationpluginTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorIviapplicationpluginAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorPresentationTimepluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorPresentationTimepluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorPresentationTimepluginTargets.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorPresentationTimepluginTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorPresentationTimepluginAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorQtShellConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorQtShellTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorQtShellTargets.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorQtShellTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorQtShellAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorWLShellpluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorWLShellpluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorWLShellpluginTargets.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorWLShellpluginTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorWLShellpluginAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorXdgShellpluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorXdgShellpluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorXdgShellpluginTargets.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorXdgShellpluginTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorXdgShellpluginAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingTargets.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingExtensionConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingExtensionTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingExtensionTargets.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingExtensionTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingExtensionAdditionalTargetInfo.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginTargetsPrecheck.cmake",
@@ -770,6 +833,12 @@
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwavefrontmeshpluginTargets.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwavefrontmeshpluginTargets-relwithdebinfo.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwavefrontmeshpluginAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwebsocketsConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwebsocketsTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwebsocketsTargets.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwebsocketsTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwebsocketsAdditionalTargetInfo.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlxmllistmodelpluginConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlxmllistmodelpluginTargetsPrecheck.cmake",
@@ -962,6 +1031,12 @@
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6quickwindowTargets.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6quickwindowTargets-relwithdebinfo.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6quickwindowAdditionalTargetInfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qwaylandcompositorpluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qwaylandcompositorpluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qwaylandcompositorpluginTargets.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qwaylandcompositorpluginTargets-relwithdebinfo.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qwaylandcompositorpluginAdditionalTargetInfo.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6sharedimagepluginConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6sharedimagepluginTargetsPrecheck.cmake",
@@ -1001,6 +1076,27 @@
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6TextToSpeechQmlConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6TextToSpeechQmlTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorIviapplicationpluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorIviapplicationpluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorPresentationTimepluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorPresentationTimepluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorQtShellConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorQtShellTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorWLShellpluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorWLShellpluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorXdgShellpluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandCompositorXdgShellpluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingExtensionConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WaylandTextureSharingExtensionTargetsPrecheck.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6WebChannelQuickpluginTargetsPrecheck.cmake",
@@ -1040,6 +1136,9 @@
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwavefrontmeshpluginConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwavefrontmeshpluginTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwebsocketsConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlwebsocketsTargetsPrecheck.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlxmllistmodelpluginConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qmlxmllistmodelpluginTargetsPrecheck.cmake",
@@ -1136,6 +1235,9 @@
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6quickwindowConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6quickwindowTargetsPrecheck.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qwaylandcompositorpluginConfig.cmake",
+		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6qwaylandcompositorpluginTargetsPrecheck.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6sharedimagepluginConfig.cmake",
 		"/usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
 		"/usr/lib/cmake/Qt6Qml/QmlPlugins/Qt6sharedimagepluginTargetsPrecheck.cmake",
@@ -1286,118 +1388,118 @@
 		"/usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
 		"/usr/share/cmake/Modules/FindPackageMessage.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "/home/synth/projects/openamp/linux",
+	"CMAKE_SOURCE_DIR" : "/home/synth/projects/05-active-dev/openamp/linux",
 	"CROSS_CONFIG" : false,
-	"DEP_FILE" : "/home/synth/projects/openamp/linux/build/openamp_autogen/deps",
+	"DEP_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "openamp_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"/home/synth/projects/openamp/linux/src/audio/alsa_backend.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/alsa_backend.h",
 			"MU",
 			"MYYQ2Y7GGF/moc_alsa_backend.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/audio_backend.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.h",
 			"MU",
 			"MYYQ2Y7GGF/moc_audio_backend.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/jack_backend.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/jack_backend.h",
 			"MU",
 			"MYYQ2Y7GGF/moc_jack_backend.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/midi_handler.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/midi_handler.h",
 			"MU",
 			"MYYQ2Y7GGF/moc_midi_handler.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/pipewire_backend.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/pipewire_backend.h",
 			"MU",
 			"MYYQ2Y7GGF/moc_pipewire_backend.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/pipewire_direct_backend.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/pipewire_direct_backend.h",
 			"MU",
 			"MYYQ2Y7GGF/moc_pipewire_direct_backend.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/amp_panel.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/amp_panel.h",
 			"MU",
 			"YPKJ5OE7LN/moc_amp_panel.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/effects_panel.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/effects_panel.h",
 			"MU",
 			"YPKJ5OE7LN/moc_effects_panel.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/ir_panel_widget.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/ir_panel_widget.h",
 			"MU",
 			"YPKJ5OE7LN/moc_ir_panel_widget.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/knob_widget.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/knob_widget.h",
 			"MU",
 			"YPKJ5OE7LN/moc_knob_widget.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/latency_display_widget.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/latency_display_widget.h",
 			"MU",
 			"YPKJ5OE7LN/moc_latency_display_widget.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/main_window.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/main_window.h",
 			"MU",
 			"YPKJ5OE7LN/moc_main_window.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/meter_widget.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/meter_widget.h",
 			"MU",
 			"YPKJ5OE7LN/moc_meter_widget.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/pedal_widget.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/pedal_widget.h",
 			"MU",
 			"YPKJ5OE7LN/moc_pedal_widget.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/preset_browser.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/preset_browser.h",
 			"MU",
 			"YPKJ5OE7LN/moc_preset_browser.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/settings_dialog.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/settings_dialog.h",
 			"MU",
 			"YPKJ5OE7LN/moc_settings_dialog.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/theme.h",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.h",
 			"MU",
 			"YPKJ5OE7LN/moc_theme.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/synth/projects/openamp/linux/build/openamp_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/synth/projects/openamp/linux/build/openamp_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"QT_CORE_LIB",
@@ -1423,18 +1525,18 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/synth/projects/openamp/linux/src",
-		"/home/synth/projects/openamp/dsp-core/include",
-		"/home/synth/projects/openamp/dsp-core",
+		"/home/synth/projects/05-active-dev/openamp/linux/src",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/include",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core",
 		"/usr/include/pipewire-0.3",
 		"/usr/include/spa-0.2",
-		"/home/synth/projects/openamp/dsp-core/include",
-		"/home/synth/projects/openamp/dsp-core/plugins/noise_gate",
-		"/home/synth/projects/openamp/dsp-core/plugins/compressor",
-		"/home/synth/projects/openamp/dsp-core/plugins/eq",
-		"/home/synth/projects/openamp/dsp-core/plugins/distortion",
-		"/home/synth/projects/openamp/dsp-core/plugins/delay",
-		"/home/synth/projects/openamp/dsp-core/plugins/reverb",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/include",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb",
 		"/usr/include/qt6/QtCore",
 		"/usr/include/qt6",
 		"/usr/lib/qt6/mkspecs/linux-g++",
@@ -1466,104 +1568,116 @@
 	"MOC_PATH_PREFIX" : false,
 	"MOC_PREDEFS_CMD" : 
 	[
-		"/usr/bin/c++",
+		"/usr/sbin/c++",
 		"-std=gnu++17",
 		"-w",
 		"-dM",
 		"-E",
 		"/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/synth/projects/openamp/linux/build/openamp_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/openamp_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
-	"PARSE_CACHE_FILE" : "/home/synth/projects/openamp/linux/build/CMakeFiles/openamp_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles/openamp_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/uic",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 11,
-	"SETTINGS_FILE" : "/home/synth/projects/openamp/linux/build/CMakeFiles/openamp_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles/openamp_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/home/synth/projects/openamp/linux/src/audio/alsa_backend.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/alsa_backend.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/audio_backend.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/jack_backend.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/jack_backend.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/midi_handler.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/midi_handler.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/pipewire_backend.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/pipewire_backend.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/audio/pipewire_direct_backend.cpp",
-			"MU",
-			null
-		],
-		[ "/home/synth/projects/openamp/linux/src/main.cpp", "MU", null ],
-		[ "/home/synth/projects/openamp/linux/src/ui/amp_panel.cpp", "MU", null ],
-		[
-			"/home/synth/projects/openamp/linux/src/ui/effects_panel.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/audio/pipewire_direct_backend.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/ir_panel_widget.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/main.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/knob_widget.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/amp_panel.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/latency_display_widget.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/effects_panel.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/main_window.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/ir_panel_widget.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/meter_widget.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/knob_widget.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/pedal_widget.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/latency_display_widget.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/preset_browser.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/main_window.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/linux/src/ui/settings_dialog.cpp",
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/meter_widget.cpp",
 			"MU",
 			null
 		],
-		[ "/home/synth/projects/openamp/linux/src/ui/theme.cpp", "MU", null ]
+		[
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/pedal_widget.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/preset_browser.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/settings_dialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.cpp",
+			"MU",
+			null
+		]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

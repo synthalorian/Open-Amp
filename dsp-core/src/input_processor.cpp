@@ -59,51 +59,46 @@ void InputProcessor::shutdown() {
 void InputProcessor::processInput(const float* inputBuffer, float* outputBuffer, uint32_t numFrames) {
     if (!inputBuffer || !outputBuffer) return;
     
-    std::lock_guard<std::mutex> lock(processingMutex_);
+    // Ensure scratch buffer is large enough (pre-allocated, no RT allocation)
+    if (scratchBuffer_.size() < numFrames) {
+        scratchBuffer_.resize(numFrames);
+    }
     
     calculateLevels(inputBuffer, numFrames, inputLevel_);
     
-    std::vector<float> processedBuffer(numFrames);
-    
     for (uint32_t i = 0; i < numFrames; ++i) {
-        processedBuffer[i] = inputBuffer[i] * inputGain_;
+        scratchBuffer_[i] = inputBuffer[i] * inputGain_;
     }
     
     // Phase 2: Signal chain — Noise Gate → Compressor → EQ → Effects → Amp
     AudioBuffer monoBuffer;
-    monoBuffer.data = processedBuffer.data();
+    monoBuffer.data = scratchBuffer_.data();
     monoBuffer.numChannels = 1;
     monoBuffer.numFrames = numFrames;
     monoBuffer.sampleRate = static_cast<uint32_t>(config_.sampleRate);
     
-    if (noiseGate_ && noiseGateEnabled_) {
+    if (noiseGate_ && noiseGateEnabled_.load(std::memory_order_relaxed)) {
         noiseGate_->process(monoBuffer);
     }
     
-    if (compressor_ && compressorEnabled_) {
+    if (compressor_ && compressorEnabled_.load(std::memory_order_relaxed)) {
         compressor_->process(monoBuffer);
     }
     
-    if (eq_ && eqEnabled_) {
+    if (eq_ && eqEnabled_.load(std::memory_order_relaxed)) {
         eq_->process(monoBuffer);
     }
     
-    if (effectChain_ && effectsEnabled_) {
+    if (effectChain_ && effectsEnabled_.load(std::memory_order_relaxed)) {
         effectChain_->process(monoBuffer);
     }
     
-    if (ampSimulator_ && ampEnabled_) {
+    if (ampSimulator_ && ampEnabled_.load(std::memory_order_relaxed)) {
         ampSimulator_->process(monoBuffer);
     }
     
     for (uint32_t i = 0; i < numFrames; ++i) {
-        float sample = processedBuffer[i] * outputGain_;
-
-        // Add subtle amplifier hiss when amp is enabled (authentic analog feel)
-        if (ampEnabled_) {
-            float noise = ((static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX)) * 2.0f - 1.0f) * 0.0008f;
-            sample += noise;
-        }
+        float sample = scratchBuffer_[i] * outputGain_;
         
         if (std::abs(sample) >= 0.99f) {
             clipping_.store(true);

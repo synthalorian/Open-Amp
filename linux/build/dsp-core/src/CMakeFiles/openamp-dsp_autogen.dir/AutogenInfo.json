@@ -1,56 +1,59 @@
 {
-	"BUILD_DIR" : "/home/synth/projects/openamp/linux/build/dsp-core/src/openamp-dsp_autogen",
-	"CMAKE_BINARY_DIR" : "/home/synth/projects/openamp/linux/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/synth/projects/openamp/linux/build/dsp-core/src",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/synth/projects/openamp/dsp-core/src",
-	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_LIST_FILES" : [ "/home/synth/projects/openamp/dsp-core/src/CMakeLists.txt" ],
-	"CMAKE_SOURCE_DIR" : "/home/synth/projects/openamp/linux",
+	"BUILD_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src/openamp-dsp_autogen",
+	"CMAKE_BINARY_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/synth/projects/05-active-dev/openamp/dsp-core/src",
+	"CMAKE_EXECUTABLE" : "/usr/sbin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/src/CMakeLists.txt"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/synth/projects/05-active-dev/openamp/linux",
 	"CROSS_CONFIG" : false,
-	"DEP_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/src/openamp-dsp_autogen/deps",
+	"DEP_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src/openamp-dsp_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "openamp-dsp_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.h",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.h",
 			"MU",
-			"5NULDMWSKA/moc_compressor.cpp",
+			"POZGWXQ57I/moc_compressor.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/delay/delay.h",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.h",
 			"MU",
-			"ZZ2LOFXULS/moc_delay.cpp",
+			"ZRHRXCWQN5/moc_delay.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.h",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.h",
 			"MU",
-			"IFHVXL65T2/moc_distortion.cpp",
+			"KJ2CR6SDM2/moc_distortion.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/eq/eq.h",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.h",
 			"MU",
-			"E7MKJNIIJP/moc_eq.cpp",
+			"I7CYQPP4WZ/moc_eq.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.h",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.h",
 			"MU",
-			"IHQ342STRA/moc_noise_gate.cpp",
+			"YKNPJHW4QY/moc_noise_gate.cpp",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.h",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.h",
 			"MU",
-			"2LGGE4V5L2/moc_reverb.cpp",
+			"LVJ3HITK5U/moc_reverb.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/synth/projects/openamp/linux/build/dsp-core/src/openamp-dsp_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/src/openamp-dsp_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src/openamp-dsp_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src/openamp-dsp_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : [ "USE_ALSA", "USE_JACK", "USE_PIPEWIRE" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -61,13 +64,13 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/synth/projects/openamp/dsp-core/include",
-		"/home/synth/projects/openamp/dsp-core/plugins/noise_gate",
-		"/home/synth/projects/openamp/dsp-core/plugins/compressor",
-		"/home/synth/projects/openamp/dsp-core/plugins/eq",
-		"/home/synth/projects/openamp/dsp-core/plugins/distortion",
-		"/home/synth/projects/openamp/dsp-core/plugins/delay",
-		"/home/synth/projects/openamp/dsp-core/plugins/reverb",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/include",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb",
 		"/usr/include/c++/16.1.1",
 		"/usr/include/c++/16.1.1/x86_64-pc-linux-gnu",
 		"/usr/include/c++/16.1.1/backward",
@@ -88,80 +91,88 @@
 	"MOC_PATH_PREFIX" : false,
 	"MOC_PREDEFS_CMD" : 
 	[
-		"/usr/bin/c++",
+		"/usr/sbin/c++",
 		"-std=gnu++17",
 		"-w",
 		"-dM",
 		"-E",
 		"/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/src/openamp-dsp_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src/openamp-dsp_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
-	"PARSE_CACHE_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/uic",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 11,
-	"SETTINGS_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp",
-			"MU",
-			null
-		],
-		[ "/home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp", "MU", null ],
-		[
-			"/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/src/amp_simulator.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/src/dsp_engine.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/src/effect_chain.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/src/amp_simulator.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/src/input_processor.cpp",
-			"MU",
-			null
-		],
-		[ "/home/synth/projects/openamp/dsp-core/src/ir_loader.cpp", "MU", null ],
-		[
-			"/home/synth/projects/openamp/dsp-core/src/plugin_loader.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/src/dsp_engine.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/src/preset_store.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/src/effect_chain.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/src/input_processor.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/src/ir_loader.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/src/plugin_loader.cpp",
+			"MU",
+			null
+		],
+		[
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/src/preset_store.cpp",
 			"MU",
 			null
 		]

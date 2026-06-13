@@ -1,8 +1,8 @@
 dsp-core/src/CMakeFiles/openamp-dsp.dir/plugin_loader.cpp.o: \
- /home/synth/projects/openamp/dsp-core/src/plugin_loader.cpp \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/plugin_loader.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/plugin_loader.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/plugin_loader.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/plugin_interface.h \
  /usr/include/c++/16.1.1/cstdint \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \

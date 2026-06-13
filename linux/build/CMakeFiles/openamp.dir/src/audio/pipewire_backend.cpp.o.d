@@ -1,8 +1,8 @@
 CMakeFiles/openamp.dir/src/audio/pipewire_backend.cpp.o: \
- /home/synth/projects/openamp/linux/src/audio/pipewire_backend.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/pipewire_backend.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/linux/src/audio/pipewire_backend.h \
- /home/synth/projects/openamp/linux/src/audio/audio_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/pipewire_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.h \
  /usr/include/c++/16.1.1/string \
  /usr/include/c++/16.1.1/bits/requires_hosted.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \

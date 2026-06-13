@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o" "gcc" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o.d"
-  "/home/synth/projects/openamp/dsp-core/plugins/eq/eq_plugin.cpp" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o" "gcc" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o.d"
-  "/home/synth/projects/openamp/linux/build/dsp-core/plugins/eq/eq_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o" "gcc" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq_plugin.cpp" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o" "gcc" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq/eq_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o.d"
   "" "dsp-core/plugins/eq/libeq_plugin.so" "gcc" "dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/link.d"
   )
 

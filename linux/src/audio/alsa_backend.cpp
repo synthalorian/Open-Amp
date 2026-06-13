@@ -402,13 +402,10 @@ void ALSABackend::updateMeters(const float* input, const float* output, uint32_t
     outputLevelLeft_.store(linearToDb(leftRms));
     outputLevelRight_.store(linearToDb(rightRms));
     
-    // Update peak hold with decay
-    auto now = std::chrono::steady_clock::now();
-    auto elapsed = std::chrono::duration<float>(now - lastPeakUpdate_).count();
-    
-    if (elapsed > 0.01f) {  // Update peaks every 10ms
-        lastPeakUpdate_ = now;
-        float peakDecay = elapsed * PEAK_DECAY_DB_PER_SEC;
+    peakUpdateCounter_ += numFrames;
+    if (peakUpdateCounter_ >= PEAK_UPDATE_INTERVAL_FRAMES) {
+        peakUpdateCounter_ = 0;
+        float peakDecay = (static_cast<float>(PEAK_UPDATE_INTERVAL_FRAMES) / config_.sampleRate) * PEAK_DECAY_DB_PER_SEC;
         
         // Input peaks
         float currentInputPeak = inputPeakLeft_.load();

@@ -144,6 +144,10 @@ private:
     LFO tremoloLFO_;
     LFO::Waveform tremoloWaveform_ = LFO::Waveform::Sine;
     
+    // Vibrato
+    DelayLine vibratoDelay_;
+    LFO vibratoLFO_;
+    
     void processChorus(float* data, uint32_t numFrames);
     void processFlanger(float* data, uint32_t numFrames);
     void processPhaser(float* data, uint32_t numFrames);

@@ -1,7 +1,7 @@
 dsp-core/src/CMakeFiles/openamp-dsp.dir/preset_store.cpp.o: \
- /home/synth/projects/openamp/dsp-core/src/preset_store.cpp \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/preset_store.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/preset_store.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/preset_store.h \
  /usr/include/c++/16.1.1/string \
  /usr/include/c++/16.1.1/bits/requires_hosted.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \

@@ -1,6 +1,6 @@
 compressor_plugin_autogen/timestamp: \
-	/home/synth/projects/openamp/dsp-core/plugins/compressor/CMakeLists.txt \
-	/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp \
-	/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.h \
-	/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor_plugin.cpp \
-	/usr/bin/cmake
+	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/CMakeLists.txt \
+	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp \
+	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.h \
+	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor_plugin.cpp \
+	/usr/sbin/cmake

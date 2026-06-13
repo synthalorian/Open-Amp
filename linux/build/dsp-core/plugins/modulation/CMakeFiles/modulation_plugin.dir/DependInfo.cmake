@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/synth/projects/openamp/dsp-core/plugins/modulation/modulation.cpp" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o" "gcc" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o.d"
-  "/home/synth/projects/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o" "gcc" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o.d"
-  "/home/synth/projects/openamp/linux/build/dsp-core/plugins/modulation/modulation_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation.cpp" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o" "gcc" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o" "gcc" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/modulation/modulation_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/modulation_plugin_autogen/mocs_compilation.cpp.o.d"
   "" "dsp-core/plugins/modulation/libmodulation_plugin.so" "gcc" "dsp-core/plugins/modulation/CMakeFiles/modulation_plugin.dir/link.d"
   )
 
