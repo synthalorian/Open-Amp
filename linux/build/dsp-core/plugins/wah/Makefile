@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/sbin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/sbin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/synth/projects/openamp/linux
+CMAKE_SOURCE_DIR = /home/synth/projects/05-active-dev/openamp/linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
+CMAKE_BINARY_DIR = /home/synth/projects/05-active-dev/openamp/linux/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/sbin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/sbin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -97,49 +97,49 @@ list_install_components/fast: list_install_components
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/usr/sbin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/usr/sbin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/openamp/linux/build/CMakeFiles /home/synth/projects/openamp/linux/build/dsp-core/plugins/wah//CMakeFiles/progress.marks
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/openamp/linux/build/CMakeFiles 0
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/wah//CMakeFiles/progress.marks
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/clean
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/preinstall
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/preinstall
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/rule:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/rule
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/rule
 .PHONY : dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/rule
 
 # Convenience name for target.
@@ -172,12 +172,12 @@ wah_plugin: dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/rule
 
 # fast build rule for target.
 wah_plugin/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build
 .PHONY : wah_plugin/fast
 
 # Convenience name for target.
 dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen_timestamp_deps.dir/rule:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen_timestamp_deps.dir/rule
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen_timestamp_deps.dir/rule
 .PHONY : dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen_timestamp_deps.dir/rule
 
 # Convenience name for target.
@@ -186,12 +186,12 @@ wah_plugin_autogen_timestamp_deps: dsp-core/plugins/wah/CMakeFiles/wah_plugin_au
 
 # fast build rule for target.
 wah_plugin_autogen_timestamp_deps/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen_timestamp_deps.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen_timestamp_deps.dir/build
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen_timestamp_deps.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen_timestamp_deps.dir/build
 .PHONY : wah_plugin_autogen_timestamp_deps/fast
 
 # Convenience name for target.
 dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen.dir/rule:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen.dir/rule
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen.dir/rule
 .PHONY : dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen.dir/rule
 
 # Convenience name for target.
@@ -200,7 +200,7 @@ wah_plugin_autogen: dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen.dir/rule
 
 # fast build rule for target.
 wah_plugin_autogen/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen.dir/build
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin_autogen.dir/build
 .PHONY : wah_plugin_autogen/fast
 
 wah.o: wah.cpp.o
@@ -208,7 +208,7 @@ wah.o: wah.cpp.o
 
 # target to build an object file
 wah.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah.cpp.o
 .PHONY : wah.cpp.o
 
 wah.i: wah.cpp.i
@@ -216,7 +216,7 @@ wah.i: wah.cpp.i
 
 # target to preprocess a source file
 wah.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah.cpp.i
 .PHONY : wah.cpp.i
 
 wah.s: wah.cpp.s
@@ -224,7 +224,7 @@ wah.s: wah.cpp.s
 
 # target to generate assembly for a file
 wah.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah.cpp.s
 .PHONY : wah.cpp.s
 
 wah_plugin.o: wah_plugin.cpp.o
@@ -232,7 +232,7 @@ wah_plugin.o: wah_plugin.cpp.o
 
 # target to build an object file
 wah_plugin.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin.cpp.o
 .PHONY : wah_plugin.cpp.o
 
 wah_plugin.i: wah_plugin.cpp.i
@@ -240,7 +240,7 @@ wah_plugin.i: wah_plugin.cpp.i
 
 # target to preprocess a source file
 wah_plugin.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin.cpp.i
 .PHONY : wah_plugin.cpp.i
 
 wah_plugin.s: wah_plugin.cpp.s
@@ -248,7 +248,7 @@ wah_plugin.s: wah_plugin.cpp.s
 
 # target to generate assembly for a file
 wah_plugin.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin.cpp.s
 .PHONY : wah_plugin.cpp.s
 
 wah_plugin_autogen/mocs_compilation.o: wah_plugin_autogen/mocs_compilation.cpp.o
@@ -256,7 +256,7 @@ wah_plugin_autogen/mocs_compilation.o: wah_plugin_autogen/mocs_compilation.cpp.o
 
 # target to build an object file
 wah_plugin_autogen/mocs_compilation.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin_autogen/mocs_compilation.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin_autogen/mocs_compilation.cpp.o
 .PHONY : wah_plugin_autogen/mocs_compilation.cpp.o
 
 wah_plugin_autogen/mocs_compilation.i: wah_plugin_autogen/mocs_compilation.cpp.i
@@ -264,7 +264,7 @@ wah_plugin_autogen/mocs_compilation.i: wah_plugin_autogen/mocs_compilation.cpp.i
 
 # target to preprocess a source file
 wah_plugin_autogen/mocs_compilation.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin_autogen/mocs_compilation.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin_autogen/mocs_compilation.cpp.i
 .PHONY : wah_plugin_autogen/mocs_compilation.cpp.i
 
 wah_plugin_autogen/mocs_compilation.s: wah_plugin_autogen/mocs_compilation.cpp.s
@@ -272,7 +272,7 @@ wah_plugin_autogen/mocs_compilation.s: wah_plugin_autogen/mocs_compilation.cpp.s
 
 # target to generate assembly for a file
 wah_plugin_autogen/mocs_compilation.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin_autogen/mocs_compilation.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/build.make dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah_plugin_autogen/mocs_compilation.cpp.s
 .PHONY : wah_plugin_autogen/mocs_compilation.cpp.s
 
 # Help Target
@@ -310,6 +310,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

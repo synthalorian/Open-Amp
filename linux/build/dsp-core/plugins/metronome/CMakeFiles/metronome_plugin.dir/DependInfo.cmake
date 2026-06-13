@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/synth/projects/openamp/dsp-core/plugins/metronome/metronome.cpp" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o" "gcc" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o.d"
-  "/home/synth/projects/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o" "gcc" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o.d"
-  "/home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome/metronome_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome.cpp" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o" "gcc" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o" "gcc" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome/metronome_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o.d"
   "" "dsp-core/plugins/metronome/libmetronome_plugin.so" "gcc" "dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/link.d"
   )
 

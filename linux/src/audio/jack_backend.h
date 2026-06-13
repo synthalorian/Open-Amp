@@ -64,6 +64,9 @@ private:
     std::atomic<float> outputLevelLeft_{ -60.0f };
     std::atomic<float> outputLevelRight_{ -60.0f };
     
+    // Output buffer (replaces static local in callback)
+    std::vector<float> outputBuffer_;
+    
     float linearToDb(float linear);
 };
 

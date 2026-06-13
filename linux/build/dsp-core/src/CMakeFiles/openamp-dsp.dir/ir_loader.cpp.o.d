@@ -1,8 +1,8 @@
 dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.o: \
- /home/synth/projects/openamp/dsp-core/src/ir_loader.cpp \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/ir_loader.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/ir_loader.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/ir_loader.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/plugin_interface.h \
  /usr/include/c++/16.1.1/cstdint \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -155,7 +155,7 @@ dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.o: \
  /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
  /usr/include/c++/16.1.1/bits/charconv.h \
  /usr/include/c++/16.1.1/bits/basic_string.tcc \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/dsp_utils.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/dsp_utils.h \
  /usr/include/c++/16.1.1/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -175,7 +175,7 @@ dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.o: \
  /usr/include/c++/16.1.1/tr1/poly_hermite.tcc \
  /usr/include/c++/16.1.1/tr1/poly_laguerre.tcc \
  /usr/include/c++/16.1.1/tr1/riemann_zeta.tcc \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/fft_convolver.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/fft_convolver.h \
  /usr/include/c++/16.1.1/algorithm \
  /usr/include/c++/16.1.1/bits/stl_algo.h \
  /usr/include/c++/16.1.1/bits/algorithmfwd.h \
@@ -185,7 +185,7 @@ dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.o: \
  /usr/include/c++/16.1.1/chrono /usr/include/c++/16.1.1/bits/chrono.h \
  /usr/include/c++/16.1.1/ratio /usr/include/c++/16.1.1/ctime \
  /usr/include/c++/16.1.1/bits/parse_numbers.h \
- /home/synth/projects/openamp/dsp-core/src/../include/openamp/dsp_constants.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/src/../include/openamp/dsp_constants.h \
  /usr/include/c++/16.1.1/fstream /usr/include/c++/16.1.1/istream \
  /usr/include/c++/16.1.1/ios /usr/include/c++/16.1.1/bits/ios_base.h \
  /usr/include/c++/16.1.1/bits/locale_classes.h \

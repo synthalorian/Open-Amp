@@ -1,8 +1,8 @@
 dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah.cpp.o: \
- /home/synth/projects/openamp/dsp-core/plugins/wah/wah.cpp \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/wah/wah.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/dsp-core/plugins/wah/wah.h \
- /home/synth/projects/openamp/dsp-core/plugins/wah/../../include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/wah/wah.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/wah/../../include/openamp/plugin_interface.h \
  /usr/include/c++/16.1.1/cstdint \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -155,7 +155,7 @@ dsp-core/plugins/wah/CMakeFiles/wah_plugin.dir/wah.cpp.o: \
  /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
  /usr/include/c++/16.1.1/bits/charconv.h \
  /usr/include/c++/16.1.1/bits/basic_string.tcc \
- /home/synth/projects/openamp/dsp-core/plugins/wah/../../include/openamp/dsp_utils.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/wah/../../include/openamp/dsp_utils.h \
  /usr/include/c++/16.1.1/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \

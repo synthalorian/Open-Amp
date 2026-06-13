@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/sbin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/sbin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/synth/projects/openamp/linux
+CMAKE_SOURCE_DIR = /home/synth/projects/05-active-dev/openamp/linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
+CMAKE_BINARY_DIR = /home/synth/projects/05-active-dev/openamp/linux/build
 
 # Include any dependencies generated for this target.
 include dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/depend.make
@@ -75,44 +75,44 @@ dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/codegen:
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o: dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/flags.make
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o: dsp-core/plugins/eq/eq_plugin_autogen/mocs_compilation.cpp
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o: dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o -MF CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o -c /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq/eq_plugin_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o -MF CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.o -c /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq/eq_plugin_autogen/mocs_compilation.cpp
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.i"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq/eq_plugin_autogen/mocs_compilation.cpp > CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq/eq_plugin_autogen/mocs_compilation.cpp > CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.i
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.s"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq/eq_plugin_autogen/mocs_compilation.cpp -o CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq/eq_plugin_autogen/mocs_compilation.cpp -o CMakeFiles/eq_plugin.dir/eq_plugin_autogen/mocs_compilation.cpp.s
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o: dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/flags.make
-dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o: /home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp
+dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o: /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o: dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o -MF CMakeFiles/eq_plugin.dir/eq.cpp.o.d -o CMakeFiles/eq_plugin.dir/eq.cpp.o -c /home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.o -MF CMakeFiles/eq_plugin.dir/eq.cpp.o.d -o CMakeFiles/eq_plugin.dir/eq.cpp.o -c /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/eq_plugin.dir/eq.cpp.i"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp > CMakeFiles/eq_plugin.dir/eq.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp > CMakeFiles/eq_plugin.dir/eq.cpp.i
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/eq_plugin.dir/eq.cpp.s"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp -o CMakeFiles/eq_plugin.dir/eq.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp -o CMakeFiles/eq_plugin.dir/eq.cpp.s
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o: dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/flags.make
-dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o: /home/synth/projects/openamp/dsp-core/plugins/eq/eq_plugin.cpp
+dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o: /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq_plugin.cpp
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o: dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o -MF CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o.d -o CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o -c /home/synth/projects/openamp/dsp-core/plugins/eq/eq_plugin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o -MF CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o.d -o CMakeFiles/eq_plugin.dir/eq_plugin.cpp.o -c /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq_plugin.cpp
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/eq_plugin.dir/eq_plugin.cpp.i"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/openamp/dsp-core/plugins/eq/eq_plugin.cpp > CMakeFiles/eq_plugin.dir/eq_plugin.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq_plugin.cpp > CMakeFiles/eq_plugin.dir/eq_plugin.cpp.i
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/eq_plugin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/eq_plugin.dir/eq_plugin.cpp.s"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/openamp/dsp-core/plugins/eq/eq_plugin.cpp -o CMakeFiles/eq_plugin.dir/eq_plugin.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq_plugin.cpp -o CMakeFiles/eq_plugin.dir/eq_plugin.cpp.s
 
 # Object files for target eq_plugin
 eq_plugin_OBJECTS = \
@@ -130,18 +130,18 @@ dsp-core/plugins/eq/libeq_plugin.so: dsp-core/plugins/eq/CMakeFiles/eq_plugin.di
 dsp-core/plugins/eq/libeq_plugin.so: dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/compiler_depend.ts
 dsp-core/plugins/eq/libeq_plugin.so: dsp-core/src/libopenamp-dsp.a
 dsp-core/plugins/eq/libeq_plugin.so: dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libeq_plugin.so"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/eq_plugin.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libeq_plugin.so"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/eq_plugin.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/build: dsp-core/plugins/eq/libeq_plugin.so
 .PHONY : dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/build
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/clean:
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq && $(CMAKE_COMMAND) -P CMakeFiles/eq_plugin.dir/cmake_clean.cmake
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq && $(CMAKE_COMMAND) -P CMakeFiles/eq_plugin.dir/cmake_clean.cmake
 .PHONY : dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/clean
 
 dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/depend:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/openamp/linux /home/synth/projects/openamp/dsp-core/plugins/eq /home/synth/projects/openamp/linux/build /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq /home/synth/projects/openamp/linux/build/dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/DependInfo.cmake "--color=$(COLOR)" eq_plugin
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/05-active-dev/openamp/linux /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq /home/synth/projects/05-active-dev/openamp/linux/build /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/DependInfo.cmake "--color=$(COLOR)" eq_plugin
 .PHONY : dsp-core/plugins/eq/CMakeFiles/eq_plugin.dir/depend
 

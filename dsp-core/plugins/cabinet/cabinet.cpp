@@ -330,10 +330,11 @@ bool CabinetSimulator::loadIR(const std::string& path) {
                     samples[i] = s / 8388608.0f;
                 }
             } else if (bitsPerSample == 32) {
-                std::vector<int32_t> raw(numSamples);
+                // 32-bit WAV: assume IEEE float (most common), not integer PCM
+                std::vector<float> raw(numSamples);
                 file.read(reinterpret_cast<char*>(raw.data()), chunkSize);
                 for (size_t i = 0; i < numSamples; ++i)
-                    samples[i] = raw[i] / 2147483648.0f;
+                    samples[i] = raw[i];
             } else {
                 return false;
             }

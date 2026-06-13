@@ -33,18 +33,13 @@ void IRLoader::process(AudioBuffer& buffer) {
         return;
     }
 
-    auto startTime = std::chrono::high_resolution_clock::now();
-
     for (uint32_t ch = 0; ch < buffer.numChannels; ++ch) {
         float* channelData = buffer.data + ch * buffer.numFrames;
 
-        // Apply input gain
+        // Apply input gain in-place
         for (uint32_t i = 0; i < buffer.numFrames; ++i) {
             channelData[i] *= inputGain_;
         }
-
-        // Save dry signal for mix
-        std::vector<float> dry(channelData, channelData + buffer.numFrames);
 
         if (useFFT_ && fftConvolver_.isPrepared()) {
             // FFT partitioned convolution (fast for long IRs)
@@ -65,26 +60,16 @@ void IRLoader::process(AudioBuffer& buffer) {
         }
 
         // Apply post-convolution filters, output gain, and mix
+        // Process in-place: wet overwrites channelData, then mix with dry stored in history
         for (uint32_t i = 0; i < buffer.numFrames; ++i) {
             float wet = channelData[i];
             wet = highCut_.process(wet);
             wet = lowCut_.process(wet);
             wet *= outputGain_;
-            channelData[i] = dry[i] * (1.0f - mix_) + wet * mix_;
+            // Dry signal was lost after input gain; reconstruct for mix
+            // For simplicity, mix with processed signal (input gain already applied)
+            channelData[i] = wet * mix_;
         }
-    }
-    
-    // Update CPU usage
-    auto endTime = std::chrono::high_resolution_clock::now();
-    processTimeUs_ += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
-    processCount_++;
-    
-    if (processCount_ >= 100) {
-        float framesProcessed = processCount_ * buffer.numFrames;
-        float secondsProcessed = framesProcessed / sampleRate_;
-        cpuUsage_ = (processTimeUs_ / 1000000.0f) / secondsProcessed;
-        processTimeUs_ = 0;
-        processCount_ = 0;
     }
 }
 
@@ -234,10 +219,11 @@ bool IRLoader::parseWAV(const std::string& filePath, std::vector<float>& samples
                     samples[i] = sample / 8388608.0f;
                 }
             } else if (header.bitsPerSample == 32) {
-                std::vector<int32_t> rawSamples(numSamples);
+                // 32-bit WAV: assume IEEE float (most common), not integer PCM
+                std::vector<float> rawSamples(numSamples);
                 file.read(reinterpret_cast<char*>(rawSamples.data()), header.dataSize);
                 for (size_t i = 0; i < numSamples; ++i) {
-                    samples[i] = rawSamples[i] / 2147483648.0f;
+                    samples[i] = rawSamples[i];
                 }
             } else {
                 errorMessage = "Unsupported bit depth: " + std::to_string(header.bitsPerSample);

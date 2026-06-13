@@ -233,9 +233,9 @@ public:
     void resetClipIndicator();
     std::string getDebugStatus() const;
     void setInputChannelMode(int mode); // 0=L/Mono, 1=R, 2=Sum, 3=Auto strongest
-    int getInputChannelMode() const { return inputChannelMode_; }
+    int getInputChannelMode() const { return inputChannelMode_.load(); }
     void setTestToneEnabled(bool enabled);
-    bool getTestToneEnabled() const { return testToneEnabled_; }
+    bool getTestToneEnabled() const { return testToneEnabled_.load(); }
     float getRawInputLevel() const { return rawInputLevel_.load(); }
 
     // Oboe callbacks
@@ -377,8 +377,8 @@ private:
     std::atomic<int32_t> lastFramesRead_{0};
     std::atomic<float> rawInputLevel_{0.0f};
 
-    int inputChannelMode_ = 3; // 0=L/Mono, 1=R, 2=Sum, 3=Auto strongest
-    bool testToneEnabled_ = false;
+    std::atomic<int> inputChannelMode_{3}; // 0=L/Mono, 1=R, 2=Sum, 3=Auto strongest
+    std::atomic<bool> testToneEnabled_{false};
     float testTonePhase_ = 0.0f;
 
     // State

@@ -211,26 +211,6 @@ void Reverb::process(AudioBuffer& buffer) {
     }
 }
 
-void Reverb::processSpring(float* data, uint32_t numFrames) {
-    // Simplified spring reverb simulation
-    // Uses shorter, more "bouncy" delay times
-    for (uint32_t i = 0; i < numFrames; ++i) {
-        // Add spring-like characteristics
-        float input = data[i];
-        float output = input * 0.8f;
-        
-        // Add some "boing"
-        static float lastSample = 0.0f;
-        static float accumulator = 0.0f;
-        
-        accumulator = accumulator * 0.95f + (input - lastSample) * 0.3f;
-        output += accumulator * 0.2f;
-        
-        lastSample = input;
-        data[i] = data[i] * (1.0f - mix_) + output * mix_;
-    }
-}
-
 void Reverb::setRoomSize(float amount) {
     roomSize_ = std::clamp(amount, 0.0f, 1.0f);
     updateParameters();

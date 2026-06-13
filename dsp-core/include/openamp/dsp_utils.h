@@ -11,6 +11,7 @@ public:
     }
     
     static inline float gainToDb(float gain) {
+        if (gain <= 0.0f) return -144.0f; // ~-144 dB (minimum float32)
         return 20.0f * std::log10(gain);
     }
     

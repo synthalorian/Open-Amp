@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/sbin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/sbin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/synth/projects/openamp/linux
+CMAKE_SOURCE_DIR = /home/synth/projects/05-active-dev/openamp/linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
+CMAKE_BINARY_DIR = /home/synth/projects/05-active-dev/openamp/linux/build
 
 # Include any dependencies generated for this target.
 include dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/depend.make
@@ -75,44 +75,44 @@ dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/codegen:
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o: dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/flags.make
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o: dsp-core/plugins/metronome/metronome_plugin_autogen/mocs_compilation.cpp
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o: dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o -MF CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o -c /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome/metronome_plugin_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o -MF CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.o -c /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome/metronome_plugin_autogen/mocs_compilation.cpp
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.i"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome/metronome_plugin_autogen/mocs_compilation.cpp > CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome/metronome_plugin_autogen/mocs_compilation.cpp > CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.i
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.s"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome/metronome_plugin_autogen/mocs_compilation.cpp -o CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome/metronome_plugin_autogen/mocs_compilation.cpp -o CMakeFiles/metronome_plugin.dir/metronome_plugin_autogen/mocs_compilation.cpp.s
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o: dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/flags.make
-dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o: /home/synth/projects/openamp/dsp-core/plugins/metronome/metronome.cpp
+dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o: /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome.cpp
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o: dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o -MF CMakeFiles/metronome_plugin.dir/metronome.cpp.o.d -o CMakeFiles/metronome_plugin.dir/metronome.cpp.o -c /home/synth/projects/openamp/dsp-core/plugins/metronome/metronome.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.o -MF CMakeFiles/metronome_plugin.dir/metronome.cpp.o.d -o CMakeFiles/metronome_plugin.dir/metronome.cpp.o -c /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome.cpp
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/metronome_plugin.dir/metronome.cpp.i"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/openamp/dsp-core/plugins/metronome/metronome.cpp > CMakeFiles/metronome_plugin.dir/metronome.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome.cpp > CMakeFiles/metronome_plugin.dir/metronome.cpp.i
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/metronome_plugin.dir/metronome.cpp.s"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/openamp/dsp-core/plugins/metronome/metronome.cpp -o CMakeFiles/metronome_plugin.dir/metronome.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome.cpp -o CMakeFiles/metronome_plugin.dir/metronome.cpp.s
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o: dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/flags.make
-dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o: /home/synth/projects/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp
+dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o: /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o: dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o -MF CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o.d -o CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o -c /home/synth/projects/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o -MF CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o.d -o CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.o -c /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.i"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp > CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp > CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.i
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.s"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp -o CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && /usr/sbin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome/metronome_plugin.cpp -o CMakeFiles/metronome_plugin.dir/metronome_plugin.cpp.s
 
 # Object files for target metronome_plugin
 metronome_plugin_OBJECTS = \
@@ -130,18 +130,18 @@ dsp-core/plugins/metronome/libmetronome_plugin.so: dsp-core/plugins/metronome/CM
 dsp-core/plugins/metronome/libmetronome_plugin.so: dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/compiler_depend.ts
 dsp-core/plugins/metronome/libmetronome_plugin.so: dsp-core/src/libopenamp-dsp.a
 dsp-core/plugins/metronome/libmetronome_plugin.so: dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmetronome_plugin.so"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/metronome_plugin.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmetronome_plugin.so"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/metronome_plugin.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/build: dsp-core/plugins/metronome/libmetronome_plugin.so
 .PHONY : dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/build
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/clean:
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome && $(CMAKE_COMMAND) -P CMakeFiles/metronome_plugin.dir/cmake_clean.cmake
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome && $(CMAKE_COMMAND) -P CMakeFiles/metronome_plugin.dir/cmake_clean.cmake
 .PHONY : dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/clean
 
 dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/depend:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/openamp/linux /home/synth/projects/openamp/dsp-core/plugins/metronome /home/synth/projects/openamp/linux/build /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome /home/synth/projects/openamp/linux/build/dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/DependInfo.cmake "--color=$(COLOR)" metronome_plugin
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/05-active-dev/openamp/linux /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/metronome /home/synth/projects/05-active-dev/openamp/linux/build /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/DependInfo.cmake "--color=$(COLOR)" metronome_plugin
 .PHONY : dsp-core/plugins/metronome/CMakeFiles/metronome_plugin.dir/depend
 

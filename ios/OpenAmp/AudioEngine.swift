@@ -1,11 +1,26 @@
 import Foundation
 import AVFoundation
+import os
 
 /// Swift wrapper for the C++ DSP core
 class AudioEngine {
     private var audioEngine: AVAudioEngine?
     private var inputNode: AVAudioInputNode?
     private var outputNode: AVAudioOutputNode?
+    
+    // Thread-safe parameter lock
+    private let parameterLock = OSAllocatedUnfairLock()
+    
+    // Cached gain values (updated on parameter change, not per-sample)
+    private var inputGainLinear: Float = 1.0
+    private var outputGainLinear: Float = 1.0
+    private var ampGainLinear: Float = 1.0
+    private var ampMasterLinear: Float = 1.0
+    private var distortionGainLinear: Float = 1.0
+    private var compressorThresholdLinear: Float = 0.01
+    private var noiseGateThresholdLinear: Float = 0.01
+    private var noiseGateMinGainLinear: Float = 0.0001
+    private var makeupGainLinear: Float = 1.0
     
     // Effect states
     var ampEnabled: Bool = true
@@ -23,17 +38,25 @@ class AudioEngine {
     var harmonizerEnabled: Bool = false
     
     // Effect parameters
-    var inputGainDb: Float = 0.0
-    var outputGainDb: Float = 0.0
+    var inputGainDb: Float = 0.0 {
+        didSet { parameterLock.withLock { inputGainLinear = pow(10.0, inputGainDb / 20.0) } }
+    }
+    var outputGainDb: Float = 0.0 {
+        didSet { parameterLock.withLock { outputGainLinear = pow(10.0, outputGainDb / 20.0) } }
+    }
     
     // Amp parameters
-    var ampGainDb: Float = 0.0
+    var ampGainDb: Float = 0.0 {
+        didSet { parameterLock.withLock { ampGainLinear = pow(10.0, ampGainDb / 20.0) } }
+    }
     var ampDrive: Float = 0.5
     var ampBassDb: Float = 0.0
     var ampMidDb: Float = 0.0
     var ampTrebleDb: Float = 0.0
     var ampPresenceDb: Float = 0.0
-    var ampMasterDb: Float = 0.0
+    var ampMasterDb: Float = 0.0 {
+        didSet { parameterLock.withLock { ampMasterLinear = pow(10.0, ampMasterDb / 20.0) } }
+    }
     
     // Distortion parameters
     var distortionType: Int = 0  // 0=Overdrive, 1=Fuzz, 2=Tube, 3=HardClip
@@ -53,18 +76,26 @@ class AudioEngine {
     var reverbMix: Float = 0.25
     
     // Compressor parameters
-    var compressorThreshold: Float = -20.0
+    var compressorThreshold: Float = -20.0 {
+        didSet { parameterLock.withLock { compressorThresholdLinear = pow(10.0, compressorThreshold / 20.0) } }
+    }
     var compressorRatio: Float = 4.0
     var compressorAttack: Float = 10.0
     var compressorRelease: Float = 100.0
-    var compressorMakeup: Float = 0.0
+    var compressorMakeup: Float = 0.0 {
+        didSet { parameterLock.withLock { makeupGainLinear = pow(10.0, compressorMakeup / 20.0) } }
+    }
     
     // Noise Gate parameters
-    var noiseGateThreshold: Float = -40.0
+    var noiseGateThreshold: Float = -40.0 {
+        didSet { parameterLock.withLock { noiseGateThresholdLinear = pow(10.0, noiseGateThreshold / 20.0) } }
+    }
     var noiseGateAttack: Float = 1.0
     var noiseGateHold: Float = 50.0
     var noiseGateRelease: Float = 100.0
-    var noiseGateRange: Float = -40.0
+    var noiseGateRange: Float = -40.0 {
+        didSet { parameterLock.withLock { noiseGateMinGainLinear = pow(10.0, noiseGateRange / 20.0) } }
+    }
     
     // EQ parameters (10-band)
     var eqBands: [Float] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -113,7 +144,8 @@ class AudioEngine {
         outputNode = audioEngine?.outputNode
         
         guard let inputNode = inputNode,
-              let outputNode = outputNode else {
+              let outputNode = outputNode,
+              let audioEngine = audioEngine else {
             return
         }
         
@@ -126,30 +158,35 @@ class AudioEngine {
         }
         
         // Connect input to output through main mixer
-        let mainMixer = audioEngine?.mainMixerNode
-        inputNode.connect(to: mainMixer!, format: inputFormat)
+        let mainMixer = audioEngine.mainMixerNode
+        audioEngine.connect(inputNode, to: mainMixer, format: inputFormat)
+        audioEngine.connect(mainMixer, to: outputNode, format: outputFormat)
     }
     
     private func processAudio(buffer: AVAudioPCMBuffer) {
         guard let channelData = buffer.floatChannelData?[0] else { return }
         let frameCount = Int(buffer.frameLength)
         
+        // Read cached linear values under lock
+        let (inputGain, outputGain, ampGain, ampMaster, compThreshold, ngThreshold, ngMinGain, makeupGain) = parameterLock.withLock {
+            (inputGainLinear, outputGainLinear, ampGainLinear, ampMasterLinear, compressorThresholdLinear, noiseGateThresholdLinear, noiseGateMinGainLinear, makeupGainLinear)
+        }
+        
         // Process audio through DSP chain
         for i in 0..<frameCount {
             var sample = channelData[i]
             
             // Input gain
-            let inputGain = pow(10.0, inputGainDb / 20.0)
             sample *= inputGain
             
             // Noise Gate
             if noiseGateEnabled {
-                sample = applyNoiseGate(sample)
+                sample = applyNoiseGate(sample, threshold: ngThreshold, minGain: ngMinGain)
             }
             
             // Compressor
             if compressorEnabled {
-                sample = applyCompressor(sample)
+                sample = applyCompressor(sample, threshold: compThreshold, makeup: makeupGain)
             }
             
             // EQ
@@ -169,7 +206,7 @@ class AudioEngine {
             
             // Amp simulator
             if ampEnabled {
-                sample = applyAmp(sample)
+                sample = applyAmp(sample, gain: ampGain, master: ampMaster)
             }
             
             // Cabinet simulation
@@ -204,7 +241,6 @@ class AudioEngine {
             }
             
             // Output gain
-            let outputGain = pow(10.0, outputGainDb / 20.0)
             sample *= outputGain
             
             // Soft clip output
@@ -292,11 +328,10 @@ class AudioEngine {
     
     private var ampState: [Float] = [0, 0, 0, 0]
     
-    private func applyAmp(_ sample: Float) -> Float {
+    private func applyAmp(_ sample: Float, gain: Float, master: Float) -> Float {
         var output = sample
         
         // Preamp gain
-        let gain = pow(10.0, ampGainDb / 20.0)
         output *= gain
         
         // Drive (soft clipping)
@@ -324,7 +359,6 @@ class AudioEngine {
         output = output * presenceCoeff
         
         // Master volume
-        let master = pow(10.0, ampMasterDb / 20.0)
         output *= master
         
         return output
@@ -333,12 +367,10 @@ class AudioEngine {
     private var noiseGateEnvelope: Float = 0.0
     private var noiseGateHoldCounter: Int = 0
     
-    private func applyNoiseGate(_ sample: Float) -> Float {
-        let threshold = pow(10.0, noiseGateThreshold / 20.0)
+    private func applyNoiseGate(_ sample: Float, threshold: Float, minGain: Float) -> Float {
         let attackCoeff = exp(-1.0 / (noiseGateAttack * 48.0))
         let releaseCoeff = exp(-1.0 / (noiseGateRelease * 48.0))
         let holdSamples = Int(noiseGateHold * 48.0)
-        let minGain = pow(10.0, noiseGateRange / 20.0)
         
         let inputLevel = abs(sample)
         
@@ -364,8 +396,7 @@ class AudioEngine {
     
     private var compressorEnvelope: Float = 0.0
     
-    private func applyCompressor(_ sample: Float) -> Float {
-        let threshold = compressorThreshold
+    private func applyCompressor(_ sample: Float, threshold: Float, makeup: Float) -> Float {
         let inputDb = 20.0 * log10(abs(sample) + 0.00001)
         
         // Simple envelope
@@ -373,7 +404,7 @@ class AudioEngine {
         
         // Calculate gain reduction
         var gainReduction: Float = 0.0
-        if compressorEnvelope > pow(10.0, threshold / 20.0) {
+        if compressorEnvelope > threshold {
             let overDb = 20.0 * log10(compressorEnvelope) - threshold
             gainReduction = overDb * (1.0 - 1.0 / compressorRatio)
         }
@@ -381,10 +412,9 @@ class AudioEngine {
         gainReduction = -gainReduction
         self.gainReduction = gainReduction
         
-        let makeupGain = pow(10.0, compressorMakeup / 20.0)
         let reductionGain = pow(10.0, -gainReduction / 20.0)
         
-        return sample * reductionGain * makeupGain
+        return sample * reductionGain * makeup
     }
     
     private var eqState: [[Float]] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0],
@@ -557,6 +587,8 @@ class AudioEngine {
         return sample * (1.0 - cabinetMix) + output * cabinetMix
     }
     
+    private var acousticSimBuffer: [Float] = Array(repeating: 0, count: 4096)
+    private var acousticSimWritePos: Int = 0
     private var acousticBodyState: [Float] = [0, 0, 0, 0]
     
     private func applyAcousticSim(_ sample: Float) -> Float {
@@ -566,15 +598,20 @@ class AudioEngine {
         let bodyDelays: [Float] = [2.0, 3.0, 5.0, 7.0]  // ms
         let bodyGains: [Float] = [0.2, 0.15, 0.1, 0.05]
         
+        // Store in own circular buffer (not shared with cabinet)
+        acousticSimBuffer[acousticSimWritePos] = sample
+        
         for i in 0..<4 {
             let delaySamples = Int(bodyDelays[i] * 48.0 * (1.0 + acousticBodySize))
-            let delayIdx = (cabinetWritePos - delaySamples + cabinetBuffer.count) % cabinetBuffer.count
-            let delayed = cabinetBuffer[delayIdx]
+            let delayIdx = (acousticSimWritePos - delaySamples + acousticSimBuffer.count) % acousticSimBuffer.count
+            let delayed = acousticSimBuffer[delayIdx]
             
             // Simple lowpass
             acousticBodyState[i] = acousticBodyState[i] * 0.9 + delayed * 0.1
             output += acousticBodyState[i] * bodyGains[i] * acousticAmount
         }
+        
+        acousticSimWritePos = (acousticSimWritePos + 1) % acousticSimBuffer.count
         
         // Brightness enhancement
         let bright = output - acousticBodyState[0]
@@ -702,7 +739,17 @@ class AudioEngine {
             wahEnabled: wahEnabled,
             wahPosition: wahPosition,
             wahMode: wahMode,
-            wahQ: wahQ
+            wahQ: wahQ,
+            cabinetEnabled: cabinetEnabled,
+            cabinetType: cabinetType,
+            cabinetMix: cabinetMix,
+            acousticSimEnabled: acousticSimEnabled,
+            acousticAmount: acousticAmount,
+            acousticBodySize: acousticBodySize,
+            acousticBrightness: acousticBrightness,
+            harmonizerEnabled: harmonizerEnabled,
+            harmonizerMode: harmonizerMode,
+            harmonizerMix: harmonizerMix
         )
         
         return PresetManager.shared.savePreset(preset)
@@ -761,12 +808,22 @@ class AudioEngine {
         wahPosition = preset.wahPosition
         wahMode = preset.wahMode
         wahQ = preset.wahQ
+        cabinetEnabled = preset.cabinetEnabled
+        cabinetType = preset.cabinetType
+        cabinetMix = preset.cabinetMix
+        acousticSimEnabled = preset.acousticSimEnabled
+        acousticAmount = preset.acousticAmount
+        acousticBodySize = preset.acousticBodySize
+        acousticBrightness = preset.acousticBrightness
+        harmonizerEnabled = preset.harmonizerEnabled
+        harmonizerMode = preset.harmonizerMode
+        harmonizerMix = preset.harmonizerMix
         
         return true
     }
 }
 
-// MARK: - Preset Model
+    // MARK: - Preset Model
 
 struct Preset: Codable {
     let name: String
@@ -818,6 +875,16 @@ struct Preset: Codable {
     let wahPosition: Float
     let wahMode: Int
     let wahQ: Float
+    let cabinetEnabled: Bool
+    let cabinetType: Int
+    let cabinetMix: Float
+    let acousticSimEnabled: Bool
+    let acousticAmount: Float
+    let acousticBodySize: Float
+    let acousticBrightness: Float
+    let harmonizerEnabled: Bool
+    let harmonizerMode: Int
+    let harmonizerMix: Float
     
     static func defaultPreset() -> Preset {
         Preset(
@@ -840,7 +907,11 @@ struct Preset: Codable {
             eqEnabled: false, eqBands: [0,0,0,0,0,0,0,0,0,0],
             modulationEnabled: false, modulationType: 0,
             modulationRate: 1.5, modulationDepth: 0.5, modulationMix: 0.5,
-            wahEnabled: false, wahPosition: 0.5, wahMode: 0, wahQ: 5.0
+            wahEnabled: false, wahPosition: 0.5, wahMode: 0, wahQ: 5.0,
+            cabinetEnabled: true, cabinetType: 0, cabinetMix: 1.0,
+            acousticSimEnabled: false, acousticAmount: 0.5,
+            acousticBodySize: 0.5, acousticBrightness: 0.5,
+            harmonizerEnabled: false, harmonizerMode: 0, harmonizerMix: 0.5
         )
     }
 }

@@ -90,7 +90,6 @@ private:
     
     void updateParameters();
     void ensureInitialized();
-    void processSpring(float* data, uint32_t numFrames);
 };
 
 } // namespace openamp

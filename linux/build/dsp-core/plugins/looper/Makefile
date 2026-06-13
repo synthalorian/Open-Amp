@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/sbin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/sbin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/synth/projects/openamp/linux
+CMAKE_SOURCE_DIR = /home/synth/projects/05-active-dev/openamp/linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
+CMAKE_BINARY_DIR = /home/synth/projects/05-active-dev/openamp/linux/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/sbin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/sbin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -97,49 +97,49 @@ list_install_components/fast: list_install_components
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/usr/sbin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/usr/sbin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/openamp/linux/build/CMakeFiles /home/synth/projects/openamp/linux/build/dsp-core/plugins/looper//CMakeFiles/progress.marks
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/openamp/linux/build/CMakeFiles 0
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/looper//CMakeFiles/progress.marks
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/clean
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/preinstall
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/preinstall
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/rule:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/rule
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/rule
 .PHONY : dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/rule
 
 # Convenience name for target.
@@ -172,12 +172,12 @@ looper_plugin: dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/rule
 
 # fast build rule for target.
 looper_plugin/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build
 .PHONY : looper_plugin/fast
 
 # Convenience name for target.
 dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen_timestamp_deps.dir/rule:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen_timestamp_deps.dir/rule
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen_timestamp_deps.dir/rule
 .PHONY : dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen_timestamp_deps.dir/rule
 
 # Convenience name for target.
@@ -186,12 +186,12 @@ looper_plugin_autogen_timestamp_deps: dsp-core/plugins/looper/CMakeFiles/looper_
 
 # fast build rule for target.
 looper_plugin_autogen_timestamp_deps/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen_timestamp_deps.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen_timestamp_deps.dir/build
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen_timestamp_deps.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen_timestamp_deps.dir/build
 .PHONY : looper_plugin_autogen_timestamp_deps/fast
 
 # Convenience name for target.
 dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen.dir/rule:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen.dir/rule
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen.dir/rule
 .PHONY : dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen.dir/rule
 
 # Convenience name for target.
@@ -200,7 +200,7 @@ looper_plugin_autogen: dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen.
 
 # fast build rule for target.
 looper_plugin_autogen/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen.dir/build
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin_autogen.dir/build
 .PHONY : looper_plugin_autogen/fast
 
 looper.o: looper.cpp.o
@@ -208,7 +208,7 @@ looper.o: looper.cpp.o
 
 # target to build an object file
 looper.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper.cpp.o
 .PHONY : looper.cpp.o
 
 looper.i: looper.cpp.i
@@ -216,7 +216,7 @@ looper.i: looper.cpp.i
 
 # target to preprocess a source file
 looper.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper.cpp.i
 .PHONY : looper.cpp.i
 
 looper.s: looper.cpp.s
@@ -224,7 +224,7 @@ looper.s: looper.cpp.s
 
 # target to generate assembly for a file
 looper.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper.cpp.s
 .PHONY : looper.cpp.s
 
 looper_plugin.o: looper_plugin.cpp.o
@@ -232,7 +232,7 @@ looper_plugin.o: looper_plugin.cpp.o
 
 # target to build an object file
 looper_plugin.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin.cpp.o
 .PHONY : looper_plugin.cpp.o
 
 looper_plugin.i: looper_plugin.cpp.i
@@ -240,7 +240,7 @@ looper_plugin.i: looper_plugin.cpp.i
 
 # target to preprocess a source file
 looper_plugin.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin.cpp.i
 .PHONY : looper_plugin.cpp.i
 
 looper_plugin.s: looper_plugin.cpp.s
@@ -248,7 +248,7 @@ looper_plugin.s: looper_plugin.cpp.s
 
 # target to generate assembly for a file
 looper_plugin.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin.cpp.s
 .PHONY : looper_plugin.cpp.s
 
 looper_plugin_autogen/mocs_compilation.o: looper_plugin_autogen/mocs_compilation.cpp.o
@@ -256,7 +256,7 @@ looper_plugin_autogen/mocs_compilation.o: looper_plugin_autogen/mocs_compilation
 
 # target to build an object file
 looper_plugin_autogen/mocs_compilation.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin_autogen/mocs_compilation.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin_autogen/mocs_compilation.cpp.o
 .PHONY : looper_plugin_autogen/mocs_compilation.cpp.o
 
 looper_plugin_autogen/mocs_compilation.i: looper_plugin_autogen/mocs_compilation.cpp.i
@@ -264,7 +264,7 @@ looper_plugin_autogen/mocs_compilation.i: looper_plugin_autogen/mocs_compilation
 
 # target to preprocess a source file
 looper_plugin_autogen/mocs_compilation.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin_autogen/mocs_compilation.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin_autogen/mocs_compilation.cpp.i
 .PHONY : looper_plugin_autogen/mocs_compilation.cpp.i
 
 looper_plugin_autogen/mocs_compilation.s: looper_plugin_autogen/mocs_compilation.cpp.s
@@ -272,7 +272,7 @@ looper_plugin_autogen/mocs_compilation.s: looper_plugin_autogen/mocs_compilation
 
 # target to generate assembly for a file
 looper_plugin_autogen/mocs_compilation.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin_autogen/mocs_compilation.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/build.make dsp-core/plugins/looper/CMakeFiles/looper_plugin.dir/looper_plugin_autogen/mocs_compilation.cpp.s
 .PHONY : looper_plugin_autogen/mocs_compilation.cpp.s
 
 # Help Target
@@ -310,6 +310,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

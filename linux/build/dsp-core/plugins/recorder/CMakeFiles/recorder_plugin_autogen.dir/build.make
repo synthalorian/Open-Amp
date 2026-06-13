@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/sbin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/sbin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/synth/projects/openamp/linux
+CMAKE_SOURCE_DIR = /home/synth/projects/05-active-dev/openamp/linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
+CMAKE_BINARY_DIR = /home/synth/projects/05-active-dev/openamp/linux/build
 
 # Utility rule file for recorder_plugin_autogen.
 
@@ -71,9 +71,9 @@ dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen: dsp-core/plugins/r
 dsp-core/plugins/recorder/recorder_plugin_autogen/timestamp: /usr/lib/qt6/moc
 dsp-core/plugins/recorder/recorder_plugin_autogen/timestamp: /usr/lib/qt6/uic
 dsp-core/plugins/recorder/recorder_plugin_autogen/timestamp: dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/synth/projects/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target recorder_plugin"
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/recorder && /usr/bin/cmake -E cmake_autogen /home/synth/projects/openamp/linux/build/dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/AutogenInfo.json Release
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/recorder && /usr/bin/cmake -E touch /home/synth/projects/openamp/linux/build/dsp-core/plugins/recorder/recorder_plugin_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target recorder_plugin"
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/recorder && /usr/sbin/cmake -E cmake_autogen /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/AutogenInfo.json Release
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/recorder && /usr/sbin/cmake -E touch /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/recorder/recorder_plugin_autogen/timestamp
 
 dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/codegen:
 .PHONY : dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/codegen
@@ -88,10 +88,10 @@ dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/build: recorder
 .PHONY : dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/build
 
 dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/clean:
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/recorder && $(CMAKE_COMMAND) -P CMakeFiles/recorder_plugin_autogen.dir/cmake_clean.cmake
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/recorder && $(CMAKE_COMMAND) -P CMakeFiles/recorder_plugin_autogen.dir/cmake_clean.cmake
 .PHONY : dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/clean
 
 dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/depend:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/openamp/linux /home/synth/projects/openamp/dsp-core/plugins/recorder /home/synth/projects/openamp/linux/build /home/synth/projects/openamp/linux/build/dsp-core/plugins/recorder /home/synth/projects/openamp/linux/build/dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/DependInfo.cmake "--color=$(COLOR)" recorder_plugin_autogen
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/05-active-dev/openamp/linux /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/recorder /home/synth/projects/05-active-dev/openamp/linux/build /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/recorder /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/DependInfo.cmake "--color=$(COLOR)" recorder_plugin_autogen
 .PHONY : dsp-core/plugins/recorder/CMakeFiles/recorder_plugin_autogen.dir/depend
 

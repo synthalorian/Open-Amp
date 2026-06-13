@@ -78,6 +78,9 @@ private:
     std::atomic<float> outputLevelLeft_{-60.0f};
     std::atomic<float> outputLevelRight_{-60.0f};
 
+    // Pre-allocated output buffer to avoid static allocation in audio callback
+    std::vector<float> outputBuffer_;
+
     float linearToDb(float linear);
 };
 

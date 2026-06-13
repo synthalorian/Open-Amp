@@ -1,4 +1,4 @@
-# Install script for directory: /home/synth/projects/openamp/dsp-core
+# Install script for directory: /home/synth/projects/05-active-dev/openamp/dsp-core
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,30 +39,30 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/usr/sbin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/synth/projects/openamp/linux/build/dsp-core/src/cmake_install.cmake")
+  include("/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/synth/projects/openamp/linux/build/dsp-core/plugins/cmake_install.cmake")
+  include("/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/synth/projects/openamp/linux/build/dsp-core/src/libopenamp-dsp.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src/libopenamp-dsp.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/synth/projects/openamp/dsp-core/include/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/synth/projects/05-active-dev/openamp/dsp-core/include/")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/synth/projects/openamp/linux/build/dsp-core/install_local_manifest.txt"
+  file(WRITE "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -85,52 +85,56 @@ bool PresetStore::loadPreset(const std::string& path, Preset& preset, std::strin
         std::string key = line.substr(0, pos);
         std::string value = line.substr(pos + 1);
 
-        if (key == "name") preset.name = value;
-        else if (key == "inputGainDb") preset.inputGainDb = std::stof(value);
-        else if (key == "outputGainDb") preset.outputGainDb = std::stof(value);
-        else if (key == "ampEnabled") preset.ampEnabled = parseBool(value);
-        else if (key == "effectsEnabled") preset.effectsEnabled = parseBool(value);
-        else if (key == "delayEnabled") preset.delayEnabled = parseBool(value);
-        else if (key == "reverbEnabled") preset.reverbEnabled = parseBool(value);
-        else if (key == "distortionEnabled") preset.distortionEnabled = parseBool(value);
-        else if (key == "delayFirst") preset.delayFirst = parseBool(value);
-        else if (key == "delayTimeMs") preset.delayTimeMs = std::stof(value);
-        else if (key == "delayFeedback") preset.delayFeedback = std::stof(value);
-        else if (key == "delayMix") preset.delayMix = std::stof(value);
-        else if (key == "reverbRoom") preset.reverbRoom = std::stof(value);
-        else if (key == "reverbDamp") preset.reverbDamp = std::stof(value);
-        else if (key == "reverbMix") preset.reverbMix = std::stof(value);
-        else if (key == "distortionDrive") preset.distortionDrive = std::stof(value);
-        else if (key == "distortionTone") preset.distortionTone = std::stof(value);
-        else if (key == "distortionLevel") preset.distortionLevel = std::stof(value);
-        else if (key == "distortionType") preset.distortionType = std::stoi(value);
-        else if (key == "ampGainDb") preset.ampGainDb = std::stof(value);
-        else if (key == "ampDrive") preset.ampDrive = std::stof(value);
-        else if (key == "ampBassDb") preset.ampBassDb = std::stof(value);
-        else if (key == "ampMidDb") preset.ampMidDb = std::stof(value);
-        else if (key == "ampTrebleDb") preset.ampTrebleDb = std::stof(value);
-        else if (key == "ampPresenceDb") preset.ampPresenceDb = std::stof(value);
-        else if (key == "ampMasterDb") preset.ampMasterDb = std::stof(value);
-        else if (key == "cabIrPath") preset.cabIrPath = value;
-        // Phase 4: Modulation
-        else if (key == "modulationEnabled") preset.modulationEnabled = parseBool(value);
-        else if (key == "modulationType") preset.modulationType = std::stoi(value);
-        else if (key == "modulationRate") preset.modulationRate = std::stof(value);
-        else if (key == "modulationDepth") preset.modulationDepth = std::stof(value);
-        else if (key == "modulationMix") preset.modulationMix = std::stof(value);
-        // Phase 4: Cabinet
-        else if (key == "cabinetEnabled") preset.cabinetEnabled = parseBool(value);
-        else if (key == "cabinetType") preset.cabinetType = std::stoi(value);
-        else if (key == "cabinetMix") preset.cabinetMix = std::stof(value);
-        // Phase 4: Acoustic Sim
-        else if (key == "acousticSimEnabled") preset.acousticSimEnabled = parseBool(value);
-        else if (key == "acousticAmount") preset.acousticAmount = std::stof(value);
-        else if (key == "acousticBodySize") preset.acousticBodySize = std::stof(value);
-        else if (key == "acousticBrightness") preset.acousticBrightness = std::stof(value);
-        // Phase 4: Harmonizer
-        else if (key == "harmonizerEnabled") preset.harmonizerEnabled = parseBool(value);
-        else if (key == "harmonizerMode") preset.harmonizerMode = std::stoi(value);
-        else if (key == "harmonizerMix") preset.harmonizerMix = std::stof(value);
+        try {
+            if (key == "name") preset.name = value;
+            else if (key == "inputGainDb") preset.inputGainDb = std::stof(value);
+            else if (key == "outputGainDb") preset.outputGainDb = std::stof(value);
+            else if (key == "ampEnabled") preset.ampEnabled = parseBool(value);
+            else if (key == "effectsEnabled") preset.effectsEnabled = parseBool(value);
+            else if (key == "delayEnabled") preset.delayEnabled = parseBool(value);
+            else if (key == "reverbEnabled") preset.reverbEnabled = parseBool(value);
+            else if (key == "distortionEnabled") preset.distortionEnabled = parseBool(value);
+            else if (key == "delayFirst") preset.delayFirst = parseBool(value);
+            else if (key == "delayTimeMs") preset.delayTimeMs = std::stof(value);
+            else if (key == "delayFeedback") preset.delayFeedback = std::stof(value);
+            else if (key == "delayMix") preset.delayMix = std::stof(value);
+            else if (key == "reverbRoom") preset.reverbRoom = std::stof(value);
+            else if (key == "reverbDamp") preset.reverbDamp = std::stof(value);
+            else if (key == "reverbMix") preset.reverbMix = std::stof(value);
+            else if (key == "distortionDrive") preset.distortionDrive = std::stof(value);
+            else if (key == "distortionTone") preset.distortionTone = std::stof(value);
+            else if (key == "distortionLevel") preset.distortionLevel = std::stof(value);
+            else if (key == "distortionType") preset.distortionType = std::stoi(value);
+            else if (key == "ampGainDb") preset.ampGainDb = std::stof(value);
+            else if (key == "ampDrive") preset.ampDrive = std::stof(value);
+            else if (key == "ampBassDb") preset.ampBassDb = std::stof(value);
+            else if (key == "ampMidDb") preset.ampMidDb = std::stof(value);
+            else if (key == "ampTrebleDb") preset.ampTrebleDb = std::stof(value);
+            else if (key == "ampPresenceDb") preset.ampPresenceDb = std::stof(value);
+            else if (key == "ampMasterDb") preset.ampMasterDb = std::stof(value);
+            else if (key == "cabIrPath") preset.cabIrPath = value;
+            // Phase 4: Modulation
+            else if (key == "modulationEnabled") preset.modulationEnabled = parseBool(value);
+            else if (key == "modulationType") preset.modulationType = std::stoi(value);
+            else if (key == "modulationRate") preset.modulationRate = std::stof(value);
+            else if (key == "modulationDepth") preset.modulationDepth = std::stof(value);
+            else if (key == "modulationMix") preset.modulationMix = std::stof(value);
+            // Phase 4: Cabinet
+            else if (key == "cabinetEnabled") preset.cabinetEnabled = parseBool(value);
+            else if (key == "cabinetType") preset.cabinetType = std::stoi(value);
+            else if (key == "cabinetMix") preset.cabinetMix = std::stof(value);
+            // Phase 4: Acoustic Sim
+            else if (key == "acousticSimEnabled") preset.acousticSimEnabled = parseBool(value);
+            else if (key == "acousticAmount") preset.acousticAmount = std::stof(value);
+            else if (key == "acousticBodySize") preset.acousticBodySize = std::stof(value);
+            else if (key == "acousticBrightness") preset.acousticBrightness = std::stof(value);
+            // Phase 4: Harmonizer
+            else if (key == "harmonizerEnabled") preset.harmonizerEnabled = parseBool(value);
+            else if (key == "harmonizerMode") preset.harmonizerMode = std::stoi(value);
+            else if (key == "harmonizerMix") preset.harmonizerMix = std::stof(value);
+        } catch (const std::exception&) {
+            continue;
+        }
     }
 
     return true;

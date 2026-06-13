@@ -1,7 +1,7 @@
 CMakeFiles/openamp.dir/src/ui/theme.cpp.o: \
- /home/synth/projects/openamp/linux/src/ui/theme.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/linux/src/ui/theme.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
  /usr/include/c++/16.1.1/type_traits \

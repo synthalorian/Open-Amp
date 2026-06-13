@@ -80,8 +80,9 @@ private:
     std::atomic<float> outputPeakLeft_{-60.0f};
     std::atomic<float> outputPeakRight_{-60.0f};
     
-    // Peak hold decay timer
-    std::chrono::steady_clock::time_point lastPeakUpdate_;
+    // Peak hold decay frame counter (replaces chrono for RT safety)
+    uint32_t peakUpdateCounter_ = 0;
+    static constexpr uint32_t PEAK_UPDATE_INTERVAL_FRAMES = 480; // ~10ms at 48kHz
     static constexpr float PEAK_HOLD_SECONDS = 2.0f;
     static constexpr float PEAK_DECAY_DB_PER_SEC = 10.0f;
 };

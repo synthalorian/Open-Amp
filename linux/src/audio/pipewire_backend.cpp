@@ -497,8 +497,11 @@ void PipeWireBackend::handleOutputProcess() {
     // Calculate frames
     uint32_t frames = config_.bufferSize;
     
-    // Create a temporary mono input buffer
-    std::vector<float> tempInput(frames, 0.0f);
+    // Ensure temp input buffer is large enough (pre-allocated, resize only if needed)
+    if (tempInput_.size() < frames) {
+        tempInput_.resize(frames);
+    }
+    std::fill(tempInput_.begin(), tempInput_.end(), 0.0f);
     
     if (inBuf) {
         spa_data* inData = &inBuf->buffer->datas[0];
@@ -515,23 +518,23 @@ void PipeWireBackend::handleOutputProcess() {
                     float* left = static_cast<float*>(leftData->data);
                     float* right = static_cast<float*>(rightData->data);
                     if (left && right) {
-                        tempInput[i] = (left[i] + right[i]) * 0.5f;
+                        tempInput_[i] = (left[i] + right[i]) * 0.5f;
                     } else if (left) {
-                        tempInput[i] = left[i];
+                        tempInput_[i] = left[i];
                     }
                 }
             } else {
-                memcpy(tempInput.data(), inputData, copyFrames * sizeof(float));
+                memcpy(tempInput_.data(), inputData, copyFrames * sizeof(float));
             }
         }
         pw_stream_queue_buffer(inputStream_, inBuf);
     }
 
     // Process audio (input is mono, output is stereo interleaved)
-    callback_(tempInput.data(), outputData, frames);
+    callback_(tempInput_.data(), outputData, frames);
 
     // Update meters
-    updateMeters(tempInput.data(), outputData, frames);
+    updateMeters(tempInput_.data(), outputData, frames);
 
     // Set output buffer size
     outBuf->size = frames;
@@ -578,12 +581,10 @@ void PipeWireBackend::updateMeters(const float* input, const float* output, uint
     outputLevelRight_.store(linearToDb(rightRms));
     
     // Update peak hold with decay
-    auto now = std::chrono::steady_clock::now();
-    auto elapsed = std::chrono::duration<float>(now - lastPeakUpdate_).count();
-    
-    if (elapsed > 0.01f) {  // Update peaks every 10ms
-        lastPeakUpdate_ = now;
-        float peakDecay = elapsed * PEAK_DECAY_DB_PER_SEC;
+    peakHoldFrames_ += numFrames;
+    if (peakHoldFrames_ >= PEAK_HOLD_FRAMES) {
+        peakHoldFrames_ = 0;
+        float peakDecay = PEAK_HOLD_FRAMES * PEAK_DECAY_DB_PER_FRAME;
         
         // Input peaks
         float currentInputPeak = inputPeakLeft_.load();

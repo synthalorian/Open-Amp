@@ -1,8 +1,8 @@
 dsp-core/plugins/tuner/CMakeFiles/tuner_plugin.dir/tuner.cpp.o: \
- /home/synth/projects/openamp/dsp-core/plugins/tuner/tuner.cpp \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/tuner/tuner.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/dsp-core/plugins/tuner/tuner.h \
- /home/synth/projects/openamp/dsp-core/plugins/tuner/../../include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/tuner/tuner.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/tuner/../../include/openamp/plugin_interface.h \
  /usr/include/c++/16.1.1/cstdint \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -156,8 +156,9 @@ dsp-core/plugins/tuner/CMakeFiles/tuner_plugin.dir/tuner.cpp.o: \
  /usr/include/c++/16.1.1/bits/charconv.h \
  /usr/include/c++/16.1.1/bits/basic_string.tcc \
  /usr/include/c++/16.1.1/array /usr/include/c++/16.1.1/compare \
- /usr/include/c++/16.1.1/cmath /usr/include/math.h \
- /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/c++/16.1.1/atomic /usr/include/c++/16.1.1/cmath \
+ /usr/include/math.h /usr/include/bits/math-vector.h \
+ /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
  /usr/include/bits/fp-fast.h /usr/include/bits/mathcalls-macros.h \
  /usr/include/bits/mathcalls-helper-functions.h \

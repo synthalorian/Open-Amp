@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb.cpp.o" "gcc" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb.cpp.o.d"
-  "/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb_plugin.cpp" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb_plugin.cpp.o" "gcc" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb_plugin.cpp.o.d"
-  "/home/synth/projects/openamp/linux/build/dsp-core/plugins/reverb/reverb_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb_plugin_autogen/mocs_compilation.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb.cpp.o" "gcc" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb_plugin.cpp" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb_plugin.cpp.o" "gcc" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb_plugin.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/reverb/reverb_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/reverb_plugin_autogen/mocs_compilation.cpp.o.d"
   "" "dsp-core/plugins/reverb/libreverb_plugin.so" "gcc" "dsp-core/plugins/reverb/CMakeFiles/reverb_plugin.dir/link.d"
   )
 
