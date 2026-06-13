@@ -7,11 +7,11 @@ namespace openamp {
 
 Tuner::Tuner() {
     buffer_.fill(0.0f);
-    lastResult_.valid = false;
-    lastResult_.frequency = 0.0f;
-    lastResult_.cents = 0.0f;
-    lastResult_.noteIndex = 0;
-    lastResult_.confidence = 0.0f;
+    detectionValid_.store(false);
+    detectedFreq_.store(0.0f);
+    detectedCents_.store(0.0f);
+    detectedNoteIndex_.store(0);
+    detectedConfidence_.store(0.0f);
 }
 
 void Tuner::prepare(double sampleRate, uint32_t /*maxBlockSize*/) {
@@ -23,8 +23,8 @@ void Tuner::reset() {
     buffer_.fill(0.0f);
     writeIndex_ = 0;
     bufferFull_ = false;
-    inputLevel_ = 0.0f;
-    lastResult_.valid = false;
+    inputLevel_.store(0.0f);
+    detectionValid_.store(false);
 }
 
 void Tuner::process(AudioBuffer& buffer) {
@@ -45,16 +45,22 @@ void Tuner::process(AudioBuffer& buffer) {
     if (writeIndex_ == 0) bufferFull_ = true;
     
     // Smooth level meter
-    inputLevel_ = inputLevel_ * 0.9f + level * 0.1f;
+    float prevLevel = inputLevel_.load();
+    inputLevel_.store(prevLevel * 0.9f + level * 0.1f);
     
     // Detect frequency if we have enough signal
     if (level > 0.01f && bufferFull_) {
         float freq = detectFrequency();
         if (freq > 0.0f) {
-            lastResult_ = frequencyToResult(freq);
+            auto result = frequencyToResult(freq);
+            detectedFreq_.store(result.frequency);
+            detectedCents_.store(result.cents);
+            detectedNoteIndex_.store(result.noteIndex);
+            detectedConfidence_.store(result.confidence);
+            detectionValid_.store(true);
         }
     } else {
-        lastResult_.valid = false;
+        detectionValid_.store(false);
     }
     
     // Mute output if enabled
@@ -63,6 +69,17 @@ void Tuner::process(AudioBuffer& buffer) {
             data[i] = 0.0f;
         }
     }
+}
+
+Tuner::DetectionResult Tuner::getLastDetection() const {
+    DetectionResult result;
+    result.frequency = detectedFreq_.load();
+    result.cents = detectedCents_.load();
+    result.noteIndex = detectedNoteIndex_.load();
+    result.confidence = detectedConfidence_.load();
+    result.valid = detectionValid_.load();
+    result.noteName = semitoneToName(result.noteIndex);
+    return result;
 }
 
 float Tuner::detectFrequency() {
@@ -96,11 +113,11 @@ float Tuner::detectFrequency() {
     // If we found a good correlation, calculate frequency
     if (bestCorrelation > 0.5f && bestLag > 0) {
         float frequency = static_cast<float>(sampleRate_) / static_cast<float>(bestLag);
-        lastResult_.confidence = bestCorrelation;
+        detectedConfidence_.store(bestCorrelation);
         return frequency;
     }
     
-    lastResult_.confidence = 0.0f;
+    detectedConfidence_.store(0.0f);
     return 0.0f;
 }
 
@@ -108,7 +125,7 @@ Tuner::DetectionResult Tuner::frequencyToResult(float freq) {
     DetectionResult result;
     result.frequency = freq;
     result.valid = true;
-    result.confidence = lastResult_.confidence;
+    result.confidence = detectedConfidence_.load();
     
     // Convert frequency to semitone (A4 = semitone 69)
     int semitone = frequencyToSemitone(freq);
@@ -135,7 +152,7 @@ float Tuner::noteToFrequency(int semitone) {
     return referencePitch_ * std::pow(2.0f, (semitone - 69) / 12.0f);
 }
 
-std::string Tuner::semitoneToName(int semitone) {
+std::string Tuner::semitoneToName(int semitone) const {
     static const char* noteNames[] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
     int octave = (semitone / 12) - 1;
     int note = semitone % 12;

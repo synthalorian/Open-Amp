@@ -1,7 +1,7 @@
 CMakeFiles/openamp.dir/src/ui/settings_dialog.cpp.o: \
- /home/synth/projects/openamp/linux/src/ui/settings_dialog.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/settings_dialog.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/linux/src/ui/settings_dialog.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/settings_dialog.h \
  /usr/include/qt6/QtWidgets/QDialog /usr/include/qt6/QtWidgets/qdialog.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
@@ -371,9 +371,9 @@ CMakeFiles/openamp.dir/src/ui/settings_dialog.cpp.o: \
  /usr/include/qt6/QtGui/qtextdocument.h /usr/include/qt6/QtCore/qurl.h \
  /usr/include/qt6/QtWidgets/QGroupBox \
  /usr/include/qt6/QtWidgets/qgroupbox.h \
- /home/synth/projects/openamp/linux/src/ui/theme.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtCore/QString \
- /home/synth/projects/openamp/linux/src/audio/audio_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.h \
  /usr/include/qt6/QtWidgets/QVBoxLayout \
  /usr/include/qt6/QtWidgets/qboxlayout.h \
  /usr/include/qt6/QtWidgets/qlayout.h \

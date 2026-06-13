@@ -1,6 +1,6 @@
 recorder_plugin_autogen/timestamp: \
-	/home/synth/projects/openamp/dsp-core/plugins/recorder/CMakeLists.txt \
-	/home/synth/projects/openamp/dsp-core/plugins/recorder/recorder.cpp \
-	/home/synth/projects/openamp/dsp-core/plugins/recorder/recorder.h \
-	/home/synth/projects/openamp/dsp-core/plugins/recorder/recorder_plugin.cpp \
-	/usr/bin/cmake
+	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/recorder/CMakeLists.txt \
+	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/recorder/recorder.cpp \
+	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/recorder/recorder.h \
+	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/recorder/recorder_plugin.cpp \
+	/usr/sbin/cmake

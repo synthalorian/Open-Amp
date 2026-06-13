@@ -1,7 +1,7 @@
 CMakeFiles/openamp.dir/src/ui/main_window.cpp.o: \
- /home/synth/projects/openamp/linux/src/ui/main_window.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/main_window.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/linux/src/ui/main_window.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/main_window.h \
  /usr/include/qt6/QtWidgets/QMainWindow \
  /usr/include/qt6/QtWidgets/qmainwindow.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -355,25 +355,25 @@ CMakeFiles/openamp.dir/src/ui/main_window.cpp.o: \
  /usr/include/qt6/QtWidgets/qframe.h /usr/include/qt6/QtGui/qpicture.h \
  /usr/include/qt6/QtCore/qiodevice.h \
  /usr/include/qt6/QtGui/qtextdocument.h /usr/include/qt6/QtCore/qurl.h \
- /home/synth/projects/openamp/linux/src/ui/theme.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtCore/QString \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/dsp_engine.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/amp_simulator.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/plugin_interface.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/dsp_utils.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/effect_chain.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/preset_store.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/ir_loader.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/fft_convolver.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/latency_monitor.h \
- /home/synth/projects/openamp/linux/src/audio/audio_backend.h \
- /home/synth/projects/openamp/linux/src/audio/midi_handler.h \
- /home/synth/projects/openamp/linux/src/ui/amp_panel.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/dsp_engine.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/amp_simulator.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/dsp_utils.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/effect_chain.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/preset_store.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/ir_loader.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/fft_convolver.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/latency_monitor.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/midi_handler.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/amp_panel.h \
  /usr/include/qt6/QtWidgets/QWidget \
- /home/synth/projects/openamp/linux/src/ui/effects_panel.h \
- /home/synth/projects/openamp/linux/../dsp-core/plugins/looper/looper.h \
- /home/synth/projects/openamp/linux/../dsp-core/plugins/metronome/metronome.h \
- /home/synth/projects/openamp/linux/src/ui/preset_browser.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/effects_panel.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/plugins/looper/looper.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/plugins/metronome/metronome.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/preset_browser.h \
  /usr/include/qt6/QtWidgets/QListWidget \
  /usr/include/qt6/QtWidgets/qlistwidget.h \
  /usr/include/qt6/QtWidgets/qlistview.h \
@@ -399,7 +399,7 @@ CMakeFiles/openamp.dir/src/ui/main_window.cpp.o: \
  /usr/include/qt6/QtGui/qtextcursor.h \
  /usr/include/qt6/QtGui/qtextformat.h /usr/include/qt6/QtGui/qpen.h \
  /usr/include/qt6/QtGui/qtextoption.h \
- /home/synth/projects/openamp/linux/src/ui/settings_dialog.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/settings_dialog.h \
  /usr/include/qt6/QtWidgets/QDialog /usr/include/qt6/QtWidgets/qdialog.h \
  /usr/include/qt6/QtWidgets/QComboBox \
  /usr/include/qt6/QtWidgets/qcombobox.h \
@@ -407,16 +407,16 @@ CMakeFiles/openamp.dir/src/ui/main_window.cpp.o: \
  /usr/include/qt6/QtWidgets/qspinbox.h \
  /usr/include/qt6/QtWidgets/QGroupBox \
  /usr/include/qt6/QtWidgets/qgroupbox.h \
- /home/synth/projects/openamp/linux/src/ui/meter_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/meter_widget.h \
  /usr/include/qt6/QtCore/QTimer /usr/include/qt6/QtCore/qtimer.h \
  /usr/include/qt6/QtCore/qbasictimer.h \
  /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
  /usr/include/qt6/QtCore/qeventloop.h \
  /usr/include/qt6/QtCore/qdeadlinetimer.h \
- /home/synth/projects/openamp/linux/src/ui/ir_panel_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/ir_panel_widget.h \
  /usr/include/qt6/QtWidgets/QCheckBox \
  /usr/include/qt6/QtWidgets/qcheckbox.h \
- /home/synth/projects/openamp/linux/src/ui/latency_display_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/latency_display_widget.h \
  /usr/include/qt6/QtWidgets/QApplication \
  /usr/include/qt6/QtWidgets/qapplication.h \
  /usr/include/qt6/QtCore/qcoreapplication.h \

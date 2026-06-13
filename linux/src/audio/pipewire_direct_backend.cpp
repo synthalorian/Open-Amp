@@ -119,9 +119,13 @@ void PipeWireDirectBackend::onStreamProcess(void* data) {
     for(uint32_t i=0; i<n_frames; ++i) sum += std::abs(in[i]);
     self->inputLevel_.store(self->linearToDb(sum/n_frames));
 
+    // Ensure output buffer is large enough
+    if (self->outputBuffer_.size() < n_frames * 2) {
+        self->outputBuffer_.resize(n_frames * 2);
+    }
+
     // Process
-    static float outBuf[8192*2];
-    self->callback_(in, outBuf, n_frames);
+    self->callback_(in, self->outputBuffer_.data(), n_frames);
 
     pw_stream_queue_buffer(self->inputStream_, b);
 }

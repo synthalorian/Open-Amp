@@ -56,6 +56,8 @@ void Wah::process(AudioBuffer& buffer) {
     float minFreq = 400.0f;
     float maxFreq = 2500.0f;
     
+    float prevCenterFreq = -1.0f;
+    
     for (uint32_t i = 0; i < numFrames; ++i) {
         float input = data[i];
         float wahPosition = position_;
@@ -85,8 +87,11 @@ void Wah::process(AudioBuffer& buffer) {
         // Calculate center frequency from position
         float centerFreq = minFreq + (maxFreq - minFreq) * wahPosition;
         
-        // Update filter coefficients
-        updateFilter(centerFreq);
+        // Update filter coefficients only when frequency changes significantly
+        if (std::abs(centerFreq - prevCenterFreq) > 1.0f) {
+            updateFilter(centerFreq);
+            prevCenterFreq = centerFreq;
+        }
         
         // Apply bandpass filter
         float output = b0_ * input + b1_ * x1_ + b2_ * x2_ - a1_ * y1_ - a2_ * y2_;

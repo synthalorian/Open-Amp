@@ -37,7 +37,20 @@ LoadedPlugin::LoadedPlugin(LoadedPlugin&& other) noexcept
 
 LoadedPlugin& LoadedPlugin::operator=(LoadedPlugin&& other) noexcept {
     if (this != &other) {
-        this->~LoadedPlugin();
+        // Destroy existing resources first
+        if (destroyFunc_ && plugin_) {
+            destroyFunc_(plugin_);
+        }
+#if defined(_WIN32)
+        if (handle_) {
+            FreeLibrary(static_cast<HMODULE>(handle_));
+        }
+#else
+        if (handle_) {
+            dlclose(handle_);
+        }
+#endif
+        
         handle_ = other.handle_;
         plugin_ = other.plugin_;
         destroyFunc_ = other.destroyFunc_;

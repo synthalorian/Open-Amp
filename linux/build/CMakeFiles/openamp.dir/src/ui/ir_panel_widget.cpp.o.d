@@ -1,7 +1,7 @@
 CMakeFiles/openamp.dir/src/ui/ir_panel_widget.cpp.o: \
- /home/synth/projects/openamp/linux/src/ui/ir_panel_widget.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/ir_panel_widget.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/linux/src/ui/ir_panel_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/ir_panel_widget.h \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
  /usr/include/qt6/QtGui/qtguiglobal.h /usr/include/qt6/QtCore/qglobal.h \
@@ -357,18 +357,18 @@ CMakeFiles/openamp.dir/src/ui/ir_panel_widget.cpp.o: \
  /usr/include/qt6/QtWidgets/qabstractbutton.h \
  /usr/include/qt6/QtWidgets/QCheckBox \
  /usr/include/qt6/QtWidgets/qcheckbox.h \
- /home/synth/projects/openamp/linux/src/ui/theme.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtCore/QString \
- /home/synth/projects/openamp/linux/src/ui/knob_widget.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/dsp_engine.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/amp_simulator.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/plugin_interface.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/dsp_utils.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/effect_chain.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/preset_store.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/ir_loader.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/fft_convolver.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/latency_monitor.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/knob_widget.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/dsp_engine.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/amp_simulator.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/dsp_utils.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/effect_chain.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/preset_store.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/ir_loader.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/fft_convolver.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/latency_monitor.h \
  /usr/include/qt6/QtWidgets/QVBoxLayout \
  /usr/include/qt6/QtWidgets/qboxlayout.h \
  /usr/include/qt6/QtWidgets/qlayout.h \

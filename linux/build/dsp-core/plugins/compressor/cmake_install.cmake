@@ -1,4 +1,4 @@
-# Install script for directory: /home/synth/projects/openamp/dsp-core/plugins/compressor
+# Install script for directory: /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,12 +39,12 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+  set(CMAKE_OBJDUMP "/usr/sbin/objdump")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/synth/projects/openamp/linux/build/dsp-core/plugins/compressor/install_local_manifest.txt"
+  file(WRITE "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/compressor/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

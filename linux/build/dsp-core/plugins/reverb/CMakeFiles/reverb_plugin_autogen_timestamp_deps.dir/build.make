@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/sbin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/sbin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/synth/projects/openamp/linux
+CMAKE_SOURCE_DIR = /home/synth/projects/05-active-dev/openamp/linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
+CMAKE_BINARY_DIR = /home/synth/projects/05-active-dev/openamp/linux/build
 
 # Utility rule file for reverb_plugin_autogen_timestamp_deps.
 
@@ -77,10 +77,10 @@ dsp-core/plugins/reverb/CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/buil
 .PHONY : dsp-core/plugins/reverb/CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/build
 
 dsp-core/plugins/reverb/CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/clean:
-	cd /home/synth/projects/openamp/linux/build/dsp-core/plugins/reverb && $(CMAKE_COMMAND) -P CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/cmake_clean.cmake
+	cd /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/reverb && $(CMAKE_COMMAND) -P CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/cmake_clean.cmake
 .PHONY : dsp-core/plugins/reverb/CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/clean
 
 dsp-core/plugins/reverb/CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/depend:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/openamp/linux /home/synth/projects/openamp/dsp-core/plugins/reverb /home/synth/projects/openamp/linux/build /home/synth/projects/openamp/linux/build/dsp-core/plugins/reverb /home/synth/projects/openamp/linux/build/dsp-core/plugins/reverb/CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/DependInfo.cmake "--color=$(COLOR)" reverb_plugin_autogen_timestamp_deps
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/synth/projects/05-active-dev/openamp/linux /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb /home/synth/projects/05-active-dev/openamp/linux/build /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/reverb /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/reverb/CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/DependInfo.cmake "--color=$(COLOR)" reverb_plugin_autogen_timestamp_deps
 .PHONY : dsp-core/plugins/reverb/CMakeFiles/reverb_plugin_autogen_timestamp_deps.dir/depend
 

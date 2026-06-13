@@ -1,8 +1,8 @@
 dsp-core/plugins/distortion/CMakeFiles/distortion_plugin.dir/distortion.cpp.o: \
- /home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.h \
- /home/synth/projects/openamp/dsp-core/plugins/distortion/../../include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/../../include/openamp/plugin_interface.h \
  /usr/include/c++/16.1.1/cstdint \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -155,7 +155,7 @@ dsp-core/plugins/distortion/CMakeFiles/distortion_plugin.dir/distortion.cpp.o: \
  /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
  /usr/include/c++/16.1.1/bits/charconv.h \
  /usr/include/c++/16.1.1/bits/basic_string.tcc \
- /home/synth/projects/openamp/dsp-core/plugins/distortion/../../include/openamp/dsp_utils.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/../../include/openamp/dsp_utils.h \
  /usr/include/c++/16.1.1/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -175,7 +175,7 @@ dsp-core/plugins/distortion/CMakeFiles/distortion_plugin.dir/distortion.cpp.o: \
  /usr/include/c++/16.1.1/tr1/poly_hermite.tcc \
  /usr/include/c++/16.1.1/tr1/poly_laguerre.tcc \
  /usr/include/c++/16.1.1/tr1/riemann_zeta.tcc \
- /home/synth/projects/openamp/dsp-core/plugins/distortion/../../include/openamp/simd_utils.h \
+ /home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/../../include/openamp/simd_utils.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/include/immintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/include/x86gprintrin.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/include/ia32intrin.h \

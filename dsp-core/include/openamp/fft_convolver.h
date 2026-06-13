@@ -126,6 +126,7 @@ public:
         overlapBuffer_.assign(fftSize_, 0.0f);
         fftTemp_.resize(2 * fftSize_);
         accumTemp_.resize(2 * fftSize_);
+        padded_.resize(fftSize_);
         prepared_ = true;
     }
 
@@ -133,10 +134,10 @@ public:
         if (!prepared_ || numFrames == 0) return;
 
         // Pad input to fftSize and FFT
-        std::vector<float> padded(fftSize_, 0.0f);
-        std::copy(data, data + std::min(numFrames, blockSize_), padded.begin());
+        std::fill(padded_.begin(), padded_.end(), 0.0f);
+        std::copy(data, data + std::min(numFrames, blockSize_), padded_.begin());
 
-        FFTConvolver::fft(padded.data(), inputFreqHistory_[inputHistoryIdx_].data(), fftSize_);
+        FFTConvolver::fft(padded_.data(), inputFreqHistory_[inputHistoryIdx_].data(), fftSize_);
 
         // Frequency-domain multiply-accumulate across all partitions
         std::fill(accumTemp_.begin(), accumTemp_.end(), 0.0f);
@@ -188,6 +189,7 @@ private:
     std::vector<float> overlapBuffer_;
     std::vector<float> fftTemp_;
     std::vector<float> accumTemp_;
+    std::vector<float> padded_;
 };
 
 } // namespace openamp

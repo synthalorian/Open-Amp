@@ -1,5 +1,5 @@
 CMakeFiles/openamp.dir/src/main.cpp.o: \
- /home/synth/projects/openamp/linux/src/main.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/src/main.cpp \
  /usr/include/stdc-predef.h /usr/include/qt6/QtWidgets/QApplication \
  /usr/include/qt6/QtWidgets/qapplication.h \
  /usr/include/qt6/QtWidgets/qtwidgetsglobal.h \
@@ -384,7 +384,7 @@ CMakeFiles/openamp.dir/src/main.cpp.o: \
  /usr/include/c++/16.1.1/bits/sstream.tcc /usr/include/c++/16.1.1/codecvt \
  /usr/include/c++/16.1.1/bits/fs_dir.h \
  /usr/include/c++/16.1.1/bits/fs_ops.h \
- /home/synth/projects/openamp/linux/src/ui/main_window.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/main_window.h \
  /usr/include/qt6/QtWidgets/QMainWindow \
  /usr/include/qt6/QtWidgets/qmainwindow.h \
  /usr/include/qt6/QtWidgets/qwidget.h /usr/include/qt6/QtGui/qaction.h \
@@ -397,16 +397,16 @@ CMakeFiles/openamp.dir/src/main.cpp.o: \
  /usr/include/qt6/QtWidgets/QLabel /usr/include/qt6/QtWidgets/qlabel.h \
  /usr/include/qt6/QtWidgets/qframe.h /usr/include/qt6/QtGui/qpicture.h \
  /usr/include/qt6/QtGui/qtextdocument.h /usr/include/qt6/QtCore/qurl.h \
- /home/synth/projects/openamp/linux/src/ui/theme.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/ui/theme.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtCore/QString \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/dsp_engine.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/amp_simulator.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/plugin_interface.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/dsp_utils.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/effect_chain.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/preset_store.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/ir_loader.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/fft_convolver.h \
- /home/synth/projects/openamp/linux/../dsp-core/include/openamp/latency_monitor.h \
- /home/synth/projects/openamp/linux/src/audio/audio_backend.h \
- /home/synth/projects/openamp/linux/src/audio/midi_handler.h
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/dsp_engine.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/amp_simulator.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/plugin_interface.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/dsp_utils.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/effect_chain.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/preset_store.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/ir_loader.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/fft_convolver.h \
+ /home/synth/projects/05-active-dev/openamp/linux/../dsp-core/include/openamp/latency_monitor.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/midi_handler.h

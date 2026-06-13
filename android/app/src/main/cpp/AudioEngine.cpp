@@ -395,10 +395,34 @@ void AudioEngine::setEffectsEnabled(bool enabled) { if (processor_) processor_->
 bool AudioEngine::getEffectsEnabled() const { return processor_ ? processor_->isEffectsEnabled() : false; }
 
 // Noise Gate
-void AudioEngine::setNoiseGateEnabled(bool enabled) { noiseGateEnabled_ = enabled; }
-void AudioEngine::setNoiseGateThreshold(float db) { noiseGateThreshold_ = db; }
-void AudioEngine::setNoiseGateAttack(float ms) { noiseGateAttack_ = ms; }
-void AudioEngine::setNoiseGateRelease(float ms) { noiseGateRelease_ = ms; }
+void AudioEngine::setNoiseGateEnabled(bool enabled) { 
+    noiseGateEnabled_ = enabled; 
+    if (processor_) processor_->setNoiseGateEnabled(enabled);
+}
+void AudioEngine::setNoiseGateThreshold(float db) { 
+    noiseGateThreshold_ = db; 
+    if (processor_) {
+        if (openamp::NoiseGate* ng = processor_->getNoiseGate()) {
+            ng->setThreshold(db);
+        }
+    }
+}
+void AudioEngine::setNoiseGateAttack(float ms) { 
+    noiseGateAttack_ = ms; 
+    if (processor_) {
+        if (openamp::NoiseGate* ng = processor_->getNoiseGate()) {
+            ng->setAttack(ms);
+        }
+    }
+}
+void AudioEngine::setNoiseGateRelease(float ms) { 
+    noiseGateRelease_ = ms; 
+    if (processor_) {
+        if (openamp::NoiseGate* ng = processor_->getNoiseGate()) {
+            ng->setRelease(ms);
+        }
+    }
+}
 bool AudioEngine::getNoiseGateEnabled() const { return noiseGateEnabled_; }
 float AudioEngine::getNoiseGateThreshold() const { return noiseGateThreshold_; }
 
@@ -571,8 +595,8 @@ float AudioEngine::getInputLevel() const { return processor_ ? processor_->getIn
 float AudioEngine::getOutputLevel() const { return processor_ ? processor_->getOutputLevel() : 0.0f; }
 bool AudioEngine::getClipping() const { return processor_ ? processor_->isClipping() : false; }
 void AudioEngine::resetClipIndicator() { if (processor_) processor_->resetClipIndicator(); }
-void AudioEngine::setInputChannelMode(int mode) { inputChannelMode_ = std::max(0, std::min(3, mode)); }
-void AudioEngine::setTestToneEnabled(bool enabled) { testToneEnabled_ = enabled; }
+void AudioEngine::setInputChannelMode(int mode) { inputChannelMode_.store(std::max(0, std::min(3, mode))); }
+void AudioEngine::setTestToneEnabled(bool enabled) { testToneEnabled_.store(enabled); }
 
 // Presets
 bool AudioEngine::savePreset(const std::string& path, const std::string& name) {
@@ -769,10 +793,10 @@ oboe::DataCallbackResult AudioEngine::onAudioReady(
         } else {
             float left = inputInterleavedBuffer_[base];
             float right = inputInterleavedBuffer_[base + 1];
-            if (inputChannelMode_ == 0) mono = left;
-            else if (inputChannelMode_ == 1) mono = right;
-            else if (inputChannelMode_ == 2) mono = 0.5f * (left + right);
-            else mono = (std::fabs(left) >= std::fabs(right)) ? left : right;
+        if (inputChannelMode_.load(std::memory_order_relaxed) == 0) mono = left;
+        else if (inputChannelMode_.load(std::memory_order_relaxed) == 1) mono = right;
+        else if (inputChannelMode_.load(std::memory_order_relaxed) == 2) mono = 0.5f * (left + right);
+        else mono = (std::fabs(left) >= std::fabs(right)) ? left : right;
         }
         inputBuffer_[i] = mono;
     }
@@ -799,13 +823,14 @@ oboe::DataCallbackResult AudioEngine::onAudioReady(
         tuner_->process(tunerBuffer);
     }
 
-    if (testToneEnabled_) {
+    if (testToneEnabled_.load(std::memory_order_relaxed)) {
         const float freq = 440.0f;
-        const float phaseInc = 2.0f * static_cast<float>(M_PI) * freq / static_cast<float>(config_.sampleRate);
+        const float kPi = 3.14159265358979323846f;
+        const float phaseInc = 2.0f * kPi * freq / static_cast<float>(config_.sampleRate);
         for (int32_t i = 0; i < numFrames; ++i) {
             float s = 0.08f * std::sin(testTonePhase_);
             testTonePhase_ += phaseInc;
-            if (testTonePhase_ > 2.0f * static_cast<float>(M_PI)) testTonePhase_ -= 2.0f * static_cast<float>(M_PI);
+            if (testTonePhase_ > 2.0f * kPi) testTonePhase_ -= 2.0f * kPi;
             for (uint32_t ch = 0; ch < config_.numOutputChannels; ++ch)
                 outputBuffer_[i * config_.numOutputChannels + ch] = s;
         }
@@ -1019,7 +1044,7 @@ void AudioEngine::closeStreams() {
 void AudioEngine::writeToRing(const float* data, size_t frames) {
     size_t writePos = ringWritePos_.load(std::memory_order_relaxed);
     for (size_t i = 0; i < frames; ++i) {
-        ringBuffer_[writePos % ringSize_] = data[i];
+        ringBuffer_[writePos & (ringSize_ - 1)] = data[i];
         ++writePos;
     }
     ringWritePos_.store(writePos, std::memory_order_release);
@@ -1028,10 +1053,10 @@ void AudioEngine::writeToRing(const float* data, size_t frames) {
 size_t AudioEngine::readFromRing(float* data, size_t frames) {
     size_t readPos = ringReadPos_.load(std::memory_order_relaxed);
     size_t writePos = ringWritePos_.load(std::memory_order_acquire);
-    size_t available = writePos - readPos;
+    size_t available = (writePos >= readPos) ? (writePos - readPos) : 0;
     size_t toRead = std::min(frames, available);
     for (size_t i = 0; i < toRead; ++i) {
-        data[i] = ringBuffer_[readPos % ringSize_];
+        data[i] = ringBuffer_[readPos & (ringSize_ - 1)];
         ++readPos;
     }
     ringReadPos_.store(readPos, std::memory_order_relaxed);

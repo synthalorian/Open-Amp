@@ -1,29 +1,29 @@
 {
-	"BUILD_DIR" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen",
-	"CMAKE_BINARY_DIR" : "/home/synth/projects/openamp/linux/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/distortion",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/synth/projects/openamp/dsp-core/plugins/distortion",
-	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"BUILD_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen",
+	"CMAKE_BINARY_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/distortion",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion",
+	"CMAKE_EXECUTABLE" : "/usr/sbin/cmake",
 	"CMAKE_LIST_FILES" : 
 	[
-		"/home/synth/projects/openamp/dsp-core/plugins/distortion/CMakeLists.txt"
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/CMakeLists.txt"
 	],
-	"CMAKE_SOURCE_DIR" : "/home/synth/projects/openamp/linux",
+	"CMAKE_SOURCE_DIR" : "/home/synth/projects/05-active-dev/openamp/linux",
 	"CROSS_CONFIG" : false,
-	"DEP_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen/deps",
+	"DEP_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "distortion_plugin_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.h",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.h",
 			"MU",
 			"EWIEGA46WW/moc_distortion.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : [ "USE_ALSA", "USE_JACK", "USE_PIPEWIRE", "distortion_plugin_EXPORTS" ],
 	"MOC_DEPEND_FILTERS" : 
 	[
@@ -34,15 +34,15 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/synth/projects/openamp/dsp-core/include",
-		"/home/synth/projects/openamp/dsp-core/plugins/distortion",
-		"/home/synth/projects/openamp/dsp-core/include",
-		"/home/synth/projects/openamp/dsp-core/plugins/noise_gate",
-		"/home/synth/projects/openamp/dsp-core/plugins/compressor",
-		"/home/synth/projects/openamp/dsp-core/plugins/eq",
-		"/home/synth/projects/openamp/dsp-core/plugins/distortion",
-		"/home/synth/projects/openamp/dsp-core/plugins/delay",
-		"/home/synth/projects/openamp/dsp-core/plugins/reverb",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/include",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/include",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay",
+		"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb",
 		"/usr/include/c++/16.1.1",
 		"/usr/include/c++/16.1.1/x86_64-pc-linux-gnu",
 		"/usr/include/c++/16.1.1/backward",
@@ -63,33 +63,33 @@
 	"MOC_PATH_PREFIX" : false,
 	"MOC_PREDEFS_CMD" : 
 	[
-		"/usr/bin/c++",
+		"/usr/sbin/c++",
 		"-std=gnu++17",
 		"-w",
 		"-dM",
 		"-E",
 		"/usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/distortion/distortion_plugin_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
-	"PARSE_CACHE_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/distortion/CMakeFiles/distortion_plugin_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/distortion/CMakeFiles/distortion_plugin_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/moc",
 	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/uic",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 11,
-	"SETTINGS_FILE" : "/home/synth/projects/openamp/linux/build/dsp-core/plugins/distortion/CMakeFiles/distortion_plugin_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/distortion/CMakeFiles/distortion_plugin_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp",
 			"MU",
 			null
 		],
 		[
-			"/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion_plugin.cpp",
+			"/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion_plugin.cpp",
 			"MU",
 			null
 		]

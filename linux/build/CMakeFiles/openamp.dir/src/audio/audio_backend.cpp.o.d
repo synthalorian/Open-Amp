@@ -1,7 +1,7 @@
 CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o: \
- /home/synth/projects/openamp/linux/src/audio/audio_backend.cpp \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.cpp \
  /usr/include/stdc-predef.h \
- /home/synth/projects/openamp/linux/src/audio/audio_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/audio_backend.h \
  /usr/include/c++/16.1.1/string \
  /usr/include/c++/16.1.1/bits/requires_hosted.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -166,7 +166,7 @@ CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o: \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16.1.1/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
  /usr/include/bits/stdint-least.h \
- /home/synth/projects/openamp/linux/src/audio/jack_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/jack_backend.h \
  /usr/include/jack/jack.h /usr/include/jack/systemdeps.h \
  /usr/include/inttypes.h /usr/include/jack/types.h \
  /usr/include/jack/transport.h /usr/include/jack/weakmacros.h \
@@ -179,7 +179,7 @@ CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o: \
  /usr/include/c++/16.1.1/mutex /usr/include/c++/16.1.1/bits/std_mutex.h \
  /usr/include/c++/16.1.1/bits/unique_lock.h \
  /usr/include/c++/16.1.1/x86_64-pc-linux-gnu/bits/error_constants.h \
- /home/synth/projects/openamp/linux/src/audio/pipewire_direct_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/pipewire_direct_backend.h \
  /usr/include/pipewire-0.3/pipewire/pipewire.h \
  /usr/include/spa-0.2/spa/support/plugin.h \
  /usr/include/spa-0.2/spa/utils/defs.h /usr/include/signal.h \
@@ -327,11 +327,11 @@ CMakeFiles/openamp.dir/src/audio/audio_backend.cpp.o: \
  /usr/include/spa-0.2/spa/param/audio/truehd-utils.h \
  /usr/include/spa-0.2/spa/param/audio/dts-utils.h \
  /usr/include/spa-0.2/spa/param/audio/mpegh-utils.h \
- /home/synth/projects/openamp/linux/src/audio/pipewire_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/pipewire_backend.h \
  /usr/include/pipewire-0.3/pipewire/extensions/metadata.h \
  /usr/include/spa-0.2/spa/utils/keys.h \
  /usr/include/c++/16.1.1/condition_variable \
- /home/synth/projects/openamp/linux/src/audio/alsa_backend.h \
+ /home/synth/projects/05-active-dev/openamp/linux/src/audio/alsa_backend.h \
  /usr/include/alsa/asoundlib.h /usr/include/fcntl.h \
  /usr/include/bits/fcntl.h /usr/include/bits/fcntl-linux.h \
  /usr/include/bits/types/struct_iovec.h /usr/include/bits/cloexec.h \

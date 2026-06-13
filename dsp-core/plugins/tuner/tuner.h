@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <string>
 #include <array>
+#include <atomic>
 
 namespace openamp {
 
@@ -31,8 +32,8 @@ public:
     std::string getName() const override { return "Tuner"; }
     std::string getVersion() const override { return "1.0.0"; }
     
-    // Get the latest detection result
-    DetectionResult getLastDetection() const { return lastResult_; }
+    // Get the latest detection result (thread-safe)
+    DetectionResult getLastDetection() const;
     
     // Set reference pitch (default A4 = 440 Hz)
     void setReferencePitch(float hz);
@@ -52,7 +53,7 @@ public:
     bool isMuted() const { return mute_; }
     
     // Get level for meter display
-    float getInputLevel() const { return inputLevel_; }
+    float getInputLevel() const { return inputLevel_.load(); }
 
 private:
     double sampleRate_ = 48000.0;
@@ -60,8 +61,14 @@ private:
     Mode mode_ = Mode::Chromatic;
     bool mute_ = true;
     
-    DetectionResult lastResult_;
-    float inputLevel_ = 0.0f;
+    // Thread-safe detection result (atomic fields)
+    std::atomic<float> detectedFreq_{0.0f};
+    std::atomic<float> detectedCents_{0.0f};
+    std::atomic<int> detectedNoteIndex_{0};
+    std::atomic<float> detectedConfidence_{0.0f};
+    std::atomic<bool> detectionValid_{false};
+    
+    std::atomic<float> inputLevel_{0.0f};
     
     // Autocorrelation buffer
     static constexpr int kBufferSize = 2048;
@@ -77,7 +84,7 @@ private:
     DetectionResult frequencyToResult(float freq);
     float noteToFrequency(int semitone);
     int frequencyToSemitone(float freq);
-    std::string semitoneToName(int semitone);
+    std::string semitoneToName(int semitone) const;
 };
 
 } // namespace openamp

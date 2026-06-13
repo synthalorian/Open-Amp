@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate.cpp.o" "gcc" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate.cpp.o.d"
-  "/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate_plugin.cpp" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate_plugin.cpp.o" "gcc" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate_plugin.cpp.o.d"
-  "/home/synth/projects/openamp/linux/build/dsp-core/plugins/noise_gate/noise_gate_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate_plugin_autogen/mocs_compilation.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate.cpp.o" "gcc" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate_plugin.cpp" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate_plugin.cpp.o" "gcc" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate_plugin.cpp.o.d"
+  "/home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/plugins/noise_gate/noise_gate_plugin_autogen/mocs_compilation.cpp" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate_plugin_autogen/mocs_compilation.cpp.o" "gcc" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/noise_gate_plugin_autogen/mocs_compilation.cpp.o.d"
   "" "dsp-core/plugins/noise_gate/libnoise_gate_plugin.so" "gcc" "dsp-core/plugins/noise_gate/CMakeFiles/noise_gate_plugin.dir/link.d"
   )
 

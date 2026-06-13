@@ -216,14 +216,19 @@ int JackBackend::processCallback(jack_nframes_t nframes, void* arg) {
 
     if (!in || !outL || !outR) return 0;
 
-    static float stereoOut[16384]; 
+    // Ensure output buffer is large enough (resize is not RT-safe, but this is called
+    // before processing starts, and JACK buffer sizes are typically fixed)
+    size_t needed = nframes * 2;
+    if (backend->outputBuffer_.size() < needed) {
+        backend->outputBuffer_.resize(needed);
+    }
     
-    backend->callback_(in, stereoOut, nframes);
+    backend->callback_(in, backend->outputBuffer_.data(), nframes);
 
     float inMax = 0, outLMax = 0, outRMax = 0;
     for (uint32_t i = 0; i < nframes; ++i) {
-        outL[i] = stereoOut[i * 2];
-        outR[i] = stereoOut[i * 2 + 1];
+        outL[i] = backend->outputBuffer_[i * 2];
+        outR[i] = backend->outputBuffer_[i * 2 + 1];
         
         if (std::abs(in[i]) > inMax) inMax = std::abs(in[i]);
         if (std::abs(outL[i]) > outLMax) outLMax = std::abs(outL[i]);

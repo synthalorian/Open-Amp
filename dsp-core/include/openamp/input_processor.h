@@ -91,17 +91,18 @@ private:
     float outputGain_ = 1.0f;
     float inputGainDb_ = 0.0f;
     float outputGainDb_ = 0.0f;
-    bool ampEnabled_ = true;
-    bool effectsEnabled_ = true;
-    bool noiseGateEnabled_ = true;
-    bool compressorEnabled_ = false;
-    bool eqEnabled_ = false;
+    std::atomic<bool> ampEnabled_{true};
+    std::atomic<bool> effectsEnabled_{true};
+    std::atomic<bool> noiseGateEnabled_{true};
+    std::atomic<bool> compressorEnabled_{false};
+    std::atomic<bool> eqEnabled_{false};
     
     std::atomic<float> inputLevel_{0.0f};
     std::atomic<float> outputLevel_{0.0f};
     std::atomic<bool> clipping_{false};
     
     std::mutex processingMutex_;
+    std::vector<float> scratchBuffer_;
     
     void calculateLevels(const float* buffer, uint32_t numFrames, std::atomic<float>& level);
 };

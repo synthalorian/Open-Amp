@@ -46,3 +46,9 @@ cxx/
 *.tmp
 *.temp
 *.log
+
+# AI session artifacts
+.sandbox-home/
+.claw/
+.omo/
+.clawd-todos.json

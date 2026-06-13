@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/sbin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/sbin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/synth/projects/openamp/linux
+CMAKE_SOURCE_DIR = /home/synth/projects/05-active-dev/openamp/linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
+CMAKE_BINARY_DIR = /home/synth/projects/05-active-dev/openamp/linux/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/synth/projects/openamp/linux/build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/sbin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/sbin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -97,49 +97,49 @@ list_install_components/fast: list_install_components
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/usr/sbin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
+	/usr/sbin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/sbin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/openamp/linux/build/CMakeFiles /home/synth/projects/openamp/linux/build/dsp-core/src//CMakeFiles/progress.marks
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/openamp/linux/build/CMakeFiles 0
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles /home/synth/projects/05-active-dev/openamp/linux/build/dsp-core/src//CMakeFiles/progress.marks
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/synth/projects/05-active-dev/openamp/linux/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/clean
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/preinstall
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/preinstall
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 dsp-core/src/CMakeFiles/openamp-dsp.dir/rule:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/CMakeFiles/openamp-dsp.dir/rule
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/CMakeFiles/openamp-dsp.dir/rule
 .PHONY : dsp-core/src/CMakeFiles/openamp-dsp.dir/rule
 
 # Convenience name for target.
@@ -172,12 +172,12 @@ openamp-dsp: dsp-core/src/CMakeFiles/openamp-dsp.dir/rule
 
 # fast build rule for target.
 openamp-dsp/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/build
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/build
 .PHONY : openamp-dsp/fast
 
 # Convenience name for target.
 dsp-core/src/CMakeFiles/openamp-dsp_autogen_timestamp_deps.dir/rule:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/CMakeFiles/openamp-dsp_autogen_timestamp_deps.dir/rule
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/CMakeFiles/openamp-dsp_autogen_timestamp_deps.dir/rule
 .PHONY : dsp-core/src/CMakeFiles/openamp-dsp_autogen_timestamp_deps.dir/rule
 
 # Convenience name for target.
@@ -186,12 +186,12 @@ openamp-dsp_autogen_timestamp_deps: dsp-core/src/CMakeFiles/openamp-dsp_autogen_
 
 # fast build rule for target.
 openamp-dsp_autogen_timestamp_deps/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp_autogen_timestamp_deps.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp_autogen_timestamp_deps.dir/build
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp_autogen_timestamp_deps.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp_autogen_timestamp_deps.dir/build
 .PHONY : openamp-dsp_autogen_timestamp_deps/fast
 
 # Convenience name for target.
 dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/rule:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/rule
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/rule
 .PHONY : dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/rule
 
 # Convenience name for target.
@@ -200,7 +200,7 @@ openamp-dsp_autogen: dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/rule
 
 # fast build rule for target.
 openamp-dsp_autogen/fast:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/build
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp_autogen.dir/build
 .PHONY : openamp-dsp_autogen/fast
 
 amp_simulator.o: amp_simulator.cpp.o
@@ -208,7 +208,7 @@ amp_simulator.o: amp_simulator.cpp.o
 
 # target to build an object file
 amp_simulator.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/amp_simulator.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/amp_simulator.cpp.o
 .PHONY : amp_simulator.cpp.o
 
 amp_simulator.i: amp_simulator.cpp.i
@@ -216,7 +216,7 @@ amp_simulator.i: amp_simulator.cpp.i
 
 # target to preprocess a source file
 amp_simulator.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/amp_simulator.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/amp_simulator.cpp.i
 .PHONY : amp_simulator.cpp.i
 
 amp_simulator.s: amp_simulator.cpp.s
@@ -224,7 +224,7 @@ amp_simulator.s: amp_simulator.cpp.s
 
 # target to generate assembly for a file
 amp_simulator.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/amp_simulator.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/amp_simulator.cpp.s
 .PHONY : amp_simulator.cpp.s
 
 dsp_engine.o: dsp_engine.cpp.o
@@ -232,7 +232,7 @@ dsp_engine.o: dsp_engine.cpp.o
 
 # target to build an object file
 dsp_engine.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/dsp_engine.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/dsp_engine.cpp.o
 .PHONY : dsp_engine.cpp.o
 
 dsp_engine.i: dsp_engine.cpp.i
@@ -240,7 +240,7 @@ dsp_engine.i: dsp_engine.cpp.i
 
 # target to preprocess a source file
 dsp_engine.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/dsp_engine.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/dsp_engine.cpp.i
 .PHONY : dsp_engine.cpp.i
 
 dsp_engine.s: dsp_engine.cpp.s
@@ -248,7 +248,7 @@ dsp_engine.s: dsp_engine.cpp.s
 
 # target to generate assembly for a file
 dsp_engine.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/dsp_engine.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/dsp_engine.cpp.s
 .PHONY : dsp_engine.cpp.s
 
 effect_chain.o: effect_chain.cpp.o
@@ -256,7 +256,7 @@ effect_chain.o: effect_chain.cpp.o
 
 # target to build an object file
 effect_chain.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/effect_chain.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/effect_chain.cpp.o
 .PHONY : effect_chain.cpp.o
 
 effect_chain.i: effect_chain.cpp.i
@@ -264,7 +264,7 @@ effect_chain.i: effect_chain.cpp.i
 
 # target to preprocess a source file
 effect_chain.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/effect_chain.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/effect_chain.cpp.i
 .PHONY : effect_chain.cpp.i
 
 effect_chain.s: effect_chain.cpp.s
@@ -272,159 +272,159 @@ effect_chain.s: effect_chain.cpp.s
 
 # target to generate assembly for a file
 effect_chain.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/effect_chain.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/effect_chain.cpp.s
 .PHONY : effect_chain.cpp.s
 
-home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.o: home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.o: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.o
 
 # target to build an object file
-home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.o:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.o
 
-home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.i: home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.i: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.i
 
 # target to preprocess a source file
-home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.i:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.i
 
-home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.s: home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.s: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.s
 
 # target to generate assembly for a file
-home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.cpp.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.s:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.cpp.s
 
-home/synth/projects/openamp/dsp-core/plugins/delay/delay.o: home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/delay/delay.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.o: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.o
 
 # target to build an object file
-home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.o:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.o
 
-home/synth/projects/openamp/dsp-core/plugins/delay/delay.i: home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/delay/delay.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.i: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.i
 
 # target to preprocess a source file
-home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.i:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.i
 
-home/synth/projects/openamp/dsp-core/plugins/delay/delay.s: home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/delay/delay.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.s: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.s
 
 # target to generate assembly for a file
-home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/delay/delay.cpp.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.s:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp.s
 
-home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.o: home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.o: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.o
 
 # target to build an object file
-home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.o:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.o
 
-home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.i: home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.i: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.i
 
 # target to preprocess a source file
-home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.i:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.i
 
-home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.s: home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.s: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.s
 
 # target to generate assembly for a file
-home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.cpp.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.s:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp.s
 
-home/synth/projects/openamp/dsp-core/plugins/eq/eq.o: home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/eq/eq.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.o: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.o
 
 # target to build an object file
-home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.o:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.o
 
-home/synth/projects/openamp/dsp-core/plugins/eq/eq.i: home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/eq/eq.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.i: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.i
 
 # target to preprocess a source file
-home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.i:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.i
 
-home/synth/projects/openamp/dsp-core/plugins/eq/eq.s: home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/eq/eq.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.s: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.s
 
 # target to generate assembly for a file
-home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/eq/eq.cpp.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.s:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.cpp.s
 
-home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.o: home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.o: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.o
 
 # target to build an object file
-home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.o
 
-home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.i: home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.i: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.i
 
 # target to preprocess a source file
-home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.i:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.i
 
-home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.s: home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.s: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.s
 
 # target to generate assembly for a file
-home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.s:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp.s
 
-home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.o: home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.o: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.o
 
 # target to build an object file
-home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.o
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.o
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.o:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.o
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.o
 
-home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.i: home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.i: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.i
 
 # target to preprocess a source file
-home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.i
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.i
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.i:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.i
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.i
 
-home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.s: home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.s: home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.s
 
 # target to generate assembly for a file
-home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.s
-.PHONY : home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.cpp.s
+home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.s:
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.s
+.PHONY : home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.cpp.s
 
 input_processor.o: input_processor.cpp.o
 .PHONY : input_processor.o
 
 # target to build an object file
 input_processor.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.o
 .PHONY : input_processor.cpp.o
 
 input_processor.i: input_processor.cpp.i
@@ -432,7 +432,7 @@ input_processor.i: input_processor.cpp.i
 
 # target to preprocess a source file
 input_processor.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.i
 .PHONY : input_processor.cpp.i
 
 input_processor.s: input_processor.cpp.s
@@ -440,7 +440,7 @@ input_processor.s: input_processor.cpp.s
 
 # target to generate assembly for a file
 input_processor.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/input_processor.cpp.s
 .PHONY : input_processor.cpp.s
 
 ir_loader.o: ir_loader.cpp.o
@@ -448,7 +448,7 @@ ir_loader.o: ir_loader.cpp.o
 
 # target to build an object file
 ir_loader.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.o
 .PHONY : ir_loader.cpp.o
 
 ir_loader.i: ir_loader.cpp.i
@@ -456,7 +456,7 @@ ir_loader.i: ir_loader.cpp.i
 
 # target to preprocess a source file
 ir_loader.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.i
 .PHONY : ir_loader.cpp.i
 
 ir_loader.s: ir_loader.cpp.s
@@ -464,7 +464,7 @@ ir_loader.s: ir_loader.cpp.s
 
 # target to generate assembly for a file
 ir_loader.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/ir_loader.cpp.s
 .PHONY : ir_loader.cpp.s
 
 openamp-dsp_autogen/mocs_compilation.o: openamp-dsp_autogen/mocs_compilation.cpp.o
@@ -472,7 +472,7 @@ openamp-dsp_autogen/mocs_compilation.o: openamp-dsp_autogen/mocs_compilation.cpp
 
 # target to build an object file
 openamp-dsp_autogen/mocs_compilation.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/openamp-dsp_autogen/mocs_compilation.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/openamp-dsp_autogen/mocs_compilation.cpp.o
 .PHONY : openamp-dsp_autogen/mocs_compilation.cpp.o
 
 openamp-dsp_autogen/mocs_compilation.i: openamp-dsp_autogen/mocs_compilation.cpp.i
@@ -480,7 +480,7 @@ openamp-dsp_autogen/mocs_compilation.i: openamp-dsp_autogen/mocs_compilation.cpp
 
 # target to preprocess a source file
 openamp-dsp_autogen/mocs_compilation.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/openamp-dsp_autogen/mocs_compilation.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/openamp-dsp_autogen/mocs_compilation.cpp.i
 .PHONY : openamp-dsp_autogen/mocs_compilation.cpp.i
 
 openamp-dsp_autogen/mocs_compilation.s: openamp-dsp_autogen/mocs_compilation.cpp.s
@@ -488,7 +488,7 @@ openamp-dsp_autogen/mocs_compilation.s: openamp-dsp_autogen/mocs_compilation.cpp
 
 # target to generate assembly for a file
 openamp-dsp_autogen/mocs_compilation.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/openamp-dsp_autogen/mocs_compilation.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/openamp-dsp_autogen/mocs_compilation.cpp.s
 .PHONY : openamp-dsp_autogen/mocs_compilation.cpp.s
 
 plugin_loader.o: plugin_loader.cpp.o
@@ -496,7 +496,7 @@ plugin_loader.o: plugin_loader.cpp.o
 
 # target to build an object file
 plugin_loader.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/plugin_loader.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/plugin_loader.cpp.o
 .PHONY : plugin_loader.cpp.o
 
 plugin_loader.i: plugin_loader.cpp.i
@@ -504,7 +504,7 @@ plugin_loader.i: plugin_loader.cpp.i
 
 # target to preprocess a source file
 plugin_loader.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/plugin_loader.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/plugin_loader.cpp.i
 .PHONY : plugin_loader.cpp.i
 
 plugin_loader.s: plugin_loader.cpp.s
@@ -512,7 +512,7 @@ plugin_loader.s: plugin_loader.cpp.s
 
 # target to generate assembly for a file
 plugin_loader.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/plugin_loader.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/plugin_loader.cpp.s
 .PHONY : plugin_loader.cpp.s
 
 preset_store.o: preset_store.cpp.o
@@ -520,7 +520,7 @@ preset_store.o: preset_store.cpp.o
 
 # target to build an object file
 preset_store.cpp.o:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/preset_store.cpp.o
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/preset_store.cpp.o
 .PHONY : preset_store.cpp.o
 
 preset_store.i: preset_store.cpp.i
@@ -528,7 +528,7 @@ preset_store.i: preset_store.cpp.i
 
 # target to preprocess a source file
 preset_store.cpp.i:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/preset_store.cpp.i
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/preset_store.cpp.i
 .PHONY : preset_store.cpp.i
 
 preset_store.s: preset_store.cpp.s
@@ -536,7 +536,7 @@ preset_store.s: preset_store.cpp.s
 
 # target to generate assembly for a file
 preset_store.cpp.s:
-	cd /home/synth/projects/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/preset_store.cpp.s
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(MAKE) $(MAKESILENT) -f dsp-core/src/CMakeFiles/openamp-dsp.dir/build.make dsp-core/src/CMakeFiles/openamp-dsp.dir/preset_store.cpp.s
 .PHONY : preset_store.cpp.s
 
 # Help Target
@@ -563,24 +563,24 @@ help:
 	@echo "... effect_chain.o"
 	@echo "... effect_chain.i"
 	@echo "... effect_chain.s"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.o"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.i"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/compressor/compressor.s"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/delay/delay.o"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/delay/delay.i"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/delay/delay.s"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.o"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.i"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/distortion/distortion.s"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/eq/eq.o"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/eq/eq.i"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/eq/eq.s"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.o"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.i"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/noise_gate/noise_gate.s"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.o"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.i"
-	@echo "... home/synth/projects/openamp/dsp-core/plugins/reverb/reverb.s"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.o"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.i"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/compressor/compressor.s"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.o"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.i"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.s"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.o"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.i"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.s"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.o"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.i"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/eq/eq.s"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.o"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.i"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.s"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.o"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.i"
+	@echo "... home/synth/projects/05-active-dev/openamp/dsp-core/plugins/reverb/reverb.s"
 	@echo "... input_processor.o"
 	@echo "... input_processor.i"
 	@echo "... input_processor.s"
@@ -607,6 +607,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/synth/projects/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/synth/projects/05-active-dev/openamp/linux/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
