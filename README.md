@@ -1,17 +1,11 @@
 # Open Amp
 
-A professional cross-platform guitar amplifier and effects processor.
+![Version](https://img.shields.io/badge/version-1.2.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-## Features
+A professional cross-platform guitar amplifier and effects processor synthwave edition.
 
-- **Real-time DSP processing** - Low-latency audio processing
-- **Amp simulation** - Tube amp modeling with full EQ control
-- **12 Effect plugins** - Distortion, Delay, Reverb, EQ, Compressor, Modulation, Noise Gate, Wah, Tuner, Looper, Metronome, Recorder
-- **100 Factory presets** - Covering all genres and playing styles
-- **MIDI support** - Control parameters via MIDI controllers
-- **Cross-platform** - Linux, iOS, and Android
-
-## What's New (v1.2.0)
+## ✨ What's New (v1.2.0)
 
 - **Fixed Android audio architecture** - Blocking input reads with lock-free ring buffer eliminate dropouts and silence
 - **Noise Gate, Compressor, EQ** - Now fully wired into the Android signal chain (Input → Gate → Comp → EQ → Effects → Amp)
@@ -126,18 +120,13 @@ openamp/
 
 ## Building
 
+## 🚀 Verified Build
+
 ### Linux
 ```bash
 cd linux
 ./build.sh
-```
-
-Or manually:
-```bash
-cd linux
-mkdir build && cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
-make -j$(nproc)
+./build/openamp
 ```
 
 **Requirements:**
@@ -156,12 +145,40 @@ make -j$(nproc)
 2. Select your target device
 3. Build and run
 
-## Audio Specifications
+## 🔊 Audio Specifications
 
 - **Sample Rate:** 44.1kHz - 192kHz (48kHz recommended)
 - **Buffer Size:** 64 - 4096 samples (256 recommended for low latency)
 - **Latency:** ~5ms at 48kHz/256 samples
+- **Backends:** PipeWire recommended, ALSA fallback supported
 - **Bit Depth:** 32-bit float internal processing
+
+## Troubleshooting
+
+### No sound / device not detected
+
+Prefer PipeWire first.
+
+```bash
+# Verify PipeWire is running
+pactl info
+# Should show: Server Name: pulseaudio  (PipeWire-compatible)
+```
+
+If PipeWire is unavailable, force ALSA:
+
+```bash
+cd linux && mkdir -p build && cd build
+cmake .. -DUSE_PIPEWIRE=OFF -DUSE_ALSA=ON
+make -j"$(nproc)"
+./openamp
+```
+
+### Crackles / dropouts
+
+- Lower buffer size first, then increase if needed
+- Use PipeWire with realtime scheduling where possible
+- Ensure CPU governor is not power-saving during performance use
 
 ## Signal Chain
 
@@ -190,7 +207,7 @@ Input → Gain → Noise Gate → Compressor → EQ → Distortion → Amp → I
 - **Spring:** Vintage spring tank simulation
 - Pre-delay and width controls
 
-## MIDI Control
+## 🎛️ MIDI Control
 
 The app responds to standard MIDI CC messages:
 
@@ -204,16 +221,20 @@ The app responds to standard MIDI CC messages:
 | 23 | Delay Time |
 | 24 | Reverb Room |
 
-## License
+## 📄 License
 
-MIT License - See LICENSE file for details.
+MIT License — see [LICENSE](LICENSE) for details.
 
-## Credits
+## 🎹 Credits
 
-Made by synth with synthshark
+Made by [synthalorian](https://github.com/synthalorian) with [synthclaw](https://github.com/synthalorian) — a digital entity from the neon grid of 1984.
 
-Built with:
-- Qt 6 (Linux)
-- AVAudioEngine (iOS)
-- Oboe (Android)
-- Custom DSP algorithms
+*This is the wave. 🎹🦞🌆*
+
+---
+
+## ☕ Support the Developer
+
+If this project saved you time, solved a problem, or just made your day a little more neon, you can fuel the next one:
+
+[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://buymeacoffee.com/synthalorian)
