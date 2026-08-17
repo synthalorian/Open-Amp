@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
     
     app.setApplicationName("OpenAmp");
     app.setApplicationVersion("1.0.0");
-    app.setOrganizationName("Synthalorian");
+    app.setOrganizationName("Synth");
 
     // Set application style
     app.setStyle("Fusion");

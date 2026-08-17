@@ -56,7 +56,7 @@ MainWindow::MainWindow(QWidget* parent)
     }
 
     // Load last settings
-    QSettings settings("Synthalorian", "OpenAmp");
+    QSettings settings("Synth", "OpenAmp");
     restoreGeometry(settings.value("geometry").toByteArray());
     restoreState(settings.value("windowState").toByteArray());
 
@@ -72,7 +72,7 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::closeEvent(QCloseEvent* event) {
-    QSettings settings("Synthalorian", "OpenAmp");
+    QSettings settings("Synth", "OpenAmp");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
     settings.setValue("lastPreset", presetLabel_->text());
@@ -481,7 +481,7 @@ void MainWindow::showAbout() {
         "<p>Version 1.0.0</p>"
         "<p>A professional guitar amplifier and effects processor.</p>"
         "<p>Audio Backend: " + QString::fromStdString(audio_ ? audio_->getName() : "None") + "</p>"
-        "<p>© 2024 Synthalorian</p>"
+        "<p>© 2024 Synth</p>"
         "<p>Built with Qt 6 and " + QString::fromStdString(audio_ ? audio_->getVersion() : "") + "</p>"
     );
     
