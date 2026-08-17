@@ -188,10 +188,10 @@
 - Effects: Distortion (Tube, Drive 40%, Level 70%)
 - Good for: Overdriven bass
 
-### Bass synthalorian 🎹🤺
+### Bass Synth
 - Amp: Gain +2dB, Drive 35%, Bass +5, Mid -2, Treble +2, Presence 0
 - Effects: Distortion (Fuzz, Drive 60%), Octave (sub-octave)
-- Good for: synthalorian 🎹🤺 bass sounds
+- Good for: Synth bass sounds
 
 ---
 
