@@ -100,7 +100,7 @@ openamp/
 ### Ambient & Atmospheric (13-16, 44-45, 74-75, 80-82)
 - Ambient Clean, Shimmer Pad, Spacey Echo, Swell Builder
 - Post Rock, Shoegaze Wall, Psych Reverse, Tape Wobble
-- synthalorian 🎹🤺 Lead, Ambient Pad, Ethereal
+- Synth Lead, Ambient Pad, Ethereal
 
 ### Fuzz & Specialty (17-20, 83-85)
 - Fuzz Stomp, Octave Fuzz, Tone Bender, Velcro Fuzz
@@ -116,7 +116,7 @@ openamp/
 - Festival Main, Stadium Huge
 
 ### Bass (31-35)
-- Bass Clean, Bass Overdrive, Bass synthalorian 🎹🤺
+- Bass Clean, Bass Overdrive, Bass Synth
 
 ## Building
 

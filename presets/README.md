@@ -48,4 +48,4 @@ audioEngine.applyPreset(preset)
 6. **Effects** (21-26): Chorus, Flanger, Phaser, Tremolo, Wah
 7. **Utility** (27-30): Quiet, Looper, Recording, Live
 8. **Hybrid** (31-32): Piezo Sim, Acoustic-Electric
-9. **Bass** (33-35): Clean, Overdrive, synthalorian 🎹🤺
+9. **Bass** (33-35): Clean, Overdrive, Synth
