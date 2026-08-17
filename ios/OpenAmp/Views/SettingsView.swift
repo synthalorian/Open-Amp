@@ -231,7 +231,7 @@ struct AboutView: View {
                     
                     Spacer()
                     
-                    Text("Made with ❤️ by Synthalorian")
+                    Text("Made with ❤️ by Synth")
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .padding(.bottom, 20)
