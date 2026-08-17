@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-05
 **Test Agent:** Linux Testing Agent
-**Binary:** `/home/synth/projects/openamp/linux/build/openamp`
+**Binary:** `/home/synthalorian 🎹🤺/projects/openamp/linux/build/openamp`
 
 ---
 
