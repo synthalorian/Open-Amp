@@ -1,6 +1,0 @@
-modulation_plugin_autogen/timestamp: \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/CMakeLists.txt \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation.cpp \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation.h \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/modulation/modulation_plugin.cpp \
-	/usr/sbin/cmake

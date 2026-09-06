@@ -1,6 +1,0 @@
-distortion_plugin_autogen/timestamp: \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/CMakeLists.txt \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.cpp \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion.h \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/distortion/distortion_plugin.cpp \
-	/usr/sbin/cmake
