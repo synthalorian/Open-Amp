@@ -1,6 +1,0 @@
-delay_plugin_autogen/timestamp: \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/CMakeLists.txt \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.cpp \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay.h \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/delay/delay_plugin.cpp \
-	/usr/sbin/cmake

@@ -52,3 +52,4 @@ cxx/
 .claw/
 .omo/
 .clawd-todos.json
+linux/build/

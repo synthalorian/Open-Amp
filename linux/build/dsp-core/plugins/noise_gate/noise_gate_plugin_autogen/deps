@@ -1,6 +1,0 @@
-noise_gate_plugin_autogen/timestamp: \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/CMakeLists.txt \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.cpp \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate.h \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/noise_gate/noise_gate_plugin.cpp \
-	/usr/sbin/cmake
