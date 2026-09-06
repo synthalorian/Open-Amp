@@ -168,7 +168,7 @@ MIT License - See LICENSE file for details.
 
 ## Credits
 
-Developed by Synthalorian
+Developed by Synth
 
 Built with:
 - Qt 6
