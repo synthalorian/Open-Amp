@@ -1,6 +1,0 @@
-looper_plugin_autogen/timestamp: \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/looper/CMakeLists.txt \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/looper/looper.cpp \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/looper/looper.h \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/looper/looper_plugin.cpp \
-	/usr/sbin/cmake

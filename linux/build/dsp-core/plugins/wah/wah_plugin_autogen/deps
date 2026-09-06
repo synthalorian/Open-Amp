@@ -1,6 +1,0 @@
-wah_plugin_autogen/timestamp: \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/wah/CMakeLists.txt \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/wah/wah.cpp \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/wah/wah.h \
-	/home/synth/projects/05-active-dev/openamp/dsp-core/plugins/wah/wah_plugin.cpp \
-	/usr/sbin/cmake
