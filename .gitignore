@@ -41,6 +41,7 @@ cxx/
 # Signing
 *.jks
 *.keystore
+key.properties
 
 # Temp
 *.tmp
