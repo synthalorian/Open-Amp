@@ -24,7 +24,7 @@ android {
     }
 
     defaultConfig {
-        applicationId 'com.openamp'
+        applicationId 'com.synthalorian.openamp'
         minSdk 26
         targetSdk 34
         versionCode 20
