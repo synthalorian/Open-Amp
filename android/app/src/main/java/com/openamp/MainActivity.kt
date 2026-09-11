@@ -531,6 +531,7 @@ class MainActivity : ComponentActivity() {
     private fun startEngine(startButton: Button, debugStatusText: TextView): Boolean {
         return try {
             audioEngine.nativeCreate()
+            autoSelectUsbDevices()
             applyCurrentSettings()
             running = audioEngine.nativeStart()
             if (running) {
@@ -780,6 +781,26 @@ class MainActivity : ComponentActivity() {
             name
         }
         return File(dir, "$safeName.preset").absolutePath
+    }
+
+    /** Prefer USB audio interfaces (guitar cables/interfaces) over the built-in
+     *  mic/speaker when the engine starts. Manual selectors still override. */
+    private fun autoSelectUsbDevices() {
+        val manager = getSystemService(AUDIO_SERVICE) as AudioManager
+        manager.getDevices(AudioManager.GET_DEVICES_INPUTS)
+            .firstOrNull { it.type == AudioDeviceInfo.TYPE_USB_DEVICE ||
+                           it.type == AudioDeviceInfo.TYPE_USB_HEADSET }
+            ?.let {
+                audioEngine.nativeSetInputDeviceId(it.id)
+                Log.i(TAG, "Auto-selected USB input: ${it.productName} (${it.id})")
+            }
+        manager.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
+            .firstOrNull { it.type == AudioDeviceInfo.TYPE_USB_DEVICE ||
+                           it.type == AudioDeviceInfo.TYPE_USB_HEADSET }
+            ?.let {
+                audioEngine.nativeSetOutputDeviceId(it.id)
+                Log.i(TAG, "Auto-selected USB output: ${it.productName} (${it.id})")
+            }
     }
 
     private fun showInputDeviceSelector() {

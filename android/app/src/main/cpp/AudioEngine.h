@@ -389,6 +389,7 @@ private:
     // Internal methods
     bool openStreams();
     void closeStreams();
+    void restartStreams();
     void applyPreset(const openamp::Preset& preset);
 };
 
