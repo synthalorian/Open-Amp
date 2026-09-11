@@ -587,8 +587,33 @@ bool AudioEngine::getTunerValid() const {
 }
 
 // Device selection
-void AudioEngine::setInputDeviceId(int32_t deviceId) { inputDeviceId_ = deviceId; }
-void AudioEngine::setOutputDeviceId(int32_t deviceId) { outputDeviceId_ = deviceId; }
+void AudioEngine::setInputDeviceId(int32_t deviceId) {
+    if (deviceId == inputDeviceId_) return;
+    inputDeviceId_ = deviceId;
+    if (running_) restartStreams();
+}
+void AudioEngine::setOutputDeviceId(int32_t deviceId) {
+    if (deviceId == outputDeviceId_) return;
+    outputDeviceId_ = deviceId;
+    if (running_) restartStreams();
+}
+
+// Re-open + restart streams so device changes take effect immediately.
+// Call from the UI thread only (never from an audio callback).
+void AudioEngine::restartStreams() {
+    LOGI("AudioEngine: restartStreams (in=%d out=%d)", inputDeviceId_, outputDeviceId_);
+    if (inputStream_) inputStream_->requestStop();
+    if (outputStream_) outputStream_->requestStop();
+    closeStreams();
+    running_.store(false);
+    if (!openStreams()) {
+        LOGE("AudioEngine: restartStreams failed to reopen");
+        return;
+    }
+    if (inputStream_) inputStream_->requestStart();
+    if (outputStream_) outputStream_->requestStart();
+    running_.store(true);
+}
 
 // Meters
 float AudioEngine::getInputLevel() const { return processor_ ? processor_->getInputLevel() : 0.0f; }
@@ -750,61 +775,49 @@ oboe::DataCallbackResult AudioEngine::onAudioReady(
 
     if (!running_) return oboe::DataCallbackResult::Stop;
 
+    // ---- INPUT STREAM CALLBACK ----
+    // The input stream was opened WITH a callback, so Oboe delivers captured
+    // audio here. (Calling stream->read() on a callback stream is illegal and
+    // was the original silence bug.) Convert to mono and feed the ring buffer;
+    // the output callback consumes from the ring.
+    if (inputStream_ && audioStream == inputStream_.get()) {
+        const float* in = static_cast<const float*>(audioData);
+        const int32_t inCh = std::max(1, audioStream->getChannelCount());
+        if (static_cast<size_t>(numFrames) > inputBuffer_.size()) inputBuffer_.resize(numFrames);
+        const int mode = inputChannelMode_.load(std::memory_order_relaxed);
+        for (int32_t i = 0; i < numFrames; ++i) {
+            const int32_t base = i * inCh;
+            float mono;
+            if (inCh == 1) {
+                mono = in[base];
+            } else {
+                const float left = in[base];
+                const float right = in[base + 1];
+                if (mode == 0) mono = left;
+                else if (mode == 1) mono = right;
+                else if (mode == 2) mono = 0.5f * (left + right);
+                else mono = (std::fabs(left) >= std::fabs(right)) ? left : right;
+            }
+            inputBuffer_[i] = mono;
+        }
+        writeToRing(inputBuffer_.data(), numFrames);
+        inputReadCount_.fetch_add(1);
+        lastFramesRead_.store(numFrames);
+        latencyMonitor_.markInputTime();
+        return oboe::DataCallbackResult::Continue;
+    }
+
+    // ---- OUTPUT STREAM CALLBACK ----
     callbackCount_.fetch_add(1);
     lastFramesRequested_.store(numFrames);
 
-    latencyMonitor_.markInputTime();
-
     float* output = static_cast<float*>(audioData);
     const int32_t numOutputSamples = numFrames * config_.numOutputChannels;
-    const int32_t inputChannels = inputStream_ ? inputStream_->getChannelCount() : 1;
-    const int32_t numInputSamples = numFrames * std::max(1, inputChannels);
 
-    if (static_cast<size_t>(numFrames) > inputBuffer_.size()) inputBuffer_.resize(numFrames);
-    if (static_cast<size_t>(numInputSamples) > inputInterleavedBuffer_.size()) inputInterleavedBuffer_.resize(numInputSamples);
     if (static_cast<size_t>(numOutputSamples) > outputBuffer_.size()) outputBuffer_.resize(numOutputSamples);
+    if (static_cast<size_t>(numFrames) > inputBuffer_.size()) inputBuffer_.resize(numFrames);
 
-    // Phase 1: Blocking read with calculated timeout instead of non-blocking (timeout=0)
-    // Calculate timeout as 2x the buffer duration in nanoseconds
-    int32_t framesRead = 0;
-    if (inputStream_) {
-        const int64_t timeoutNanos = static_cast<int64_t>(numFrames * 2 * 1e9 / config_.sampleRate);
-        auto readResult = inputStream_->read(inputInterleavedBuffer_.data(), numFrames, timeoutNanos);
-        if (readResult) {
-            framesRead = readResult.value();
-            inputReadCount_.fetch_add(1);
-        } else if (readResult.error() == oboe::Result::ErrorTimeout) {
-            inputTimeoutCount_.fetch_add(1);
-            LOGD("AudioEngine: Input read timeout (requested %d frames)", numFrames);
-        } else {
-            inputErrorCount_.fetch_add(1);
-            LOGE("AudioEngine: Input read error: %d", static_cast<int>(readResult.error()));
-        }
-    }
-    lastFramesRead_.store(framesRead);
-
-    // Convert interleaved input to mono
-    const int32_t safeChannels = std::max(1, inputChannels);
-    for (int32_t i = 0; i < framesRead; ++i) {
-        const int32_t base = i * safeChannels;
-        float mono = 0.0f;
-        if (safeChannels == 1) {
-            mono = inputInterleavedBuffer_[base];
-        } else {
-            float left = inputInterleavedBuffer_[base];
-            float right = inputInterleavedBuffer_[base + 1];
-        if (inputChannelMode_.load(std::memory_order_relaxed) == 0) mono = left;
-        else if (inputChannelMode_.load(std::memory_order_relaxed) == 1) mono = right;
-        else if (inputChannelMode_.load(std::memory_order_relaxed) == 2) mono = 0.5f * (left + right);
-        else mono = (std::fabs(left) >= std::fabs(right)) ? left : right;
-        }
-        inputBuffer_[i] = mono;
-    }
-    for (int32_t i = framesRead; i < numFrames; ++i) inputBuffer_[i] = 0.0f;
-
-    // Phase 1: Write input to ring buffer, then read back for processing
-    // This decouples input timing from output callback timing
-    writeToRing(inputBuffer_.data(), numFrames);
+    // Pull captured guitar audio from the ring (fed by the input callback).
     size_t ringFramesRead = readFromRing(inputBuffer_.data(), numFrames);
     if (ringFramesRead < static_cast<size_t>(numFrames)) {
         // Zero-fill if ring buffer underruns
