@@ -726,6 +726,7 @@ id btnLooperRec
 id btnLooperStop
 id btnMetronomeToggle
 id btnOutputDevice
+id btnTunerToggle
 id buttonPanel
 id cabIrPath
 id center_vertical

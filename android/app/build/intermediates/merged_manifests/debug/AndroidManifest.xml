@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.openamp"
+    package="com.synthalorian.openamp"
     android:versionCode="20"
     android:versionName="2.0.0" >
 
@@ -17,10 +17,10 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <permission
-        android:name="com.openamp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.synthalorian.openamp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.openamp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.synthalorian.openamp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:allowBackup="false"
@@ -44,7 +44,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.openamp.androidx-startup"
+            android:authorities="com.synthalorian.openamp.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"

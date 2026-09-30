@@ -22,6 +22,7 @@ id btnLooperRec
 id btnLooperStop
 id btnMetronomeToggle
 id btnOutputDevice
+id btnTunerToggle
 id cabIrPath
 id coffeeButton
 id debugStatusText

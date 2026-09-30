@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.openamp"
+3    package="com.synthalorian.openamp"
 4    android:versionCode="20"
 5    android:versionName="2.0.0" >
 6
@@ -9,66 +9,66 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-feature android:name="android.hardware.usb.host" />
-11-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:4:5-62
-11-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:4:19-59
+11-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:4:5-62
+11-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:4:19-59
 12    <uses-feature
-12-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:5:5-83
+12-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:5:5-83
 13        android:name="android.software.midi"
-13-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:5:19-55
+13-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:5:19-55
 14        android:required="false" />
-14-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:5:56-80
+14-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:5:56-80
 15
 16    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-16-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:6:5-71
-16-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:6:22-68
+16-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:6:5-71
+16-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:6:22-68
 17    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-17-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:7:5-80
-17-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:7:22-77
+17-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:7:5-80
+17-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:7:22-77
 18
 19    <permission
 19-->[androidx.core:core:1.12.0] /home/synth/.gradle/caches/8.12/transforms/2fa78339c84116922e7391f8ce4035c5/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
-20        android:name="com.openamp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+20        android:name="com.synthalorian.openamp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 20-->[androidx.core:core:1.12.0] /home/synth/.gradle/caches/8.12/transforms/2fa78339c84116922e7391f8ce4035c5/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
 21        android:protectionLevel="signature" />
 21-->[androidx.core:core:1.12.0] /home/synth/.gradle/caches/8.12/transforms/2fa78339c84116922e7391f8ce4035c5/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
 22
-23    <uses-permission android:name="com.openamp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+23    <uses-permission android:name="com.synthalorian.openamp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 23-->[androidx.core:core:1.12.0] /home/synth/.gradle/caches/8.12/transforms/2fa78339c84116922e7391f8ce4035c5/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
 23-->[androidx.core:core:1.12.0] /home/synth/.gradle/caches/8.12/transforms/2fa78339c84116922e7391f8ce4035c5/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
 24
 25    <application
-25-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:9:5-26:19
+25-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:9:5-26:19
 26        android:allowBackup="false"
-26-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:10:9-36
+26-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:10:9-36
 27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 27-->[androidx.core:core:1.12.0] /home/synth/.gradle/caches/8.12/transforms/2fa78339c84116922e7391f8ce4035c5/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
 28        android:debuggable="true"
 29        android:extractNativeLibs="false"
 30        android:icon="@mipmap/ic_launcher"
-30-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:11:9-43
+30-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:11:9-43
 31        android:label="Open Amp"
-31-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:13:9-33
+31-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:13:9-33
 32        android:roundIcon="@mipmap/ic_launcher_round"
-32-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:12:9-54
+32-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:12:9-54
 33        android:supportsRtl="true"
-33-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:15:9-35
+33-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:15:9-35
 34        android:theme="@style/Theme.OpenAmp" >
-34-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:14:9-45
+34-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:14:9-45
 35        <activity
-35-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:17:9-24:20
+35-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:17:9-24:20
 36            android:name="com.openamp.MainActivity"
-36-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:18:13-41
+36-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:18:13-41
 37            android:exported="true" >
-37-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:19:13-36
+37-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:19:13-36
 38            <intent-filter>
-38-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:20:13-23:29
+38-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:20:13-23:29
 39                <action android:name="android.intent.action.MAIN" />
-39-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:21:17-69
-39-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:21:25-66
+39-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:21:17-69
+39-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:21:25-66
 40
 41                <category android:name="android.intent.category.LAUNCHER" />
-41-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:22:17-77
-41-->/home/synth/projects/openamp/android/app/src/main/AndroidManifest.xml:22:27-74
+41-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:22:17-77
+41-->/home/synth/Projects/active/Open-Amp/android/app/src/main/AndroidManifest.xml:22:27-74
 42            </intent-filter>
 43        </activity>
 44
@@ -76,7 +76,7 @@
 45-->[androidx.emoji2:emoji2:1.2.0] /home/synth/.gradle/caches/8.12/transforms/06872878108c925354fa48578b1972cb/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
 46            android:name="androidx.startup.InitializationProvider"
 46-->[androidx.emoji2:emoji2:1.2.0] /home/synth/.gradle/caches/8.12/transforms/06872878108c925354fa48578b1972cb/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
-47            android:authorities="com.openamp.androidx-startup"
+47            android:authorities="com.synthalorian.openamp.androidx-startup"
 47-->[androidx.emoji2:emoji2:1.2.0] /home/synth/.gradle/caches/8.12/transforms/06872878108c925354fa48578b1972cb/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
 48            android:exported="false" >
 48-->[androidx.emoji2:emoji2:1.2.0] /home/synth/.gradle/caches/8.12/transforms/06872878108c925354fa48578b1972cb/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37

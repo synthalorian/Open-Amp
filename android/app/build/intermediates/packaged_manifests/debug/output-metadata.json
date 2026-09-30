@@ -4,7 +4,7 @@
     "type": "PACKAGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.openamp",
+  "applicationId": "com.synthalorian.openamp",
   "variantName": "debug",
   "elements": [
     {

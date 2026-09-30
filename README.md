@@ -227,9 +227,8 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## 🎹 Credits
 
-Made by [synth](https://github.com/synthalorian) with [blackclaw](https://github.com/synthalorian) — a digital entity from the neon grid of 1984.
 
-*This is the wave. ⚫🦞🌆*
+*This is the wave. 🎹🦞🌆*
 
 ---
 
